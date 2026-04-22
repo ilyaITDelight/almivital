@@ -1,0 +1,9 @@
+{
+  "name": "maison-heroine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "shopify theme dev -s almivital.myshopify.com"
+  }
+}

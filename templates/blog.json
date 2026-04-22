@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_hJrWUj": {
+      "type": "slideshow",
+      "blocks": {
+        "image_TdjTMb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/blog-h.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "ALMIVITAL Magazin – Tipps und Trends für Gesundheit, natürliche Pflege und Wohlbefinden",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "Im ALMIVITAL Magazin erwarten Sie fundierte Ratgeber, aktuelle Trends und Expertenwissen zu Gesundheit, natürlicher Hautpflege und Lebensqualität. Entdecken Sie wertvolle Tipps für Ihre tägliche Pflege, Inspirationen für ein gesundes Leben und exklusive Einblicke in unsere Produkte und Wirkstoffe. Stöbern Sie durch unsere Artikel und bringen Sie Balance und Vitalität in Ihren Alltag!",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_TdjTMb"
+      ],
+      "settings": {
+        "slideshow_type": "legacy",
+        "text_alignment": "left",
+        "image_ratio": "550px",
+        "autorotate": false,
+        "autorotate_speed": 5,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "300px",
+        "show_text_below": true,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#ffffff",
+        "colors_background": "#ffffff",
+        "colors_overlay": "#212326",
+        "colors_overlay_opacity": 52,
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_date": false,
+            "show_author": false,
+            "show_comment_count": false
+          }
+        },
+        "summary": {
+          "type": "summary",
+          "settings": {}
+        },
+        "read_more": {
+          "type": "read_more",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "summary",
+        "read_more"
+      ],
+      "settings": {
+        "per_page": 12,
+        "show_tag_filter": false,
+        "show_image": true,
+        "image_ratio": "landscape",
+        "image_position": "center center",
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "slideshow_hJrWUj",
+    "main"
+  ]
+}

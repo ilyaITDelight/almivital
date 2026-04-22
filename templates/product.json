@@ -1,0 +1,292 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "empty-space": {
+      "type": "empty-space",
+      "settings": {
+        "desktop_height": 36,
+        "mobile_height": 16
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "judge_me_reviews_preview_badge_y3JXaj": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "h2",
+            "show_price": false,
+            "price_size": "medium"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_size": "large",
+            "show_badges": true,
+            "sale_badge_basis": "percentage"
+          }
+        },
+        "text_fhfR4C": {
+          "type": "text",
+          "settings": {
+            "icon": "truck",
+            "text": "Lieferung innerhalb von 2-3 Werktagen",
+            "text_style": "body"
+          }
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Hurry up ! Sale end in:",
+            "number_size": "compact",
+            "colors_heading": "#da3f3f",
+            "colors_text": "#da3f3f",
+            "colors_background": "#ffeeee"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "swatch_source": "variant",
+            "swatch_type": "round",
+            "enable_swatch_unavailable_click": false,
+            "size_chart": ""
+          }
+        },
+        "hextom_sales_boost_usb_static_message_HTFgMM": {
+          "type": "shopify://apps/hextom-sales-boost/blocks/usb-static-message/00e81c42-8ae7-4b0b-b43d-99393b885fc4",
+          "settings": {}
+        },
+        "hextom_sales_boost_usb_stock_number_WiKiH4": {
+          "type": "shopify://apps/hextom-sales-boost/blocks/usb-stock-number/00e81c42-8ae7-4b0b-b43d-99393b885fc4",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "hextom_sales_boost_usb_payment_badge_i9xqGz": {
+          "type": "shopify://apps/hextom-sales-boost/blocks/usb-payment-badge/00e81c42-8ae7-4b0b-b43d-99393b885fc4",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "settings": {
+            "inventory_threshold": 20,
+            "show_inventory_transfer": true,
+            "color_scheme": "accent-3"
+          }
+        },
+        "related_buttons": {
+          "type": "related_buttons",
+          "disabled": true,
+          "settings": {
+            "show_icons": false
+          }
+        },
+        "sticky_cart": {
+          "type": "sticky_cart",
+          "settings": {
+            "show_quantity_selector": false
+          }
+        },
+        "judge_me_reviews_review_widget_k7Lzrh": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_y3JXaj",
+        "title",
+        "price",
+        "text_fhfR4C",
+        "countdown",
+        "variant_picker",
+        "hextom_sales_boost_usb_static_message_HTFgMM",
+        "hextom_sales_boost_usb_stock_number_WiKiH4",
+        "buy_buttons",
+        "hextom_sales_boost_usb_payment_badge_i9xqGz",
+        "description",
+        "inventory_status",
+        "related_buttons",
+        "sticky_cart",
+        "judge_me_reviews_review_widget_k7Lzrh"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "media_size": "medium",
+        "gallery_layout": "stacked",
+        "image_ratio": "square",
+        "show_featured_media": false,
+        "show_thumbnails": false,
+        "hide_variants": true,
+        "enable_image_zoom": false,
+        "enable_video_looping": false,
+        "mobile_image_ratio": "adapt_first",
+        "show_mobile_thumbnails": true,
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
+    "guarantees": {
+      "type": "guarantees",
+      "blocks": {
+        "guarantee-0": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "truck",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Versandkostenfrei ab 49€",
+            "title_size": "h4",
+            "text": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "guarantee-2": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "recycle",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "30 Tage Rückgaberecht",
+            "title_size": "h4",
+            "text": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "guarantee_qtimcj": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "check_mark",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Hergestellt in Deutschland",
+            "title_size": "h4",
+            "text": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee-0",
+        "guarantee-2",
+        "guarantee_qtimcj"
+      ],
+      "settings": {
+        "layout": "default",
+        "column_alignment": "center",
+        "horizontal_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "columns_desktop": 3,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "use_custom_colors": true,
+        "colors_icon": "#ffffff",
+        "colors_text": "#1a1b18",
+        "colors_background": "#d0ebed",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_list_limit": 4,
+        "show_divider": false,
+        "heading": "Produkte, die Ihnen auch gefallen könnten",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_quick_buy": false,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "show_divider": false,
+        "heading": "Kürzlich angesehen",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": true,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "empty-space",
+    "main",
+    "guarantees",
+    "product-recommendations",
+    "recently-viewed-products"
+  ]
+}

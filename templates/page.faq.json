@@ -1,0 +1,317 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "narrow": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image-banner": {
+      "type": "image-banner",
+      "blocks": {
+        "image-banner-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "FAQ",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image-banner-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Antworten zu Ihren häufig gestellten Fragen</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "image-banner-0",
+        "image-banner-1"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/almivital-felix-neumann_FAQ_wide.jpg",
+        "image_position": "top center",
+        "text_box_position": "bottom-center",
+        "text_alignment": "center",
+        "image_ratio": "550px",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_image": "shopify://shop_images/almivital-felix-neumann_4a9df255-d2cd-4647-ac54-b752b70b3c92.jpg",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "400px",
+        "stack_images_on_mobile": false,
+        "show_text_below": false,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 28,
+        "colors_highlight": "#ffb503",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question-0": {
+          "type": "question",
+          "settings": {
+            "title": "In welche Länder liefern Sie die Bestellung?",
+            "text": "<p>Deutschland, Österreich und Italien</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "title": "Wie hoch sind die Versandkosten?",
+            "text": "<p>Lieferungen innerhalb Deutschlands 5,95€, ab 49,00 € liefern wir versandkostenfrei<br/>Lieferungen nach Österreich 8,95€, ab 69,00€ liefern wir versandkostenfrei<br/>Lieferungen nach Italien 14,95€, versandkostenfrei leider nicht möglich</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "title": "Wie lange dauert der Versand?",
+            "text": "<p>Innerhalb Deutschlands 2-4 Werktage<br/>Nach Österreich oder Italien 2-8 Tage</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "title": "Mit welchem Paketdienstleister wird die Bestellung versendet?",
+            "text": "<p>Ausschließlich DHL, andere Paketdienstleister bieten wir nicht an</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "title": "Kann ich meine Bestellung verfolgen?",
+            "text": "<p>Ja, wenn Sie bei Bestellung Ihre email angegeben, erhalten Sie nach Bearbeitung der Bestellung eine Sendungsverfolgungsnummer von DHL.</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "title": "Der Artikel ist beim Transport beschädigt worden. Was nun?",
+            "text": "<p>Schreiben Sie uns bitte ein email an info@almivital.de</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_nn6CLg": {
+          "type": "question",
+          "settings": {
+            "title": "Wie schicke ich einen Artikel zurück?",
+            "text": "<p>Retouren bitte an folgende Adresse senden: <br/>ALMIVITAL c/o Macon GmbH, Oberriedsweg 4, 99955 Herbsleben<br/>Lesen Sie dazu auch gerne unser Widerufsrecht</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_r6ph3h": {
+          "type": "question",
+          "settings": {
+            "title": "Welches Rückgaberecht habe ich?",
+            "text": "<p>Sie haben das Recht, binnen 30 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_ynwaTx": {
+          "type": "question",
+          "settings": {
+            "title": "Wann erhalte ich mein Geld zurück?",
+            "text": "<p>Sobald uns Ihre Rücksendung erreicht hat, werden wir den Kaufpreis über den von Ihnen bei Bestellung gewählten Bezahlweg erstatten</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_f7Em7D": {
+          "type": "question",
+          "settings": {
+            "title": "Welche Zahlungsmethoden werden akzeptiert?",
+            "text": "<p>Klarna, PayPal, Kreditkarte<br/>Wenn Sie telefonisch bestellen ist eine Zahlung per Rechnung möglich </p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_9taBKm": {
+          "type": "question",
+          "settings": {
+            "title": "Wie kann ich meine Bestellung ändern oder stornieren?",
+            "text": "<p>Teilen Sie uns den Änderungswunsch oder eine Stornierung schnellst möglich per Nachricht an info@almivital.de mit. </p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_c36nKV": {
+          "type": "question",
+          "settings": {
+            "title": "Ist mein Kauf sicher?",
+            "text": "<p>Ja</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_hUBYaW": {
+          "type": "question",
+          "settings": {
+            "title": "Wie lange sind die Artikel haltbar?",
+            "text": "<p>Ungeöffnet sind unser Artikel bis zu 3 Jahre haltbar. Wenn Sie das Produkt geöffnet haben sollten Sie das Produkt innerhalb von 12 Monaten aufbrauchen.</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_HMxTbA": {
+          "type": "question",
+          "settings": {
+            "title": "Kann ich mehrere Produkte gleichzeitig auftragen?",
+            "text": "<p>Grundsätzlich ja aber es kommt immer auf den Einzelfall an und ob eventuelle Allergien vorhanden sind</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_BVgVNP": {
+          "type": "question",
+          "settings": {
+            "title": "Gibt es Proben der Produkte?",
+            "text": "<p>Bitte haben Sie Verständnis dafür, dass wir generell keine kostenlosen Proben unserer Produkte versenden können.</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_dxhH6V": {
+          "type": "question",
+          "settings": {
+            "title": "Sind alle Rabatte mit einander kombinierbar?",
+            "text": "<p>Leider nicht, Treupunkte sind mit anderen Rabatten nicht kombinierbar</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "question_4M8ebR": {
+          "type": "question",
+          "settings": {
+            "title": "Mein Rabattcode funktioniert nicht. Woran kann das liegen?",
+            "text": "<p>Achten Sie auf die korrekte Schreibweise. Akzeptieren Sie beim Besuch unseres Shops alle cookies, damit das System einwandfrei läuft. Beachten Sie den mindest Bestellwert der bei einigen Rabatten notwendig ist. Der Mindestbestellwert wird Ihnen im Vorfeld mitgeteilt.</p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "question-0",
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5",
+        "question_nn6CLg",
+        "question_r6ph3h",
+        "question_ynwaTx",
+        "question_f7Em7D",
+        "question_9taBKm",
+        "question_c36nKV",
+        "question_hUBYaW",
+        "question_HMxTbA",
+        "question_BVgVNP",
+        "question_dxhH6V",
+        "question_4M8ebR"
+      ],
+      "settings": {
+        "narrow": true,
+        "secondary_background": false,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "rich-text-0": {
+      "type": "rich-text",
+      "blocks": {
+        "rich-text-0-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sie finden nicht, wonach Sie suchen?",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "rich-text-0-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Schicken Sie uns eine E-Mail und schildern Sie uns Ihr Anliegen. Wir werden uns so schnell wie möglich bei Ihnen melden. Bitte geben Sie Ihre Bestellnummer an (falls vorhanden). </p><p>Schicken Sie uns bitte eine E-Mail an info@almivital.de</p>",
+            "text_size": "typeset",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "rich-text-0-0",
+        "rich-text-0-1"
+      ],
+      "settings": {
+        "text_alignment": "left",
+        "mobile_text_alignment": "left",
+        "horizontal_content": false,
+        "narrow": true,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#ffb503",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image-banner",
+    "faq",
+    "rich-text-0"
+  ]
+}

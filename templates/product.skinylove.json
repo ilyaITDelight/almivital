@@ -1,0 +1,245 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_ALdfXm": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/skinylove-h.jpg",
+        "image_position": "center center",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "650px",
+        "show_text_box": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_image": "shopify://shop_images/skinylove-h-m.jpg",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "auto",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich-text-0": {
+      "type": "rich-text",
+      "blocks": {
+        "rich-text-0-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "SKINylove – Hochkonzentrierte Pflege für gezielte Ergebnisse",
+            "heading_size": "h1",
+            "heading_tag": "h2"
+          }
+        },
+        "rich-text-0-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Jetzt im Almivital Shop: SKINylove, die hochwirksame Pflege aus unserem Labor, speziell entwickelt für sichtbare Anti-Aging-Ergebnisse. Mit konzentrierten Wirkstoffen wie <strong>Argireline®, Liftonin®-XPRESS</strong> und <strong>Frescolat® X-Cool</strong> bietet SKINylove alles, was Ihre Haut braucht, um glatt und straff zu wirken.</p><p>Freuen Sie sich auf mehr! Bald erweitern wir SKINylove um spezialisierte Seren, die gezielt verschiedene Hautbedürfnisse ansprechen – für eine Pflege, die wirklich wirkt.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "rich-text-0-0",
+        "rich-text-0-1"
+      ],
+      "settings": {
+        "text_alignment": "left",
+        "mobile_text_alignment": "left",
+        "horizontal_content": false,
+        "narrow": true,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "h1",
+            "show_price": false,
+            "price_size": "medium"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Hurry up ! Sale end in:",
+            "number_size": "compact",
+            "colors_heading": "#da3f3f",
+            "colors_text": "#da3f3f",
+            "colors_background": "#ffeeee"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_size": "medium",
+            "show_badges": true,
+            "sale_badge_basis": "auto"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "swatch_type": "round",
+            "enable_swatch_unavailable_click": false,
+            "size_chart": ""
+          }
+        },
+        "text-0": {
+          "type": "text",
+          "settings": {
+            "icon": "return",
+            "text": "30-day free trial",
+            "text_style": "body"
+          }
+        },
+        "text-1": {
+          "type": "text",
+          "settings": {
+            "icon": "truck",
+            "text": "Free worldwide shipping",
+            "text_style": "body"
+          }
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "settings": {
+            "inventory_threshold": 20,
+            "show_inventory_transfer": true,
+            "color_scheme": "accent-3"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "sticky_cart": {
+          "type": "sticky_cart",
+          "settings": {
+            "show_quantity_selector": false
+          }
+        },
+        "description_9bBitC": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "subtitle",
+        "title",
+        "rating",
+        "countdown",
+        "price",
+        "variant_picker",
+        "text-0",
+        "text-1",
+        "inventory_status",
+        "buy_buttons",
+        "share",
+        "sticky_cart",
+        "description_9bBitC"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "media_size": "medium",
+        "gallery_layout": "stacked",
+        "image_ratio": "adapt",
+        "show_featured_media": false,
+        "show_thumbnails": true,
+        "hide_variants": false,
+        "enable_image_zoom": true,
+        "enable_video_looping": false,
+        "mobile_image_ratio": "adapt_first",
+        "show_mobile_thumbnails": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "product_list_limit": 4,
+        "show_divider": false,
+        "heading": "You May Also Like",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner_ALdfXm",
+    "rich-text-0",
+    "main",
+    "product-recommendations"
+  ]
+}

@@ -1,0 +1,151 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "medium"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": false,
+            "blog_show_author": false,
+            "blog_show_comment_count": false
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "back_to_blog": {
+          "type": "back_to_blog",
+          "settings": {}
+        },
+        "next_previous_posts": {
+          "type": "next_previous_posts",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "title",
+        "content",
+        "back_to_blog",
+        "next_previous_posts"
+      ],
+      "settings": {
+        "show_gravatar": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_j3FHXT": {
+      "type": "featured-product",
+      "blocks": {
+        "title_jRemYV": {
+          "type": "title",
+          "settings": {
+            "title_size": "h2",
+            "title_tag": "h2",
+            "show_price": false,
+            "price_size": "medium"
+          }
+        },
+        "rating_KGxgNT": {
+          "type": "rating",
+          "settings": {}
+        },
+        "countdown_HaPAYY": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Hurry up ! Sale end in:",
+            "number_size": "compact",
+            "colors_heading": "#da3f3f",
+            "colors_text": "#da3f3f",
+            "colors_background": "#feeeee"
+          }
+        },
+        "price_mc6H9E": {
+          "type": "price",
+          "settings": {
+            "price_size": "medium",
+            "show_badges": true,
+            "sale_badge_basis": "auto"
+          }
+        },
+        "variant_picker_i3EUgL": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "swatch_type": "round",
+            "enable_swatch_unavailable_click": false,
+            "size_chart": ""
+          }
+        },
+        "buy_buttons_cfg39G": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "share_4NKgYd": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "read_more_D68N96": {
+          "type": "read_more",
+          "settings": {
+            "show_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "title_jRemYV",
+        "rating_KGxgNT",
+        "countdown_HaPAYY",
+        "price_mc6H9E",
+        "variant_picker_i3EUgL",
+        "buy_buttons_cfg39G",
+        "share_4NKgYd",
+        "read_more_D68N96"
+      ],
+      "settings": {
+        "product": "",
+        "layout": "media_first",
+        "full_width": false,
+        "show_divider": false,
+        "show_featured_media": false,
+        "hide_variants": false,
+        "enable_image_zoom": true,
+        "enable_video_looping": false,
+        "image_ratio": "adapt_first",
+        "image_position": "center center",
+        "enable_layered_images": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_product_j3FHXT"
+  ]
+}

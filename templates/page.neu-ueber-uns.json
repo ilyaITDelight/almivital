@@ -1,0 +1,392 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_yH8kwi": {
+      "type": "slideshow",
+      "blocks": {
+        "image_D48nKh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/test-brand-01-min.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "ALMIVITAL – Natürliche Pflege, die bewegt",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "",
+            "text_size": "typeset",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_D48nKh"
+      ],
+      "disabled": true,
+      "settings": {
+        "slideshow_type": "legacy",
+        "text_alignment": "left",
+        "image_ratio": "550px",
+        "autorotate": false,
+        "autorotate_speed": 5,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "300px",
+        "show_text_below": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#1a1b18",
+        "colors_background": "#ffffff",
+        "colors_overlay": "#ffffff",
+        "colors_overlay_opacity": 12,
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_VUfigj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ikLDT8": {
+          "type": "heading",
+          "settings": {
+            "heading": "ALMIVITAL – Natürliche Pflege, die bewegt",
+            "heading_size": "h1",
+            "heading_tag": "h2"
+          }
+        },
+        "text_nkm8yA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ALMIVITAL steht für hochwertige Funktionskosmetik, die traditionelle Pflanzenheilkunde mit modernster Hautpflege vereint. Unser Ziel ist es, Menschen zu unterstützen, die ein aktives und gesundes Leben führen möchten – mit Produkten, die Ihre Mobilität fördern und gleichzeitig die Haut intensiv pflegen. Mit über <strong>400.000 verkauften Produkten jährlich</strong> und mehr als <strong>70.000 zufriedenen Kunden</strong>, bietet ALMIVITAL bewährte Rezepturen, die auf natürliche Weise helfen, gesund und aktiv zu bleiben.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_ikLDT8",
+        "text_nkm8yA"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Gross_SVF_4561_Almivital_Kopie.jpg",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 24
+      }
+    },
+    "image_with_text_pdHnFx": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_ULhtEp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Die Idee zu ALMIVITAL entstand in der Natur. Unser Gründer, <strong>Felix Neumann</strong>, verbrachte als Kind viele Sommer auf einer Alm in Südtirol. Diese tiefe Verbindung zur Natur inspiriert ihn bis heute. Seine Vision: Pflegeprodukte zu entwickeln, die natürliche Wirkstoffe nutzen, um Körper und Geist zu unterstützen. </p><p><strong>„Es war immer mein Traum, die heilende Kraft der Natur in Produkte zu integrieren, die nicht nur die Haut pflegen, sondern auch das tägliche Wohlbefinden unterstützen. ALMIVITAL bringt diese Vision zum Leben – mit natürlichen Inhaltsstoffen und der Liebe zur Qualität,“</strong> so Felix Neumann.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "text_ULhtEp"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/almivital-felix-neumann.jpg",
+        "image_position": "center center",
+        "layout": "text_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "image_banner_BJCrEj": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_UCaFEW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Natürliche Inhaltsstoffe und höchste Qualität",
+            "heading_size": "h1",
+            "heading_tag": "h2"
+          }
+        },
+        "text_mk7kmY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unsere Produktpalette setzt auf bewährte Heilpflanzen wie <strong>Teufelskralle</strong>, <strong>Heilmoor</strong>, <strong>rotes Weinlaub</strong> und <strong>Hyaluron</strong>, die für ihre positiven Effekte auf Haut, Muskeln und Faszien bekannt sind. ALMIVITAL-Produkte werden in unserem eigenen Labor entwickelt, wo höchste Sorgfalt und modernste Technologien zum Einsatz kommen. Wir legen großen Wert darauf, dass alle unsere Produkte in Deutschland hergestellt und nach den strengsten Qualitätsstandards geprüft werden. <strong>Dermatologisch getestet</strong> und frei von belastenden Inhaltsstoffen wie Parabenen und Silikonen, bieten unsere Produkte sichere Pflege für jeden Tag.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_UCaFEW",
+        "text_mk7kmY"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/labor-entwicklung.jpg",
+        "image_position": "center center",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "700px",
+        "show_text_box": true,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "auto",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 28,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "image_with_text_gPmGML": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_WxBDiw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Unser Engagement für Ihre Gesundheit und Wohlbefinden",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        },
+        "text_gGidBd": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit ALMIVITAL unterstützen wir Menschen, die sich bewusst für ein aktives Leben entscheiden. Ob bei täglicher Bewegung, nach dem Sport oder bei der Entspannung: Unsere Produkte helfen Ihnen, sich wohlzufühlen und Ihre Haut gesund zu pflegen. Dabei geht es uns nicht nur um äußere Schönheit, sondern auch darum, Sie dabei zu unterstützen, mobil und aktiv zu bleiben – egal in welcher Lebensphase. Unsere Pflegeprodukte fördern die Beweglichkeit und sorgen gleichzeitig für ein angenehmes Hautgefühl.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_WxBDiw",
+        "text_gGidBd"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/test-brand-01-min_88562037-30cd-4847-a708-fa98c523ca8b.jpg",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "guarantees_x3Gec7": {
+      "type": "guarantees",
+      "blocks": {
+        "guarantee_reRdhE": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Natürliche Wirkstoffe",
+            "title_size": "h3",
+            "text": "<p>Wir setzen auf kraftvolle, natürliche Inhaltsstoffe wie Teufelskralle und Heilmoor, die für ihre unterstützende Wirkung auf Haut und Muskulatur bekannt sind.</p>"
+          }
+        },
+        "guarantee_VCWWWm": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "In Deutschland hergestellt",
+            "title_size": "h3",
+            "text": "<p>Unsere Produkte werden unter strengsten Kontrollen in Deutschland produziert und erfüllen höchste Qualitätsansprüche.</p>"
+          }
+        },
+        "guarantee_JiaAnw": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Dermatologisch getestet",
+            "title_size": "h3",
+            "text": "<p>Alle Produkte werden dermatologisch geprüft und sind besonders hautfreundlich.</p>"
+          }
+        },
+        "guarantee_7WqaGY": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Vielseitige Pflege",
+            "title_size": "h3",
+            "text": "<p>Unsere Salben, Gels und Cremes bieten Pflege für den ganzen Körper – für mehr Beweglichkeit, Entspannung und Wohlbefinden.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee_reRdhE",
+        "guarantee_VCWWWm",
+        "guarantee_JiaAnw",
+        "guarantee_7WqaGY"
+      ],
+      "settings": {
+        "layout": "default",
+        "column_alignment": "left",
+        "horizontal_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "columns_desktop": 4,
+        "heading": "Warum ALMIVITAL wählen?",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "use_custom_colors": true,
+        "colors_icon": "#ffffff",
+        "colors_text": "#1a1b18",
+        "colors_background": "#d0ebed",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_PAhznd": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_HCQ7cz": {
+          "type": "heading",
+          "settings": {
+            "heading": "ALMIVITAL – Das Leben erleben",
+            "heading_size": "h1",
+            "heading_tag": "h2"
+          }
+        },
+        "text_PL6JDX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bei ALMIVITAL geht es um mehr als nur Hautpflege. Es geht darum, das Leben in vollen Zügen zu genießen, aktiv und mobil zu bleiben und die natürliche Kraft der Pflanzen zu nutzen. </p><p><strong>Lassen Sie sich von der Natur inspirieren und erleben Sie Pflege, die bewegt.</strong></p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_HCQ7cz",
+        "text_PL6JDX"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/test-brand-01-min.jpg",
+        "image_position": "center center",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "650px",
+        "show_text_box": true,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "auto",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 28,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "narrow": true,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "slideshow_yH8kwi",
+    "image_with_text_VUfigj",
+    "image_with_text_pdHnFx",
+    "image_banner_BJCrEj",
+    "image_with_text_gPmGML",
+    "guarantees_x3Gec7",
+    "image_banner_PAhznd",
+    "main"
+  ]
+}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product-modal",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "h2",
+            "show_price": false,
+            "price_size": "medium"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Jetzt schnell sein! Das Angebot endet in:",
+            "number_size": "compact",
+            "colors_heading": "#da3f3f",
+            "colors_text": "#da3f3f",
+            "colors_background": "#ffeeee"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_size": "large",
+            "show_badges": true,
+            "sale_badge_basis": "auto"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "swatch_type": "round",
+            "enable_swatch_unavailable_click": false,
+            "size_chart": ""
+          }
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "settings": {
+            "inventory_threshold": 20,
+            "show_inventory_transfer": true,
+            "color_scheme": "accent-3"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_dynamic_checkout": true
+          }
+        },
+        "read_more_hCmKQq": {
+          "type": "read_more",
+          "settings": {
+            "show_icon": false
+          }
+        },
+        "text_3k7hke": {
+          "type": "text",
+          "settings": {
+            "icon": "truck",
+            "text": "Lieferung innerhalb von 2-4 Werktagen",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "rating",
+        "countdown",
+        "price",
+        "variant_picker",
+        "inventory_status",
+        "buy_buttons",
+        "read_more_hCmKQq",
+        "text_3k7hke"
+      ],
+      "settings": {
+        "show_featured_media": false,
+        "hide_variants": true,
+        "enable_image_zoom": true,
+        "enable_video_looping": false,
+        "enable_image_fill": true,
+        "mobile_image_ratio": "adapt_first"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

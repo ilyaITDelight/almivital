@@ -1,0 +1,586 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_KpwNmr": {
+      "type": "slideshow",
+      "blocks": {
+        "image_APa6YW": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Apr.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Apr-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Monatsangebot bis 30.04.2026",
+            "subheading_size": "h4",
+            "heading": "Wir schenken Ihnen gezielte Pflege!",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Warum? Weil wir zu 100% überzeugt sind. Unsere Knie Akut Ampullen sind die speziellsten Produkte die wir bisher entwickelt haben. Gezielte Intensivpflege für beanspruchte Knie – jetzt ohne Risiko testen. Mit dem Code: <strong>APRIL</strong> gibt es die Ampullen für 0,00€ statt 14,99€. Nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "Zum Monatsangebot",
+            "button_alt_link": "shopify://products/almivital-knie-akut-ampullen-3-x-2ml-tiefenwirksame-pflege-fur-beanspruchte-knie",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_PpiFNG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-KW17.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-KW17-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Wochenangebot bis 26.04.2026",
+            "subheading_size": "h4",
+            "heading": "Gepflegte Füße und gesunde Nägel",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Mit unserem Fuß- & Nagelpflegeöl können Sie jetzt beruhigt in die Sandalenzeit starten. Diese Woche im Angebot für nur <strong>17,99€  statt 24,99€.</strong> Der Aktionspreis gilt bis zum 26.04.2026 und nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "zum Wochenangebot",
+            "button_alt_link": "shopify://products/vitaform-x-almivital-fuss-nagelpflegeol-50ml",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_YP64PW": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Replay-April26.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Replay-April26-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "LIVESTREAM IN DER WIEDERHOLUNG",
+            "subheading_size": "h4",
+            "heading": "Haben Sie unseren Livestream verpasst?",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Kein Problem das Gespräch aus Sascha Heyna's Esszimmer haben wir jetzt im Replay für Sie. Übrigens, den im Stream gewährten Rabattcode <strong>SASCHA </strong>haben wir noch einmal für Sie verlängert!",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "zur Wiederholung",
+            "button_alt_link": "https://almivital.de/pages/lmu-live-shopping",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_9U8QJj": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Maer.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Maer-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Monatsangebot",
+            "subheading_size": "h4",
+            "heading": "Ihr Plus im März!",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Kennen Sie das Gefühl… Morgens beim Aufstehen brauchen Knie oder Rücken einen Moment? Genau hier setzt unser <em><strong>ARTHRO PLUS GEL</strong></em> an. Diesen Monat im Angebot für <strong>nur 22,99 € statt 29,99 €</strong>. Greifen Sie zu, verfügbar nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "Zum Monatsangebot",
+            "button_link": "shopify://products/almivital-arthro-plus-gel-mit-johanniskrautol-250ml",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "image_APa6YW",
+        "image_PpiFNG",
+        "image_YP64PW",
+        "image_9U8QJj"
+      ],
+      "settings": {
+        "slideshow_type": "legacy",
+        "text_alignment": "left",
+        "image_ratio": "750px",
+        "autorotate": true,
+        "autorotate_speed": 9,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "400px",
+        "show_text_below": true,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#6dbbc3",
+        "colors_text": "#1a1b18",
+        "colors_background": "#1a1b18",
+        "colors_overlay": "#ffffff",
+        "colors_overlay_opacity": 0,
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "colors_highlight": "#ffb503",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "1730035322db4399cc": {
+      "type": "apps",
+      "blocks": {
+        "trusted_shops_easy_integration_review_carousel_hNWyz3": {
+          "type": "shopify://apps/trusted-shops-reviews-and-more/blocks/review-carousel/2ae4ab38-7eb9-4d62-abe3-d4a5f27cbef2",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "trusted_shops_easy_integration_review_carousel_hNWyz3"
+      ],
+      "settings": {
+        "include_margins": true,
+        "show_divider": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_overlay_hHhAjJ": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_66wb97": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Monatsangebot im April",
+            "subheading_size": "h5",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "heading_iFcDhH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wir schenken Ihnen gezielte Pflege!",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text_bnw79z": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Warum? Weil wir zu 100% überzeugt sind. Unsere Knie Akut Ampullen sind die speziellsten Produkte die wir bisher entwickelt haben. Gezielte Intensivpflege für beanspruchte Knie – jetzt ohne Risiko testen. Mit dem Code: <strong>APRIL</strong> gibt es die Ampullen für 0,00€ statt 14,99€. Nur solange der Vorrat reicht.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "button_rN4xDz": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Zum Monatsangebot",
+            "button_link": "shopify://products/almivital-knie-akut-ampullen-3-x-2ml-tiefenwirksame-pflege-fur-beanspruchte-knie",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_66wb97",
+        "heading_iFcDhH",
+        "text_bnw79z",
+        "button_rN4xDz"
+      ],
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Almivital-Shop-Apr.jpg",
+        "image_position": "center center",
+        "text_box_position": "flex-start",
+        "text_alignment": "left",
+        "image_ratio": "550px",
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "image_mobile": "shopify://shop_images/Almivital-Shop-Apr-mobil.jpg",
+        "mobile_text_box_position": "image_first",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "auto",
+        "video_url": "",
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#6dbbc3",
+        "colors_text": "#212326",
+        "colors_overlay": "#f3f3f3",
+        "colors_overlay_opacity": 28,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "hausapotheke",
+        "products_to_show": 4,
+        "horizontal_scroll": false,
+        "show_view_all": true,
+        "show_divider": true,
+        "enable_drag": false,
+        "heading": "Hausapotheke",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "image_ratio": "square",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_quick_buy": false,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "lookbook_iTdjFD": {
+      "type": "lookbook",
+      "blocks": {
+        "look_QhbJ9U": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-kniesalbe",
+            "enable_quick_view": true,
+            "color": "#4c5e60",
+            "horizontal": 24,
+            "vertical": 58
+          }
+        },
+        "look_37tBed": {
+          "type": "look",
+          "settings": {
+            "product": "leichte-beine-serum-200ml",
+            "enable_quick_view": true,
+            "color": "#4c5e60",
+            "horizontal": 36,
+            "vertical": 52
+          }
+        },
+        "look_kxmF4f": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-zinksalbe-mit-indischem-wassernabelkraut-200ml",
+            "enable_quick_view": true,
+            "color": "#4c5e60",
+            "horizontal": 56,
+            "vertical": 60
+          }
+        }
+      },
+      "block_order": [
+        "look_QhbJ9U",
+        "look_37tBed",
+        "look_kxmF4f"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/banner-pleuse-empfiehlt_66763e09-3636-4ef6-8544-a1b3953c5247.jpg",
+        "full_width": false,
+        "show_divider": true,
+        "heading": "Empfohlen von Dr. med. Pleuse",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 4,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 24,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "lookbook_RKNriE": {
+      "type": "lookbook",
+      "blocks": {
+        "look_jhdW7m": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-110ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 32,
+            "vertical": 64
+          }
+        },
+        "look_Nkk6xC": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-serum-naturliche-kraft-fur-ihre-haut-100ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 62,
+            "vertical": 53
+          }
+        }
+      },
+      "block_order": [
+        "look_jhdW7m",
+        "look_Nkk6xC"
+      ],
+      "name": "t:sections.lookbook.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/BienenTopf-Banner.png",
+        "full_width": false,
+        "show_divider": true,
+        "heading": "Pflege mit Bienenkraft",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 8,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "image_with_text_RWRAik": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Ktc4xN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Vitaform & ALMIVITAL",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text_pLMGkt": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Vitaform und Almivital haben ihre Expertise vereint, um eine hochwertige Fußpflege-Linie zu entwickeln. </strong></p><p>Vitaform, spezialisiert auf gesunde Schuhe, kennt die Bedürfnisse der Füße genau, während Almivital als Experte für Funktionskosmetik optimale Pflegerezepturen bereitstellt. </p><p>Gemeinsam sorgen sie für intensive Pflege und Wohlbefinden – <strong>perfekt für stark beanspruchte Füße.</strong></p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "button_7DrPqY": {
+          "type": "button",
+          "settings": {
+            "button_size": "large",
+            "button_label": "Zu den Produkten",
+            "button_link": "shopify://collections/vitaform-x-almivital",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Ktc4xN",
+        "text_pLMGkt",
+        "button_7DrPqY"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/vitaform-almivital-kat-b.jpg",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "guarantees": {
+      "type": "guarantees",
+      "blocks": {
+        "guarantee-0": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "truck",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Versandkostenfrei ab 49€",
+            "title_size": "h4",
+            "text": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "guarantee-2": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "recycle",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "30 Tage Rückgaberecht",
+            "title_size": "h4",
+            "text": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "guarantee_aYdhcH": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "check_mark",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "title": "Hergestellt in Deutschland",
+            "title_size": "h4",
+            "text": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee-0",
+        "guarantee-2",
+        "guarantee_aYdhcH"
+      ],
+      "settings": {
+        "layout": "default",
+        "column_alignment": "center",
+        "horizontal_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "columns_desktop": 3,
+        "heading": "",
+        "heading_size": "h2",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "use_custom_colors": true,
+        "colors_icon": "#ffffff",
+        "colors_text": "#1a1b18",
+        "colors_background": "#d0ebed",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 32,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "reveal-banner": {
+      "type": "reveal-banner",
+      "blocks": {
+        "slide": {
+          "type": "slide",
+          "settings": {
+            "heading": "ALMIVITAL – Das Leben erleben",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "<p>ALMIVITAL steht für hochwertige Hautpflege, die Gesundheit, Mobilität und Wohlbefinden unterstützt. Unsere Salben, Gels und Cremes enthalten sorgfältig ausgewählte pflanzliche Inhaltsstoffe wie <strong>Arnika</strong>, <strong>Aloe Vera</strong>, <strong>Teufelskralle</strong>, <strong>Weihrauch</strong>, <strong>Heilmoor-Extrakt </strong>und <strong>rotes Weinlaub</strong>. Diese natürlichen Wirkstoffe sind perfekt für eine aktive, sportliche Lebensweise und ideal für alle, die ihr Leben in vollen Zügen genießen möchten.<br/></p><p>Entdecken Sie die intensive Pflege von ALMIVITAL und erleben Sie das Gefühl, aktiv und voller Energie durchs Leben zu gehen.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "colors_button_label": "#ffffff",
+            "colors_button_background": "#1a1b18",
+            "colors_text": "#1a1b18",
+            "colors_background": "#ebf6f9",
+            "gradient_background": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "slide"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/test-brand-01-min_88562037-30cd-4847-a708-fa98c523ca8b.jpg",
+        "image_position": "center center",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "full_width": false,
+        "show_divider": false,
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "400px",
+        "show_text_below": false,
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 20,
+        "colors_highlight": "#ffb503",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "slideshow_KpwNmr",
+    "1730035322db4399cc",
+    "image_with_text_overlay_hHhAjJ",
+    "featured-collection",
+    "lookbook_iTdjFD",
+    "lookbook_RKNriE",
+    "image_with_text_RWRAik",
+    "guarantees",
+    "reveal-banner"
+  ]
+}

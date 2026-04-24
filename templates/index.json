@@ -41,6 +41,7 @@
         },
         "image_PpiFNG": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW17.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW17-mobil.jpg",
@@ -67,7 +68,6 @@
         },
         "image_YP64PW": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW18.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW18-mobil.jpg",
@@ -78,7 +78,7 @@
             "heading": "Spürbar gepflegte Gelenkbereiche",
             "heading_size": "h0",
             "heading_tag": "h2",
-            "text": "Nicht nur Muskeln und Gelenke werden belastet – auch die Haut rundherum ist täglich gefordert. Unser Weihrauchserum mit 1% Thermalwasser lässt sich einfach in die tägliche Pflegeroutine integrieren. Diese Woche im Angebot für nur <strong>22,99€ statt 36,99€</strong>. Jetzt bestellen, gültig nur solange der Vorrat reicht.",
+            "text": "Nicht nur Muskeln und Gelenke werden belastet – auch die Haut rundherum ist täglich gefordert. Unser Weihrauchserum lässt sich einfach in die tägliche Pflegeroutine integrieren. Diese Woche im Angebot für nur <strong>22,99€ statt 36,99€</strong>. Jetzt bestellen, gültig nur solange der Vorrat reicht.",
             "text_size": "typeset2",
             "button_label": "",
             "button_link": "",

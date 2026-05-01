@@ -219,6 +219,7 @@
         "text_bnw79z",
         "button_rN4xDz"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text-overlay.presets.name",
       "settings": {
         "image": "shopify://shop_images/Almivital-Shop-Apr.jpg",

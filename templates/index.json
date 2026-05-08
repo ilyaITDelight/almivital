@@ -174,7 +174,7 @@
         "subheading_66wb97": {
           "type": "subheading",
           "settings": {
-            "subheading": "Monatsangebot im April",
+            "subheading": "Monatsangebot im Mai",
             "subheading_size": "h5",
             "secondary_color": false,
             "enable_highlight": false,
@@ -184,7 +184,7 @@
         "heading_iFcDhH": {
           "type": "heading",
           "settings": {
-            "heading": "Wir schenken Ihnen gezielte Pflege!",
+            "heading": "Eine Lösung für 3 Problembereiche",
             "heading_size": "h1",
             "heading_tag": "h2",
             "enable_highlight": false,
@@ -194,7 +194,7 @@
         "text_bnw79z": {
           "type": "text",
           "settings": {
-            "text": "<p>Warum? Weil wir zu 100% überzeugt sind. Unsere Knie Akut Ampullen sind die speziellsten Produkte die wir bisher entwickelt haben. Gezielte Intensivpflege für beanspruchte Knie – jetzt ohne Risiko testen. Mit dem Code: <strong>APRIL</strong> gibt es die Ampullen für 0,00€ statt 14,99€. Nur solange der Vorrat reicht.</p>",
+            "text": "<p>Die Knie fühlen sich schwer an, der Nacken verspannt, die Gelenke reagieren auf jede Bewegung? Diese 3 starken \"Helfer\" gibt's im Mai für nur <strong>24,99€ statt 44,97€</strong>. Greifen Sie zu, verfügbar nur solange der Vorrat reicht.</p>",
             "text_size": "typeset2",
             "secondary_color": false,
             "enable_highlight": false,
@@ -206,7 +206,7 @@
           "settings": {
             "button_size": "medium",
             "button_label": "Zum Monatsangebot",
-            "button_link": "shopify://products/almivital-knie-akut-ampullen-3-x-2ml-tiefenwirksame-pflege-fur-beanspruchte-knie",
+            "button_link": "shopify://products/almivital-aktiv-set-knie-nacken-gelenke-3x-100ml",
             "button_style_secondary": false,
             "button_alt_label": "",
             "button_alt_link": "",
@@ -223,7 +223,7 @@
       "disabled": true,
       "name": "t:sections.image-with-text-overlay.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Almivital-Shop-Apr.jpg",
+        "image": "shopify://shop_images/Almivital-Shop-Mai.jpg",
         "image_position": "center center",
         "text_box_position": "flex-start",
         "text_alignment": "left",
@@ -231,7 +231,7 @@
         "full_width": false,
         "show_divider": false,
         "image_behavior": "none",
-        "image_mobile": "shopify://shop_images/Almivital-Shop-Apr-mobil.jpg",
+        "image_mobile": "shopify://shop_images/Almivital-Shop-Mai-mobil.jpg",
         "mobile_text_box_position": "image_first",
         "mobile_text_alignment": "center",
         "mobile_image_ratio": "auto",

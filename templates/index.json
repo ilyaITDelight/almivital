@@ -41,7 +41,6 @@
         },
         "image_PpiFNG": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-TAG-Mai26.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-TAG-Mai26-mobil.jpg",
@@ -68,6 +67,7 @@
         },
         "image_YP64PW": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW20.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW20-mobil.jpg",

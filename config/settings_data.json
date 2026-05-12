@@ -62,7 +62,7 @@
     "shipping_calculator_default_country": "Deutschland",
     "disable_view_cart": false,
     "show_free_shipping_message": true,
-    "free_shipping_minimum_amount": "49",
+    "free_shipping_minimum_amount": "0",
     "cart_recommendations_enabled": true,
     "cart_recommendations_heading": "Das könnte Ihnen gefallen",
     "cart_recommendations_show_vendor": false,
@@ -147,9 +147,7 @@
       "5149645339031002760": {
         "type": "shopify://apps/minmaxify-order-limits/blocks/app-embed-block/3acfba32-89f3-4377-ae20-cbb9abc48475",
         "disabled": false,
-        "settings": {
-          "async": false
-        }
+        "settings": {}
       },
       "15516442047899035060": {
         "type": "shopify://apps/livemeup-live-shopping/blocks/live-widget/82ccf4ed-67f8-4725-9167-e54475d4748e",

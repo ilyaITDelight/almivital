@@ -84,6 +84,10 @@
             "show_gift_card_recipient": false
           }
         },
+        "hextom_sales_boost_usb_countdown_timer_x6V8mY": {
+          "type": "shopify://apps/hextom-sales-boost/blocks/usb-countdown-timer/00e81c42-8ae7-4b0b-b43d-99393b885fc4",
+          "settings": {}
+        },
         "hextom_sales_boost_usb_payment_badge_exbmGB": {
           "type": "shopify://apps/hextom-sales-boost/blocks/usb-payment-badge/00e81c42-8ae7-4b0b-b43d-99393b885fc4",
           "settings": {}
@@ -159,6 +163,7 @@
         "countdown",
         "hextom_sales_boost_usb_stock_number_3DL3fF",
         "buy_buttons",
+        "hextom_sales_boost_usb_countdown_timer_x6V8mY",
         "hextom_sales_boost_usb_payment_badge_exbmGB",
         "hextom_sales_boost_usb_2_0_volume_iXqUzB",
         "description_wtfDye",

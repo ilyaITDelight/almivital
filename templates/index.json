@@ -41,6 +41,7 @@
         },
         "image_PpiFNG": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-VKF-Mai.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-VKF-Mai-mobil.jpg",

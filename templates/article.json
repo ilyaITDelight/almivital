@@ -58,7 +58,7 @@
       "settings": {
         "product_list_limit": 4,
         "show_divider": false,
-        "heading": "Related Products",
+        "heading": "Passende Produkte",
         "heading_size": "h1",
         "heading_alignment": "left",
         "heading_tag": "h2",
@@ -157,6 +157,7 @@
         "share_4NKgYd",
         "read_more_D68N96"
       ],
+      "disabled": true,
       "settings": {
         "product": "",
         "layout": "media_first",

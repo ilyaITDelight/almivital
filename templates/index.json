@@ -41,7 +41,6 @@
         },
         "image_PpiFNG": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW24_4df3c8f8-a2e3-45bb-939a-1823b5f6eaf0.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW24-mobil_941ffc10-88b3-459d-954f-d83c99500dfe.jpg",
@@ -68,6 +67,7 @@
         },
         "image_9U8QJj": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW25.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW25-mobil.jpg",
@@ -94,6 +94,7 @@
         },
         "image_YP64PW": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-Juni.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-Juni-mobil.jpg",

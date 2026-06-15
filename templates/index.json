@@ -66,6 +66,33 @@
             "highlight_style": "marker"
           }
         },
+        "image_7N86aD": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Geburtstag-Felix.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Geburtstag-Felix-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Geburtstagsaktion am 16.06.2026",
+            "subheading_size": "h4",
+            "heading": "Felix hat Geburtstag, feiern Sie mit!",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Unser Chef und Firmengründer Felix feiert heute 50. Geburtstag und hat sich dazu eine ganz besondere Aktion überlegt. Feiern Sie mit ihm und freuen Sie sich über <strong>31% Rabatt</strong> auf (fast) jeden in den Warenkorb gelegten Artikel. Nur heute bis 23:59 Uhr und nur solange der Vorrat reicht!",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "zu den produkten",
+            "button_alt_link": "shopify://collections/all",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
         "image_9U8QJj": {
           "type": "image",
           "settings": {
@@ -122,6 +149,7 @@
       "block_order": [
         "image_APa6YW",
         "image_PpiFNG",
+        "image_7N86aD",
         "image_9U8QJj",
         "image_YP64PW"
       ],

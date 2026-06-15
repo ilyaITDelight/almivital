@@ -68,7 +68,6 @@
         },
         "image_7N86aD": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-Geburtstag-Felix.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-Geburtstag-Felix-mobil.jpg",
@@ -79,7 +78,7 @@
             "heading": "Felix hat Geburtstag, feiern Sie mit!",
             "heading_size": "h0",
             "heading_tag": "h2",
-            "text": "Unser Chef und Firmengründer Felix feiert heute 50. Geburtstag und hat sich dazu eine ganz besondere Aktion überlegt. Feiern Sie mit ihm und freuen Sie sich über <strong>31% Rabatt</strong> auf (fast) jeden in den Warenkorb gelegten Artikel. Nur heute bis 23:59 Uhr und nur solange der Vorrat reicht!",
+            "text": "Unser Chef und Firmengründer feiert heute 50. Geburtstag und hat sich dazu eine  besondere Aktion überlegt. Feiern Sie mit ihm und freuen Sie sich über <strong>31% Rabatt</strong> auf (fast) jeden Artikel. Nur heute bis 23:59 Uhr und nur solange der Vorrat reicht! Der Rabatt wird automatisch im Kassenbereich abgezogen.",
             "text_size": "typeset2",
             "button_label": "",
             "button_link": "",
@@ -95,6 +94,7 @@
         },
         "image_9U8QJj": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW25.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW25-mobil.jpg",
@@ -121,6 +121,7 @@
         },
         "image_YP64PW": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-Juni.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-Juni-mobil.jpg",

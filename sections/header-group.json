@@ -18,7 +18,7 @@
           "type": "countdown",
           "settings": {
             "date": "06-17-2026",
-            "text": "🎂 -31 % auf fast alles - nur noch:",
+            "text": "🎂 <strong>-31 % auf fast alles - nur noch:</strong>",
             "expired_message": "Sale has ended!",
             "link": "",
             "position": "top",

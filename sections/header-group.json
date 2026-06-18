@@ -26,7 +26,7 @@
             "text_size": 13,
             "hide_when_expired": true,
             "use_custom_colors": true,
-            "countdown_background": "#6DBBC3",
+            "countdown_background": "#6dbbc3",
             "countdown_text": "#ffffff"
           }
         },
@@ -131,7 +131,7 @@
         "transparent_logo": "shopify://shop_images/Almivital-Logo-mit-Berge_353e8324-0052-47e2-85e2-df3f3d5abd73.png",
         "mobile_transparent_logo": "shopify://shop_images/almivital-logo_c63eaee7-cefa-4a7a-9d2d-0a26607d0910.png",
         "enable_transparent_header": false,
-        "enable_transparent_header_collection": true,
+        "enable_transparent_header_collection": false,
         "enable_transparent_header_custom": "",
         "show_transparent_header_border": false,
         "transparent_text_color": "#000000",

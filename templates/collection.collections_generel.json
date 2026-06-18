@@ -120,9 +120,9 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
-        "show_quick_buy": false,
+        "show_quick_buy": true,
         "enable_quick_view": true,
-        "enable_color_swatches": true,
+        "enable_color_swatches": false,
         "enable_countdown": true,
         "padding_top": 0,
         "padding_bottom": 72

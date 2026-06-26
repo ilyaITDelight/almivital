@@ -497,7 +497,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".header__menu-item {letter-spacing: normal;}",
+      ".header__menu-item {letter-spacing: 1px;}",
       ".usb-max-w-\\[396px\\] {max-width: 610px;}",
       "button.usb-mb-4.usb-w-full.usb-py-2.usb-border-solid.usb-border-2.usb-cursor-pointer {font-family: \"Montserrat\"; letter-spacing: 0.2em; font-weight: 600; padding: 12px;}",
       "button.usb-w-full.usb-py-2.usb-border-solid.usb-border-2.usb-cursor-pointer {font-family: \"Montserrat\"; letter-spacing: 0.2em; font-weight: 600; padding: 12px;}",

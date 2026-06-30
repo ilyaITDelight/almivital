@@ -298,7 +298,7 @@
         "secondary_image_max": 1,
         "show_vendor": false,
         "show_rating": true,
-        "show_quick_buy": false,
+        "show_quick_buy": true,
         "enable_quick_view": true,
         "enable_color_swatches": true,
         "enable_countdown": true,

@@ -508,7 +508,9 @@
       ".show_first {bottom: 8px;}",
       "a.card-information__text.h4 {color: #000; font-weight: bold;}",
       ".faq details summary {color: #000;}",
-      "a.button.button--secondary.button--medium.mobile\\:button--small {background-color: rgb(109, 187, 195); color: #fff;}"
+      "a.button.button--secondary.button--medium.mobile\\:button--small {background-color: rgb(109, 187, 195); color: #fff;}",
+      ".badge {padding: 0.3rem 1rem; border-radius: 0px 15px 15px 0px;}",
+      ".card__badge {top: 1.2rem; left: 0rem;}"
     ]
   }
 }

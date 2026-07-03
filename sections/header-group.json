@@ -33,7 +33,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "⭐⭐⭐⭐⭐ 4,8/5 aus 3.024 Bewertungen     🚚 Versandkostenfrei ab 39 € Bestellwert",
+            "text": "🚚 Versandkostenfrei ab 39 € Bestellwert",
             "text_on_mobile": "Versandkostenfrei ab 39 € Bestellwert",
             "text_size": 13,
             "link": "",
@@ -44,8 +44,19 @@
         "announcement_kKRLBc": {
           "type": "announcement",
           "settings": {
-            "text": "",
+            "text": "⭐⭐⭐⭐⭐ 4,8/5 aus 3.024 Bewertungen",
             "text_on_mobile": "⭐⭐⭐⭐⭐ 4,8/5 aus 3.024 Bewertungen",
+            "text_size": 13,
+            "link": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "announcement_dgGaG4": {
+          "type": "announcement",
+          "settings": {
+            "text": "30 Tage Rückgaberecht",
+            "text_on_mobile": "30 Tage Rückgaberecht",
             "text_size": 13,
             "link": "",
             "enable_highlight": false,
@@ -56,7 +67,8 @@
       "block_order": [
         "countdown_tCNyxw",
         "announcement-bar-0",
-        "announcement_kKRLBc"
+        "announcement_kKRLBc",
+        "announcement_dgGaG4"
       ],
       "settings": {
         "only_homepage": false,

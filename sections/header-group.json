@@ -64,7 +64,7 @@
         "mobile_layout": "carousel",
         "autorotate": true,
         "autorotate_speed": 5,
-        "show_navigation": true,
+        "show_navigation": false,
         "direction": "left",
         "speed": 1.6,
         "colors_text": "#1a1b18",

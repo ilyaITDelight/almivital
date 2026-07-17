@@ -96,11 +96,11 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-KW25.jpg",
+            "image": "shopify://shop_images/Almivital-Shop-KW31.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW25-mobil.jpg",
             "image_position": "center center",
             "text_box_position": "middle-left",
-            "subheading": "Wochenangebot bis 21.06.2026",
+            "subheading": "Wochenangebot bis 26.07.2026",
             "subheading_size": "h4",
             "heading": "Frische & Leichtigkeit für warme Tage",
             "heading_size": "h0",

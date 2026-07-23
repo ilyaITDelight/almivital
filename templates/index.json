@@ -402,14 +402,54 @@
     "lookbook_RKNriE": {
       "type": "lookbook",
       "blocks": {
+        "look_bdFzGX": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-lippenbalsam-50ml",
+            "enable_quick_view": true,
+            "color": "#F5C03D",
+            "horizontal": 10,
+            "vertical": 59
+          }
+        },
+        "look_CrGdU9": {
+          "type": "look",
+          "settings": {
+            "product": "bienentopf-nachtcreme-100ml",
+            "enable_quick_view": true,
+            "color": "#F5C03D",
+            "horizontal": 25,
+            "vertical": 50
+          }
+        },
+        "look_YJqg88": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-die-kraft-der-bienen-fur-die-haut-180ml",
+            "enable_quick_view": true,
+            "color": "#F5C03D",
+            "horizontal": 56,
+            "vertical": 40
+          }
+        },
+        "look_iJHbde": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-korpercreme-250ml",
+            "enable_quick_view": true,
+            "color": "#F5C03D",
+            "horizontal": 83,
+            "vertical": 39
+          }
+        },
         "look_jhdW7m": {
           "type": "look",
           "settings": {
             "product": "almivital-bienentopf-110ml",
             "enable_quick_view": true,
             "color": "#f5c03d",
-            "horizontal": 32,
-            "vertical": 64
+            "horizontal": 67,
+            "vertical": 54
           }
         },
         "look_Nkk6xC": {
@@ -418,12 +458,16 @@
             "product": "almivital-bienentopf-serum-naturliche-kraft-fur-ihre-haut-100ml",
             "enable_quick_view": true,
             "color": "#f5c03d",
-            "horizontal": 62,
-            "vertical": 53
+            "horizontal": 39,
+            "vertical": 41
           }
         }
       },
       "block_order": [
+        "look_bdFzGX",
+        "look_CrGdU9",
+        "look_YJqg88",
+        "look_iJHbde",
         "look_jhdW7m",
         "look_Nkk6xC"
       ],

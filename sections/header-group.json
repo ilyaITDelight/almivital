@@ -137,8 +137,8 @@
       ],
       "settings": {
         "logo": "shopify://shop_images/almivital-logo_c63eaee7-cefa-4a7a-9d2d-0a26607d0910.png",
-        "logo_height": 54,
-        "mobile_logo_height": 44,
+        "logo_height": 50,
+        "mobile_logo_height": 40,
         "logo_position": "top-center",
         "menu": "neues-hauptmen",
         "menu_mobile": "neues-hauptmen",

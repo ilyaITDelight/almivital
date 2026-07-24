@@ -41,7 +41,6 @@
         },
         "image_PpiFNG": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW32.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW32-mobil.jpg",
@@ -52,7 +51,7 @@
             "heading": "Entspannung für Nacken & Schultern",
             "heading_size": "h0",
             "heading_tag": "h2",
-            "text": "Nach einem anstrengenden Arbeitstag, körperlicher Belastung oder als Teil Ihrer persönlichen Abendroutine: Unsere Nacken & Schulter Salbe Forte lässt sich sanft einmassieren und bringt Entspannung in den oberen Rückenbereich. Jetzt im Wochenangebot für <strong>nur 24,99€ statt 32,99€</strong> und nur solange der Vorrat reicht.",
+            "text": "Nach einem anstrengenden Arbeitstag, körperlicher Belastung oder als Teil Ihrer persönlichen Abendroutine: Unsere Nacken & Schulter Salbe Forte lässt sich sanft einmassieren und bringt Entspannung in den oberen Rückenbereich. Jetzt im Wochenangebot für <strong>nur 24,99€ statt 39,99€</strong> und nur solange der Vorrat reicht.",
             "text_size": "typeset2",
             "button_label": "",
             "button_link": "",

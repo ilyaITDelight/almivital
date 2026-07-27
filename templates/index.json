@@ -94,6 +94,7 @@
         },
         "image_9U8QJj": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW31.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW31-mobil.jpg",

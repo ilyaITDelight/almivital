@@ -15,7 +15,6 @@
         "image_APa6YW": {
           "type": "image",
           "name": "August",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-August.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-August-mobil.jpg",
@@ -23,7 +22,7 @@
             "text_box_position": "middle-left",
             "subheading": "Monatsangebot bis 31.08.2026",
             "subheading_size": "h4",
-            "heading": "Geballte Bienenkraft!",
+            "heading": "Die geballte Bienenkraft im Set!",
             "heading_size": "h0",
             "heading_tag": "h2",
             "text": "Entdecken Sie jetzt die bewährte Pflegekraft der Bienen. Unsere BienenTopf Körpercreme schenkt Ihrer Haut den ganzen Tag über geschmeidige Weichheit, während die Nachtcreme sie über Nacht sanft regeneriert. Den ganzen August über im Set für <strong>nur 44,99€ statt 66,99€</strong>. Jetzt zugreifen, Angebot gilt nur solange der Vorrat reicht.",

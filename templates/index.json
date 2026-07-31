@@ -14,6 +14,7 @@
       "blocks": {
         "image_APa6YW": {
           "type": "image",
+          "name": "August",
           "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-August.jpg",
@@ -94,15 +95,16 @@
         },
         "image_9U8QJj": {
           "type": "image",
+          "name": "7.8.-16.8.",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-KW31.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-KW31-mobil.jpg",
+            "image": "shopify://shop_images/Almivital-Shop-KW33.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-KW33-mobil.jpg",
             "image_position": "center center",
             "text_box_position": "middle-left",
-            "subheading": "Wochenangebot bis 26.07.2026",
+            "subheading": "Wochenangebot bis 16.08.2026",
             "subheading_size": "h4",
-            "heading": "Für samtig-weiches Wohlbefinden",
+            "heading": "Für widerstandsfähige und vitale Haut",
             "heading_size": "h0",
             "heading_tag": "h2",
             "text": "Durch Stress im Alltag leidet unsere Haut mitunter am meisten. Unser Schwarzkümmel Körperpflegeöl kann da schnell Abhilfe schaffen. Diese Woche im Angebot für nur <strong>15,99€ statt 25,99€</strong>. Also lieber schnell zugreifen, verfügbar nur solange der Vorrat reicht.",
@@ -112,7 +114,7 @@
             "button_size": "large",
             "button_style_secondary": false,
             "button_alt_label": "Zum Wochenangebot",
-            "button_alt_link": "shopify://products/almivital-schwarzkummel-korperol",
+            "button_alt_link": "shopify://products/almivital-bienentopf-serum-naturliche-kraft-fur-ihre-haut-100ml",
             "button_alt_size": "medium",
             "button_alt_style_secondary": false,
             "enable_highlight": false,

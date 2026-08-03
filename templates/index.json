@@ -39,32 +39,6 @@
             "highlight_style": "marker"
           }
         },
-        "image_PpiFNG": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-KW32.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-KW32-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "wochenangebot bis 02.08.2026",
-            "subheading_size": "h4",
-            "heading": "Entspannung für Nacken & Schultern",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Nach einem anstrengenden Arbeitstag, körperlicher Belastung oder als Teil Ihrer persönlichen Abendroutine: Unsere Nacken & Schulter Salbe Forte lässt sich sanft einmassieren und bringt Entspannung in den oberen Rückenbereich. Jetzt im Wochenangebot für <strong>nur 24,99€ statt 39,99€</strong> und nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "zum wochenangebot",
-            "button_alt_link": "shopify://products/nacken-schulter-salbe-forte-mit-hyaluron-500-ml",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
         "image_7N86aD": {
           "type": "image",
           "name": "14.8.-23.8.",
@@ -152,7 +126,6 @@
       },
       "block_order": [
         "image_APa6YW",
-        "image_PpiFNG",
         "image_7N86aD",
         "image_9U8QJj",
         "image_YP64PW"

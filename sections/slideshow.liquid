@@ -3,6 +3,16 @@
     assign first_block = section.blocks | first
   endif
   assign image_behavior = section.settings.image_behavior
+  assign is_homepage_hero = false
+  if request.page_type == 'index' and section.index == 1
+    assign is_homepage_hero = true
+    for slide in section.blocks
+      if slide.settings.heading != blank
+        assign primary_heading_block_id = slide.id
+        break
+      endif
+    endfor
+  endif
 -%}
 
 {%- capture css_variables -%}
@@ -130,13 +140,23 @@
                   {%- assign animate_delay = animate_delay | plus: 1 -%}
                 {%- endif -%}
                 {%- if block.settings.heading != blank -%}
-                  <{{ block.settings.heading_tag }} class="slideshow__heading {{ block.settings.heading_size }}" data-animate data-animate-delay-{{ animate_delay }}>
+                  {%- liquid
+                    assign heading_tag = block.settings.heading_tag
+                    if is_homepage_hero
+                      if block.id == primary_heading_block_id
+                        assign heading_tag = 'h1'
+                      elsif heading_tag == 'h1'
+                        assign heading_tag = 'h2'
+                      endif
+                    endif
+                  -%}
+                  <{{ heading_tag }} class="slideshow__heading {{ block.settings.heading_size }}" data-animate data-animate-delay-{{ animate_delay }}>
                     {%- render 'highlight-text', 
                       hl_input: block.settings.heading, 
                       hl_style: block.settings.highlight_style,
                       hl_enable: block.settings.enable_highlight,
                       hl_animateWrap: true -%}
-                  </{{ block.settings.heading_tag }}>
+                  </{{ heading_tag }}>
                   {%- assign animate_delay = animate_delay | plus: 1 -%}
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
@@ -211,7 +231,18 @@
     </slideshow-component>
   {%- elsif section.blocks.size == 1 -%}
     <div id="Slideshow-{{ section.id }}" class="slideshow slideshow--only1 slideshow--{{ section.settings.slideshow_type }} slideshow--{{ section.settings.image_ratio }} slideshow--mobile-{{ section.settings.mobile_image_ratio }}{% unless section.settings.show_text_below %} slideshow--mobile-overlay{% endunless %}">
-      {%- assign block = section.blocks.first -%}
+      {%- liquid
+        assign block = section.blocks.first
+        if section.index == 1
+          assign loading = 'eager'
+          assign fetchpriority = 'high'
+          assign video_lazy = false
+        else
+          assign loading = 'lazy'
+          assign fetchpriority = 'low'
+          assign video_lazy = true
+        endif
+      -%}
       <div class="slideshow__center {{ section.settings.text_alignment }} mobile-{{ section.settings.mobile_text_alignment }} page-width">
         {%- if block.settings.subheading != blank or block.settings.heading != blank or block.settings.text != blank or block.settings.button_label != blank -%}
           <div class="slideshow__content">
@@ -229,13 +260,19 @@
                   {%- assign animate_delay = animate_delay | plus: 1 -%}
                 {%- endif -%}
                 {%- if block.settings.heading != blank -%}
-                  <{{ block.settings.heading_tag }} class="slideshow__heading {{ block.settings.heading_size }}" data-animate data-animate-delay-{{ animate_delay }}>
+                  {%- liquid
+                    assign heading_tag = block.settings.heading_tag
+                    if is_homepage_hero
+                      assign heading_tag = 'h1'
+                    endif
+                  -%}
+                  <{{ heading_tag }} class="slideshow__heading {{ block.settings.heading_size }}" data-animate data-animate-delay-{{ animate_delay }}>
                     {%- render 'highlight-text', 
                       hl_input: block.settings.heading, 
                       hl_style: block.settings.highlight_style,
                       hl_enable: block.settings.enable_highlight,
                       hl_animateWrap: true -%}
-                  </{{ block.settings.heading_tag }}>
+                  </{{ heading_tag }}>
                   {%- assign animate_delay = animate_delay | plus: 1 -%}
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
@@ -291,9 +328,9 @@
         <div class="slideshow__slide is-selected" {{ block.shopify_attributes }}>
           {%- case block.type -%}
             {%- when 'image' -%}
-              {% render 'slide-image', block: block, position: 1, image_behavior: image_behavior %}
+              {% render 'slide-image', block: block, position: 1, image_behavior: image_behavior, loading: loading, fetchpriority: fetchpriority %}
             {%- when 'video' -%}
-              {% render 'slide-video', block: block, position: 1, image_behavior: image_behavior, section: section, lazy: false %}
+              {% render 'slide-video', block: block, position: 1, image_behavior: image_behavior, section: section, lazy: video_lazy %}
           {%- endcase -%}
         </div>
       </div>

@@ -11,6 +11,7 @@
   - media_width: {Float} The width percentage that the media column occupies on desktop.
   - image_ratio: {String} The setting either show the article image ratio
   - mobile_image_ratio: {String} The setting either show the article image ratio on mobile
+  - priority_image: {Boolean} Load the initially visible PDP media eagerly with high fetch priority.
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
 
   Usage:
@@ -30,6 +31,12 @@
     assign image_loading = 'lazy'
   endif
 
+  assign image_fetchpriority = 'auto'
+  if priority_image
+    assign image_loading = 'eager'
+    assign image_fetchpriority = 'high'
+  endif
+
   assign alt = media.alt | escape | split: '#' | first
   assign widths = '165, 360, 535, 750, 1100, 1500'
 -%}
@@ -47,7 +54,7 @@
           {%- if image_ratio == 'adapt' or mobile_image_ratio == 'adapt' %} style="--image-ratio-percent: {{ 1 | divided_by: media.preview_image.aspect_ratio | times: 100 }}%;"{% endif -%}
         >
           {{ media.preview_image | image_url: width: 1500 | image_tag:
-            loading: image_loading,
+            loading: image_loading, fetchpriority: image_fetchpriority,
             sizes: sizes,
             widths: widths,
             alt: alt
@@ -61,7 +68,7 @@
         {%- if image_ratio == 'adapt' or mobile_image_ratio == 'adapt' %} style="--image-ratio-percent: {{ 1 | divided_by: media.preview_image.aspect_ratio | times: 100 }}%;"{% endif -%}
       >
         {{ media.preview_image | image_url: width: 1500 | image_tag:
-          loading: image_loading,
+          loading: image_loading, fetchpriority: image_fetchpriority,
           sizes: sizes,
           widths: widths,
           alt: alt,
@@ -93,7 +100,7 @@
       {%- if image_ratio == 'adapt' or mobile_image_ratio == 'adapt' %} style="--image-ratio-percent: {{ 1 | divided_by: media.preview_image.aspect_ratio | times: 100 }}%;"{% endif -%}
     >
       {{ media.preview_image | image_url: width: 1500 | image_tag:
-        loading: image_loading,
+        loading: image_loading, fetchpriority: image_fetchpriority,
         sizes: sizes,
         widths: widths,
         alt: alt,
@@ -128,7 +135,7 @@
       >
     {%- endif -%}
     {{ media.preview_image | image_url: width: 1500 | image_tag:
-      loading: image_loading,
+      loading: image_loading, fetchpriority: image_fetchpriority,
       class: 'deferred-media__poster',
       sizes: sizes,
       widths: widths,

@@ -167,7 +167,7 @@
                   data-media-position="{{ featured_media.position }}"
                   {% if gang_exist == true %}data-gang-option="{{ gang_option_name }}" data-gang-connect="{{ gang_connect }}"{% endif %}
                 >
-                  {% render 'product-image', media: featured_media, position: 'featured', zoom: section.settings.enable_image_zoom, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, image_ratio: image_ratio, mobile_image_ratio: mobile_image_ratio, lazy_load: false %}
+                  {% render 'product-image', media: featured_media, position: 'featured', zoom: section.settings.enable_image_zoom, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, image_ratio: image_ratio, mobile_image_ratio: mobile_image_ratio, lazy_load: false, priority_image: true %}
                 </li>
               {%- endif -%}
               {%- for media in product.media -%}
@@ -215,7 +215,7 @@
                     data-media-position="{{ media.position }}"
                     {% if gang_exist == true %}data-gang-option="{{ gang_option_name }}" data-gang-connect="{{ gang_connect }}"{% endif %}
                   >
-                    {% render 'product-image', media: media, position: forloop.index, zoom: section.settings.enable_image_zoom, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, image_ratio: image_ratio, mobile_image_ratio: mobile_image_ratio %}
+                    {% render 'product-image', media: media, position: forloop.index, zoom: section.settings.enable_image_zoom, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, image_ratio: image_ratio, mobile_image_ratio: mobile_image_ratio, priority_image: media_active, lazy_load: true %}
                   </li>
                 {%- endunless -%}
               {%- endfor -%}
@@ -919,6 +919,7 @@
                       <li>
                         {% render 'card-product',
                           card_product: product,
+                          lazy_load: true,
                           card_collection: collection,
                           media_size: block.settings.image_ratio,
                           show_secondary_image: false,

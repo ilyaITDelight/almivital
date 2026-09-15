@@ -12,9 +12,120 @@
     "slideshow_KpwNmr": {
       "type": "slideshow",
       "blocks": {
+        "image_9U8QJj": {
+          "type": "image",
+          "name": "Sendung 02.09.",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Sonderangebot-Sept.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Sonderangebot-Sept-mobil.jpg",
+            "image_position": "20% 0",
+            "text_box_position": "middle-left",
+            "subheading": "Sonderaktion am 02.09.2026",
+            "subheading_size": "h4",
+            "heading": "Wohltuende Pflege für Ihre Rückenpartie",
+            "heading_size": "h0",
+            "heading_tag": "h4",
+            "text": "Haben Sie auch mit müdem Nacken, verspannten Schultern und stark beanspruchtem Rücken zu tun? Dann haben wir jetzt genau das Richtige für Sie. Unsere Nacken- Schulter- & Rückensalbe gibt es heute zum Sonderpreis von <strong>nur 24,99€ statt 39,99€. </strong>Nur solange der Vorrat reicht!",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "Zum Produkt",
+            "button_alt_link": "shopify://products/almivital-nacken-schulter-rucken-salbe-mit-10-beinwell-hyaluron-und-5-teufelskralle-500-ml-xxl-pflege-fur-nacken-schultern",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_KKbFkM": {
+          "type": "image",
+          "name": "Livestream 13.09.",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/almivital-felix-neumann_FAQ_wide.jpg",
+            "image_mobile": "shopify://shop_images/almivital-felix-neumann_4a9df255-d2cd-4647-ac54-b752b70b3c92.jpg",
+            "image_position": "20% 0",
+            "text_box_position": "middle-center",
+            "subheading": "Heute Livestream ab 16:00 Uhr",
+            "subheading_size": "h4",
+            "heading": "Felix Live aus Tirol!",
+            "heading_size": "h0",
+            "heading_tag": "h4",
+            "text": "Erleben Sie Felix Neumann live aus den Bergen Tirols. In diesem besonderen ALMIVITAL Live-Stream spricht Felix über die BienenTopf Pflegelinie, die Kraft der Natur, ausgewählte Inhaltsstoffe und die Kräuterwelt Tirols. Stellen Sie Ihre Fragen direkt im Chat und erhalten Sie persönliche Einblicke aus erster Hand.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "Zum Livestream",
+            "button_alt_link": "https://almivital.de/pages/lmu-live-shopping",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_BE3Ayh": {
+          "type": "image",
+          "name": "13.09. bis 20.09.2026",
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-KW38.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-KW38-mobil.jpg",
+            "image_position": "20% 0",
+            "text_box_position": "middle-left",
+            "subheading": "Wochenangebot bis zum 20.09.2026",
+            "subheading_size": "h4",
+            "heading": "Konzentriert und perfekt Dosiert",
+            "heading_size": "h0",
+            "heading_tag": "h4",
+            "text": "Unsere <strong>BienenTopf Akut Ampullen</strong> enthalten die konzentrierte Bienenkraft gepaart mit feuchtigkeitsspendendem Hyaluron. Für ein strahlendes, ausgeglichenes Aussehen und widerstandsfähiger Haut. Jetzt bei uns im Angebot für nur <strong>34,99€ statt 42,99€</strong>. Das Angebot ist zeitlich begrenzt und gilt nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "zu den ampullen",
+            "button_alt_link": "shopify://products/almivital-bienentopf-akut-ampullen-14x-2ml",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_7N86aD": {
+          "type": "image",
+          "name": "Individuelles Lieblingsset",
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Individuelles-Set.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Individuelles-Set-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "",
+            "subheading_size": "h4",
+            "heading": "Wie es Ihnen gefällt – Sie haben die Wahl",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Sie wollten schon immer Ihr ganz individuelles ALMIVITAL Set zusammenstellen? Dazu haben Sie jetzt die Möglichkeit. Wählen Sie einfach die gewünschten Produkte aus und <strong>sparen Sie bis zu 20%</strong> gegenüber dem Normalpreis.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "jetzt ausprobieren",
+            "button_alt_link": "https://almivital.de/apps/gbb/easybundle/lieblingsset",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
         "image_APa6YW": {
           "type": "image",
           "name": "August",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-August.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-August-mobil.jpg",
@@ -38,97 +149,14 @@
             "enable_highlight": false,
             "highlight_style": "marker"
           }
-        },
-        "image_7N86aD": {
-          "type": "image",
-          "name": "14.8.-23.8.",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-KW34.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-KW34-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "Wochenangebot bis 23.08.2026",
-            "subheading_size": "h4",
-            "heading": "Gezielte Soforthilfe für Ihre müden Beine",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Unser Set aus Leichte Beine Serum und Leichte Beine Akut-Ampullen ist das ideale Duo für mehr Leichtigkeit im Alltag – ob nach langen Spaziergängen oder an warmen Tagen. Jetzt im Wochenangebot für <strong>nur 49,99€ statt 64,99€</strong> und nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "zum wochenangebot",
-            "button_alt_link": "",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "image_9U8QJj": {
-          "type": "image",
-          "name": "7.8.-16.8.",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-KW33.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-KW33-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "Wochenangebot bis 16.08.2026",
-            "subheading_size": "h4",
-            "heading": "Für widerstandsfähige und vitale Haut",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Durch Stress im Alltag leidet unsere Haut mitunter am meisten. Unser Schwarzkümmel Körperpflegeöl kann da schnell Abhilfe schaffen. Diese Woche im Angebot für nur <strong>15,99€ statt 25,99€</strong>. Also lieber schnell zugreifen, verfügbar nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "Zum Wochenangebot",
-            "button_alt_link": "shopify://products/almivital-bienentopf-serum-naturliche-kraft-fur-ihre-haut-100ml",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "image_YP64PW": {
-          "type": "image",
-          "name": "9.8. Extra",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-Extra-August.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-Extra-August-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "unser extra-angebot am 09.08.2026",
-            "subheading_size": "h4",
-            "heading": "Überschrift",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Die Temperaturen steigen, alles wird schwerer und man sehnt sich nur noch nach Kühlung. Darum jetzt im Monatsangebot unsere kühlende Kniesalbe Forte für nur <strong>24,99€ statt 36,99€</strong>. Gültig nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "Zum produkt",
-            "button_alt_link": "",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
         }
       },
       "block_order": [
-        "image_APa6YW",
-        "image_7N86aD",
         "image_9U8QJj",
-        "image_YP64PW"
+        "image_KKbFkM",
+        "image_BE3Ayh",
+        "image_7N86aD",
+        "image_APa6YW"
       ],
       "settings": {
         "slideshow_type": "legacy",
@@ -252,35 +280,92 @@
         "highlight_style": "marker"
       }
     },
-    "featured_collection_6MRUX6": {
-      "type": "featured-collection",
+    "lookbook_RKNriE": {
+      "type": "lookbook",
+      "blocks": {
+        "look_bdFzGX": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-lippenbalsam-50ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 10,
+            "vertical": 59
+          }
+        },
+        "look_CrGdU9": {
+          "type": "look",
+          "settings": {
+            "product": "bienentopf-nachtcreme-100ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 25,
+            "vertical": 50
+          }
+        },
+        "look_iJHbde": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-korpercreme-250ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 83,
+            "vertical": 39
+          }
+        },
+        "look_jhdW7m": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-110ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 67,
+            "vertical": 54
+          }
+        },
+        "look_Nkk6xC": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-serum-naturliche-kraft-fur-ihre-haut-100ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 39,
+            "vertical": 41
+          }
+        },
+        "look_YJqg88": {
+          "type": "look",
+          "settings": {
+            "product": "almivital-bienentopf-die-kraft-der-bienen-fur-die-haut-180ml",
+            "enable_quick_view": true,
+            "color": "#f5c03d",
+            "horizontal": 56,
+            "vertical": 40
+          }
+        }
+      },
+      "block_order": [
+        "look_bdFzGX",
+        "look_CrGdU9",
+        "look_iJHbde",
+        "look_jhdW7m",
+        "look_Nkk6xC",
+        "look_YJqg88"
+      ],
+      "name": "t:sections.lookbook.presets.name",
       "settings": {
-        "collection": "coole-produkte-fur-heisse-tage",
-        "products_to_show": 4,
-        "horizontal_scroll": false,
-        "show_view_all": true,
+        "image": "shopify://shop_images/BienenTopf-Banner.png",
+        "full_width": false,
         "show_divider": true,
-        "enable_drag": true,
-        "heading": "Kühlende Produkte für heiße Tage",
+        "heading": "Pflege mit Bienenkraft",
         "heading_size": "h1",
         "heading_alignment": "center",
         "heading_tag": "h2",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "image_ratio": "square",
-        "image_position": "center center",
-        "enable_image_fill": true,
-        "show_secondary_image": true,
-        "secondary_image_max": 1,
-        "show_vendor": false,
-        "show_rating": true,
-        "show_quick_buy": true,
-        "enable_quick_view": true,
-        "enable_color_swatches": true,
-        "enable_countdown": true,
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 8,
         "colors_highlight": "#ffb503",
         "padding_top": 36,
-        "padding_bottom": 36,
+        "padding_bottom": 0,
         "enable_highlight": false,
         "highlight_style": "marker"
       }
@@ -321,6 +406,16 @@
     "lookbook_iTdjFD": {
       "type": "lookbook",
       "blocks": {
+        "look_betxd7": {
+          "type": "look",
+          "settings": {
+            "product": "",
+            "enable_quick_view": true,
+            "color": "#000000",
+            "horizontal": 30,
+            "vertical": 40
+          }
+        },
         "look_QhbJ9U": {
           "type": "look",
           "settings": {
@@ -353,6 +448,7 @@
         }
       },
       "block_order": [
+        "look_betxd7",
         "look_QhbJ9U",
         "look_37tBed",
         "look_kxmF4f"
@@ -371,96 +467,6 @@
         "colors_highlight": "#ffb503",
         "padding_top": 36,
         "padding_bottom": 24,
-        "enable_highlight": false,
-        "highlight_style": "marker"
-      }
-    },
-    "lookbook_RKNriE": {
-      "type": "lookbook",
-      "blocks": {
-        "look_bdFzGX": {
-          "type": "look",
-          "settings": {
-            "product": "almivital-bienentopf-lippenbalsam-50ml",
-            "enable_quick_view": true,
-            "color": "#f5c03d",
-            "horizontal": 10,
-            "vertical": 59
-          }
-        },
-        "look_CrGdU9": {
-          "type": "look",
-          "settings": {
-            "product": "bienentopf-nachtcreme-100ml",
-            "enable_quick_view": true,
-            "color": "#f5c03d",
-            "horizontal": 25,
-            "vertical": 50
-          }
-        },
-        "look_YJqg88": {
-          "type": "look",
-          "settings": {
-            "product": "almivital-bienentopf-die-kraft-der-bienen-fur-die-haut-180ml",
-            "enable_quick_view": true,
-            "color": "#f5c03d",
-            "horizontal": 56,
-            "vertical": 40
-          }
-        },
-        "look_iJHbde": {
-          "type": "look",
-          "settings": {
-            "product": "almivital-bienentopf-korpercreme-250ml",
-            "enable_quick_view": true,
-            "color": "#f5c03d",
-            "horizontal": 83,
-            "vertical": 39
-          }
-        },
-        "look_jhdW7m": {
-          "type": "look",
-          "settings": {
-            "product": "almivital-bienentopf-110ml",
-            "enable_quick_view": true,
-            "color": "#f5c03d",
-            "horizontal": 67,
-            "vertical": 54
-          }
-        },
-        "look_Nkk6xC": {
-          "type": "look",
-          "settings": {
-            "product": "almivital-bienentopf-serum-naturliche-kraft-fur-ihre-haut-100ml",
-            "enable_quick_view": true,
-            "color": "#f5c03d",
-            "horizontal": 39,
-            "vertical": 41
-          }
-        }
-      },
-      "block_order": [
-        "look_bdFzGX",
-        "look_CrGdU9",
-        "look_YJqg88",
-        "look_iJHbde",
-        "look_jhdW7m",
-        "look_Nkk6xC"
-      ],
-      "name": "t:sections.lookbook.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/BienenTopf-Banner.png",
-        "full_width": false,
-        "show_divider": true,
-        "heading": "Pflege mit Bienenkraft",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "heading_tag": "h2",
-        "colors_overlay": "#000000",
-        "colors_overlay_opacity": 8,
-        "colors_highlight": "#ffb503",
-        "padding_top": 36,
-        "padding_bottom": 0,
         "enable_highlight": false,
         "highlight_style": "marker"
       }
@@ -658,10 +664,9 @@
     "slideshow_KpwNmr",
     "1730035322db4399cc",
     "image_with_text_overlay_hHhAjJ",
-    "featured_collection_6MRUX6",
+    "lookbook_RKNriE",
     "featured-collection",
     "lookbook_iTdjFD",
-    "lookbook_RKNriE",
     "image_with_text_RWRAik",
     "guarantees",
     "reveal-banner"

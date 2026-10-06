@@ -61,7 +61,7 @@
                           loading: 'lazy',
                           class: 'collage-card__image',
                           sizes: sizes,
-                          widths: '375, 750, 1100, 1500, 1780, 2000, 3000',
+                          widths: '375, 750, 1100, 1500, 2000, 2400',
                           is: 'lazy-image'
                         }}
                       </div>
@@ -122,7 +122,7 @@
                           style="--image-ratio-percent: {{ 1 | divided_by: featured_media.aspect_ratio | times: 100 }}%;"
                         >
                           {%- liquid
-                            assign widths = '375, 750, 1100, 1500, 1780, 2000, 3000'
+                            assign widths = '375, 750, 1100, 1500, 2000, 2400'
 
                             assign alt = featured_media.alt | escape | split: '#' | first
                             echo featured_media.preview_image | image_url: width: 3000 | image_tag: loading: 'lazy', class: 'collage-card__image', sizes: sizes, widths: widths, alt: alt, is: 'lazy-image'
@@ -155,7 +155,7 @@
                           {% render 'icon', icon: 'search-alt' %}
                         </summary>
                         <quick-view class="quick-view" data-product-url="{{ card_product.url | within: collection }}">
-                          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-view__content" tabindex="-1"></div>
+                          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-view__content ignore-empty" tabindex="-1"></div>
                         </quick-view>
                       </details>
                     </quick-view-drawer>
@@ -193,7 +193,7 @@
                             loading: 'lazy',
                             class: 'collage-card__image',
                             sizes: sizes,
-                            widths: '375, 750, 1100, 1500, 1780, 2000, 3000',
+                            widths: '375, 750, 1100, 1500, 2000, 2400',
                             alt: alt,
                             is: 'lazy-image'
                           }}
@@ -254,6 +254,7 @@
                     assign fix_ratio = true
                   endif
                 endif
+                render 'video-structured-data', video: block.settings.video, video_url: block.settings.video_url, description: section.settings.description, poster: block.settings.cover_image
               -%}
               <noscript>
                 <div class="collapse-video-section__media"
@@ -275,7 +276,7 @@
                               loading: 'lazy',
                               class: 'collage-card__image',
                               sizes: sizes,
-                              widths: '375, 750, 1100, 1500, 1780, 2000, 3000'
+                              widths: '375, 750, 1100, 1500, 2000, 2400'
                             }}
                           {%- else -%}
                             {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder collage-card__image' }}
@@ -325,7 +326,7 @@
                           loading: 'lazy',
                           class: 'collage-card__image',
                           sizes: sizes,
-                          widths: '375, 750, 1100, 1500, 1780, 2000, 3000',
+                          widths: '375, 750, 1100, 1500, 2000, 2400',
                           alt: alt,
                           is: 'lazy-image'
                         }}
@@ -531,7 +532,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

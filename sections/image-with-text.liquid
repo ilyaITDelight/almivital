@@ -74,7 +74,7 @@
                   (min-width: 750px) calc((100vw - 10rem) / 1.667), {% if section.settings.full_width %} calc(100vw / 1.667){% else %} calc((100vw - 3rem) / 1.667){% endif %}
                 {%- endcapture -%}
               {%- else -%}
-                {%- assign widths = '375, 750, 1100, 1500, 1780, 2000, 3000, 3840' -%}
+                {%- assign widths = '375, 750, 1100, 1500, 2000, 2400' -%}
                 {%- capture sizes -%}
                   (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                   (min-width: 750px) calc((100vw - 10rem) / 2), {% if section.settings.full_width %} 50vw{% else %} calc((100vw - 3rem) / 2){% endif %}
@@ -82,10 +82,10 @@
               {%- endif -%}
               {%- liquid
                 if section.settings.image_mobile == blank
-                  echo section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit', sizes: sizes, widths: widths, is: 'lazy-image'
+                  echo section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'image-fit', sizes: sizes, widths: widths, is: 'lazy-image'
                 else
-                  echo section.settings.image_mobile | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit medium-hide large-up-hide', sizes: sizes, widths: widths, is: 'lazy-image'
-                  echo section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit small-hide', sizes: sizes, widths: widths, is: 'lazy-image'
+                  echo section.settings.image_mobile | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'image-fit medium-hide large-up-hide', sizes: sizes, widths: widths, is: 'lazy-image'
+                  echo section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'image-fit small-hide', sizes: sizes, widths: widths, is: 'lazy-image'
                 endif
               -%}
             {%- else -%}
@@ -95,6 +95,7 @@
         </use-animate>
         {%  else %}
         {% comment %} VIDEO PART {% endcomment %}
+        {% render 'video-structured-data', video: section.settings.video, video_url: section.settings.video_url, poster: section.settings.image %}
         <div class="image-with-text--video image-animate media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
           {%- liquid
             assign video_id = section.settings.video.id | default: section.settings.video_url.id
@@ -125,17 +126,17 @@
                   
                     <div class="media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
                       {%- if poster != null -%}
-                        {{ poster | image_url: width: 3840 | image_tag:
+                        {{ poster | image_url: width: 2400 | image_tag:
                           loading: 'lazy',
                           class: 'image-fit medium-hide large-up-hide',
                           sizes: sizes,
-                          widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                          widths: '375, 750, 1100, 1500, 2000, 2400'
                         }}
-                        {{ poster_mobile | image_url: width: 3840 | image_tag:
+                        {{ poster_mobile | image_url: width: 2400 | image_tag:
                           loading: 'lazy',
                           class: 'image-fit small-hide',
                           sizes: sizes,
-                          widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                          widths: '375, 750, 1100, 1500, 2000, 2400'
                         }}
                       {%- else -%}
                         {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder collage-card__image' }}
@@ -166,19 +167,19 @@
               <use-animate data-animate="zoom-fade-small" class="media-wrapper">
                 {%- if poster != blank -%}
                   {%- assign alt = 'sections.video.load_video' | t: description: section.settings.description | escape -%}
-                  {{ poster | image_url: width: 3840 | image_tag:
+                  {{ poster | image_url: width: 2400 | image_tag:
                     loading: 'lazy',
                     class: 'image-fit medium-hide large-up-hide',
                     sizes: sizes,
-                    widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                    widths: '375, 750, 1100, 1500, 2000, 2400',
                     alt: alt,
                     is: 'lazy-image'
                   }}
-                  {{ poster_mobile | image_url: width: 3840 | image_tag:
+                  {{ poster_mobile | image_url: width: 2400 | image_tag:
                     loading: 'lazy',
                     class: 'image-fit small-hide',
                     sizes: sizes,
-                    widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                    widths: '375, 750, 1100, 1500, 2000, 2400',
                     alt: alt,
                     is: 'lazy-image'
                   }}
@@ -623,7 +624,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -646,7 +647,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

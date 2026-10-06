@@ -15,6 +15,22 @@
     when 'right'
       assign icon_justify_self = 'end'
   endcase
+
+  comment
+    Sections near the top of the page should not lazy-load product images (LCP).
+  endcomment
+  assign image_loading = 'lazy'
+  if section.index != blank and section.index <= 2
+    assign image_loading = 'eager'
+  endif
+
+  assign has_featured_column = false
+  for pc in product_columns
+    if pc.settings.highlight
+      assign has_featured_column = true
+      break
+    endif
+  endfor
 -%}
 
 {%- style -%}
@@ -33,6 +49,17 @@
       --color-border: {{ section.settings.colors_border.red }}, {{ section.settings.colors_border.green }}, {{ section.settings.colors_border.blue }};
       --color-heading: var(--color-foreground);
       --color-highlight: {{ section.settings.colors_highlight.red }}, {{ section.settings.colors_highlight.green }}, {{ section.settings.colors_highlight.blue }};
+      {%- liquid
+        # One highlight paints wide bands, thin bullet rings and the badge
+        # at once; blank keeps that sharing, while a set color frees the
+        # thin marks and the badge from whatever surface the bands take.
+        assign accent_marks = section.settings.colors_accents
+        assign badge_bg = section.settings.colors_badge_background
+        assign badge_text = section.settings.colors_badge_text
+      -%}
+      --color-accents: {% if accent_marks != blank %}{{ accent_marks.red }}, {{ accent_marks.green }}, {{ accent_marks.blue }}{% else %}var(--color-highlight){% endif %};
+      --comparison-badge-background: {% if badge_bg != blank %}{{ badge_bg }}{% else %}rgb(var(--color-highlight)){% endif %};
+      --comparison-badge-text: {% if badge_text != blank %}{{ badge_text }}{% else %}rgb(var(--color-foreground)){% endif %};
       --color-table-background: {{ section.settings.colors_table_background.red }}, {{ section.settings.colors_table_background.green }}, {{ section.settings.colors_table_background.blue }};
     {% endif -%}
     --number-of-product-columns: {{ product_columns.size }};
@@ -54,13 +81,13 @@
 {%- if section.settings.show_divider %}<div class="section--divider">{% endif -%}
   <div class="page-width{% if section.settings.narrow %} page-width--inner{% endif %}">
     <div class="comparison-table-section section--padding">
-      {%- if section.settings.heading -%}
-        <{{ section.settings.heading_tag }} class="rich-text__heading {{ section.settings.heading_size }} {{ section.settings.heading_alignment }}" {{ section.shopify_attributes }}>{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
+      {%- if section.settings.heading != blank -%}
+        <{{ section.settings.heading_tag }} class="rich-text__heading {{ section.settings.heading_size }} {{ section.settings.heading_alignment }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
       {%- endif -%}
       
       <comparison-table-component>
         <div class="comparison-table-wrapper {{ section.settings.text_alignment }} mobile-{{ section.settings.mobile_text_alignment }}">
-          <div class="comparison-table{% if criteria_block %} comparison-table--with-criteria{% if section.settings.enable_inline_criteria %} comparison-table--inline-criteria{% endif %}{% endif %}{% unless section.settings.enable_table_shadow %} comparison-table--no-shadow{% endunless %}" style="--icon-size: {{ section.settings.icon_size }}px;">
+          <div class="comparison-table{% if criteria_block %} comparison-table--with-criteria{% if section.settings.enable_inline_criteria %} comparison-table--inline-criteria{% endif %}{% endif %}{% unless section.settings.enable_table_shadow %} comparison-table--no-shadow{% endunless %}{% if has_featured_column %} comparison-table--has-featured{% endif %}" style="--icon-size: {{ section.settings.icon_size }}px;">
             {%- if criteria_block and section.settings.enable_inline_criteria == false -%}
               <div class="comparison-table__sticky-column">
                 <div class="comparison-table__criteria-header">
@@ -78,21 +105,15 @@
                     <div class="comparison-table__criteria" {{ criteria_block.shopify_attributes }}>
                       {%- assign custom_icon_key = 'criteria_' | append: i | append: '_custom_icon' -%}
                       {%- assign custom_icon = criteria_block.settings[custom_icon_key] -%}
-                      {%- if criteria_icon != blank and criteria_icon != 'none' or custom_icon != blank -%}
-                        <div class="comparison-table__criteria-icon md:justify-self-{{ icon_justify_self_md }} justify-self-{{ icon_justify_self }}">
-                          {%- if custom_icon != blank -%}
-                            {%- assign icon_retina_size = section.settings.icon_size | times: 2 %}
-                            {%- capture icon_srcset %}
-                              {{ custom_icon | image_url: width: section.settings.icon_size }} 1x,
-                              {{ custom_icon | image_url: width: icon_retina_size }} 2x
-                            {%- endcapture -%}
-                            {{ custom_icon | image_url: width: section.settings.icon_size | image_tag: loading: 'lazy', alt: criteria_text, class: 'comparison-table__custom-icon', srcset: icon_srcset }}
-                          {%- else -%}
-                            {%- assign criteria_icon = criteria_icon | default: 'none' %}
-                            {%- render 'icon-accordion', icon: criteria_icon -%}
-                          {%- endif -%}
-                        </div>
-                      {%- endif -%}
+                      {%- render 'comparison-table-icon',
+                        icon: criteria_icon,
+                        custom_icon: custom_icon,
+                        alt: criteria_text,
+                        size: section.settings.icon_size,
+                        class: 'comparison-table__criteria-icon',
+                        justify: icon_justify_self,
+                        justify_md: icon_justify_self_md
+                      -%}
                       <span class="comparison-table__criteria-name">{{ criteria_text }}</span>
                     </div>
                   {%- endif -%}
@@ -100,13 +121,17 @@
               </div>
             {%- endif -%}
             <div class="comparison-table__scrollable-content">
-              {%- capture sizes -%}(min-width: 750px) 300px, 250px{%- endcapture -%}
+              {%- comment -%} Match real rendered column widths: ~equal share of the page width on desktop, fixed narrow columns on mobile. {%- endcomment -%}
+              {%- capture sizes -%}(min-width: 990px) {{ 1200 | divided_by: product_columns.size }}px, (min-width: 750px) 33vw, 160px{%- endcapture -%}
               <div class="comparison-table__products-header">
                 {%- for product_column in product_columns -%}
                 {%- if product_column.settings.product != blank -%}
                   {%- assign product = product_column.settings.product -%}
-                  <div class="comparison-table__product" {{ product_column.shopify_attributes }}>
+                  <div class="comparison-table__product{% if product_column.settings.highlight %} comparison-table__product--featured{% endif %}" {{ product_column.shopify_attributes }}>
                     <div class="comparison-table__product-image">
+                      {%- if product_column.settings.highlight and product_column.settings.highlight_badge != blank -%}
+                        <span class="comparison-table__product-badge">{{ product_column.settings.highlight_badge | escape }}</span>
+                      {%- endif -%}
                       {%- liquid
                         if product_column.settings.featured_image != blank
                           assign product_image = product_column.settings.featured_image
@@ -119,7 +144,7 @@
                         {%- if section.settings.image_ratio == 'adapt' and product_image != blank %} style="--image-ratio-percent: {{ 1 | divided_by: product_image.aspect_ratio | times: 100 }}%;"{% endif -%}
                       >
                         {%- if product_image -%}
-                          {{ product_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: alt, class: 'comparison-table__product-img', sizes: sizes, widths: '250, 300, 400, 500, 600' }}
+                          {{ product_image | image_url: width: 800 | image_tag: loading: image_loading, alt: alt, class: 'comparison-table__product-img', sizes: sizes, widths: '250, 300, 400, 500, 600, 800' }}
                         {%- else -%}
                           {{ 'product-' | append: forloop.index | placeholder_svg_tag: 'comparison-table__product-img placeholder' }}
                         {%- endif -%}
@@ -136,8 +161,11 @@
                     </a>
                   </div>
                 {%- else -%}
-                  <div class="comparison-table__product comparison-table__product--placeholder" {{ product_column.shopify_attributes }}>
+                  <div class="comparison-table__product comparison-table__product--placeholder{% if product_column.settings.highlight %} comparison-table__product--featured{% endif %}" {{ product_column.shopify_attributes }}>
                     <div class="comparison-table__product-image">
+                      {%- if product_column.settings.highlight and product_column.settings.highlight_badge != blank -%}
+                        <span class="comparison-table__product-badge">{{ product_column.settings.highlight_badge | escape }}</span>
+                      {%- endif -%}
                       <div class="media media--{{ section.settings.image_ratio }}">
                         {{ 'product-' | append: forloop.index | placeholder_svg_tag: 'comparison-table__product-img placeholder' }}
                       </div>
@@ -184,23 +212,15 @@
                       {%- assign criteria_icon = criteria_block.settings[criteria_icon_key] -%}
                       {%- assign custom_icon_key = 'criteria_' | append: i | append: '_custom_icon' -%}
                       {%- assign custom_icon = criteria_block.settings[custom_icon_key] -%}
-                      <div class="comparison-table__inline-criteria pbs-4 pbe-4" {{ criteria_block.shopify_attributes }}>
-                        <span class="comparison-table__criteria-name h4 flex items-center gap-4 pis-6">
-                          {%- if criteria_icon != blank and criteria_icon != 'none' or custom_icon != blank -%}
-                            <div class="comparison-table__criteria-icon md:justify-self-{{ icon_justify_self_md }} justify-self-{{ icon_justify_self }}">
-                              {%- if custom_icon != blank -%}
-                                {%- assign icon_retina_size = section.settings.icon_size | times: 2 %}
-                                {%- capture icon_srcset %}
-                                  {{ custom_icon | image_url: width: section.settings.icon_size }} 1x,
-                                  {{ custom_icon | image_url: width: icon_retina_size }} 2x
-                                {%- endcapture -%}
-                                {{ custom_icon | image_url: width: section.settings.icon_size | image_tag: loading: 'lazy', alt: criteria_text, class: 'comparison-table__custom-icon', srcset: icon_srcset }}
-                              {%- else -%}
-                                {%- assign criteria_icon = criteria_icon | default: 'none' %}
-                                {%- render 'icon-accordion', icon: criteria_icon -%}
-                              {%- endif -%}
-                            </div>
-                          {%- endif -%}
+                      <div class="comparison-table__inline-criteria" {{ criteria_block.shopify_attributes }}>
+                        <span class="comparison-table__criteria-name">
+                          {%- render 'comparison-table-icon',
+                            icon: criteria_icon,
+                            custom_icon: custom_icon,
+                            alt: criteria_text,
+                            size: section.settings.icon_size,
+                            class: 'comparison-table__criteria-icon'
+                          -%}
                           {{ criteria_text }}
                         </span>
                       </div>
@@ -212,22 +232,17 @@
                       {%- assign product_icon = product_column.settings[product_icon_key] -%}
                       {%- assign product_custom_icon_key = 'criteria_' | append: i | append: '_custom_icon' -%}
                       {%- assign product_custom_icon = product_column.settings[product_custom_icon_key] -%}
-                      <div class="comparison-table__cell ignore-empty">
+                      <div class="comparison-table__cell ignore-empty{% if product_column.settings.highlight %} comparison-table__cell--featured{% endif %}">
                         {%- if product_criteria_text != blank -%}
-                          {%- if product_custom_icon != blank -%}
-                            <div class="comparison-table__product-icon md:justify-self-{{ icon_justify_self_md }} justify-self-{{ icon_justify_self }}">
-                              {%- assign icon_retina_size = section.settings.icon_size | times: 2 %}
-                              {%- capture icon_srcset %}
-                                {{ product_custom_icon | image_url: width: section.settings.icon_size }} 1x, 
-                                {{ product_custom_icon | image_url: width: icon_retina_size }} 2x
-                              {%- endcapture -%}
-                              {{ product_custom_icon | image_url: width: section.settings.icon_size | image_tag: loading: 'lazy', alt: product_criteria_text, class: 'comparison-table__custom-icon', srcset: icon_srcset }}
-                            </div>
-                          {%- elsif product_icon != blank and product_icon != 'none' -%}
-                            <div class="comparison-table__product-icon md:justify-self-{{ icon_justify_self_md }} justify-self-{{ icon_justify_self }}">
-                              {% render 'icon-accordion', icon: product_icon %}
-                            </div>
-                          {%- endif -%}
+                          {%- render 'comparison-table-icon',
+                            icon: product_icon,
+                            custom_icon: product_custom_icon,
+                            alt: product_criteria_text,
+                            size: section.settings.icon_size,
+                            class: 'comparison-table__product-icon',
+                            justify: icon_justify_self,
+                            justify_md: icon_justify_self_md
+                          -%}
                           <div class="comparison-table__product-text">
                             {{ product_criteria_text }}
                           </div>
@@ -488,6 +503,24 @@
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
       "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "colors_accents",
+      "label": "t:sections.comparison_table.settings.colors_accents.label",
+      "info": "t:sections.comparison_table.settings.colors_accents.info"
+    },
+    {
+      "type": "color",
+      "id": "colors_badge_background",
+      "label": "t:sections.comparison_table.settings.colors_badge_background.label",
+      "info": "t:sections.comparison_table.settings.colors_badge_background.info"
+    },
+    {
+      "type": "color",
+      "id": "colors_badge_text",
+      "label": "t:sections.comparison_table.settings.colors_badge_text.label",
+      "info": "t:sections.comparison_table.settings.colors_badge_text.info"
     },
     {
       "type": "color",
@@ -2563,6 +2596,20 @@
           "type": "richtext",
           "id": "product_description",
           "label": "t:sections.comparison_table.blocks.product_column.settings.product_description.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "default": false,
+          "label": "t:sections.comparison_table.blocks.product_column.settings.highlight.label",
+          "info": "t:sections.comparison_table.blocks.product_column.settings.highlight.info"
+        },
+        {
+          "type": "text",
+          "id": "highlight_badge",
+          "label": "t:sections.comparison_table.blocks.product_column.settings.highlight_badge.label",
+          "default": "Best Seller",
+          "info": "t:sections.comparison_table.blocks.product_column.settings.highlight_badge.info"
         },
         {
           "type": "header",

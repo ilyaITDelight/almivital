@@ -43,13 +43,24 @@
               {%- if section.settings.image != blank -%}
                 {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), calc(100vw - 3rem){% endif %}{%- endcapture -%}
                 {%- liquid
-                  if section.settings.image_mobile == blank
-                    echo section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
-                  else
-                  echo section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit small-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
-                    echo section.settings.image_mobile | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit medium-hide large-up-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
+                  assign loading = 'lazy'
+                  assign fetchpriority = 'low'
+                  if section.index == 1
+                    assign loading = 'eager'
+                    assign fetchpriority = 'high'
                   endif
+
                 -%}
+                {%- if section.settings.image_mobile == blank -%}
+                  {%- echo section.settings.image | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'image-fit', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image' -%}
+                {%- else -%}
+                  <picture>
+                    <source media="(max-width: 749px)"
+                      srcset="{% assign mobile_widths = '375,540,750,1100,1500' | split: ',' %}{%- for w in mobile_widths -%}{{ section.settings.image_mobile | image_url: width: w }} {{ w }}w{%- unless forloop.last %}, {% endunless -%}{%- endfor -%}"
+                      sizes="{{ sizes }}">
+                    {%- echo section.settings.image | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'image-fit', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image' -%}
+                  </picture>
+                {%- endif -%}
               {%- else -%}
               {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder image-animate' }}
               {%- endif -%}
@@ -120,6 +131,7 @@
                               <button id="ModalClose-{{ block.id }}" type="button" class="banner-video__modal-toggle" aria-label="{{ 'accessibility.close' | t }}">
                                 {% render 'icon', icon: 'close' %}
                               </button>
+                              {% render 'video-structured-data', video_url: block.settings.video_url, title: block.settings.video_description %}
                               <deferred-media class="banner-video__modal-video template-popup">
                                 <template>
                                   {%- if block.settings.video_url.type == 'youtube' -%}
@@ -458,7 +470,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",
@@ -992,7 +1004,7 @@
           "type": "color",
           "id": "colors_button_background",
           "label": "t:sections.all.colors.colors_button_background.label",
-          "default": "#1a1b18"
+          "default": "#000000"
         },
         {
           "type": "color",

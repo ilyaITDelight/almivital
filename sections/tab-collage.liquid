@@ -314,6 +314,7 @@
                         assign fix_ratio = true
                       endif
                     endif
+                    render 'video-structured-data', video: block.settings.video, video_url: block.settings.video_url, description: section.settings.description, poster: block.settings.cover_image
                   -%}
                   <noscript>
                     <div class="tab-collapse-video-section__media"
@@ -737,7 +738,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -755,7 +756,7 @@
       "type": "color",
       "id": "colors_background",
       "label": "t:sections.all.colors.colors_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color_background",
@@ -766,7 +767,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

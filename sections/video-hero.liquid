@@ -27,6 +27,7 @@
 <div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full-width{% endif %}">
     <div id="Banner-{{ section.id }}" class="banner{% if section.settings.show_text_box %} banner--container{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}">
+      {% render 'video-structured-data', video: section.settings.video, video_url: section.settings.video_url, title: section.settings.heading %}
       {%- if section.settings.video_url == blank and section.settings.video == blank -%}
         <div class="banner__media">
           <use-animate data-animate="zoom-fade" class="media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
@@ -374,7 +375,7 @@
       "type": "color",
       "id": "colors_button_label",
       "label": "t:sections.all.colors.colors_button_label.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -408,7 +409,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

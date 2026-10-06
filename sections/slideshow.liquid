@@ -288,12 +288,22 @@
         {%- endif -%}
       </div>
       <div class="slideshow__right">
+        {%- liquid
+          assign single_loading = 'lazy'
+          assign single_fetchpriority = 'low'
+          assign single_video_lazy = true
+          if section.index == 1
+            assign single_loading = 'eager'
+            assign single_fetchpriority = 'high'
+            assign single_video_lazy = false
+          endif
+        -%}
         <div class="slideshow__slide is-selected" {{ block.shopify_attributes }}>
           {%- case block.type -%}
             {%- when 'image' -%}
-              {% render 'slide-image', block: block, position: 1, image_behavior: image_behavior %}
+              {% render 'slide-image', block: block, position: 1, image_behavior: image_behavior, loading: single_loading, fetchpriority: single_fetchpriority %}
             {%- when 'video' -%}
-              {% render 'slide-video', block: block, position: 1, image_behavior: image_behavior, section: section, lazy: false %}
+              {% render 'slide-video', block: block, position: 1, image_behavior: image_behavior, section: section, lazy: single_video_lazy %}
           {%- endcase -%}
         </div>
       </div>
@@ -507,7 +517,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -547,13 +557,13 @@
       "type": "color",
       "id": "colors_navigation_background",
       "label": "t:sections.slideshow.settings.colors_navigation_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

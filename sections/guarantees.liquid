@@ -4,6 +4,15 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     {%- if section.settings.use_custom_colors %}
       --color-icon: {{ section.settings.colors_icon.red }}, {{ section.settings.colors_icon.green }}, {{ section.settings.colors_icon.blue }};
+      {%- liquid
+        # The glyph sits on the colors_icon circle, not on the band, so it
+        # picks its own black or white instead of borrowing the text color -
+        # on a dark band with light circles the borrowed color goes
+        # light-on-light.
+        assign glyph_on_black = section.settings.colors_icon | color_contrast: '#000000'
+        assign glyph_on_white = section.settings.colors_icon | color_contrast: '#ffffff'
+      -%}
+      --color-icon-glyph: {% if glyph_on_black > glyph_on_white %}#000000{% else %}#ffffff{% endif %};
       --gradient-background: {% if section.settings.gradient_background != blank %}{{ section.settings.gradient_background }}{% else %}{{ section.settings.colors_background }}{% endif %};
       --color-background: {{ section.settings.colors_background.red }}, {{ section.settings.colors_background.green }}, {{ section.settings.colors_background.blue }};
       --color-foreground: {{ section.settings.colors_text.red }}, {{ section.settings.colors_text.green }}, {{ section.settings.colors_text.blue }};
@@ -312,7 +321,7 @@
       "type": "color",
       "id": "colors_text",
       "label": "t:sections.all.colors.colors_text.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -329,7 +338,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",
@@ -595,7 +604,29 @@
             {
               "value": "washing",
               "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__44.label"
-            }
+            },
+            { "value": "drop", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__23.label" },
+            { "value": "sun", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__25.label" },
+            { "value": "clock", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__26.label" },
+            { "value": "sparkle", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__28.label" },
+            { "value": "flask", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__29.label" },
+            { "value": "box", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__31.label" },
+            { "value": "scale", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__32.label" },
+            { "value": "flame", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__33.label" },
+            { "value": "star-line", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__34.label" },
+            { "value": "smile", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__36.label" },
+            { "value": "rabbit", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__37.label" },
+            { "value": "flower", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__38.label" },
+            { "value": "sprout", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__39.label" },
+            { "value": "pipette", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__40.label" },
+            { "value": "jar", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__41.label" },
+            { "value": "spray", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__42.label" },
+            { "value": "moon", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__43.label" },
+            { "value": "percent", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__44.label" },
+            { "value": "award", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__45.label" },
+            { "value": "feather", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__46.label" },
+            { "value": "thermometer", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__47.label" },
+            { "value": "heart-pulse", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__48.label" }
           ],
           "label": "t:sections.guarantees.blocks.guarantee.settings.icon.label",
           "default": "truck"

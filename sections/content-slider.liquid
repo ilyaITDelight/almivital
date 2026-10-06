@@ -95,15 +95,15 @@
                     {%- assign widths = '450, 900, 1320, 1800, 2136, 2400, 3600, 4680' -%}
                     {%- capture sizes -%}calc(100vw / 1.667){%- endcapture -%}
                   {%- else -%}
-                    {%- assign widths = '375, 750, 1100, 1500, 1780, 2000, 3000, 3840' -%}
+                    {%- assign widths = '375, 750, 1100, 1500, 2000, 2400' -%}
                     {%- capture sizes -%}100vw{%- endcapture -%}
                   {%- endif -%}
                   {%- liquid
                     if block.settings.image_mobile == blank
-                      echo block.settings.image | image_url: width: 3840 | image_tag: loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: widths, is: 'lazy-image'
+                      echo block.settings.image | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: widths, is: 'lazy-image'
                     else
-                      echo block.settings.image_mobile | image_url: width: 3840 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'medium-hide large-up-hide', sizes: sizes, widths: widths, is: 'lazy-image'
-                      echo block.settings.image | image_url: width: 3840 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'small-hide', sizes: sizes, widths: widths, is: 'lazy-image'
+                      echo block.settings.image_mobile | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'medium-hide large-up-hide', sizes: sizes, widths: widths, is: 'lazy-image'
+                      echo block.settings.image | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'small-hide', sizes: sizes, widths: widths, is: 'lazy-image'
                     endif
                   -%}
                 </div>
@@ -412,7 +412,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -452,7 +452,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

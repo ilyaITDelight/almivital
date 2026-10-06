@@ -116,6 +116,7 @@
           </div>
         </div>
       {%- endif -%}
+      {% render 'video-structured-data', video: section.settings.video, video_url: section.settings.video_url, title: section.settings.heading, poster: section.settings.image %}
       <div class="banner__media{% if section.settings.video != null or section.settings.video_url != null %} banner__media-video{% endif %}">
         <use-animate data-animate="zoom-fade" class="media-wrapper media-wrapper--large">
           <div class="image-animate media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
@@ -146,17 +147,17 @@
                     {% if section.settings.full_width %}calc(100vw / 1.667){% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px, (min-width: 750px) calc((100vw - 10rem) / 1.667), calc((100vw - 3rem) / 1.667){% endif %}
                   {%- endcapture -%}
                 {%- else -%}
-                  {%- assign widths = '375, 750, 1100, 1500, 1780, 2000, 3000, 3840' -%}
+                  {%- assign widths = '375, 750, 1100, 1500, 2000, 2400' -%}
                   {%- capture sizes -%}
                     {% if section.settings.full_width %}100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), calc(100vw - 3rem){% endif %}
                   {%- endcapture -%}
                 {%- endif -%}
                 {%- liquid
                   if section.settings.image_mobile == blank
-                    echo section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit', sizes: sizes, widths: widths, is: 'lazy-image'
+                    echo section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'image-fit', sizes: sizes, widths: widths, is: 'lazy-image'
                   else
-                    echo section.settings.image_mobile | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit medium-hide large-up-hide', sizes: sizes, widths: widths, is: 'lazy-image'
-                    echo section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'image-fit small-hide', sizes: sizes, widths: widths, is: 'lazy-image'
+                    echo section.settings.image_mobile | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'image-fit medium-hide large-up-hide', sizes: sizes, widths: widths, is: 'lazy-image'
+                    echo section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'image-fit small-hide', sizes: sizes, widths: widths, is: 'lazy-image'
                   endif
                 -%}
               {%- else -%}
@@ -473,7 +474,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -501,7 +502,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

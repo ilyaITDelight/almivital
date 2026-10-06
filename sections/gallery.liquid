@@ -1,3 +1,39 @@
+{%- liquid
+  # The gutter belongs to the wrapper while the row stays in the page
+  # column, and to the list once it bleeds, because only padding on the
+  # scroll container survives past the margin. The heading keeps the column
+  # either way.
+  assign outer_width = ' page-width'
+  assign inner_width = ''
+  assign grid_bleed = ''
+
+  # The rail classes. Each breakpoint opts in separately, so a row can scroll on
+  # one and stay a grid on the other, and the shared slider class is emitted once
+  # for either.
+  assign rail_class = ''
+  if section.settings.swipe_on_mobile
+    assign rail_class = ' slider--tablet'
+  endif
+  if section.settings.horizontal_scroll
+    assign rail_class = rail_class | append: ' slider--tablet-up'
+    if section.settings.heading != blank
+      assign rail_class = rail_class | append: ' slider--has-controls'
+    endif
+  endif
+  if rail_class != blank
+    assign rail_class = ' slider' | append: rail_class
+  endif
+
+  if section.settings.full_width
+    assign outer_width = ' page-width page-width--full-width'
+    assign inner_width = ' page-width'
+  elsif section.settings.edge_to_edge
+    assign outer_width = ''
+    assign inner_width = ' page-width'
+    assign grid_bleed = ' slider--bleed'
+  endif
+-%}
+
 {%- style -%}
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
@@ -5,12 +41,12 @@
     --color-highlight: {{ section.settings.colors_highlight.red }}, {{ section.settings.colors_highlight.green }}, {{ section.settings.colors_highlight.blue }};
   }
 
-  #Gallery-{{ section.id }} {
+  #Slider-{{ section.id }} {
     --image-height: {{ section.settings.mobile_image_height }}px;
   }
 
   @media screen and (min-width: 750px) {
-    #Gallery-{{ section.id }} {
+    #Slider-{{ section.id }} {
       --grid-horizontal-spacing: {{ section.settings.spacing_images }}px;
       --image-height: {{ section.settings.image_height }}px;
     }
@@ -23,8 +59,8 @@
 {{ 'section-gallery.css' | asset_url | stylesheet_tag }}
 
 <div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
-  <div class="page-width{% if section.settings.full_width %} page-width--full-width{% endif %}">
-    <div class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %}{% if section.settings.full_width %} page-width{% endif %} {{ section.settings.heading_alignment }}">
+  <div class="{{ outer_width | strip }}">
+    <div id="SliderNav-{{ section.id }}" class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %}{{ inner_width }} {{ section.settings.heading_alignment }}">
       <{{ section.settings.heading_tag }} class="title {{ section.settings.heading_size }}">
         {%- render 'highlight-text', 
           hl_input: section.settings.heading, 
@@ -32,6 +68,21 @@
           hl_enable: section.settings.enable_highlight,
           hl_animateWrap: true -%}
       </{{ section.settings.heading_tag }}>
+      {%- comment -%}
+        The controls sit in the heading row so they keep the page gutter while the
+        row itself runs past it. data-controls on the slider names this container.
+        The slider hides them on its own once the row fits on one page.
+      {%- endcomment -%}
+      {%- if section.settings.horizontal_scroll and section.settings.heading != blank -%}
+        <div class="slider-buttons no-js-hidden small-hide">
+          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" disabled="disabled">
+            {% render 'icon', icon: 'arrow' %}
+          </button>
+          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'general.slider.next_slide' | t }}">
+            {% render 'icon', icon: 'arrow' %}
+          </button>
+        </div>
+      {%- endif -%}
     </div>
 
     {%- liquid
@@ -40,9 +91,9 @@
         assign columns = section.blocks.size
       endif
     -%}
-    <slider-component class="slider-mobile-gutter">
-      <ul id="Gallery-{{ section.id }}"
-        class="gallery gallery--{{ columns }} flex-grid flex-grid--2-col{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet{% endif %}{% if section.settings.apply_overlay %} gallery--contrast{% endif %}"
+    <slider-component data-controls="SliderNav-{{ section.id }}" class="slider-mobile-gutter">
+      <ul id="Slider-{{ section.id }}"
+        class="gallery gallery--{{ columns }} flex-grid flex-grid--2-col{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %}{{ rail_class }}{% if section.settings.apply_overlay %} gallery--contrast{% endif %}{{ grid_bleed }}"
         role="list"
       >
         {%- for block in section.blocks -%}
@@ -65,10 +116,10 @@
               {%- if block.settings.image != blank -%}
                 <div class="image-animate media" style="--image-position: {{ block.settings.image_position }};">
                   {%- capture sizes -%}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns }}px, (min-width: 750px) {% if columns > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %}, calc(100vw - 3rem)"{%- endcapture -%}
-                  {{ block.settings.image | image_url: width: 3840 | image_tag:
+                  {{ block.settings.image | image_url: width: 2400 | image_tag:
                     loading: 'lazy',
                     sizes: sizes,
-                    widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                    widths: '375, 750, 1100, 1500, 2000, 2400',
                     is: 'lazy-image'
                   }}
                 </div>
@@ -159,6 +210,19 @@
       "id": "full_width",
       "default": false,
       "label": "t:sections.all.full_width.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal_scroll",
+      "default": false,
+      "label": "t:sections.all.horizontal_scroll_on_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "edge_to_edge",
+      "default": false,
+      "label": "t:sections.all.edge_to_edge.label",
+      "info": "t:sections.all.edge_to_edge.info"
     },
     {
       "type": "checkbox",
@@ -305,7 +369,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

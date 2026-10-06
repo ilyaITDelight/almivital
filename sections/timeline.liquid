@@ -69,12 +69,12 @@
           <div class="slide" data-slide="{{ forloop.index0 }}">
             {% if block.settings.image != blank %}
               {% assign image_alt = block.settings.image_alt | default: block.settings.text %}
-              {%- assign widths = '375, 750, 1100, 1500, 1780, 2000, 3000, 3840' -%}
+              {%- assign widths = '375, 750, 1100, 1500, 2000, 2400' -%}
               {%- capture sizes -%}
                 (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
                 (min-width: 750px) calc((100vw - 10rem) / 2), calc((100vw - 3rem) / 2)
               {%- endcapture -%}
-              {{ block.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', alt: image_alt, sizes: sizes, widths: widths, is: 'lazy-image' }}
+              {{ block.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', alt: image_alt, sizes: sizes, widths: widths, is: 'lazy-image' }}
             {% else %}
               <div class="slide-placeholder">
                 {{ 'image' | placeholder_svg_tag: 'placeholder' }}
@@ -166,7 +166,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

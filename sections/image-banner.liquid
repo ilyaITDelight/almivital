@@ -43,7 +43,7 @@
     assign half_width = '50vw'
     assign full_width = '100vw'
     assign stacked_sizes = '(min-width: 750px) 50vw, 100vw'
-    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+    assign widths = '375, 550, 750, 1100, 1500, 2000, 2400'
   endif
 -%}
 
@@ -72,7 +72,7 @@
                 {%- if section.settings.mobile_image -%}
                   {%- liquid
                     capture srcset_mobile
-                      assign temp_img = section.settings.mobile_image | image_url: width: 3840 | image_tag: sizes: sizes
+                      assign temp_img = section.settings.mobile_image | image_url: width: 2400 | image_tag: sizes: sizes
                       assign temp_srcset = temp_img | split: 'srcset="' 
                       assign temp_srcset = temp_srcset[1] | split: '"' | first
                       echo temp_srcset
@@ -88,7 +88,7 @@
                     assign fetchpriority = 'high'
                   endif
                 -%}
-                {%- echo image | image_url: width: 3840 | image_tag: loading: loading, class: image_class, sizes: sizes, widths: widths, is: 'lazy-image', fetchpriority: fetchpriority -%}
+                {%- echo image | image_url: width: 2400 | image_tag: loading: loading, class: image_class, sizes: sizes, widths: widths, is: 'lazy-image', fetchpriority: fetchpriority -%}
               </picture>
             </div>
           </use-animate>
@@ -122,7 +122,7 @@
                 {%- if section.settings.mobile_image_2 -%}
                   {%- liquid
                     capture srcset_mobile_2
-                      assign temp_img_2 = section.settings.mobile_image_2 | image_url: width: 3840 | image_tag: sizes: sizes_2nd
+                      assign temp_img_2 = section.settings.mobile_image_2 | image_url: width: 2400 | image_tag: sizes: sizes_2nd
                       assign temp_srcset_2 = temp_img_2 | split: 'srcset="' 
                       assign temp_srcset_2 = temp_srcset_2[1] | split: '"' | first
                       echo temp_srcset_2
@@ -130,7 +130,7 @@
                   -%}
                   <source media="(max-width: 749px)" srcset="{{ srcset_mobile_2 }}" sizes="{{ sizes_2nd }}">
                 {%- endif -%}
-                {%- echo image_2nd | image_url: width: 3840 | image_tag: loading: 'lazy', class: image_class_2nd, sizes: sizes_2nd, widths: widths, is: 'lazy-image' -%}
+                {%- echo image_2nd | image_url: width: 2400 | image_tag: loading: 'lazy', class: image_class_2nd, sizes: sizes_2nd, widths: widths, is: 'lazy-image' -%}
               </picture>
             </div>
           </use-animate>
@@ -516,7 +516,7 @@
       "type": "color",
       "id": "colors_button_label",
       "label": "t:sections.all.colors.colors_button_label.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -550,7 +550,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

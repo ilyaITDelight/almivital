@@ -1,3 +1,43 @@
+{%- liquid
+  # The gutter belongs to the wrapper while the row stays in the page
+  # column, and to the list once it bleeds, because only padding on the
+  # scroll container survives past the margin. The heading keeps the column
+  # either way.
+  assign outer_width = ' page-width'
+  assign inner_width = ''
+  assign grid_bleed = ''
+
+  # The rail classes. Each breakpoint opts in separately, so a row can scroll on
+  # one and stay a grid on the other, and the shared slider class is emitted once
+  # for either. The peek track needs a matching Np3 rule, which starts at two
+  # columns.
+  assign rail_class = ''
+  if section.blocks.size > 1
+    if section.settings.swipe_on_mobile
+      assign rail_class = ' slider--mobile'
+    endif
+    if section.settings.horizontal_scroll
+      assign rail_class = rail_class | append: ' slider--tablet-up'
+      if section.settings.heading != blank
+        assign rail_class = rail_class | append: ' slider--has-controls'
+      endif
+    endif
+  endif
+  if rail_class != blank
+    assign rail_class = ' slider' | append: rail_class
+  endif
+
+  assign col_peek = ''
+  if section.settings.horizontal_scroll and section.settings.columns_desktop > 1
+    assign col_peek = 'p3'
+  endif
+  if section.settings.edge_to_edge
+    assign outer_width = ''
+    assign inner_width = ' page-width'
+    assign grid_bleed = ' slider--bleed'
+  endif
+-%}
+
 {%- style -%}
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
@@ -15,8 +55,8 @@
 <script src="{{ 'section-multicolumn.js' | asset_url }}" defer="defer"></script>
 
 <div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
-  <div class="multicolumn page-width">
-    <div class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} mobile-{{ section.settings.mobile_text_alignment }} {{ section.settings.heading_alignment }}">
+  <div class="multicolumn{{ outer_width }}">
+    <div id="SliderNav-{{ section.id }}" class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} mobile-{{ section.settings.mobile_text_alignment }} {{ section.settings.heading_alignment }}{{ inner_width }}">
       <{{ section.settings.heading_tag }} class="title {{ section.settings.heading_size }}">
         {%- render 'highlight-text', 
           hl_input: section.settings.heading, 
@@ -24,11 +64,26 @@
           hl_enable: section.settings.enable_highlight,
           hl_animateWrap: true -%}
       </{{ section.settings.heading_tag }}>
+      {%- comment -%}
+        The controls sit in the heading row so they keep the page gutter while the
+        row itself runs past it. data-controls on the slider names this container.
+        The slider hides them on its own once the row fits on one page.
+      {%- endcomment -%}
+      {%- if section.settings.horizontal_scroll and section.settings.heading != blank -%}
+        <div class="slider-buttons no-js-hidden small-hide">
+          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" disabled="disabled">
+            {% render 'icon', icon: 'arrow' %}
+          </button>
+          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'general.slider.next_slide' | t }}">
+            {% render 'icon', icon: 'arrow' %}
+          </button>
+        </div>
+      {%- endif -%}
     </div>
     
-    <slider-component class="slider-mobile-gutter {{ section.settings.text_alignment }} mobile-{{ section.settings.mobile_text_alignment }}">
+    <slider-component data-controls="SliderNav-{{ section.id }}" class="slider-mobile-gutter {{ section.settings.text_alignment }} mobile-{{ section.settings.mobile_text_alignment }}">
       <ul id="Slider-{{ section.id }}"
-        class="multicolumn-list flex-grid flex-grid--2-col{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %} flex-grid--rigid flex-grid--{{ section.settings.columns_desktop }}-col-desktop{% if section.settings.swipe_on_mobile and section.blocks.size > 1 %} slider slider--mobile{% endif %}"
+        class="multicolumn-list flex-grid flex-grid--2-col{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %} flex-grid--rigid flex-grid--{{ section.settings.columns_desktop }}{{ col_peek }}-col-desktop{{ rail_class }}{{ grid_bleed }}"
         role="list"
       >
         {%- liquid
@@ -54,6 +109,7 @@
                     {%- if section.settings.image_ratio == 'adapt' %} style="--image-ratio-percent: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"{% endif -%}
                   >
                     {%- if block.settings.video != blank -%}
+                      {% render 'video-structured-data', video: block.settings.video, title: block.settings.title, poster: block.settings.video_poster %}
                       <multicolumn-video-item class="video-wrapper" data-video-id="{{ block.settings.video.id }}" data-preview-duration="900">
                         {%- if block.settings.video_poster != blank -%}
                           {%- assign poster_url = block.settings.video_poster | image_url: width: 2000 -%}
@@ -96,10 +152,10 @@
                       {% endcapture %}
                       {{
                         block.settings.image
-                        | image_url: width: 3200
+                        | image_url: width: 1500
                         | image_tag:
                           loading: 'lazy',
-                          widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                          widths: '100, 200, 300, 500, 750, 1000, 1500',
                           sizes: sizes,
                           class: 'multicolumn-card__image',
                           is: 'lazy-image'
@@ -328,6 +384,19 @@
     },
     {
       "type": "checkbox",
+      "id": "horizontal_scroll",
+      "default": false,
+      "label": "t:sections.all.horizontal_scroll_on_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "edge_to_edge",
+      "default": false,
+      "label": "t:sections.all.edge_to_edge.label",
+      "info": "t:sections.all.edge_to_edge.info"
+    },
+    {
+      "type": "checkbox",
       "id": "show_divider",
       "default": false,
       "label": "t:sections.all.show_divider.label"
@@ -516,7 +585,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

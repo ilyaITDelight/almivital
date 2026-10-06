@@ -78,7 +78,7 @@
                           </div>
                         </summary>
                         <quick-view class="quick-view" data-product-url="{{ card_product.url | within: collection }}">
-                          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-view__content" tabindex="-1"></div>
+                          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-view__content ignore-empty" tabindex="-1"></div>
                         </quick-view>
                       </details>
                     </quick-view-drawer>
@@ -113,9 +113,11 @@
                         show_vendor: section.settings.show_vendor,
                         show_rating: section.settings.show_rating,
                         enable_quick_view: false,
+                        enable_similar_products: false,
                         enable_color_swatches: section.settings.enable_color_swatches,
                         enable_countdown: section.settings.enable_countdown,
-                        enable_image_fill: section.settings.enable_image_fill
+                        enable_image_fill: section.settings.enable_image_fill,
+                        show_product_highlights: section.settings.show_product_highlights
                       %}
                     {%- else -%}
                       {%- liquid
@@ -462,6 +464,13 @@
       "label": "t:sections.all.product_card.enable_countdown.label"
     },
     {
+      "type": "checkbox",
+      "id": "show_product_highlights",
+      "default": false,
+      "label": "t:sections.all.product_card.show_product_highlights.label",
+      "info": "t:sections.all.product_card.show_product_highlights.info"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.colors.header.content"
     },
@@ -469,7 +478,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

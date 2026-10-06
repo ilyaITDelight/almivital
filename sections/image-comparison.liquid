@@ -62,10 +62,10 @@
             <div class="media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
               {%- liquid
                 if before_image.settings.image_mobile == blank
-                  echo before_image.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
+                  echo before_image.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image'
                 else
-                  echo before_image.settings.image_mobile | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'medium-hide large-up-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
-                  echo before_image.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'small-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
+                  echo before_image.settings.image_mobile | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'medium-hide large-up-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image'
+                  echo before_image.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'small-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image'
                 endif
               -%}
               </div>
@@ -91,10 +91,10 @@
             <div class="media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
               {%- liquid
                 if after_image.settings.image_mobile == blank
-                  echo after_image.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
+                  echo after_image.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image'
                 else
-                  echo after_image.settings.image_mobile | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'medium-hide large-up-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
-                  echo after_image.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'small-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', is: 'lazy-image'
+                  echo after_image.settings.image_mobile | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'medium-hide large-up-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image'
+                  echo after_image.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', class: 'small-hide', sizes: sizes, widths: '375, 750, 1100, 1500, 2000, 2400', is: 'lazy-image'
                 endif
               -%}
               </div>
@@ -353,7 +353,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

@@ -2,6 +2,7 @@
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --rich-text-measure: {{ section.settings.content_max_width | default: 726 }}px;
     {%- if section.settings.use_custom_colors %}
       --gradient-background: {% if section.settings.gradient_background != blank %}{{ section.settings.gradient_background }}{% else %}{{ section.settings.colors_background }}{% endif %};
       --color-background: {{ section.settings.colors_background.red }}, {{ section.settings.colors_background.green }}, {{ section.settings.colors_background.blue }};
@@ -32,6 +33,31 @@
   endif
 -%}
 
+{%- liquid
+  assign banner_count = 0
+-%}
+{%- capture all_banners -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'inline_banner' -%}
+      {%- if banner_count > 0 -%}<!--banner-split-->{%- endif -%}
+      <span class="rich-text__inline-banner" style="--inline-banner-height: {{ block.settings.image_height }}px; --inline-banner-radius: {{ block.settings.border_radius }}; --banner-index: {{ banner_count }};{% if block.settings.image != blank %} --inline-banner-aspect-ratio: {{ block.settings.image.aspect_ratio }};{% endif %}" {{ block.shopify_attributes }}>
+        {%- if block.settings.banner_link != blank -%}<a href="{{ block.settings.banner_link }}" class="rich-text__inline-banner-link">{%- endif -%}
+          <span class="media media--hover-effect">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: height: 300 | image_tag: loading: 'lazy', class: 'motion-reduce' }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </span>
+        {%- if block.settings.banner_link != blank -%}</a>{%- endif -%}
+      </span>
+      {%- assign banner_count = banner_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign banner_htmls = all_banners | split: '<!--banner-split-->' -%}
+{%- assign banner_index = 0 -%}
+
 {%- if section.settings.show_divider %}<div class="section--divider">{% endif -%}
   <div class="page-width{% if section.settings.narrow %} page-width--inner{% endif %}">
     <div class="rich-text section--padding{{ custom_class }}">
@@ -40,28 +66,71 @@
           {%- case block.type -%}
             {%- when 'heading' -%}
               <{{ block.settings.heading_tag }} class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-                {%- render 'highlight-text', 
-                  hl_input: block.settings.heading, 
-                  hl_style: block.settings.highlight_style,
-                  hl_enable: block.settings.enable_highlight,
-                  hl_animateWrap: true -%}
+                {%- capture block_content -%}
+                  {%- render 'highlight-text',
+                    hl_input: block.settings.heading,
+                    hl_style: block.settings.highlight_style,
+                    hl_enable: block.settings.enable_highlight,
+                    hl_animateWrap: true -%}
+                {%- endcapture -%}
+                {%- if block_content contains '[image]' -%}
+                  {%- assign parts = block_content | split: '[image]' -%}
+                  {%- for part in parts -%}
+                    {{- part -}}
+                    {%- unless forloop.last -%}
+                      {{ banner_htmls[banner_index] }}
+                      {%- assign banner_index = banner_index | plus: 1 -%}
+                    {%- endunless -%}
+                  {%- endfor -%}
+                {%- else -%}
+                  {{ block_content }}
+                {%- endif -%}
               </{{ block.settings.heading_tag }}>
             {%- when 'subheading' -%}
               <p class="rich-text__subheading{% if block.settings.secondary_color %} rich-text__subheading--colored{% endif %} {{ block.settings.subheading_size }}" {{ block.shopify_attributes }}>
-                {%- render 'highlight-text', 
-                  hl_input: block.settings.subheading, 
-                  hl_style: block.settings.highlight_style,
-                  hl_enable: block.settings.enable_highlight,
-                  hl_animateWrap: true -%}
+                {%- capture block_content -%}
+                  {%- render 'highlight-text',
+                    hl_input: block.settings.subheading,
+                    hl_style: block.settings.highlight_style,
+                    hl_enable: block.settings.enable_highlight,
+                    hl_animateWrap: true -%}
+                {%- endcapture -%}
+                {%- if block_content contains '[image]' -%}
+                  {%- assign parts = block_content | split: '[image]' -%}
+                  {%- for part in parts -%}
+                    {{- part -}}
+                    {%- unless forloop.last -%}
+                      {{ banner_htmls[banner_index] }}
+                      {%- assign banner_index = banner_index | plus: 1 -%}
+                    {%- endunless -%}
+                  {%- endfor -%}
+                {%- else -%}
+                  {{ block_content }}
+                {%- endif -%}
               </p>
             {%- when 'text' -%}
               <div class="rich-text__text{% if block.settings.secondary_color %} rich-text__text--colored{% endif %} {{ block.settings.text_size }} rte" {{ block.shopify_attributes }}>
-                {%- render 'highlight-text', 
-                  hl_input: block.settings.text, 
-                  hl_style: block.settings.highlight_style,
-                  hl_enable: block.settings.enable_highlight,
-                  hl_animateWrap: true -%}
+                {%- capture block_content -%}
+                  {%- render 'highlight-text',
+                    hl_input: block.settings.text,
+                    hl_style: block.settings.highlight_style,
+                    hl_enable: block.settings.enable_highlight,
+                    hl_animateWrap: true -%}
+                {%- endcapture -%}
+                {%- if block_content contains '[image]' -%}
+                  {%- assign parts = block_content | split: '[image]' -%}
+                  {%- for part in parts -%}
+                    {{- part -}}
+                    {%- unless forloop.last -%}
+                      {{ banner_htmls[banner_index] }}
+                      {%- assign banner_index = banner_index | plus: 1 -%}
+                    {%- endunless -%}
+                  {%- endfor -%}
+                {%- else -%}
+                  {{ block_content }}
+                {%- endif -%}
               </div>
+            {%- when 'inline_banner' -%}
             {%- when 'custom_liquid' -%}
               <div class="rich-text__text rte" {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
             {%- when 'button' -%}
@@ -101,6 +170,27 @@
     </div>
   </div>
 {%- if section.settings.show_divider %}</div>{% endif -%}
+
+{%- if banner_count > 0 -%}
+  <script>
+    (function() {
+      var section = document.getElementById('shopify-section-{{ section.id }}');
+      if (!section) return;
+      var richText = section.querySelector('.rich-text');
+      if (!richText) return;
+      richText.setAttribute('data-animate-banners', '');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            richText.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(richText);
+    })();
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -161,6 +251,16 @@
       "label": "t:sections.all.narrow.label"
     },
     {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 480,
+      "max": 900,
+      "step": 6,
+      "unit": "t:sections.all.padding.padding_top.unit",
+      "label": "t:sections.rich-text.settings.content_max_width.label",
+      "default": 726
+    },
+    {
       "type": "checkbox",
       "id": "show_divider",
       "default": false,
@@ -186,7 +286,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -204,7 +304,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "color_background",
@@ -555,6 +655,42 @@
           ],
           "default": "marker",
           "label": "t:sections.all.highlight.style.label"
+        }
+      ]
+    },
+    {
+      "type": "inline_banner",
+      "name": "t:sections.rich-text.blocks.inline_banner.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.all.image.label"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "t:sections.all.button_link.label"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.rich-text.blocks.inline_banner.settings.border_radius.label",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "min": 30,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "t:sections.rich-text.blocks.inline_banner.settings.image_height.label",
+          "default": 80
         }
       ]
     },

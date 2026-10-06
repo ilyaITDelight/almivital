@@ -93,6 +93,9 @@
       <span id="ProductImages"></span>
       <media-gallery id="MediaGallery-{{ section.id }}" role="region"{% if section.settings.enable_sticky_info %} class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
         <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+        {%- if section.settings.show_gallery_badges -%}
+          {%- render 'product-badges', product: product -%}
+        {%- endif -%}
         <use-animate data-animate="zoom-fade">
           <product-gallery id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter slider-mobile--overlay">
             <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
@@ -680,6 +683,60 @@
             {%- endif -%}
           {%- when 'description' -%}
             <div class="product__description rte" {{ block.shopify_attributes }}>{{ product.description }}</div>
+          {%- when 'highlights' -%}
+            {%- if product.metafields.theme.highlights.value != blank -%}
+              <div class="product__highlights-block"
+                style="padding-top: {{ block.settings.padding_top }}px; padding-bottom: {{ block.settings.padding_bottom }}px;"
+                {{ block.shopify_attributes }}>
+                {%- liquid
+                  assign hl_class = ''
+                  assign hl_style = settings.highlights_style_product | default: 'auto'
+                  if hl_style == 'auto'
+                    assign hl_style = settings.highlights_style | default: 'strip'
+                  endif
+                  unless hl_style == 'strip' or hl_style == 'sheet'
+                    assign hl_class = ' card-information__highlights--chips'
+                  endunless
+                  if hl_style == 'sheet'
+                    assign hl_class = ' card-information__highlights--sheet'
+                  elsif hl_style == 'grid'
+                    assign hl_class = hl_class | append: ' card-information__highlights--grid'
+                  elsif hl_style == 'pills'
+                    assign hl_class = hl_class | append: ' card-information__highlights--pills'
+                  endif
+                -%}
+                <div id="ProductHighlights-{{ block.id }}" class="product__highlights card-information__highlights{{ hl_class }}"{% unless hl_style == 'grid' or hl_style == 'pills' or hl_style == 'sheet' %} data-hover-scroll{% endunless %}>
+                  {%- for highlight in product.metafields.theme.highlights.value -%}
+                    {%- assign highlight_parts = highlight | split: '|' -%}
+                    {%- assign highlight_label = highlight_parts[0] | strip -%}
+                    {%- assign highlight_value = highlight_parts[1] | strip -%}
+                    {%- assign highlight_icon = highlight_parts[2] | strip -%}
+                    {%- if highlight_value != blank -%}
+                      <div class="card-information__highlight">
+                        <span class="card-information__highlight-value">
+                          {%- if highlight_icon != blank -%}
+                            <span class="card-information__highlight-icon">
+                              {% render 'icon', icon: highlight_icon %}
+                            </span>
+                          {%- endif -%}
+                          {{ highlight_value | escape }}
+                        </span>
+                        <span class="card-information__highlight-label">{{ highlight_label | escape }}</span>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+              {%- if block.settings.use_custom_colors -%}
+                {%- style -%}
+                  #ProductHighlights-{{ block.id }} {
+                    --hl-text-rgb: {{ block.settings.colors_text.red }}, {{ block.settings.colors_text.green }}, {{ block.settings.colors_text.blue }};
+                    --hl-text: {{ block.settings.colors_text }};
+                    --hl-bg: {{ block.settings.colors_background }};
+                  }
+                {%- endstyle -%}
+              {%- endif -%}
+            {%- endif -%}
           {%- when 'custom_liquid' -%}
             <div class="custom__liquid custom__liquid-{{ section.id }}" id="custom__liquid-{{ section.id }}-{{ block.id }}" {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
           {%- when 'collapsible_description' -%}
@@ -884,7 +941,7 @@
                 <div id="countdown-{{ block.id }}" class="product-countdown product-countdown--{{ block.settings.number_size }}">
                   {%- if block.settings.heading != blank -%}
                     <p class="h4">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M381.2 172.8C377.1 164.9 368.9 160 360 160h-156.6l50.84-127.1c2.969-7.375 2.062-15.78-2.406-22.38S239.1 0 232 0h-176C43.97 0 33.81 8.906 32.22 20.84l-32 240C-.7179 267.7 1.376 274.6 5.938 279.8C10.5 285 17.09 288 24 288h146.3l-41.78 194.1c-2.406 11.22 3.469 22.56 14 27.09C145.6 511.4 148.8 512 152 512c7.719 0 15.22-3.75 19.81-10.44l208-304C384.8 190.2 385.4 180.7 381.2 172.8z"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="15" height="20"><path d="M381.2 172.8C377.1 164.9 368.9 160 360 160h-156.6l50.84-127.1c2.969-7.375 2.062-15.78-2.406-22.38S239.1 0 232 0h-176C43.97 0 33.81 8.906 32.22 20.84l-32 240C-.7179 267.7 1.376 274.6 5.938 279.8C10.5 285 17.09 288 24 288h146.3l-41.78 194.1c-2.406 11.22 3.469 22.56 14 27.09C145.6 511.4 148.8 512 152 512c7.719 0 15.22-3.75 19.81-10.44l208-304C384.8 190.2 385.4 180.7 381.2 172.8z"/></svg>
                       {{- block.settings.heading | escape -}}
                     </p>
                   {%- endif -%}
@@ -905,7 +962,7 @@
               <hr/>
             </div>
           {%- when 'spacing' -%}
-            <div class="spacing-section" style="--spacing-section-desktop: {{ block.settings.desktop_height }}px; --spacing-section-mobile: {{ block.settings.mobile_height }}px;" {{ block.shopify_attributes }}></div>
+            <div class="spacing-section ignore-empty" style="--spacing-section-desktop: {{ block.settings.desktop_height }}px; --spacing-section-mobile: {{ block.settings.mobile_height }}px;" {{ block.shopify_attributes }}></div>
           {%- when 'breadcrumb' -%}
             <div class="breadcrumb-wrapper" {{ block.shopify_attributes }}>
               {% render 'breadcrumbs', text_style: block.settings.text_style, show_divider: block.settings.show_divider %}
@@ -1057,7 +1114,7 @@
   {%- assign sticky_cart = section.blocks | where: "type", "sticky_cart" | first -%}
   {%- if sticky_cart -%}
     <link rel="stylesheet" href="{{ 'component-product-sticky-cart.css' | asset_url }}" media="print" onload="this.media='all'">
-    <animate-sticky class="sticky-cart-wrapper hidden">
+    <animate-sticky class="sticky-cart-wrapper hidden"{% if sticky_cart.settings.follow_buy_buttons %} data-follow="ProductBuyButtons-{{ section.id }}"{% endif %}>
       <span class="sticky-cart-block" {{ sticky_cart.shopify_attributes }}></span>
       <div class="product-sticky-cart" id="sticky-cart-{{ section.id }}">
         <div class="sticky-cart page-width">
@@ -1888,6 +1945,63 @@
       "limit": 1
     },
     {
+      "type": "highlights",
+      "name": "t:sections.main-product.blocks.highlights.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-product.blocks.highlights.settings.info.content"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.colors.header.content"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_custom_colors",
+          "default": false,
+          "label": "t:sections.all.colors.use_custom_colors.label"
+        },
+        {
+          "type": "color",
+          "id": "colors_text",
+          "label": "t:sections.all.colors.colors_text.label",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "colors_background",
+          "label": "t:sections.all.colors.colors_background.label",
+          "default": "#f4f4f4"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.padding.header.content"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "t:sections.all.padding.padding_top.unit",
+          "label": "t:sections.all.padding.padding_top.label",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "t:sections.all.padding.padding_bottom.unit",
+          "label": "t:sections.all.padding.padding_bottom.label",
+          "default": 0
+        }
+      ]
+    },
+    {
       "type": "share",
       "name": "t:sections.main-product.blocks.share.name",
       "limit": 1,
@@ -2396,7 +2510,29 @@
             {
               "value": "washing",
               "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__44.label"
-            }
+            },
+            { "value": "drop", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__23.label" },
+            { "value": "sun", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__25.label" },
+            { "value": "clock", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__26.label" },
+            { "value": "shield", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__27.label" },
+            { "value": "sparkle", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__28.label" },
+            { "value": "flask", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__29.label" },
+            { "value": "scale", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__32.label" },
+            { "value": "flame", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__33.label" },
+            { "value": "star-line", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__34.label" },
+            { "value": "smile", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__36.label" },
+            { "value": "rabbit", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__37.label" },
+            { "value": "flower", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__38.label" },
+            { "value": "sprout", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__39.label" },
+            { "value": "pipette", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__40.label" },
+            { "value": "jar", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__41.label" },
+            { "value": "spray", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__42.label" },
+            { "value": "moon", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__43.label" },
+            { "value": "percent", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__44.label" },
+            { "value": "award", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__45.label" },
+            { "value": "feather", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__46.label" },
+            { "value": "thermometer", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__47.label" },
+            { "value": "heart-pulse", "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__48.label" }
           ],
           "default": "none",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
@@ -3068,6 +3204,13 @@
           "id": "show_quantity_selector",
           "default": true,
           "label": "t:sections.main-product.blocks.sticky_cart.settings.show_quantity_selector.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "follow_buy_buttons",
+          "default": false,
+          "label": "t:sections.main-product.blocks.sticky_cart.settings.follow_buy_buttons.label",
+          "info": "t:sections.main-product.blocks.sticky_cart.settings.follow_buy_buttons.info"
         }
       ]
     },
@@ -3223,6 +3366,13 @@
       "default": false,
       "label": "t:sections.main-product.settings.hide_variants.label",
       "info": "t:sections.main-product.settings.hide_variants.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gallery_badges",
+      "default": false,
+      "label": "t:sections.main-product.settings.show_gallery_badges.label",
+      "info": "t:sections.main-product.settings.show_gallery_badges.info"
     },
     {
       "type": "checkbox",

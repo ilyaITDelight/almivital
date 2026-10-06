@@ -148,7 +148,7 @@
                           </a>
                         </div>
                         {%- for t_value in available_option_values -%}
-                          <div>
+                          <div class="ignore-empty">
                           {%- liquid
                             if via_metafield == true
                               assign t_metafield_ref = t_product.metafields[criteria_metafield_namespace][criteria_metafield_key].value
@@ -173,7 +173,7 @@
                         </div>
                         {%- assign block_idx = forloop.index -%}
                         {%- for j in (1..5) %}
-                          <div>
+                          <div class="ignore-empty">
                             {%- assign mod = block_idx | plus: j | modulo: 2 -%}
                             {%- if mod == 0 %}
                               <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
@@ -397,7 +397,7 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -415,7 +415,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#faeaa1"
+      "default": "#DFFF4F"
     },
     {
       "type": "color",

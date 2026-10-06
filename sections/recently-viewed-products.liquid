@@ -1,3 +1,18 @@
+{%- liquid
+  # The gutter belongs to the wrapper while the row stays in the page
+  # column, and to the list once it bleeds, because only padding on the
+  # scroll container survives past the margin. The heading keeps the column
+  # either way.
+  assign outer_width = ' page-width'
+  assign inner_width = ''
+  assign grid_bleed = ''
+  if section.settings.edge_to_edge
+    assign outer_width = ''
+    assign inner_width = ' page-width'
+    assign grid_bleed = ' slider--bleed'
+  endif
+-%}
+
 {%- style -%}
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
@@ -25,15 +40,15 @@
 <recently-viewed-products class="recently-viewed-products" data-url="{{ routes.search_url }}?section_id={{ section.id }}&type=product&q="{% if request.page_type == 'product' %} data-product-id="{{ product.id }}"{% endif %}>
   {%- if request.page_type == 'search' and search.performed and search.results_count > 0 -%}
     <div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
-      <div class="page-width">
-        <div class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} {{ section.settings.heading_alignment }}">
+      <div class="{{ outer_width | strip }}">
+        <div class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} {{ section.settings.heading_alignment }}{{ inner_width }}">
           <{{ section.settings.heading_tag }} class="title {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
         </div>
         
         {%- assign parsed_terms = search.terms | split: ' OR ' -%}
         <slider-component class="slider-mobile-gutter">
           <ul id="Slider-{{ section.id }}"
-            class="product-grid flex-grid{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %} flex-grid--2-col flex-grid--3-col-tablet flex-grid--4-col-desktop{% if section.settings.swipe_on_mobile %} slider slider--tablet{% endif %} slider--tablet-up"
+            class="product-grid flex-grid{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %} flex-grid--2-col flex-grid--3-col-tablet flex-grid--4-col-desktop{% if section.settings.swipe_on_mobile %} slider slider--tablet slider--tablet-up{% endif %}{{ grid_bleed }}"
             role="list"
           >
             {%- for parsed_term in parsed_terms -%}
@@ -53,7 +68,8 @@
                       enable_quick_view: section.settings.enable_quick_view,
                       enable_color_swatches: section.settings.enable_color_swatches,
                       enable_countdown: section.settings.enable_countdown,
-                      enable_image_fill: section.settings.enable_image_fill
+                      enable_image_fill: section.settings.enable_image_fill,
+                      show_product_highlights: section.settings.show_product_highlights
                     %}
                   </li>
                   {%- break -%}
@@ -76,6 +92,13 @@
     {
       "type": "paragraph",
       "content": "t:sections.recently-viewed-products.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "edge_to_edge",
+      "default": false,
+      "label": "t:sections.all.edge_to_edge.label",
+      "info": "t:sections.all.edge_to_edge.info"
     },
     {
       "type": "checkbox",
@@ -330,6 +353,13 @@
       "id": "enable_countdown",
       "default": true,
       "label": "t:sections.all.product_card.enable_countdown.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_highlights",
+      "default": false,
+      "label": "t:sections.all.product_card.show_product_highlights.label",
+      "info": "t:sections.all.product_card.show_product_highlights.info"
     },
     {
       "type": "header",

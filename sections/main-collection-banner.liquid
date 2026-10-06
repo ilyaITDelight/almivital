@@ -18,10 +18,12 @@
       <div class="collection-hero__image-container">
         <use-animate data-animate="zoom-fade" class="media-wrapper">
           <div class="collection-hero__image image-animate media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
-            {{ collection.image | image_url: width: 3840 | image_tag:
+            {%- capture banner_sizes -%}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 40 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw{%- endcapture -%}
+            {{ collection.image | image_url: width: 2400 | image_tag:
               loading: 'eager',
-              sizes: '100vw',
-              widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+              fetchpriority: 'high',
+              sizes: banner_sizes,
+              widths: '375, 750, 1100, 1500, 2000, 2400',
               is: 'lazy-image'
             }}
           </div>

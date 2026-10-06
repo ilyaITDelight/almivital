@@ -128,8 +128,11 @@
           <ul id="product-grid" data-id="{{ section.id }}" class="product-grid {{ grid_class }}" role="list">
             {%- for product in collection.products -%}
               {%- liquid
+                comment
+                  Eager-load the first grid row (desktop: 4 across, mobile: 2 rows) — it is above the fold and the likely LCP.
+                endcomment
                 assign lazy_load = true
-                if forloop.first
+                if forloop.index <= 4
                   assign lazy_load = false
                 endif
               -%}
@@ -146,7 +149,9 @@
                   enable_color_swatches: section.settings.enable_color_swatches,
                   enable_countdown: section.settings.enable_countdown,
                   enable_image_fill: section.settings.enable_image_fill,
-                  lazy_load: lazy_load
+                  show_product_highlights: section.settings.show_product_highlights,
+                  lazy_load: lazy_load,
+                  columns_mobile: section.settings.columns_mobile
                 %}
               </li>
             {%- endfor -%}
@@ -424,6 +429,13 @@
       "label": "t:sections.all.product_card.enable_countdown.label"
     },
     {
+      "type": "checkbox",
+      "id": "show_product_highlights",
+      "default": false,
+      "label": "t:sections.all.product_card.show_product_highlights.label",
+      "info": "t:sections.all.product_card.show_product_highlights.info"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.padding.header.content"
     },
@@ -509,6 +521,9 @@
           "label": "t:sections.main-collection-product-grid.blocks.image.settings.link.label"
         }
       ]
+    },
+    {
+      "type": "@app"
     }
   ]
 }

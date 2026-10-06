@@ -22,79 +22,24 @@
 
 <div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
   <div class="page-width">
-    <div class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} {{ section.settings.heading_alignment }}">
+    <div
+      id="SliderNav-{{ section.id }}"
+      class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} {{ section.settings.heading_alignment }}"
+    >
       <{{ section.settings.heading_tag }} class="title {{ section.settings.heading_size }}">
-        {%- render 'highlight-text', 
-          hl_input: section.settings.heading, 
+        {%- render 'highlight-text',
+          hl_input: section.settings.heading,
           hl_style: section.settings.highlight_style,
           hl_enable: section.settings.enable_highlight,
           hl_animateWrap: true -%}
       </{{ section.settings.heading_tag }}>
-    </div>
 
-    {%- liquid
-      assign products_to_display = section.settings.collection.all_products_count
-
-      if section.settings.collection.all_products_count > section.settings.products_to_show
-        assign products_to_display = section.settings.products_to_show
-      endif
-
-      assign class_slider = 'slider'
-      if section.settings.swipe_on_mobile
-        assign class_slider = class_slider | append: ' slider--tablet'
-      endif
-      assign class_grid_2_col_tablet = 'flex-grid--2-col-tablet'
-      assign class_grid_3_col_tablet = 'flex-grid--3-col-tablet'
-      assign class_grid_3_col_desktop = 'flex-grid--3-col-desktop'
-      assign class_grid_4_col_desktop = 'flex-grid--4-col-desktop'
-      assign disable_image_click = false
-
-      if section.settings.horizontal_scroll
-        assign class_grid_2_col_tablet = 'flex-grid--2p3-col-tablet'
-        assign class_grid_3_col_tablet = 'flex-grid--3p3-col-tablet'
-        assign class_grid_3_col_desktop = 'flex-grid--3p3-col-desktop'
-        assign class_grid_4_col_desktop = 'flex-grid--4p3-col-desktop'
-        assign class_slider = class_slider | append: ' slider--tablet-up'
-        if section.settings.products_to_show > 4 and section.settings.enable_drag
-          assign disable_image_click = true
-          assign class_slider = class_slider | append: ' cursor--drag'
-        endif
-      endif
-    %}
-
-    <div class="slider-mobile-gutter">
-      <ul id="Slider-{{ section.id }}"
-        class="product-grid flex-grid flex-grid--rigid{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %} flex-grid--2-col{% if section.settings.collection == blank or products_to_display == 4 and section.settings.swipe_on_mobile == false %} {{ class_grid_2_col_tablet }} {{ class_grid_4_col_desktop }}{% else %} {{ class_grid_3_col_tablet }}{% if products_to_display == 6 %} {{ class_grid_3_col_desktop }}{% else %} {{ class_grid_4_col_desktop }}{% endif %}{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.products_to_show > 2 %} {{ class_slider }}{% endif %}{% if section.settings.collection == blank %} {{ class_slider }}{% endif %}"
-        role="list"{% if section.settings.horizontal_scroll %} is="scroll-snap-slider" data-draggable="{{ section.settings.enable_drag }}"{% endif %}
-      >
-        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-          <li id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="flex-grid__item{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %}"
-          >
-            {% render 'card-product',
-              card_product: product,
-              card_collection: section.settings.collection,
-              media_size: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_quick_buy: section.settings.show_quick_buy,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              enable_quick_view: section.settings.enable_quick_view,
-              enable_color_swatches: section.settings.enable_color_swatches,
-              enable_countdown: section.settings.enable_countdown,
-              enable_image_fill: section.settings.enable_image_fill,
-              disable_image_click: disable_image_click
-            %}
-          </li>
-        {%- else -%}
-          {%- for i in (1..4) -%}
-            <li class="flex-grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}">
-              {% render 'card-product-placeholder', media_size: section.settings.image_ratio %}
-            </li>
-          {%- endfor -%}
-        {%- endfor -%}
-      </ul>
-      {% if section.settings.horizontal_scroll %}
+      {%- comment -%}
+        The controls sit in the heading row so they keep the page gutter while the
+        row itself runs past it. data-controls on the list names this container,
+        so a section holding several sliders never binds one to another's buttons.
+      {%- endcomment -%}
+      {% if section.settings.horizontal_scroll and section.settings.heading != blank %}
         <div class="slider-buttons no-js-hidden small-hide{% if section.settings.products_to_show <= 4 %} large-up-hide{% if section.settings.products_to_show <= 3 %} medium-hide{% endif %}{% endif %}">
           <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" disabled="disabled">
             {% render 'icon', icon: 'arrow' %}
@@ -105,18 +50,129 @@
         </div>
       {% endif %}
     </div>
-
-    {%- if section.settings.show_view_all and section.settings.collection.all_products_count > section.settings.products_to_show -%}
-      <div class="view-all center">
-        <a href="{{ section.settings.collection.url }}"
-          class="button"
-          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}"
-        >
-          {{ 'sections.featured_collection.view_all' | t }}
-        </a>
-      </div>
-    {%- endif -%}
   </div>
+
+  {%- liquid
+    # Product source: a manually picked product list overrides the collection.
+    assign featured_products = section.settings.collection.products
+    assign featured_count = section.settings.collection.all_products_count
+    assign use_product_list = false
+    if section.settings.product_list != blank and section.settings.product_list.size > 0
+      assign featured_products = section.settings.product_list
+      assign featured_count = section.settings.product_list.size
+      assign use_product_list = true
+    endif
+
+    assign featured_is_empty = false
+    if featured_count == 0
+      assign featured_is_empty = true
+    endif
+
+    assign products_to_display = featured_count
+
+    if featured_count > section.settings.products_to_show
+      assign products_to_display = section.settings.products_to_show
+    endif
+
+    assign class_slider = 'slider'
+    if section.settings.swipe_on_mobile
+      assign class_slider = class_slider | append: ' slider--tablet'
+    endif
+    assign class_grid_2_col_tablet = 'flex-grid--2-col-tablet'
+    assign class_grid_3_col_tablet = 'flex-grid--3-col-tablet'
+    assign class_grid_3_col_desktop = 'flex-grid--3-col-desktop'
+    assign class_grid_4_col_desktop = 'flex-grid--4-col-desktop'
+    assign disable_image_click = false
+
+    if section.settings.horizontal_scroll
+      assign class_grid_2_col_tablet = 'flex-grid--2p3-col-tablet'
+      assign class_grid_3_col_tablet = 'flex-grid--3p3-col-tablet'
+      assign class_grid_3_col_desktop = 'flex-grid--3p3-col-desktop'
+      assign class_grid_4_col_desktop = 'flex-grid--4p3-col-desktop'
+      assign class_slider = class_slider | append: ' slider--tablet-up'
+      if section.settings.heading != blank
+        assign class_slider = class_slider | append: ' slider--has-controls'
+      endif
+      if section.settings.products_to_show > 4 and section.settings.enable_drag
+        assign disable_image_click = true
+        assign class_slider = class_slider | append: ' cursor--drag'
+      endif
+    endif
+
+    # The gutter belongs to the wrapper while the row stays in the page column,
+    # and to the list itself once it bleeds: the list is the scroll container,
+    # and only padding on the scroll container lets the row run past the margin
+    # rather than be clipped at it. Applied whether or not the row scrolls, so a
+    # wrapped grid keeps the same column width either way.
+    assign wrapper_width = ' page-width'
+    assign class_bleed = ''
+    if section.settings.edge_to_edge
+      assign wrapper_width = ''
+      assign class_bleed = ' slider--bleed'
+    endif
+  %}
+
+  <div class="slider-mobile-gutter{{ wrapper_width }}">
+    <ul id="Slider-{{ section.id }}"
+      class="product-grid flex-grid flex-grid--rigid{% if section.settings.columns_mobile == '1' %} flex-grid--1-col-mobile{% endif %} flex-grid--2-col{% if featured_is_empty or products_to_display == 4 and section.settings.swipe_on_mobile == false %} {{ class_grid_2_col_tablet }} {{ class_grid_4_col_desktop }}{% else %} {{ class_grid_3_col_tablet }}{% if products_to_display == 6 %} {{ class_grid_3_col_desktop }}{% else %} {{ class_grid_4_col_desktop }}{% endif %}{% endif %}{% if featured_count > 2 and section.settings.products_to_show > 2 %} {{ class_slider }}{% endif %}{% if featured_is_empty %} {{ class_slider }}{% endif %}{{ class_bleed }}"
+      role="list"{% if section.settings.horizontal_scroll %} is="scroll-snap-slider" data-draggable="{{ section.settings.enable_drag }}" data-controls="SliderNav-{{ section.id }}"{% endif %}
+    >
+      {%- for product in featured_products limit: section.settings.products_to_show -%}
+        {%- liquid
+          comment
+            Eager-load the first row when the section sits near the top of the page (LCP).
+          endcomment
+          assign lazy_load = true
+          if section.index != blank and section.index <= 2 and forloop.index <= 4
+            assign lazy_load = false
+          endif
+        -%}
+        <li id="Slide-{{ section.id }}-{{ forloop.index }}"
+          class="flex-grid__item{% if featured_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %}"
+        >
+          {% render 'card-product',
+            card_product: product,
+            card_collection: section.settings.collection,
+            media_size: section.settings.image_ratio,
+            show_secondary_image: section.settings.show_secondary_image,
+            show_quick_buy: section.settings.show_quick_buy,
+            show_vendor: section.settings.show_vendor,
+            show_rating: section.settings.show_rating,
+            enable_quick_view: section.settings.enable_quick_view,
+            enable_color_swatches: section.settings.enable_color_swatches,
+            enable_countdown: section.settings.enable_countdown,
+            enable_image_fill: section.settings.enable_image_fill,
+            show_product_highlights: section.settings.show_product_highlights,
+            highlights_style_override: section.settings.highlights_style,
+            disable_image_click: disable_image_click,
+            lazy_load: lazy_load,
+            columns_mobile: section.settings.columns_mobile
+          %}
+        </li>
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <li class="flex-grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}">
+            {% render 'card-product-placeholder', media_size: section.settings.image_ratio %}
+          </li>
+        {%- endfor -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  {%- if section.settings.show_view_all and use_product_list == false and section.settings.collection.all_products_count > section.settings.products_to_show -%}
+    {%- comment -%}
+      page-width sits on .view-all itself so it stays the slider's next sibling,
+      which is what carries the gap between them.
+    {%- endcomment -%}
+    <div class="view-all center page-width">
+      <a href="{{ section.settings.collection.url }}"
+        class="button"
+        aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}"
+      >
+        {{ 'sections.featured_collection.view_all' | t }}
+      </a>
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -129,6 +185,13 @@
       "type": "collection",
       "id": "collection",
       "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "limit": 12,
+      "label": "t:sections.featured-collection.settings.product_list.label",
+      "info": "t:sections.featured-collection.settings.product_list.info"
     },
     {
       "type": "range",
@@ -144,6 +207,13 @@
       "id": "horizontal_scroll",
       "default": false,
       "label": "t:sections.all.horizontal_scroll_on_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "edge_to_edge",
+      "default": false,
+      "label": "t:sections.all.edge_to_edge.label",
+      "info": "t:sections.all.edge_to_edge.info"
     },
     {
       "type": "checkbox",
@@ -421,6 +491,27 @@
       "label": "t:sections.all.product_card.enable_countdown.label"
     },
     {
+      "type": "checkbox",
+      "id": "show_product_highlights",
+      "default": false,
+      "label": "t:sections.all.product_card.show_product_highlights.label",
+      "info": "t:sections.all.product_card.show_product_highlights.info"
+    },
+    {
+      "type": "select",
+      "id": "highlights_style",
+      "options": [
+        { "value": "auto", "label": "t:settings_schema.product_tiles.settings.highlights_style_product.options__1.label" },
+        { "value": "strip", "label": "t:settings_schema.product_tiles.settings.highlights_style.options__1.label" },
+        { "value": "chips", "label": "t:settings_schema.product_tiles.settings.highlights_style.options__2.label" },
+        { "value": "grid", "label": "t:settings_schema.product_tiles.settings.highlights_style.options__3.label" },
+        { "value": "pills", "label": "t:settings_schema.product_tiles.settings.highlights_style.options__4.label" },
+        { "value": "sheet", "label": "t:settings_schema.product_tiles.settings.highlights_style.options__5.label" }
+      ],
+      "default": "auto",
+      "label": "t:settings_schema.product_tiles.settings.highlights_style.label"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.colors.header.content"
     },
@@ -428,7 +519,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",

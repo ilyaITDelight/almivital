@@ -3,6 +3,17 @@
   assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
   assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
   assign header_font_bold = settings.type_header_font | font_modify: 'weight', '600'
+  # Small headings and prices ask for weight 400 in the heading family; with
+  # only the merchant's chosen cut loaded, the browser substitutes the
+  # nearest heavier face and quietly bolds them. The regular cut keeps a
+  # 400 request meaning 400.
+  assign header_font_regular = settings.type_header_font | font_modify: 'weight', '400'
+  # The nav bold option rides the 600 cut these fonts already load for strong
+  # text — no extra font request. Families without a 600 cut render as auto.
+  assign nav_font_bold = body_font_bold
+  if settings.type_navigation_font == 'heading'
+    assign nav_font_bold = header_font_bold
+  endif
   assign button_font_baseline = settings.type_header_font.baseline_ratio | times: 10 | round
   if settings.type_button_font == 'body'
     assign button_font_baseline = settings.type_body_font.baseline_ratio | times: 10 | round
@@ -13,6 +24,12 @@
   if color_background_brightness > 125
     assign color_background_dark = settings.colors_background | color_darken: 8
   endif
+
+  if color_background_brightness > 125
+    assign color_border_strong = settings.colors_border | color_darken: 28
+  else
+    assign color_border_strong = settings.colors_border | color_lighten: 28
+  endif
 %}
 {%- style -%}
   {{ settings.type_body_font | font_face: font_display: 'swap' }}
@@ -21,6 +38,9 @@
   {{ body_font_bold_italic | font_face: font_display: 'swap' }}
   {{ settings.type_header_font | font_face: font_display: 'swap' }}
   {{ header_font_bold | font_face: font_display: 'swap' }}
+  {%- if header_font_regular and settings.type_header_font.weight != 400 %}
+    {{ header_font_regular | font_face: font_display: 'swap' }}
+  {%- endif %}
 
   :root {
     --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
@@ -34,6 +54,22 @@
     --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
     --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
 
+    {%- if settings.heading_size_mode == 'fluid' %}
+    --font-h0-size: clamp(4rem, 2.7rem + 4vw, 6.4rem);
+    --font-h1-size: clamp(3.2rem, 2.4rem + 2.5vw, 5rem);
+    --font-h2-size: clamp(2.4rem, 1.95rem + 1.5vw, 3.5rem);
+    --font-h3-size: clamp(1.8rem, 1.65rem + 0.55vw, 2.2rem);
+    --font-h4-size: clamp(1.6rem, 1.55rem + 0.2vw, 2rem);
+    --font-h5-size: 1.6rem;
+    {%- else %}
+    --font-h0-size: 3.6rem;
+    --font-h1-size: 2.8rem;
+    --font-h2-size: 2rem;
+    --font-h3-size: 1.7rem;
+    --font-h4-size: 1.5rem;
+    --font-h5-size: 1.2rem;
+    {%- endif %}
+
     --font-navigation-family: var(--font-{{ settings.type_navigation_font }}-family);
     --font-navigation-size: {{ settings.type_navigation_size }}px;
     --font-navigation-weight: var(--font-{{ settings.type_navigation_font }}-weight);
@@ -43,6 +79,9 @@
     --font-price-family: var(--font-{{ settings.type_price_font }}-family);
     --font-price-scale: var(--font-{{ settings.type_price_font }}-scale);
 
+    --badge-radius: {% if settings.badge_shape == 'pill' %}999px{% else %}min(var(--button-radius), 0.2rem){% endif %};
+    --badge-rotate: {{ settings.badge_rotate | default: 0 }}deg;
+
     --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
     --color-base-background: {{ settings.colors_background.red }}, {{ settings.colors_background.green }}, {{ settings.colors_background.blue }};
     --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{ settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
@@ -50,6 +89,7 @@
     --color-base-accent: {{ settings.colors_accent.red }}, {{ settings.colors_accent.green }}, {{ settings.colors_accent.blue }};
     --color-base-heading: {{ settings.colors_heading.red }}, {{ settings.colors_heading.green }}, {{ settings.colors_heading.blue }};
     --color-base-border: {{ settings.colors_border.red }}, {{ settings.colors_border.green }}, {{ settings.colors_border.blue }};
+    --color-base-border-strong: {{ color_border_strong.red }}, {{ color_border_strong.green }}, {{ color_border_strong.blue }};
     --color-placeholder: {{ settings.colors_img_background.red }}, {{ settings.colors_img_background.green }}, {{ settings.colors_img_background.blue }};
     --color-overlay: {{ settings.colors_overlay.red }}, {{ settings.colors_overlay.green }}, {{ settings.colors_overlay.blue }};
     --color-keyboard-focus: {{ settings.colors_keyboard_focus.red }}, {{ settings.colors_keyboard_focus.green }}, {{ settings.colors_keyboard_focus.blue }};
@@ -61,8 +101,15 @@
     --color-sale-price: {{ settings.colors_sale_price }};
     --color-sale-badge-background: {{ settings.colors_sale_badge_background }};
     --color-reviews: {{ settings.colors_reviews }};
-    --color-critical: #d72c0d;
-    --color-success: #008060;
+    --color-critical: #c0270b;
+    --color-success: #1f7a3a;
+
+    --color-accent-strong: 184, 132, 26;
+    --color-surface-warm: 251, 247, 241;
+    --color-surface-card: 239, 230, 220;
+    --color-warning: 168, 107, 0;
+    --color-error: 192, 39, 11;
+    --color-info: 26, 100, 240;
     --color-highlight: {{ settings.colors_highlight.red }}, {{ settings.colors_highlight.green }}, {{ settings.colors_highlight.blue }};
 
     --payment-terms-background-color: {{ settings.colors_background }};
@@ -151,6 +198,41 @@
     --sp-14: 3.5rem;
   }
 
+  {%- unless settings.heading_size_mode == 'fluid' %}
+  @media only screen and (min-width: 750px) {
+    :root {
+      --font-h0-size: 6rem;
+      --font-h1-size: 4rem;
+      --font-h2-size: 2.8rem;
+      --font-h3-size: 2rem;
+      --font-h4-size: 1.6rem;
+      --font-h5-size: 1.3rem;
+    }
+  }
+  {%- endunless %}
+
+  {%- for scheme in settings.color_schemes -%}
+    {%- assign scheme_classes = scheme_classes | append: ',.color-' | append: scheme.id -%}
+  {%- endfor -%}
+  {{ scheme_classes | remove_first: ',' }} {
+    color: rgb(var(--color-foreground));
+    background-color: rgb(var(--color-background));
+  }
+
+  {%- for scheme in settings.color_schemes -%}
+    {%- assign scheme_id = scheme.id -%}
+    {%- assign s = scheme.settings -%}
+  .color-{{ scheme_id }} {
+    --color-background: {{ s.background.red }}, {{ s.background.green }}, {{ s.background.blue }};
+    --color-foreground: {{ s.text.red }}, {{ s.text.green }}, {{ s.text.blue }};
+    --color-heading: {{ s.text.red }}, {{ s.text.green }}, {{ s.text.blue }};
+    --color-link: {{ s.secondary_button_label.red }}, {{ s.secondary_button_label.green }}, {{ s.secondary_button_label.blue }};
+    --color-button: {{ s.button.red }}, {{ s.button.green }}, {{ s.button.blue }};
+    --color-button-text: {{ s.button_label.red }}, {{ s.button_label.green }}, {{ s.button_label.blue }};
+    --color-shadow: {{ s.shadow.red }}, {{ s.shadow.green }}, {{ s.shadow.blue }};
+  }
+  {%- endfor -%}
+
   *,
   *::before,
   *::after {
@@ -167,7 +249,7 @@
     min-height: 100%;
     margin: 0;
     font-size: 1.5rem;
-    letter-spacing: 0.06rem;
+    letter-spacing: normal;
     line-height: calc(1 + 0.8 / var(--font-body-scale));
     font-family: var(--font-body-family);
     font-style: var(--font-body-style);
@@ -179,4 +261,37 @@
       font-size: 1.6rem;
     }
   }
+
+  {%- if settings.colors_sale_badge_text != blank %}
+    {%- comment -%}
+      Unset, the sale badge keeps reading its text from the surrounding
+      color scheme's background.
+    {%- endcomment -%}
+    .badge.badge--onsale {
+      color: {{ settings.colors_sale_badge_text }};
+    }
+  {%- endif %}
+
+  {%- if settings.badge_outline %}
+    {%- comment -%}
+      currentColor rims every badge with its own text color — the only
+      way a badge lighter than the image behind it keeps a shape. The
+      element selector outranks base.css's single-class border rule.
+    {%- endcomment -%}
+    span.badge {
+      border-color: currentColor;
+    }
+  {%- endif %}
+
+  {%- if settings.type_navigation_weight == 'bold' and nav_font_bold %}
+    {%- comment -%}
+      Only the top row takes the extra weight: dropdown product links share
+      the header__menu-item class and a list of bold names reads as a slab,
+      so the option stays off their tier. The doubled class outweighs
+      base.css's single-class weight rule, which loads after this style.
+    {%- endcomment -%}
+    .header__menu-item.header__menu-item--top {
+      font-weight: {{ nav_font_bold.weight }};
+    }
+  {%- endif %}
 {%- endstyle -%}

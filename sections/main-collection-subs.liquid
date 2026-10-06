@@ -1,3 +1,16 @@
+{%- liquid
+  # The gutter belongs to the wrapper while the row stays in the page
+  # column, and to the list once it bleeds, because only padding on the
+  # scroll container survives past the margin. This section renders no
+  # heading, so nothing else needs the column.
+  assign outer_width = ' page-width'
+  assign grid_bleed = ''
+  if section.settings.edge_to_edge
+    assign outer_width = ''
+    assign grid_bleed = ' slider--bleed'
+  endif
+-%}
+
 {%- style -%}
 #shopify-section-{{ section.id }} {
   --section-padding-top: {{ section.settings.padding_top }}px;
@@ -11,7 +24,7 @@
 <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
 
-<div class="section--padding page-width">
+<div class="section--padding{{ outer_width }}">
   {%- if section.settings.menu != blank -%}
     {%- liquid
       assign current_items = ''
@@ -62,7 +75,7 @@
       endif
     -%}
     <slider-component class="collection slider-mobile-gutter">
-      <ul id="Slider-{{ section.id }}" class="collection-list {{ grid_class }}{% if section.settings.apply_overlay %} collection-list--contrast{% endif %}{% if section.settings.horizontal_on_mobile %} collection-list--horizontal-mobile{% endif %} slider slider--tablet slider--tablet-up" role="list">
+      <ul id="Slider-{{ section.id }}" class="collection-list {{ grid_class }}{% if section.settings.apply_overlay %} collection-list--contrast{% endif %}{% if section.settings.horizontal_on_mobile %} collection-list--horizontal-mobile{% endif %} slider slider--tablet slider--tablet-up{{ grid_bleed }}" role="list">
         {%- for i in (1..5) -%}
           <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="flex-grid__item collection-list__item slider__slide">
             <a class="card-wrapper card card--text" href="javascript:void(0)">
@@ -226,6 +239,13 @@
   "label": "t:sections.all.image_position.label",
   "info": "t:sections.all.image_position.info"
 },
+    {
+      "type": "checkbox",
+      "id": "edge_to_edge",
+      "default": false,
+      "label": "t:sections.all.edge_to_edge.label",
+      "info": "t:sections.all.edge_to_edge.info"
+    },
 {
   "type": "checkbox",
   "id": "apply_overlay",

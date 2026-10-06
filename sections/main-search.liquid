@@ -86,6 +86,7 @@
             <label class="visually-hidden" for="Search-In-Template" aria-hidden="true">{{ 'general.search.search' | t }}</label>
             <input type="hidden" name="type" value="{{ settings.search_results }}"/>
             <input type="hidden" name="options[prefix]" value="last"/>
+            {%- render 'voice-search-button' -%}
             {%- if settings.predictive_search_enabled -%}
               <div class="predictive-search__loading-state">
                 {% render 'icon', icon: 'spinner' %}
@@ -236,6 +237,7 @@
                             enable_color_swatches: section.settings.enable_color_swatches,
                             enable_countdown: section.settings.enable_countdown,
                             enable_image_fill: section.settings.enable_image_fill,
+                            show_product_highlights: section.settings.show_product_highlights,
                             lazy_load: lazy_load
                           %}
                         {%- when 'article' -%}
@@ -595,6 +597,13 @@
       "id": "enable_countdown",
       "default": true,
       "label": "t:sections.all.product_card.enable_countdown.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_highlights",
+      "default": false,
+      "label": "t:sections.all.product_card.show_product_highlights.label",
+      "info": "t:sections.all.product_card.show_product_highlights.info"
     },
     {
       "type": "header",

@@ -57,7 +57,7 @@
     {%- unless floating and section.blocks.size == 1 %}
     <div class="promo-popup" data-position="{{ section.settings.text_box_position }}" role="dialog" aria-modal="true" aria-label="{{ 'accessibility.popup' | t }}">
       {%- if section.settings.text_box_position == 'center' -%}
-        <div class="popup-overlay" data-popup-toggle></div>
+        <div class="popup-overlay ignore-empty" data-popup-toggle></div>
       {%- endif -%}
       <div class="popup-wrapper">
         <button class="popup-close" type="button" aria-label="{{ 'accessibility.close' | t }}" data-popup-toggle>
@@ -725,7 +725,7 @@
           "type": "color",
           "id": "colors_text",
           "label": "t:sections.popup.blocks.floating.settings.colors_text.label",
-          "default": "#1a1b18"
+          "default": "#000000"
         },
         {
           "type": "header",
@@ -923,13 +923,13 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "colors_text",
       "label": "t:sections.all.colors.colors_text.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
@@ -958,7 +958,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     }
   ],
   "default": {

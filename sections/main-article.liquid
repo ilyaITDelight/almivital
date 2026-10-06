@@ -8,6 +8,14 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template section--padding" itemscope itemtype="http://schema.org/BlogPosting">
+  {%- comment -%}
+    Machine-readable dates live in meta tags: parsers read an itemprop's
+    value from the element's text, and the visible date is a display
+    format, not ISO. Meta also keeps the dates present when the merchant
+    hides the date line.
+  {%- endcomment -%}
+  <meta itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}">
+  <meta itemprop="dateModified" content="{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when 'featured_image'-%}
@@ -22,7 +30,7 @@
                 loading: 'eager',
                 fetchpriority: 'high',
                 sizes: sizes,
-                widths: '375, 750, 1100, 1500, 1780, 2000, 3000',
+                widths: '375, 750, 1100, 1500, 2000, 2400',
                 is: 'lazy-image'
               }}
             </div>
@@ -38,7 +46,7 @@
           <header class="page-width page-width--inner" {{ block.shopify_attributes }}>
             <h1 class="article-template__title h0" itemprop="headline">{{ article.title | escape }}</h1>
             {%- if block.settings.blog_show_date -%}
-              <span class="circle-divider typeset2" itemprop="dateCreated pubdate datePublished">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+              <span class="circle-divider typeset2">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
             {%- endif -%}
             {%- if block.settings.blog_show_author -%}
               <span class="circle-divider typeset2" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -407,6 +415,9 @@
       "type": "next_previous_posts",
       "name": "t:sections.main-article.blocks.next_previous_posts.name",
       "limit": 1
+    },
+    {
+      "type": "@app"
     }
   ]
 }

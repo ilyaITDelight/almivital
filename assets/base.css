@@ -231,15 +231,6 @@ body {
   overflow: hidden;
 }
 
-/* Component styles arrive in the body: on a slow connection an inline SVG
-   with no width attribute paints at document width until they load. This
-   floor holds icons at a sane size for that window — :where() keeps the
-   specificity at zero, so every later rule wins both properties. */
-:where(svg.icon, svg.checkmark, svg.video-collection__sound-off, svg.video-collection__sound-on) {
-  width: 2.4rem;
-  height: auto;
-}
-
 body.overflow-hidden {
   padding-inline-end: var(--scrollbar-width);
 }
@@ -2767,69 +2758,6 @@ input[type=checkbox] {
 
   .header--mobile-left {
     grid-template-columns: auto 2fr 1fr;
-  }
-}
-
-/* Mobile header — balanced 3-zone layout: [menu · search] · logo · [bell · cart].
-   CSS-only, phones only; desktop (>= 750px) is untouched. display:contents promotes
-   the right-side icons to header flex items so search can move next to the menu on
-   the left; the logo pins to the wrapper's centre (see the heading rule); the
-   account icon is dropped (it already lives in the menu drawer). */
-@media screen and (max-width: 749px) {
-  .header {
-    display: flex;
-    align-items: center;
-  }
-
-  .header .header__right {
-    display: contents;
-  }
-
-  .header .header__left {
-    order: 1;
-  }
-
-  /* The pinned heading sits outside the flow, so this auto margin is
-     all that parts the two icon clusters: [menu · search] stay left,
-     [bell · cart] take the right edge. */
-  .header .header__right search-modal {
-    order: 2;
-    margin-inline-end: auto;
-  }
-
-  /* Flex auto-margins can only centre the logo while both icon clusters
-     weigh the same, and the cluster contents vary per store: the bell and
-     the localization picker are optional. Pinning the heading to the
-     wrapper's centre (.header-wrapper is the positioned ancestor) keeps
-     the logo centred at any icon count; the max-width keeps a long text
-     logo clear of the icons on either side. */
-  .header .header__heading,
-  .header > .header__heading-link {
-    order: 3;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    max-width: calc(100% - 22rem);
-    margin: 0;
-  }
-
-  .header .header__right header-popover {
-    order: 4;
-  }
-
-  .header .header__right cart-drawer,
-  .header .header__right > .header__icon--cart {
-    order: 5;
-    margin-inline-end: -1.5rem;
-  }
-
-  .header .header__right .header__icon--account {
-    display: none;
-  }
-
-  .header .header__right localization-form {
-    order: 5;
   }
 }
 

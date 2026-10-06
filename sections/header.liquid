@@ -26,6 +26,11 @@
   assign enable_dropdown_menu = section.settings.enable_dropdown_menu
   assign enable_sticky_header = section.settings.enable_sticky_header
   assign highlight_labels = section.settings.highlight_labels | escape
+
+  assign search_inline = false
+  if section.settings.search_style == 'inline' and logo_position != 'center-split'
+    assign search_inline = true
+  endif
 -%}
 
 {%- style -%}
@@ -120,6 +125,224 @@
   }
 </style>
 
+{%- if search_inline -%}
+<style>
+  .header-search-inline {
+    display: none;
+  }
+
+  @media screen and (min-width: 990px) {
+    .header-search-inline {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Inline bar replaces the icon entry point on desktop only —
+       mobile/tablet keep the icon + modal (and the dock search).
+       The extra .header bumps specificity past the (0,3,1) localization
+       variants like `.header--top-center .header__left--localization ~
+       .header__right search-modal` that force the icon visible. */
+    .header.header--search-inline .header__left search-modal,
+    .header.header--search-inline .header__right search-modal {
+      display: none;
+    }
+
+    .header__right .header-search-inline {
+      margin-inline-end: 1rem;
+    }
+
+    /* The bar must never widen the icons track: stretch header__right to
+       fill its track and let the field flex between 16rem and 30rem inside
+       it. A fixed-width field would set the track's min-content and shove
+       the centered logo sideways (top-center / off-canvas). */
+    .header--search-inline .header__right {
+      justify-self: stretch;
+      justify-content: flex-end;
+    }
+
+    /* top-center inherits the generic 1fr 2fr 1fr columns: the middle
+       track hoards half the row as dead space around a ~5rem logo while
+       the icons quarter starves the bar. Equal 1fr sides around an auto
+       middle keep the logo mathematically centered at every width and
+       hand the spare room to the bar. */
+    .header--search-inline.header--top-center {
+      grid-template-columns: 1fr auto 1fr;
+    }
+
+    .header-search-inline {
+      flex: 0 1 30rem;
+      min-width: 16rem;
+    }
+
+    .header-search-inline predictive-search {
+      display: flex;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .header-search-inline__form {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+    }
+
+    /* Same object as the modal's search field — 1rem soft rectangle and
+       0.06 foreground wash — so desktop bar and mobile modal read as one. */
+    .header-search-inline .field {
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+      height: 4rem;
+      padding: 0 1.4rem;
+      border-radius: 1rem;
+      color: rgb(var(--color-header-foreground));
+      background-color: rgba(var(--color-header-foreground), 0.06);
+      transition: background-color var(--duration-default) ease, box-shadow var(--duration-default) ease, color var(--duration-default) ease;
+    }
+
+    .header-search-inline .field:focus-within {
+      box-shadow: inset 0 0 0 0.1rem rgba(var(--color-header-foreground), 0.35);
+    }
+
+    .header-search-inline .search__input {
+      min-width: 0;
+      flex: 1 1 auto;
+      height: 100%;
+      min-height: auto;
+      padding: 0;
+      font-size: 1.4rem;
+      color: currentColor;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    .header-search-inline .search__input::placeholder {
+      color: currentColor;
+      opacity: 0.6;
+    }
+
+    .header-search-inline .search__input::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    .header-search-inline .search__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: currentColor;
+    }
+
+    .header-search-inline .search__button .icon {
+      width: 1.6rem;
+      height: 1.6rem;
+      overflow: visible;
+      stroke-width: var(--icon-weight);
+    }
+
+    .header-search-inline .search__button[type=reset] {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--duration-default) ease;
+    }
+
+    .header-search-inline .search__button[type=reset] .icon {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+
+    .header-search-inline .search__input:not(:placeholder-shown) ~ .search__button[type=reset] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .header-search-inline predictive-search[loading] .search__button[type=reset] {
+      display: none;
+    }
+
+    /* Transparent header at the top of the page: ghost field. Hover/open
+       states restore the solid header via .is-active/.is-hover, which
+       these :not() guards hand back to the default styling above. */
+    .shopify-section-header:not(.shopify-section-header-sticky):not(.is-active):not(.is-hover) .header-transparent .header-search-inline .field {
+      color: rgb(var(--color-header-transparent));
+      background-color: transparent;
+      box-shadow: inset 0 0 0 0.1rem rgba(var(--color-header-transparent), 0.45);
+    }
+
+    /* Results panel — anchored to the field itself (0.8rem below), opening
+       inward, keeping the modal's columnar layout (suggestions rail +
+       two-column products). Anchoring to the field instead of the header
+       keeps the pointer path from input to results free of the nav row —
+       no menu item sits between them to swallow a hover. On two-row
+       headers the panel simply overlays the nav. */
+    .header-search-inline .predictive-search {
+      display: none;
+      position: absolute;
+      z-index: 30;
+      top: calc(100% + 0.8rem);
+      inset-inline-end: 0;
+      width: min(96rem, calc(100vw - 24rem));
+      margin: 0;
+      padding: 2.8rem 3rem 3rem;
+      border-radius: 1rem;
+      background-color: rgb(var(--color-background));
+      box-shadow: 0 0.1rem 0.8rem rgba(var(--color-foreground), 0.15), 0 2rem 4rem rgba(var(--color-foreground), 0.08);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .header-search-inline predictive-search[open] .predictive-search {
+      display: block;
+      animation: fade-in var(--duration-default) ease;
+    }
+
+    /* While results are open the inline menu is a hover trap right next to
+       the panel — mute it (no accidental mega-menus) and fade it back. */
+    .header--search-inline:has(predictive-search[open]) .header__inline-menu {
+      opacity: 0.4;
+      pointer-events: none;
+      transition: opacity var(--duration-default) ease;
+    }
+
+    /* The fetched results markup is laid out for the modal's absolute-fill
+       box — let it flow inside the panel instead (column layout intact). */
+    .header-search-inline .predictive-search-results {
+      position: static;
+      width: auto;
+      height: auto;
+    }
+
+    /* Focusing the bar dims the page (body.predictive-search--focus →
+       .transition-body::after at z-index 30); lift the header above its
+       own overlay so the bar stays usable. */
+    .predictive-search--focus .shopify-section-header:has(.header--search-inline):not(.shopify-section-header-sticky) {
+      position: relative;
+      z-index: 31;
+    }
+
+    /* component-predictive-search.css drops the sticky header to z-index 21
+       on focus (meant for the /search page bar, which dims the header). With
+       the bar inside the header that would dim the bar itself — keep the
+       sticky header above the overlay instead. */
+    .predictive-search--focus .shopify-section-header-sticky:has(.header--search-inline) {
+      z-index: 31;
+    }
+
+    /* Scrolling down normally slides the sticky header away — but the open
+       panel is taller than the header and would be left dangling headless
+       mid-screen. Pin the header while results are open, exactly like the
+       search modal does (.search-modal--open .shopify-section-header-hidden). */
+    .shopify-section-header-hidden:has(.header-search-inline predictive-search[open]) {
+      transform: none;
+    }
+  }
+</style>
+{%- endif -%}
+
 <link rel="stylesheet" href="{{ 'component-sticky-header.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -131,6 +354,72 @@
 <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'quantity-popover.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
+
+{%- comment -%}
+  Defer non-critical JS for search modal & cart recommendations until first interaction.
+  These hydrate hidden custom elements — no FOUC because there's no styles to swap.
+  Fallback: requestIdleCallback after first paint.
+{%- endcomment -%}
+<script>
+  (function () {
+    var loaded = {};
+    function loadJS(src) {
+      if (loaded[src]) return;
+      loaded[src] = true;
+      var s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+    // Small modal/recommendation scripts — safe to idle-load for a11y users
+    var searchModalAssets = function () {
+      loadJS({{ 'search-modal.js' | asset_url | json }});
+      {%- if settings.voice_search_enabled -%}
+      loadJS({{ 'voice-search.js' | asset_url | json }});
+      {%- endif -%}
+    };
+    // Predictive search script (~15-30KB) — STRICT interaction-only, no idle fallback
+    var predictiveSearchAssets = function () {
+      {%- if settings.predictive_search_enabled -%}
+      loadJS({{ 'predictive-search.js' | asset_url | json }});
+      {%- endif -%}
+    };
+    var cartAssets = function () {
+      {%- if settings.cart_recommendations_enabled -%}
+      loadJS({{ 'cart-recommendations.js' | asset_url | json }});
+      {%- endif -%}
+    };
+    function bind(selector, cb) {
+      var els = document.querySelectorAll(selector);
+      if (!els.length) return;
+      ['mouseenter', 'touchstart', 'focusin'].forEach(function (ev) {
+        els.forEach(function (el) {
+          el.addEventListener(ev, cb, { once: true, passive: true, capture: true });
+        });
+      });
+    }
+    function init() {
+      // Search entry points trigger both modal + predictive scripts.
+      // Locale-proof selectors only — never match on aria-label substrings:
+      // labels follow the storefront language and miss on translated
+      // storefronts. Bound here: icon summaries (.header__icon--search),
+      // the mobile dock button ([data-action="search"]), and every
+      // predictive-search instance (inline bar, modal form, /search bar).
+      bind('.header__icon--search, [data-action="search"], predictive-search', function () { searchModalAssets(); predictiveSearchAssets(); });
+      bind('#cart-icon-bubble, a[href$="/cart"]', cartAssets);
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('product-form, [name="add"]')) cartAssets();
+      }, { capture: true, passive: true });
+      // Idle fallback ONLY for small scripts (a11y safety net).
+      // predictiveSearchAssets is intentionally excluded — load only on real interaction.
+      var idleFallback = function () { searchModalAssets(); cartAssets(); };
+      if ('requestIdleCallback' in window) requestIdleCallback(idleFallback, { timeout: 4000 });
+      else setTimeout(idleFallback, 3000);
+    }
+    if (document.readyState !== 'loading') init();
+    else document.addEventListener('DOMContentLoaded', init);
+  })();
+</script>
 
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -146,18 +435,16 @@
   {{ 'component-transparent-header.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
+{%- if settings.cart_recommendations_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-cart-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
 <noscript>{{ 'component-sticky-header.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-menu-dropdown.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
-
-<script src="{{ 'search-modal.js' | asset_url }}" defer="defer"></script>
-{%- if settings.cart_recommendations_enabled -%}
-  <script src="{{ 'cart-recommendations.js' | asset_url }}" defer="defer"></script>
-  <link rel="stylesheet" href="{{ 'component-cart-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
-{%- endif -%}
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   {%- if section.settings.cart_icon == 'bag' %}
@@ -294,7 +581,7 @@
 {%- else -%}
 <header-wrapper class="header-wrapper{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}{% if section.settings.uppercase_menu_items %} header-wrapper--uppercase{% endif %}{% if enable_transparent_header %} header-transparent{% if section.settings.show_transparent_header_border %} header-transparent--border-bottom{% endif %}{% endif %}">
 {%- endif -%}
-  <header class="header header--{{ logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width header-section--padding" role="banner" aria-label="{{ 'accessibility.site_header' | t }}">
+  <header class="header header--{{ logo_position }} header--mobile-{{ section.settings.mobile_logo_position }}{% if search_inline %} header--search-inline{% endif %} page-width header-section--padding" role="banner" aria-label="{{ 'accessibility.site_header' | t }}">
     <div class="header__left
       {%- if language_selector != blank or country_selector != blank -%}
         {%- if logo_position == 'top-center' or logo_position == 'off-canvas' or logo_position == 'center-split' %} header__left--localization{% endif -%}
@@ -436,6 +723,10 @@
 
     <div class="header__right">
       {%- liquid
+        if search_inline
+          render 'header-search-inline'
+        endif
+
         if logo_position == 'top-left' or logo_position == 'middle-left'
           echo language_selector
           echo country_selector
@@ -460,27 +751,15 @@
 
       {%- if section.settings.enable_sidebar -%}
         {%- assign seasonal_deals = section.blocks | where: 'type', 'seasonal_deal' -%}
-        {%- render 'seasonal-deals', deals: seasonal_deals, heading: section.settings.sidebar_heading -%}
+        {%- render 'seasonal-deals', deals: seasonal_deals, heading: section.settings.sidebar_heading, icon: section.settings.sidebar_icon -%}
       {%- endif -%}
 
       {%- if shop.customer_accounts_enabled -%}
-        <shopify-account class="header__icon header__icon--account focus-inset" {% if section.settings.customer_account_menu %} menu="{{ section.settings.customer_account_menu }}"{% endif %}>
+       <shopify-account class="header__icon header__icon--account focus-inset" {% if section.settings.customer_account_menu %} menu="{{ section.settings.customer_account_menu }}"{% endif %}>
+          <div class="block" slot="signed-out-avatar">
           {% render 'icon', icon: 'account' %}
+          </div>
         </shopify-account>
-        {% comment %}
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account focus-inset small-hide" aria-label="{{ 'accessibility.account_link' | t }}">
-          {% render 'icon', icon: 'account' %}
-          <span class="visually-hidden">
-            {%- liquid
-              if customer
-                echo 'customer.account_fallback' | t
-              else
-                echo 'customer.log_in' | t
-              endif
-            -%}
-          </span>
-        </a>
-        {% endcomment %}
       {%- endif -%}
 
       {%- if request.page_type != 'cart' and settings.cart_drawer_enabled -%}
@@ -849,6 +1128,23 @@
       "info": "t:sections.header.settings.logo_position.info"
     },
     {
+      "type": "select",
+      "id": "search_style",
+      "options": [
+        {
+          "value": "icon",
+          "label": "t:sections.header.settings.search_style.options__1.label"
+        },
+        {
+          "value": "inline",
+          "label": "t:sections.header.settings.search_style.options__2.label"
+        }
+      ],
+      "default": "icon",
+      "label": "t:sections.header.settings.search_style.label",
+      "info": "t:sections.header.settings.search_style.info"
+    },
+    {
       "type": "link_list",
       "id": "menu",
       "default": "main-menu",
@@ -1078,6 +1374,26 @@
     },
     {
       "type": "header",
+      "content": "t:sections.header.settings.drawer_promo.header.content",
+      "info": "t:sections.header.settings.drawer_promo.header.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "drawer_promo_image",
+      "label": "t:sections.header.settings.drawer_promo.image.label"
+    },
+    {
+      "type": "text",
+      "id": "drawer_promo_heading",
+      "label": "t:sections.header.settings.drawer_promo.heading.label"
+    },
+    {
+      "type": "url",
+      "id": "drawer_promo_link",
+      "label": "t:sections.header.settings.drawer_promo.link.label"
+    },
+    {
+      "type": "header",
       "content": "t:sections.header.settings.header_sidebar.header.content",
       "info": "t:sections.header.settings.header_sidebar.header.info"
     },
@@ -1091,6 +1407,190 @@
       "type": "text",
       "id": "sidebar_heading",
       "label": "t:sections.header.settings.header_sidebar.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "sidebar_icon",
+      "options": [
+        {
+          "value": "apple",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__2.label"
+        },
+        {
+          "value": "banana",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__3.label"
+        },
+        {
+          "value": "bell",
+          "label": "t:sections.header.settings.sidebar_icon.options__bell.label"
+        },
+        {
+          "value": "bottle",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__4.label"
+        },
+        {
+          "value": "carrot",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__5.label"
+        },
+        {
+          "value": "chat_bubble",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__6.label"
+        },
+        {
+          "value": "check_mark",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__7.label"
+        },
+        {
+          "value": "clipboard",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__8.label"
+        },
+        {
+          "value": "dolly",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__9.label"
+        },
+        {
+          "value": "download",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__10.label"
+        },
+        {
+          "value": "dryer",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__11.label"
+        },
+        {
+          "value": "eye",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__12.label"
+        },
+        {
+          "value": "fire",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__13.label"
+        },
+        {
+          "value": "globe",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__14.label"
+        },
+        {
+          "value": "gluten_free",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__15.label"
+        },
+        {
+          "value": "headset",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__16.label"
+        },
+        {
+          "value": "heart",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__17.label"
+        },
+        {
+          "value": "leaf",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__18.label"
+        },
+        {
+          "value": "light",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__19.label"
+        },
+        {
+          "value": "lightning_bolt",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__20.label"
+        },
+        {
+          "value": "link",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__21.label"
+        },
+        {
+          "value": "lock",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__22.label"
+        },
+        {
+          "value": "map_pin",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__23.label"
+        },
+        {
+          "value": "music",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__24.label"
+        },
+        {
+          "value": "package",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__25.label"
+        },
+        {
+          "value": "paw_print",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__26.label"
+        },
+        {
+          "value": "pepper",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__27.label"
+        },
+        {
+          "value": "phone",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__28.label"
+        },
+        {
+          "value": "plane",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__29.label"
+        },
+        {
+          "value": "plant",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__30.label"
+        },
+        {
+          "value": "price_tag",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__31.label"
+        },
+        {
+          "value": "question_mark",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__32.label"
+        },
+        {
+          "value": "recycle",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__33.label"
+        },
+        {
+          "value": "return",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__34.label"
+        },
+        {
+          "value": "ruler",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__35.label"
+        },
+        {
+          "value": "shield",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__36.label"
+        },
+        {
+          "value": "ship",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__37.label"
+        },
+        {
+          "value": "shop",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__38.label"
+        },
+        {
+          "value": "silhouette",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__39.label"
+        },
+        {
+          "value": "snowflake",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__40.label"
+        },
+        {
+          "value": "star",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__41.label"
+        },
+        {
+          "value": "stopwatch",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__42.label"
+        },
+        {
+          "value": "truck",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__43.label"
+        },
+        {
+          "value": "washing",
+          "label": "t:sections.guarantees.blocks.guarantee.settings.icon.options__44.label"
+        }
+      ],
+      "default": "price_tag",
+      "label": "t:sections.guarantees.blocks.guarantee.settings.icon.label"
     },
     {
       "type": "header",
@@ -1143,7 +1643,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",
@@ -1368,7 +1868,7 @@
           "max": 100,
           "step": 4,
           "unit": "t:sections.all.colors.overlay_opacity.unit"
-        },
+        }
       ]
     },
     {
@@ -1396,6 +1896,13 @@
           "id": "show_menu_image",
           "default": true,
           "label": "t:sections.header.blocks.mega_menu.settings.show_menu_image.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "defer_loading",
+          "default": false,
+          "label": "t:sections.header.blocks.mega_menu.settings.defer_loading.label",
+          "info": "t:sections.header.blocks.mega_menu.settings.defer_loading.info"
         },
         {
           "type": "header",
@@ -1602,6 +2109,343 @@
           "type": "url",
           "id": "promo_link_2",
           "label": "t:sections.header.blocks.mega_menu.settings.promo_link_2.label"
+        }
+      ]
+    },
+    {
+      "type": "mega_menu_showcase",
+      "name": "t:sections.header.blocks.mega_menu_showcase.name",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.header.blocks.mega_menu_showcase.settings.paragraph.content"
+        },
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "t:sections.header.blocks.mega_menu.settings.menu_title.label",
+          "info": "t:sections.header.blocks.mega_menu.settings.menu_title.info"
+        },
+        {
+          "type": "range",
+          "id": "products_per_tab",
+          "min": 3,
+          "max": 6,
+          "step": 1,
+          "default": 6,
+          "label": "t:sections.header.blocks.mega_menu_showcase.settings.products_per_tab.label"
+        },
+        {
+          "type": "select",
+          "id": "card_image_ratio",
+          "options": [
+            {
+              "value": "square",
+              "label": "t:sections.all.card_image_ratio.options__2.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:sections.all.card_image_ratio.options__3.label"
+            },
+            {
+              "value": "landscape",
+              "label": "t:sections.all.card_image_ratio.options__4.label"
+            },
+            {
+              "value": "wide",
+              "label": "t:sections.all.card_image_ratio.options__5.label"
+            }
+          ],
+          "default": "square",
+          "label": "t:sections.all.card_image_ratio.label"
+        },
+        {
+          "type": "url",
+          "id": "view_all_link",
+          "label": "t:sections.header.blocks.mega_menu_showcase.settings.view_all_link.label",
+          "info": "t:sections.header.blocks.mega_menu_showcase.settings.view_all_link.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "defer_loading",
+          "default": true,
+          "label": "t:sections.header.blocks.mega_menu.settings.defer_loading.label",
+          "info": "t:sections.header.blocks.mega_menu.settings.defer_loading.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_in_drawer",
+          "default": true,
+          "label": "t:sections.header.blocks.mega_menu_showcase.settings.show_in_drawer.label",
+          "info": "t:sections.header.blocks.mega_menu_showcase.settings.show_in_drawer.info"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.header.blocks.mega_menu_showcase.settings.header__promo.content"
+        },
+        {
+          "type": "image_picker",
+          "id": "promo_image",
+          "label": "t:sections.header.blocks.mega_menu.settings.promo_image_1.label"
+        },
+        {
+          "type": "select",
+          "id": "promo_image_ratio",
+          "options": [
+            {
+              "value": "fill",
+              "label": "t:sections.header.blocks.mega_menu_showcase.settings.promo_image_ratio.options__1.label"
+            },
+            {
+              "value": "square",
+              "label": "t:sections.all.card_image_ratio.options__2.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:sections.all.card_image_ratio.options__3.label"
+            },
+            {
+              "value": "landscape",
+              "label": "t:sections.all.card_image_ratio.options__4.label"
+            }
+          ],
+          "default": "fill",
+          "label": "t:sections.all.card_image_ratio.label"
+        },
+        {
+          "type": "text",
+          "id": "promo_heading",
+          "label": "t:sections.header.blocks.mega_menu.settings.promo_heading_1.label"
+        },
+        {
+          "type": "text",
+          "id": "promo_text",
+          "label": "t:sections.header.blocks.mega_menu.settings.promo_text_1.label"
+        },
+        {
+          "type": "url",
+          "id": "promo_link",
+          "label": "t:sections.header.blocks.mega_menu.settings.promo_link_1.label"
+        }
+      ]
+    },
+    {
+      "type": "menu_icon_badge",
+      "name": "t:sections.header.blocks.menu_icon_badge.name",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.header.blocks.menu_icon_badge.settings.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__1.label"
+            },
+            {
+              "value": "tick",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__2.label"
+            },
+            {
+              "value": "checkmark",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__3.label"
+            },
+            {
+              "value": "success",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__4.label"
+            },
+            {
+              "value": "gift",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__5.label"
+            },
+            {
+              "value": "discount",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__6.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__7.label"
+            },
+            {
+              "value": "info",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__8.label"
+            },
+            {
+              "value": "question",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__9.label"
+            },
+            {
+              "value": "house",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__10.label"
+            },
+            {
+              "value": "ruler",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__11.label"
+            },
+            {
+              "value": "clipboard",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__12.label"
+            },
+            {
+              "value": "account",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__13.label"
+            },
+            {
+              "value": "bag",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__14.label"
+            },
+            {
+              "value": "cart",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__15.label"
+            },
+            {
+              "value": "images",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__16.label"
+            },
+            {
+              "value": "list",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__17.label"
+            },
+            {
+              "value": "localization",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__18.label"
+            },
+            {
+              "value": "pen",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__19.label"
+            },
+            {
+              "value": "search",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__20.label"
+            },
+            {
+              "value": "share-nodes",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__21.label"
+            },
+            {
+              "value": "zoom",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__22.label"
+            },
+            {
+              "value": "drop",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__23.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__24.label"
+            },
+            {
+              "value": "sun",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__25.label"
+            },
+            {
+              "value": "clock",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__26.label"
+            },
+            {
+              "value": "shield",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__27.label"
+            },
+            {
+              "value": "sparkle",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__28.label"
+            },
+            {
+              "value": "flask",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__29.label"
+            },
+            {
+              "value": "recycle",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__30.label"
+            },
+            {
+              "value": "box",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__31.label"
+            },
+            {
+              "value": "scale",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__32.label"
+            },
+            {
+              "value": "flame",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__33.label"
+            },
+            {
+              "value": "star-line",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__34.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__35.label"
+            },
+            {
+              "value": "smile",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__36.label"
+            },
+            {
+              "value": "rabbit",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__37.label"
+            },
+            {
+              "value": "flower",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__38.label"
+            },
+            {
+              "value": "sprout",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__39.label"
+            },
+            {
+              "value": "pipette",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__40.label"
+            },
+            {
+              "value": "jar",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__41.label"
+            },
+            {
+              "value": "spray",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__42.label"
+            },
+            {
+              "value": "moon",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__43.label"
+            },
+            {
+              "value": "percent",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__44.label"
+            },
+            {
+              "value": "award",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__45.label"
+            },
+            {
+              "value": "feather",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__46.label"
+            },
+            {
+              "value": "thermometer",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__47.label"
+            },
+            {
+              "value": "heart-pulse",
+              "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.options__48.label"
+            }
+          ],
+          "default": "truck",
+          "label": "t:sections.header.blocks.menu_icon_badge.settings.icon.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.header.blocks.menu_icon_badge.settings.heading.label"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.header.blocks.menu_icon_badge.settings.text.label"
         }
       ]
     }

@@ -19,15 +19,16 @@
 
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
-<form class="mini-cart{% if cart == empty %} is-empty{% endif %}" action="{{ routes.cart_url }}" method="post" id="cart">
+<form class="mini-cart{% if cart == empty %} is-empty{% endif %}" action="{{ routes.cart_url }}" method="post" id="cart" role="dialog" aria-modal="true" aria-labelledby="mini-cart-title">
+  <p class="visually-hidden" id="CartDrawer-LiveRegionText" aria-live="polite" role="status"></p>
   <div class="mini-cart__inner">
     <div class="mini-cart__header" data-animate data-animate-delay-{{ animate_count }}>
-      <drawer-close-button class="header__icon header__icon--summary header__icon--cart">
+      <drawer-close-button class="header__icon header__icon--summary header__icon--cart" aria-label="{{ 'accessibility.close' | t | default: 'Close' }}">
         <svg class="icon icon-close" aria-hidden="true" focusable="false">
           <use href="#icon-close"></use>
         </svg>
       </drawer-close-button>
-      <div class="title h4">{{ 'sections.cart.title' | t }}</div>
+      <div class="title h4" id="mini-cart-title">{{ 'sections.cart.title' | t }}</div>
       {%- liquid
         if settings.show_free_shipping_message and settings.free_shipping_minimum_amount != blank
           assign free_shipping_minimum_amounts = settings.free_shipping_minimum_amount | remove: ' ' | split: ','
@@ -74,10 +75,22 @@
       {%- endif -%}
     </div>
 
+    {%- liquid
+      # The heading ships as a literal schema default, so an untouched store
+      # carries the English string into every locale. When the merchant keeps
+      # that default, the locale file speaks instead; an edited heading - or
+      # a Translate & Adapt override, which arrives here already localized -
+      # stays verbatim.
+      assign cart_recommendations_heading = settings.cart_recommendations_heading
+      if cart_recommendations_heading == 'You may also like'
+        assign cart_recommendations_heading = 'sections.cart.recommendations_heading' | t
+      endif
+    -%}
+
     {%- if cart == empty and settings.cart_recommendations_enabled and settings.cart_recommendations_products != blank -%}
       {%- assign animate_count = animate_count | plus: 1 -%}
       <div class="cart-recommendations" data-animate data-animate-delay-{{ animate_count }}>
-        <div class="title h4">{{ settings.cart_recommendations_heading | escape }}</div>
+        <div class="title h4">{{ cart_recommendations_heading | escape }}</div>
         <ul class="mini-cart__navigation">
           {%- for recommendation in settings.cart_recommendations_products -%}
             <li>
@@ -168,7 +181,7 @@
           endif
         -%}
         <cart-recommendations class="cart-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ cart.items.first.product_id }}&limit={{ cart_recommendations_limit }}" data-animate data-animate-delay-{{ animate_count }}>
-          <div class="title h4">{{ settings.cart_recommendations_heading | escape }}</div>
+          <div class="title h4">{{ cart_recommendations_heading | escape }}</div>
           <ul class="mini-cart__navigation">
             {%- for recommendation in recommendations.products -%}
               <li>
@@ -179,11 +192,19 @@
                         <div class="media media--adapt"
                           style="--image-ratio-percent: {{ 1 | divided_by: recommendation.featured_media.aspect_ratio | times: 100 }}%;"
                         >
-                          <img srcset="{{ recommendation.featured_media | image_url: width: 70 }} 1x, {{ recommendation.featured_media | image_url: width: 140 }} 2x"
-                            src="{{ recommendation.featured_media | image_url: width: 70 }}"
+                          {%- comment -%}
+                            The mobile thumb crops by HEIGHT (the frame
+                            stretches to the text column and covers), so the
+                            sizes value overshoots the 11rem frame — a square
+                            source must out-resolve the frame's tall edge on
+                            3x screens, not just its width.
+                          {%- endcomment -%}
+                          <img srcset="{{ recommendation.featured_media | image_url: width: 180 }} 180w, {{ recommendation.featured_media | image_url: width: 280 }} 280w, {{ recommendation.featured_media | image_url: width: 420 }} 420w, {{ recommendation.featured_media | image_url: width: 560 }} 560w"
+                            sizes="(max-width: 749px) 16rem, 7rem"
+                            src="{{ recommendation.featured_media | image_url: width: 280 }}"
                             alt="{{ recommendation.featured_media.alt | escape | split: '#' | first }}"
-                            width="70"
-                            height="{{ 70 | divided_by: recommendation.featured_media.aspect_ratio | ceil }}"
+                            width="280"
+                            height="{{ 280 | divided_by: recommendation.featured_media.aspect_ratio | ceil }}"
                             loading="lazy"
                             is="lazy-image"
                           />
@@ -250,11 +271,11 @@
         </cart-recommendations>
       {%- endif -%}
 
-      <cart-items>
+      <cart-items data-cart-level-discounts="{{ cart.cart_level_discount_applications.size }}">
         {%- assign animate_count = animate_count | plus: 1 -%}
         <ul class="mini-cart__navigation" data-animate data-animate-delay-{{ animate_count }}>
           {%- for item in cart.items -%}
-          <li data-variant-id="{{ item.variant_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}">
+          <li data-variant-id="{{ item.variant_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" data-final-price="{{ item.final_price }}">
             <div class="product-container{% unless item.image %} no-image{% endunless %}">
               {% if item.image %}
                 <div>
@@ -738,6 +759,7 @@
                       <span class="cart-item__error-text"></span>
                   </div>
                 </cart-discount>
+                <input class="visually-hidden" type="hidden" name="discount" value="{{ discount_codes | join: "," }}">
               </div>
             </details>
           {%- endif -%}

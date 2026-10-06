@@ -10,7 +10,8 @@
   
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
+    /* Keep the dock clear of the iOS home indicator */
+    padding-bottom: max({{ section.settings.padding_bottom }}px, env(safe-area-inset-bottom));
   }
 {%- endstyle -%}
 
@@ -24,21 +25,23 @@
       {%- case block.type -%}
         {%- when 'account' -%}
           {%- if shop.customer_accounts_enabled -%}
-            <shopify-account class="dock__item" {% if block.settings.customer_account_menu %} menu="{{ block.settings.customer_account_menu }}"{% endif %} {{ block.shopify_attributes }} role="navigation" aria-label="{{ 'accessibility.account' | t }}">
-              {%- liquid
-                if block.settings.custom_icon != blank
-                  echo block.settings.custom_icon
-                else
-                  render 'icon', icon: 'account'
-                endif
-              -%}
-              <span>{{ block.settings.title | escape }}</span>
-            </shopify-account>
+        <shopify-account class="dock__item" {% if block.settings.customer_account_menu %} menu="{{ block.settings.customer_account_menu }}"{% endif %} {{ block.shopify_attributes }} aria-label="{{ 'accessibility.account' | t }}">
+          <div class="dock__item" slot="signed-out-avatar">
+          {%- liquid
+              if block.settings.custom_icon != blank
+                echo block.settings.custom_icon
+              else
+                render 'icon', icon: 'account'
+              endif
+            -%}
+            <span>{{ block.settings.title | escape }}</span>
+          </div>
+        </shopify-account>
           {%- endif -%}
         {%- when 'cart' -%}
           {%- if settings.cart_drawer_enabled -%}
-            <div class="dock__item" data-action="cart" {{ block.shopify_attributes }} role="navigation" aria-label="{{ 'accessibility.cart' | t }}">
-              <p>
+            <button type="button" class="dock__item" data-action="cart" {{ block.shopify_attributes }} aria-label="{{ 'accessibility.cart' | t }}">
+              <span class="dock__item-media">
                 {%- if block.settings.custom_icon != blank-%}
                   {{ block.settings.custom_icon }}
                 {%- else -%}
@@ -56,9 +59,9 @@
                     </span>
                   {%- endif -%}
                 </span>
-              </p>
+              </span>
               <span>{{ block.settings.title | escape }}</span>
-            </div>
+            </button>
           {%- else -%}
             <a class="dock__item" href="{{ routes.cart_url }}" {{ block.shopify_attributes }}>
               {%- if block.settings.custom_icon != blank-%}
@@ -72,7 +75,7 @@
             </a>
           {%- endif -%}
         {%- when 'home' -%}
-          <a class="dock__item" href="{{ routes.root_url }}" {{ block.shopify_attributes }} role="navigation" aria-label="{{ 'accessibility.home' | t }}">
+          <a class="dock__item" href="{{ routes.root_url }}" {{ block.shopify_attributes }} aria-label="{{ 'accessibility.home' | t }}">
             {%- liquid
               if block.settings.custom_icon != blank
                 echo block.settings.custom_icon
@@ -83,7 +86,7 @@
             <span>{{ block.settings.title | escape }}</span>
           </a>
         {%- when 'menu' -%}
-          <div class="dock__item" data-action="menu" {{ block.shopify_attributes }} role="navigation" aria-label="{{ 'accessibility.menu' | t }}">
+          <button type="button" class="dock__item" data-action="menu" {{ block.shopify_attributes }} aria-label="{{ 'accessibility.menu' | t }}">
             {%- liquid
               if block.settings.custom_icon != blank
                 echo block.settings.custom_icon
@@ -92,9 +95,9 @@
               endif
             -%}
             <span>{{ block.settings.title | escape }}</span>
-          </div>
+          </button>
         {%- when 'search' -%}
-          <div class="dock__item" data-action="search" {{ block.shopify_attributes }} role="navigation" aria-label="{{ 'accessibility.search' | t }}">
+          <button type="button" class="dock__item" data-action="search" {{ block.shopify_attributes }} aria-label="{{ 'accessibility.search' | t }}">
             {%- liquid
               if block.settings.custom_icon != blank
                 echo block.settings.custom_icon
@@ -103,9 +106,9 @@
               endif
             -%}
             <span>{{ block.settings.title | escape }}</span>
-          </div>
+          </button>
         {%- when 'link' -%}
-          <a class="dock__item" href="{{ block.settings.link }}" {{ block.shopify_attributes }} role="navigation" aria-label="{{ 'accessibility.shop' | t }}">
+          <a class="dock__item" href="{{ block.settings.link }}" {{ block.shopify_attributes }} aria-label="{{ 'accessibility.shop' | t }}">
             {%- liquid
               if block.settings.custom_icon != blank
                 echo block.settings.custom_icon
@@ -141,7 +144,7 @@
       "type": "color",
       "id": "colors_text",
       "label": "t:sections.all.colors.colors_text.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",

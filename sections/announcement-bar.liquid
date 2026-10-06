@@ -81,7 +81,10 @@
         font-weight: 500;
       }
 
+      /* A timer reads like a clock: units and digits keep their
+         left-to-right order in every script. */
       #shopify-section-{{ section.id }} .announcement-countdown__timer {
+        direction: ltr;
         display: flex;
         align-items: center;
         gap: 0.3rem;
@@ -360,7 +363,7 @@
       "type": "color",
       "id": "colors_background",
       "label": "t:sections.all.colors.colors_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color_background",
@@ -371,7 +374,7 @@
       "type": "color",
       "id": "colors_highlight",
       "label": "t:sections.all.colors.colors_highlight.label",
-      "default": "#ffb503"
+      "default": "#DFFF4F"
     },
     {
       "type": "header",
@@ -496,7 +499,7 @@
           "id": "date",
           "label": "t:sections.announcement-bar.blocks.countdown.settings.date.label",
           "info": "t:sections.announcement-bar.blocks.countdown.settings.date.info",
-          "default": "01-07-2026"
+          "default": "01-07-2027"
         },
         {
           "type": "inline_richtext",

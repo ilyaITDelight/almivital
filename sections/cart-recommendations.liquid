@@ -20,9 +20,19 @@
 
   <div class="section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
     <product-recommendations class="product-recommendations page-width" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ cart.items.first.product_id }}&limit=4">
+      {%- liquid
+        # The heading ships as a literal default, so an untouched section
+        # carries the English string into every locale. The locale file
+        # speaks for the default; an edited or blanked heading stays as
+        # the merchant left it.
+        assign recommendations_heading = section.settings.heading
+        if recommendations_heading == 'You may also like'
+          assign recommendations_heading = 'sections.cart.recommendations_heading' | t
+        endif
+      -%}
       {%- if recommendations.performed and recommendations.products_count > 0 -%}
         <div class="title-wrapper{% if section.settings.heading == blank %} title-wrapper--no-heading{% endif %} {{ section.settings.heading_alignment }}">
-          <{{ section.settings.heading_tag }} class="title {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
+          <{{ section.settings.heading_tag }} class="title {{ section.settings.heading_size }}">{{ recommendations_heading | escape }}</{{ section.settings.heading_tag }}>
         </div>
         
         <slider-component class="slider-mobile-gutter">

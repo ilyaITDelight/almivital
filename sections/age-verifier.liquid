@@ -51,7 +51,7 @@
 
 <age-verifier data-section-id="{{ section.id }}" class="hidden" data-expiry="{{ section.settings.expiry }}" data-test-mode="{% if section.settings.mode == 'testing' %}true{% else %}false{% endif %}" data-blur-image="{{ section.settings.blur_image }}">
   <div class="promo-popup" data-position="center">
-    <div class="popup-overlay"></div>
+    <div class="popup-overlay ignore-empty"></div>
     <div class="popup-wrapper">
       <div class="popup {{ section.settings.text_alignment }}{% if show_image %} popup-image--{{ section.settings.image_position }}{% endif %}">
         {%- if show_image -%}
@@ -401,13 +401,13 @@
       "type": "color",
       "id": "colors_button_background",
       "label": "t:sections.all.colors.colors_button_background.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "colors_text",
       "label": "t:sections.all.colors.colors_text.label",
-      "default": "#1a1b18"
+      "default": "#000000"
     },
     {
       "type": "color",

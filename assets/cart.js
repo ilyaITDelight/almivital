@@ -1,3 +1,90 @@
+// Replacing #mini-cart's innerHTML resets the drawer's scroll position;
+// capture it before a section re-render and restore it right after.
+const withMiniCartScrollRestore = (render) => {
+  const main = document.querySelector('.mini-cart__main');
+  const scrollTop = main ? main.scrollTop : 0;
+  render();
+  if (scrollTop > 0) {
+    const newMain = document.querySelector('.mini-cart__main');
+    if (newMain) newMain.scrollTop = scrollTop;
+  }
+};
+
+// Surgical drawer update: instead of swapping #mini-cart's innerHTML
+// wholesale (which closes the note/shipping/discount collapsibles, drops
+// the upsell list state and re-creates every element), patch only the
+// regions that money changes actually touch. Returns false whenever the
+// structures don't line up — callers then fall back to the full swap.
+window.theme = window.theme || {};
+theme.patchMiniCart = (sectionInnerHTML) => {
+  const live = document.getElementById('mini-cart');
+  if (!live || !sectionInnerHTML) return false;
+
+  // The section's inner HTML has form.mini-cart at its root (the #mini-cart
+  // wrapper element lives in the header section, not in this section).
+  const next = new DOMParser().parseFromString(sectionInnerHTML, 'text/html').body;
+  if (!next) return false;
+
+  const liveForm = live.querySelector('form.mini-cart');
+  const nextForm = next.querySelector('form.mini-cart');
+  if (!liveForm || !nextForm) return false;
+
+  // Empty <-> filled flips change the whole layout — let the full swap run.
+  if (liveForm.classList.contains('is-empty') !== nextForm.classList.contains('is-empty')) return false;
+
+  const regions = [
+    { selector: 'cart-items', mode: 'inner' },          // line items
+    { selector: '.free-shipping', mode: 'outer' },      // progress bar + message
+    { selector: '.taxes-discounts', mode: 'outer' },    // cart-level discounts + taxes note
+    { selector: 'gift-wrapping', mode: 'outer' },       // checkbox state + data attributes
+    { selector: 'cart-discount .discounts', mode: 'inner' }, // applied-code badges
+    // the checkout form submits this field — leaving it stale would
+    // re-apply a discount code the customer just removed
+    { selector: 'input[type="hidden"][name="discount"]', mode: 'outer' },
+    { selector: '#mini-cart-subtotal', mode: 'inner' }
+  ];
+
+  // Verify everything pairs up before touching the DOM (no partial patches).
+  const jobs = [];
+  for (const region of regions) {
+    const liveEls = live.querySelectorAll(region.selector);
+    const nextEls = next.querySelectorAll(region.selector);
+    if (liveEls.length !== nextEls.length) return false;
+    liveEls.forEach((el, i) => jobs.push({ el, nextEl: nextEls[i], mode: region.mode }));
+  }
+
+  // The main area scroll-snaps; restore its position after the mutations
+  // so replacing the row list doesn't snap the view back to the top.
+  const main = live.querySelector('.mini-cart__main');
+  const scrollTop = main ? main.scrollTop : 0;
+
+  jobs.forEach(({ el, nextEl, mode }) => {
+    if (mode === 'inner') {
+      el.innerHTML = nextEl.innerHTML;
+    } else {
+      el.outerHTML = nextEl.outerHTML;
+    }
+  });
+
+  liveForm.className = nextForm.className;
+
+  // The upsell block is anchored to the first cart item (product_id in its
+  // data-url). Refresh it only when that anchor changed — a re-created
+  // element re-observes and re-fetches; otherwise keep its loaded content.
+  const liveRecs = live.querySelector('cart-recommendations');
+  const nextRecs = next.querySelector('cart-recommendations');
+  if (liveRecs && nextRecs && liveRecs.dataset.url !== nextRecs.dataset.url) {
+    liveRecs.outerHTML = nextRecs.outerHTML;
+  }
+
+  live.querySelectorAll('.is-pending, .cart-item--pending').forEach((el) => {
+    el.classList.remove('is-pending', 'cart-item--pending');
+  });
+  if (main && scrollTop > 0) main.scrollTop = scrollTop;
+
+  return true;
+};
+
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
@@ -37,9 +124,13 @@ if (!customElements.get('cart-items')) {
     }
 
     onCartUpdate(event) {
-      const sections = event.sections; 
-      const parsedState = event.cart; 
-      
+      const sections = event.sections;
+      const parsedState = event.cart;
+
+      // A newer quantity request is already in flight — let its response
+      // drive the DOM instead of this stale one.
+      if (event.source === 'cart-items' && event.seq !== undefined && event.seq !== this.updateSeq) return;
+
       this.classList.toggle('is-empty', parsedState.item_count === 0);
       const cartFooter = document.getElementById('main-cart-footer');
 
@@ -47,20 +138,34 @@ if (!customElements.get('cart-items')) {
       if (parsedState.errors) {
         this.updateErrorLiveRegions(event.line, parsedState.errors);
       }
-      this.getSectionsToRender().forEach((section => {
-        const element = document.getElementById(section.id);
-        
-        if (element) {
-          const elementToReplace = element.querySelector(section.selector) || element;
-          if (elementToReplace && parsedState.sections[section.section]) {
-            elementToReplace.innerHTML =
-              this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+
+      // In the drawer, patch only the money-touched regions; fall back to
+      // the full section swap when the structures don't line up (or on the
+      // cart page, which renders different sections).
+      const inDrawer = !!this.closest('#mini-cart');
+      const patched = inDrawer
+        && parsedState.sections
+        && parsedState.sections['mini-cart']
+        && theme.patchMiniCart
+        && theme.patchMiniCart(this.getSectionInnerHTML(parsedState.sections['mini-cart'], '.shopify-section'));
+
+      withMiniCartScrollRestore(() => {
+        this.getSectionsToRender().forEach((section => {
+          if (patched && section.id === 'mini-cart') return;
+          const element = document.getElementById(section.id);
+
+          if (element) {
+            const elementToReplace = element.querySelector(section.selector) || element;
+            if (elementToReplace && parsedState.sections[section.section]) {
+              elementToReplace.innerHTML =
+                this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+            }
           }
-        }
-      }));
-      
+        }));
+      });
+
       this.updateQuantityLiveRegions(event.line, parsedState.item_count);
-      
+
       const lineItem = document.getElementById(`CartItem-${event.line}`);
       if (lineItem && event.name) lineItem.querySelector(`[name="${event.name}"]`).focus();
       this.disableLoading();
@@ -72,7 +177,51 @@ if (!customElements.get('cart-items')) {
       }));
     }
 
+    // Instantly reflects a quantity change while the request is in flight.
+    // The totals ALWAYS dim as in-flight feedback; the optimistic figure is
+    // only written when client math is guaranteed right (no cart-level
+    // discounts, price data present) — the server patch corrects/undims
+    // ~0.5s later either way.
+    optimisticSubtotal(line, quantity) {
+      const miniCart = document.getElementById('mini-cart');
+      if (!miniCart || !miniCart.contains(this)) return;
+
+      const rows = Array.from(this.querySelectorAll('.mini-cart__navigation > li'));
+      const changedRow = rows[parseInt(line) - 1];
+      if (parseInt(quantity) === 0 && changedRow) changedRow.classList.add('cart-item--removing');
+
+      const subtotals = miniCart.querySelectorAll('#mini-cart-subtotal');
+      subtotals.forEach((el) => el.classList.add('is-pending'));
+
+      if (!window.theme || !theme.Currency || !theme.shopSettings) return;
+      if (parseInt(this.dataset.cartLevelDiscounts || '0') > 0) return;
+      if (!rows.length || rows.some((row) => !row.dataset.finalPrice)) return;
+
+      let total = 0;
+      for (const [i, row] of rows.entries()) {
+        let qty;
+        if (i + 1 === parseInt(line)) {
+          qty = parseInt(quantity);
+        } else {
+          const input = row.querySelector('.quantity__input');
+          qty = input ? parseInt(input.value) : parseInt(row.dataset.quantity);
+        }
+        if (Number.isNaN(qty)) return;
+        total += parseInt(row.dataset.finalPrice) * qty;
+      }
+
+      const format = theme.shopSettings.moneyWithCurrencyFormat || theme.shopSettings.moneyFormat;
+      subtotals.forEach((el) => {
+        el.innerHTML = theme.Currency.formatMoney(total, format);
+      });
+    }
+
     updateQuantity(line, quantity, name, target) {
+      this.updateSeq = (this.updateSeq || 0) + 1;
+      const seq = this.updateSeq;
+
+      this.optimisticSubtotal(line, quantity);
+
       const sections = this.getSectionsToRender().map((section) => section.section);
       const body = JSON.stringify({
         line,
@@ -87,7 +236,7 @@ if (!customElements.get('cart-items')) {
         })
         .then((state) => {
           const parsedState = JSON.parse(state);
-          publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cart: parsedState,  target, line, name, sections  });
+          publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cart: parsedState,  target, line, name, sections, seq });
         })
         .catch(() => {
           this.querySelectorAll('.loading-overlay').forEach((overlay) => overlay.classList.add('hidden'));
@@ -95,7 +244,29 @@ if (!customElements.get('cart-items')) {
           if (this.cartErrors) {
             this.cartErrors.textContent = theme.cartStrings.error;
           }
+          this.resyncMiniCart();
         });
+    }
+
+    // The optimistic subtotal may be showing a number the server never
+    // confirmed — pull a fresh render of the drawer section to re-sync.
+    resyncMiniCart() {
+      const miniCart = document.querySelector('mini-cart[data-url]');
+      if (!miniCart || !miniCart.contains(this)) return;
+
+      fetch(miniCart.dataset.url)
+        .then((response) => response.text())
+        .then((html) => {
+          const sectionInnerHTML = new DOMParser()
+            .parseFromString(html, 'text/html')
+            .querySelector('.shopify-section').innerHTML;
+          if (!theme.patchMiniCart || !theme.patchMiniCart(sectionInnerHTML)) {
+            withMiniCartScrollRestore(() => {
+              document.getElementById('mini-cart').innerHTML = sectionInnerHTML;
+            });
+          }
+        })
+        .catch((e) => console.error(e));
     }
 
     onChange(event) {
@@ -211,13 +382,15 @@ if (!customElements.get('cart-items')) {
     }
 
     renderContents(parsedState) {
-      this.getSectionsToRender().forEach((section => {
-        const element = document.getElementById(section.id);
+      withMiniCartScrollRestore(() => {
+        this.getSectionsToRender().forEach((section => {
+          const element = document.getElementById(section.id);
 
-        if (element) {
-          element.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-        }
-      }));
+          if (element) {
+            element.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+          }
+        }));
+      });
     }
   });
 }

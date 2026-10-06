@@ -67,10 +67,6 @@
   margin-top: 4rem;
 }
 
-.customer .field input {
-  --color-keyboard-focus: var(--color-border);
-}
-
 .customer .button {
   margin: 4rem 0 1.5rem;
   margin-inline-end: 2rem;

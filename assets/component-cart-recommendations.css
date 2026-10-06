@@ -154,6 +154,37 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  /* The thumb grows to the text column's full height - its bottom edge
+     lands level with the add-to-cart button - so the 4.4rem touch box
+     reads as part of a balanced card instead of an oversized stray. The
+     ratio box goes; the stretched frame crops with object-fit instead. */
+  .cart-recommendations .mini-cart__navigation .product-container {
+    align-items: stretch;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image {
+    width: 11rem;
+    align-self: stretch;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image .media-wrapper,
+  .cart-recommendations .mini-cart__navigation .product-image .media {
+    height: 100%;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image .media {
+    padding-bottom: 0;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image .media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .cart-recommendations .mini-cart__navigation li {
@@ -162,6 +193,9 @@
     flex-grow: 1;
     flex-shrink: 0;
     padding: 0;
+    /* The container declares x-mandatory snapping; without an align value
+       on the items, cards stopped mid-scroll at arbitrary cut-offs */
+    scroll-snap-align: start;
   }
 
   .cart-recommendations .mini-cart__navigation::-webkit-scrollbar {
@@ -177,8 +211,8 @@
   }
 
   .cart-recommendations .mini-cart__navigation .product-button .button {
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 4.4rem;
+    height: 4.4rem;
     justify-content: center;
     box-shadow: inset 0 0 0 0.1rem rgb(var(--color-border));
   }
@@ -189,5 +223,32 @@
     height: 2rem;
     margin-top: -1rem;
     margin-left: -1rem;
+  }
+}
+
+/* Short viewports: the upsell keeps its slot by shrinking - vendor line
+   off, thumb on the compact ratio box - instead of pushing the items
+   list into a sliver. */
+@media screen and (max-height: 700px) and (max-width: 749px) {
+  .cart-recommendations .mini-cart__navigation {
+    padding-top: 2rem;
+  }
+
+  .cart-recommendations .mini-cart__navigation .caption-with-letter-spacing {
+    display: none;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image {
+    width: 8rem;
+    align-self: flex-start;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image .media-wrapper {
+    height: auto;
+  }
+
+  .cart-recommendations .mini-cart__navigation .product-image .media {
+    height: 0;
+    padding-bottom: var(--image-ratio-percent);
   }
 }

@@ -242,6 +242,24 @@
   }
 }
 
+/* Full width, the text half bleeds to the screen edge while its padding is a
+   fixed rem — on wide screens the copy sits left of the page column every other
+   section aligns to. The outer side takes the gutter so the copy lands on the
+   column; the inner side keeps the block's own padding toward the media. The
+   max-width cap goes: the gutter would eat the measure it was sized for.
+   Centered content stays out — it reads against the panel, not the column. */
+@media screen and (min-width: 750px) {
+  .image-with-text.page-width--full-width .image-with-text__grid--reverse .image-with-text__content:not(.center) {
+    max-width: none;
+    padding-inline-start: var(--page-gutter);
+  }
+
+  .image-with-text.page-width--full-width .image-with-text__grid:not(.image-with-text__grid--reverse) .image-with-text__content:not(.center) {
+    max-width: none;
+    padding-inline-end: var(--page-gutter);
+  }
+}
+
 /* custom video */
 .image-with-text--video .deferred-media__poster {
   display: flex;

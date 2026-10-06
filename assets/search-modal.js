@@ -13,7 +13,10 @@ class SearchModal extends HTMLElement {
       'click',
       this.onSummaryClick.bind(this)
     );
-    this.querySelector('button[type="button"]').addEventListener(
+    // :not(.voice-search__button) — the optional mic button is also
+    // type="button" and precedes the close button in the field; binding
+    // close() to it would dismiss the whole modal on every mic tap.
+    this.querySelector('button[type="button"]:not(.voice-search__button)').addEventListener(
       'click',
       this.close.bind(this)
     );

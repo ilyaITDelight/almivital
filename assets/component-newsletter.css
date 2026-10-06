@@ -1,7 +1,6 @@
 .newsletter-form {
   width: 100%;
   position: relative;
-  --color-keyboard-focus: var(--color-border);
 }
 
 .newsletter-form .form__message {
@@ -16,7 +15,7 @@
   padding: 0;
   padding-inline-start: 1.2rem;
   border: 0.1rem solid transparent;
-  border-bottom-color: rgb(var(--color-border));
+  border-bottom-color: rgb(var(--color-border-strong));
   transition-property: border;
 }
 

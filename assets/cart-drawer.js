@@ -37,11 +37,25 @@ class MiniCart extends HTMLElement {
 
   renderContents(parsedState) {
     this.productId = parsedState.id;
+
+    // While the drawer is open (upsell adds, gift wrap, quick view),
+    // patch the money-touched regions instead of swapping the whole
+    // drawer — keeps open collapsibles, scroll and upsell state intact.
+    const drawerOpen = this.drawer && !!this.drawer.querySelector('details[open]');
+
     this.getSectionsToRender().forEach((section => {
-      if (document.getElementById(section.id)) {
-        document.getElementById(section.id).innerHTML =
-          this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-      }
+      if (!document.getElementById(section.id)) return;
+
+      if (
+        section.id === 'mini-cart' &&
+        drawerOpen &&
+        window.theme && theme.patchMiniCart &&
+        parsedState.sections[section.id] &&
+        theme.patchMiniCart(this.getSectionInnerHTML(parsedState.sections[section.id], section.selector))
+      ) return;
+
+      document.getElementById(section.id).innerHTML =
+        this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
     }));
 
     this.open();

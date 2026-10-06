@@ -39,6 +39,10 @@
   scrollbar-width: thin; /* Firefox */
 }
 
+.mini-cart--open .content-scrollspy__menu {
+  z-index: 99;
+}
+
 .content-scrollspy__menu:not(.content-scrollspy__menu--hidden) {
   opacity: 1;
   visibility: visible;
@@ -153,7 +157,7 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 60px;
   height: 3px;
   background: var(--scrollspy-active);
@@ -179,13 +183,13 @@
 .content-scrollspy__section-content li {
   padding: 0.5rem 0;
   position: relative;
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
 }
 
 .content-scrollspy__section-content li::before {
   content: '✓';
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   color: var(--scrollspy-active);
   font-weight: bold;
 }
@@ -291,7 +295,7 @@
 .content-scrollspy__scroll-indicator {
   position: fixed;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 0;
   height: 3px;
   background: var(--scrollspy-active);

@@ -417,3 +417,12 @@
     height: 1.6rem;
   }
 }
+
+/* Full width, the panel bleeds to the screen edge while its copy sits a fixed
+   7rem in — on wide screens that is left of the page column. The outer side
+   takes the gutter; the reveal panel is always the left half. */
+@media screen and (min-width: 750px) {
+  .page-width--full-width .banner--reveal .banner__content {
+    padding-inline-start: var(--page-gutter);
+  }
+}

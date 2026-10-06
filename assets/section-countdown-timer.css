@@ -2,7 +2,10 @@
   display: none;
 }
 
+/* A timer reads like a clock: units and digits keep their left-to-right
+   order in every script. */
 .countdown {
+  direction: ltr;
   width: 100%;
   max-width: 57rem;
   display: flex;

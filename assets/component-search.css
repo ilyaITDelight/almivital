@@ -97,6 +97,48 @@ details[open] > .search-modal .modal-overlay::after {
   margin-top: calc(calc(var(--header-bottom-position) - 5rem) / 2);
 }
 
+/* Tablet-width headers (750–989px) are a single compact row. The
+   margin-top centering formulas above assume the taller desktop header
+   (and an announcement-height var that only one of possibly several
+   announcement sections sets), which pushed the field past the modal's
+   inset-locked box — the search bar rendered with its bottom sliced
+   off. Center against the modal's real height with flex instead. */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .search-modal__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .search-modal__form .field,
+  .search-modal__form .field.has-recommendation,
+  .shopify-section-header-sticky:not(.shopify-section-header-hidden) .search-modal__form .field {
+    margin-top: 0;
+  }
+
+  /* Typing must not move the field: keep the modal at header-row height
+     (the .searching state grows it to ~100vh, which re-centers the field
+     against the taller box) and drop the results below as an overlay
+     panel instead — same pattern as the quick-links dropdown. */
+  .search-modal.searching {
+    height: 100%;
+  }
+
+  .search-modal .predictive-search {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin-top: 0;
+    height: calc(100vh - var(--header-bottom-position) - 4rem);
+    overflow-y: auto;
+    background-color: rgb(var(--color-background));
+    box-shadow: 0 0.1rem 0.8rem rgba(var(--color-foreground), 0.15), 0 2rem 4rem rgba(var(--color-foreground), 0.08);
+  }
+}
+
 @media screen and (min-width: 750px) {
   .search-modal__form .field {
     width: calc(100% + 3rem);
@@ -211,6 +253,12 @@ details[open] > .search-modal .modal-overlay::after {
     position: fixed;
   }
 
+  @supports (height: 100dvh) {
+    .search-modal {
+      height: 100dvh;
+    }
+  }
+
   details[open]>.search-modal .modal-overlay:after {
     bottom: 0;
   }
@@ -233,4 +281,52 @@ details[open] > .search-modal .modal-overlay::after {
 .search__recommendation .menu-item + .is-parent,
 .search__recommendation .is-parent + .menu-item {
   margin-top: 3rem;
+}
+/* Voice search (settings.voice_search_enabled) — <voice-search-button>
+   removes itself on unsupported browsers; hide it entirely without JS. */
+.no-js voice-search-button {
+  display: none;
+}
+
+voice-search-button {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.voice-search__button .icon-mic {
+  width: 1.4rem;
+  height: 1.8rem;
+  overflow: visible;
+  stroke-width: var(--icon-weight);
+}
+
+voice-search-button.listening .voice-search__button {
+  color: rgb(var(--color-highlight, 217, 185, 122));
+  animation: voice-search-pulse 1.4s ease infinite;
+}
+
+@keyframes voice-search-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+/* The modal hides its type=button/reset buttons while predictive results
+   load — keep the mic in place so it doesn't blink out on every fetch. */
+predictive-search[loading] .search-modal__form .search__button.voice-search__button {
+  display: flex;
+}
+
+/* The reset button normally reserves its space while invisible (opacity 0).
+   With a mic sitting beside it that empty reservation reads as a bug-like
+   gap — collapse the reset entirely while the field is empty. It pops back
+   in on the first typed character. */
+.field:has(voice-search-button) .search__input:placeholder-shown ~ .search__button[type="reset"] {
+  display: none;
 }

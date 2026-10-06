@@ -282,7 +282,9 @@ theme.initWhenVisible = function(options) {
         x: i.touches[0].pageX - t.x,
         y: i.touches[0].pageY - t.y
       };
-      Math.abs(n.x) > Flickity.defaults.dragThreshold && i.preventDefault()
+      if (Math.abs(n.x) > Math.abs(n.y) && Math.abs(n.x) > Flickity.defaults.dragThreshold) {
+        i.preventDefault();
+      }
     }
   }, { passive: !1 })
 })();
@@ -1019,6 +1021,43 @@ class HeaderDrawer extends MenuDrawer {
       opening: 'menu-mobile--opening',
       closing: 'menu-mobile--closing'
     });
+
+    this.setupScrollHint();
+  }
+
+  // Shows a fade at the bottom of the menu list while more items sit below
+  // the fold (the nav is the scroller — promo/footer stay pinned under it),
+  // and hides it once the list is scrolled to its end.
+  setupScrollHint() {
+    this.drawerElement = this.querySelector('.menu-drawer');
+    this.scrollContainer = this.querySelector('.menu-drawer__navigation');
+    if (!this.drawerElement || !this.scrollContainer) return;
+
+    let ticking = false;
+    this.updateScrollHint = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const el = this.scrollContainer;
+        const remaining = el.scrollHeight - el.scrollTop - el.clientHeight;
+        this.drawerElement.classList.toggle('menu-drawer--can-scroll', remaining > 24);
+        ticking = false;
+      });
+    };
+
+    this.scrollContainer.addEventListener('scroll', this.updateScrollHint, { passive: true });
+    // Content height settles after the open animation and image loads;
+    // observe the children too — the container itself is height-locked
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(this.updateScrollHint);
+      observer.observe(this.scrollContainer);
+      Array.from(this.scrollContainer.children).forEach((child) => observer.observe(child));
+    }
+  }
+
+  openMenuDrawer(summaryElement = false) {
+    super.openMenuDrawer(summaryElement);
+    if (this.updateScrollHint) setTimeout(this.updateScrollHint, 100);
   }
 }
 customElements.define('header-drawer', HeaderDrawer);
@@ -1127,8 +1166,13 @@ class SliderComponent extends HTMLElement {
     this.enableSliderLooping = false;
     this.currentPageElement = this.querySelector('.slider-counter--current');
     this.pageTotalElement = this.querySelector('.slider-counter--total');
-    this.prevButton = this.querySelector('button[name="previous"]');
-    this.nextButton = this.querySelector('button[name="next"]');
+
+    // A section can place its controls outside the slider's own element, in the
+    // heading row. data-controls names the container that holds them, so a
+    // section carrying several sliders never binds one to another's buttons.
+    this.controls = (this.dataset.controls && document.getElementById(this.dataset.controls)) || this;
+    this.prevButton = this.controls.querySelector('button[name="previous"]');
+    this.nextButton = this.controls.querySelector('button[name="next"]');
 
     if (!this.slider || !this.nextButton) return;
 
@@ -1178,10 +1222,12 @@ class SliderComponent extends HTMLElement {
       }}));
     }
 
-    if (this.currentPage === 1 && this.currentPage === this.totalPages) {
-      this.classList.add('slider--no-buttons');
-    } else {
-      this.classList.remove('slider--no-buttons');
+    // The hiding rule reads from an ancestor of the buttons, so the class has to
+    // land wherever they actually live.
+    const fitsOnOnePage = this.currentPage === 1 && this.currentPage === this.totalPages;
+    this.classList.toggle('slider--no-buttons', fitsOnOnePage);
+    if (this.controls !== this) {
+      this.controls.classList.toggle('slider--no-buttons', fitsOnOnePage);
     }
 
     if (this.enableSliderLooping) return;
@@ -1608,35 +1654,60 @@ class PriceMoney extends HTMLElement {
 
   init() {
     const currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND'.split(',');
-    const symbol = theme.shopSettings.moneyFormat.replace(/\{{.*}}/, '').trim();
     const bdi = this.querySelector('bdi');
-    const price = bdi.textContent.replace(theme.shopSettings.isoCode,'');
-    let html = price.replace(' ', '');
-    let money_symbol_decimal = '.';
-    if (currencies_using_comma_decimals.includes(theme.shopSettings.isoCode)) {
-      money_symbol_decimal = ',';
+    if (!bdi) return;
+
+    // The text already carries the shop's own currency format, so this
+    // only decorates it in place; splitting and reassembling the parts
+    // would pin the currency code to the end and override formats that
+    // put it elsewhere, such as "USD ${{amount}}".
+    const iso = theme.shopSettings.isoCode;
+    const text = bdi.textContent.trim();
+    const separator = currencies_using_comma_decimals.includes(iso) ? ',' : '.';
+    const decimalRegex = new RegExp((separator === ',' ? ',' : '\\.') + '\\d+(?=\\D|$)');
+
+    // The ISO code inside a run stays plain text; only the symbol takes
+    // the smaller prefix face.
+    const wrapSymbol = (run) => {
+      const symbol = run.replace(iso, '').trim();
+      if (symbol === '') return run;
+      return run.replace(symbol, `<span class="price__prefix">${symbol}</span>`);
+    };
+
+    let html = text.replace(decimalRegex, (decimal) => `<sup class="price__suffix">${decimal}</sup>`);
+
+    const lead = text.match(/^\D+?(?=\d)/);
+    if (lead) {
+      const hasLeadSymbol = lead[0].replace(iso, '').trim() !== '';
+      html = (hasLeadSymbol ? wrapSymbol(lead[0].replace(/ $/, '')) : lead[0]) + html.slice(lead[0].length);
     }
-    if (price.includes(money_symbol_decimal)) {
-      if (price.lastIndexOf(symbol) + symbol.length === price.length) {
-        const price_without_symbol = price.slice(0, price.lastIndexOf(symbol));
-        const price_without_decimal = price.slice(0, price.lastIndexOf(money_symbol_decimal));
-        const decimal = price_without_symbol.replace(price_without_decimal, '').trim();
-        html = html.replace(decimal, `<sup class="price__suffix">${decimal}</sup>`);
-      }
-      else {
-        const price_without_decimal = price.slice(0, price.lastIndexOf(money_symbol_decimal));
-        const decimal = price.replace(price_without_decimal, '').trim();
-        html = html.replace(decimal, `<sup class="price__suffix">${decimal}</sup>`);
-      }
+
+    const tail = text.match(/\d(\D+)$/);
+    if (tail && html.endsWith(tail[1])) {
+      // A code-only tail keeps its own spacing; a symbol drops the gap
+      // because the prefix face brings its own margins.
+      const hasSymbol = tail[1].replace(iso, '').trim() !== '';
+      html = html.slice(0, -tail[1].length) + (hasSymbol ? wrapSymbol(tail[1].replace(/^ /, '')) : tail[1]);
     }
-    html = html.replace(symbol, `<span class="price__prefix">${symbol}</span>`);
-    if(theme.shopSettings.currencyCode){
-       html = html + " " + theme.shopSettings.isoCode;
-    }
+
     bdi.innerHTML = html;
   }
 }
 customElements.define('price-money', PriceMoney);
+
+// Background videos: iOS Low Power Mode blocks even muted autoplay. When play()
+// is rejected, retry once on the first user gesture (which the autoplay policy
+// allows). No UI — the video's poster stays visible until it resumes.
+function playBackgroundVideoOnFirstGesture(video) {
+  if (!video || video.dataset.gestureRetry === '1') return;
+  video.dataset.gestureRetry = '1';
+  const events = ['touchstart', 'pointerdown', 'click'];
+  const resume = () => {
+    events.forEach((evt) => document.removeEventListener(evt, resume));
+    video.play().catch(() => {});
+  };
+  events.forEach((evt) => document.addEventListener(evt, resume, { passive: true }));
+}
 
 class SlideshowComponent extends HTMLElement {
   constructor() {
@@ -1862,11 +1933,19 @@ class SlideshowComponent extends HTMLElement {
       if (videoSection) {
         const video = videoSection.querySelector('video');
         if (video) {
+          // Force background-video behavior: disable all native controls
+          video.removeAttribute('controls');
+          video.setAttribute('playsinline', '');
+          video.setAttribute('webkit-playsinline', '');
+          video.setAttribute('x5-playsinline', 'true');
+          video.setAttribute('controlsList', 'nodownload noremoteplayback');
+          video.setAttribute('disablePictureInPicture', 'true');
+
           if (video.preload === 'none') {
             video.preload = 'auto';
             video.load();
           }
-          video.play().catch(() => {});
+          video.play().catch(() => { playBackgroundVideoOnFirstGesture(video); });
         }
         return;
       }
@@ -2063,6 +2142,27 @@ class AnimateSticky extends HTMLElement {
   }
 
   connectedCallback() {
+    // data-follow names the element this bar stands in for: the bar shows
+    // exactly while that element is out of view — below the fold at page
+    // open included — so the page always offers one visible instance of it.
+    // Without data-follow the bar reveals only after scrolling past its own
+    // anchor position.
+    const followTarget = document.getElementById(this.getAttribute('data-follow'));
+
+    if (followTarget && 'IntersectionObserver' in window) {
+      this.followObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            window.requestAnimationFrame(this.reset.bind(this));
+          } else {
+            window.requestAnimationFrame(this.reveal.bind(this));
+          }
+        });
+      });
+      this.followObserver.observe(followTarget);
+      return;
+    }
+
     this.onScrollHandler = this.onScroll.bind(this);
 
     window.addEventListener('scroll', this.onScrollHandler, false);
@@ -2070,7 +2170,8 @@ class AnimateSticky extends HTMLElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener('scroll', this.onScrollHandler);
+    if (this.followObserver) this.followObserver.disconnect();
+    if (this.onScrollHandler) window.removeEventListener('scroll', this.onScrollHandler);
   }
 
   onScroll() {
@@ -2495,6 +2596,14 @@ class VideoSection extends HTMLElement {
     const player = this.querySelector('video');
 
     if (player) {
+      // Force background-video behavior: disable all native controls
+      player.removeAttribute('controls');
+      player.setAttribute('playsinline', '');
+      player.setAttribute('webkit-playsinline', '');
+      player.setAttribute('x5-playsinline', 'true');
+      player.setAttribute('controlsList', 'nodownload noremoteplayback');
+      player.setAttribute('disablePictureInPicture', 'true');
+
       const promise = player.play();
 
       // Edge does not return a promise (video still plays)
@@ -2502,7 +2611,8 @@ class VideoSection extends HTMLElement {
         promise.then(function() {
           // playback normal
         }).catch(function() {
-          player.setAttribute('controls', '');
+          // Background video: retry on first user gesture instead of showing controls
+          playBackgroundVideoOnFirstGesture(player);
         });
       }
     }
@@ -3372,6 +3482,14 @@ class LocalizationForm extends HTMLElement {
 
     if (this.classList.contains('on-header')) {
       document.body.classList.toggle('localization--open');
+
+      // This list sits at z:2 — above the mega menu's z:-1 backdrop, below its
+      // z:101 content — so it cannot layer with an open menu; close the menus.
+      if (!this.elements.panel.hasAttribute('hidden')) {
+        document.querySelectorAll('.shopify-section-header dropdown-menu, .shopify-section-header mega-menu').forEach((menu) => {
+          if (menu.classList.contains('is-active') && typeof menu.close === 'function') menu.close();
+        });
+      }
     }
   }
 
@@ -3427,7 +3545,8 @@ if (!customElements.get('tabbed-collections')) {
 
     connectedCallback() {
       this.fakeTabs = this.querySelectorAll('.fake-tab-item');
-      this.realDetails = this.querySelectorAll('.tabs-grid details');
+      // Direct children only — the panels contain their own <details> (card quick views).
+      this.realDetails = this.querySelectorAll('.tabs-grid > details');
       
       if (this.fakeTabs.length === 0 || this.realDetails.length === 0) return;
 
@@ -3444,6 +3563,13 @@ if (!customElements.get('tabbed-collections')) {
     setupRealDetails() {
       this.realDetails.forEach(details => {
         details.addEventListener('toggle', this.handleDetailsToggle.bind(this));
+
+        // The name attribute guarantees at most one open panel, not always one —
+        // activating the open tab's summary would close the whole section.
+        const summary = details.querySelector('summary');
+        if (summary) summary.addEventListener('click', (event) => {
+          if (details.open) event.preventDefault();
+        });
       });
     }
 
@@ -3469,8 +3595,9 @@ if (!customElements.get('tabbed-collections')) {
 
     setActiveTab(index) {
       this.fakeTabs.forEach(tab => {
-        const tabIndex = parseInt(tab.dataset.tabIndex);
-        tab.classList.toggle('active', tabIndex === index);
+        const isActive = parseInt(tab.dataset.tabIndex) === index;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-pressed', String(isActive));
       });
     }
 
@@ -3479,7 +3606,7 @@ if (!customElements.get('tabbed-collections')) {
         return parseInt(details.style.getPropertyValue('--tab-index')) === index;
       });
 
-      if (targetDetails) {
+      if (targetDetails && !targetDetails.open) {
         const summary = targetDetails.querySelector('summary');
         if (summary) summary.click();
       }
@@ -3494,3 +3621,280 @@ if (!customElements.get('tabbed-collections')) {
     }
   });
 }
+
+class DeferredSectionLoader {
+  /** @type {Set<string>} Allowed data-callback method names. Extend via DeferredSectionLoader.allowCallback('name'). */
+  static allowedCallbacks = new Set(['deferredLoadCallback', 'handleMouseover']);
+
+  static allowCallback(name) {
+    if (typeof name === 'string' && name) DeferredSectionLoader.allowedCallbacks.add(name);
+  }
+
+  constructor() {
+    this.cache = new Map();
+    this.pendingFetches = new Map();
+    this.initialized = new WeakSet();
+    this.init();
+  }
+
+  init() {
+    document.querySelectorAll('[data-deferred-section]').forEach(section => {
+      if (this.initialized.has(section)) return;
+      this.initialized.add(section);
+      this.setupSection(section);
+    });
+  }
+
+  setupSection(section) {
+    const trigger = section.dataset.trigger || 'visible';
+    const threshold = parseInt(section.dataset.threshold) || 200;
+    let loaded = false;
+    
+    const loadContent = () => {
+      if (loaded) return;
+      loaded = true;
+      this.loadSection(section);
+    };
+
+    switch (trigger) {
+      case 'visible':
+        this.observeVisibility(section, loadContent, threshold);
+        break;
+      case 'hover':
+        section.addEventListener('mouseenter', loadContent, { once: true });
+        section.addEventListener('focusin', loadContent, { once: true });
+        break;
+      case 'click':
+        section.addEventListener('click', loadContent, { once: true });
+        break;
+      default:
+        this.observeVisibility(section, loadContent, threshold);
+    }
+  }
+
+  observeVisibility(element, callback, threshold) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            callback();
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: `${threshold}px 0px ${threshold}px 0px` }
+    );
+    observer.observe(element);
+  }
+
+  async loadSection(section) {
+    const sectionId = section.dataset.sectionId;
+    if (!sectionId) {
+      console.error('DeferredSection: Missing data-section-id');
+      return;
+    }
+
+    section.classList.add('is-loading');
+
+    try {
+      const html = await this.fetchSection(sectionId);
+      this.injectContent(section, html);
+      section.classList.remove('is-loading');
+      section.classList.add('is-loaded');
+      this.executeCallback(section);
+      
+      section.dispatchEvent(new CustomEvent('deferred:loaded', { 
+        bubbles: true,
+        detail: { sectionId, html, element: section }
+      }));
+    } catch (error) {
+      console.error('DeferredSection: Error loading', error);
+      section.classList.remove('is-loading');
+      section.classList.add('is-error');
+      
+      section.dispatchEvent(new CustomEvent('deferred:error', { 
+        bubbles: true,
+        detail: { sectionId, error }
+      }));
+    }
+  }
+
+  async fetchSection(sectionId) {
+    if (this.cache.has(sectionId)) return this.cache.get(sectionId);
+    if (this.pendingFetches.has(sectionId)) return this.pendingFetches.get(sectionId);
+
+    const url = `${window.location.pathname}?section_id=${sectionId}`;
+    const supportsAbort = typeof AbortController !== 'undefined';
+    const controller = supportsAbort ? new AbortController() : null;
+    const signal = controller?.signal;
+    const timeoutMs = parseInt(document.body?.dataset?.deferredTimeout, 10) || 15000;
+
+    let timeoutId;
+    if (controller) {
+      timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+    }
+
+    const fetchPromise = fetch(url, signal ? { signal } : undefined)
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then(html => {
+        if (timeoutId) clearTimeout(timeoutId);
+        this.cache.set(sectionId, html);
+        this.pendingFetches.delete(sectionId);
+        return html;
+      })
+      .catch(error => {
+        if (timeoutId) clearTimeout(timeoutId);
+        this.pendingFetches.delete(sectionId);
+        throw error;
+      });
+
+    this.pendingFetches.set(sectionId, fetchPromise);
+    return fetchPromise;
+  }
+
+  injectContent(section, html) {
+    const placeholder = section.querySelector('[data-deferred-content]');
+    if (!placeholder) return;
+
+    const contentId = placeholder.dataset.contentId;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    let sourceContent;
+    if (contentId) {
+      sourceContent = doc.querySelector(`[data-content-id="${contentId}"]:not([data-deferred-content])`);
+    }
+    if (!sourceContent) {
+      sourceContent = doc.querySelector('.shopify-section');
+    }
+
+    if (sourceContent) {
+      if (placeholder.dataset.replaceParent !== undefined) {
+        section.innerHTML = sourceContent.innerHTML;
+      } else {
+        placeholder.innerHTML = sourceContent.innerHTML || sourceContent.outerHTML;
+        placeholder.removeAttribute('data-deferred-content');
+      }
+      section.removeAttribute('data-deferred-section');
+      if (typeof HTMLUpdateUtility !== 'undefined' && typeof HTMLUpdateUtility.setInnerHTML === 'function') {
+        HTMLUpdateUtility.setInnerHTML(section, section.innerHTML); // Re-execute scripts
+      }
+    }
+  }
+
+  executeCallback(section) {
+    const callbackName = section.dataset.callback;
+    if (!callbackName) return;
+    if (!DeferredSectionLoader.allowedCallbacks.has(callbackName)) return;
+
+    const delay = parseInt(section.dataset.callbackDelay) || 0;
+    const targetSelector = section.dataset.callbackTarget;
+    
+    const execute = () => {
+      let target = section;
+      if (targetSelector) {
+        target = section.closest(targetSelector) || section.querySelector(targetSelector) || section;
+      }
+      if (!target) return;
+
+      const isCustomElement = !!(target.tagName && target.tagName.includes('-'));
+      const allowAttribute = target.hasAttribute && target.hasAttribute('data-allow-deferred-callback');
+      if (!isCustomElement && !allowAttribute) return;
+
+      const fn = target[callbackName];
+      if (typeof fn === 'function') {
+        fn.call(target);
+      }
+    };
+
+    delay > 0 ? setTimeout(execute, delay) : requestAnimationFrame(execute);
+  }
+
+  static load(sectionElement) {
+    window.deferredSectionLoader?.loadSection(sectionElement);
+  }
+
+  static clearCache(sectionId) {
+    if (!window.deferredSectionLoader) return;
+    sectionId ? window.deferredSectionLoader.cache.delete(sectionId) : window.deferredSectionLoader.cache.clear();
+  }
+
+  static onLoaded(sectionId, callback) {
+    document.addEventListener('deferred:loaded', (e) => {
+      if (!sectionId || e.detail.sectionId === sectionId) callback(e.detail);
+    });
+  }
+}
+
+window.DeferredSectionLoader = DeferredSectionLoader;
+window.deferredSectionLoader = new DeferredSectionLoader();
+
+document.addEventListener('shopify:section:load', () => {
+  window.deferredSectionLoader?.init();
+});
+
+/*
+  Spec chips glide through their overflow while the card is hovered and
+  glide home on leave — the row hides its scrollbar, and horizontal wheel
+  scrolling asks for a Shift the visitor doesn't know about. Hover-only:
+  touch devices keep their native swipe. Delegated, because cards also
+  arrive later via quick view, similar products and deferred sections.
+*/
+(() => {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const SPEED = 0.14; // px per ms
+  const isRTL = document.documentElement.dir === 'rtl';
+
+  const maxScroll = (el) => {
+    const max = el.scrollWidth - el.clientWidth;
+    return isRTL ? -max : max;
+  };
+
+  const glide = (el, target) => {
+    cancelAnimationFrame(el.hlScrollFrame);
+    if (reduced.matches) {
+      el.scrollLeft = target;
+      return;
+    }
+    const from = el.scrollLeft;
+    const dist = target - from;
+    if (!dist) return;
+    const duration = Math.min(1800, Math.abs(dist) / SPEED);
+    // The strip variant snaps by proximity; left on, every frame's write
+    // gets yanked onto an item start. Off for the glide, back for the hand.
+    el.style.scrollSnapType = 'none';
+    let started;
+    const step = (now) => {
+      if (started === undefined) started = now;
+      const p = Math.min(1, (now - started) / duration);
+      const eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      el.scrollLeft = from + dist * eased;
+      if (p < 1) {
+        el.hlScrollFrame = requestAnimationFrame(step);
+      } else {
+        el.style.scrollSnapType = '';
+      }
+    };
+    el.hlScrollFrame = requestAnimationFrame(step);
+  };
+
+  const stripOf = (card) => card.querySelector('[data-hover-scroll]');
+
+  document.addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.card-wrapper, .card-product, .product__highlights-block');
+    if (!card || card.contains(e.relatedTarget)) return;
+    const strip = stripOf(card);
+    if (strip) glide(strip, maxScroll(strip));
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const card = e.target.closest('.card-wrapper, .card-product, .product__highlights-block');
+    if (!card || card.contains(e.relatedTarget)) return;
+    const strip = stripOf(card);
+    if (strip) glide(strip, 0);
+  });
+})();

@@ -342,8 +342,10 @@
   .multicolumn-list {
     row-gap: 5rem;
   }
-  .multicolumn-list.slider,
-  .multicolumn-list.flex-grid--4-col-desktop {
+  /* Resets the mobile slider's padding once it stops scrolling here — but a
+     bleeding list's padding IS the page gutter, and this outranks it. */
+  .multicolumn-list.slider:not(.slider--bleed),
+  .multicolumn-list.flex-grid--4-col-desktop:not(.slider--bleed) {
     padding: 0;
   }
   .multicolumn-list__item,

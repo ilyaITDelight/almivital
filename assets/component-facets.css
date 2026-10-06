@@ -46,6 +46,10 @@
   transform: none !important;
 }
 
+body.search-modal--open .shopify-section-filters-sticky {
+  z-index: -1 !important;
+}
+
 .facet-drawer--open .shopify-section-header.shopify-section-header-sticky,
 .facet-drawer--opening .shopify-section-header.shopify-section-header-sticky,
 .facet-drawer--closing .shopify-section-header.shopify-section-header-sticky {

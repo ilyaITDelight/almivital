@@ -163,6 +163,10 @@ cart-items {
   margin-top: 0;
 }
 
+.cart-template .cart__dynamic-checkout-buttons {
+  margin-top: 1rem;
+}
+
 .cart-note__label {
   display: inline-block;
   margin-bottom: 1rem;

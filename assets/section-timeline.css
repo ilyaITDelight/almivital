@@ -15,13 +15,10 @@ timeline-component {
   --timeline-transition: all var(--timeline-animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Timeline Section with Scroll Snap */
 .timeline-section {
   height: 500vh; /* Default height, overridden by component */
-  scroll-snap-type: y mandatory;
   position: relative;
   isolation: isolate;
-  scroll-behavior: smooth;
 }
 
 .timeline-container {
@@ -31,7 +28,6 @@ timeline-component {
   display: flex;
   background: var(--timeline-content-bg-color);
   box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04);
-  scroll-snap-align: start;
   overflow: hidden;
 }
 
@@ -104,7 +100,6 @@ timeline-component {
   width: 100%;
   opacity: 0;
   transform: translateY(-50%);
-  transition: var(--timeline-transition);
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -173,7 +168,6 @@ timeline-component {
   height: 100%;
   opacity: 0;
   transform: translateY(100%);
-  transition: var(--timeline-transition);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,10 +245,7 @@ timeline-component[data-enable-padding="false"] .slide img {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
-  .timeline-section {
-    scroll-snap-type: none;
-  }
+
 }
 
 /* High contrast mode support */

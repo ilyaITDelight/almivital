@@ -96,7 +96,18 @@ class ComparisonTableComponent extends HTMLElement {
   }
 
   setupResizeListener() {
+    // Observe the wrapper div, not the custom element host: if the host is
+    // ever rendered inline (stylesheet not applied yet), ResizeObserver
+    // would silently never fire again.
+    const target = this.querySelector(`.${CSS_CLASSES.WRAPPER}`) || this;
+
     const handleResize = () => {
+      // Only react to width changes: height changes are caused by our own
+      // syncHeights() and would otherwise trigger an observer feedback loop.
+      const width = target.offsetWidth;
+      if (width === this.lastObservedWidth) return;
+      this.lastObservedWidth = width;
+
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = setTimeout(() => {
         const table = this.querySelector(`.${CSS_CLASSES.TABLE}`);
@@ -104,8 +115,15 @@ class ComparisonTableComponent extends HTMLElement {
       }, 100);
     };
 
-    window.addEventListener('resize', handleResize);
-    this.resizeHandler = handleResize;
+    if ('ResizeObserver' in window) {
+      // Catches container-driven size changes (theme editor, drawers) that
+      // a window resize listener misses.
+      this.resizeObserver = new ResizeObserver(handleResize);
+      this.resizeObserver.observe(target);
+    } else {
+      window.addEventListener('resize', handleResize);
+      this.resizeHandler = handleResize;
+    }
   }
 
   setupMutationObserver() {
@@ -176,56 +194,34 @@ class ComparisonTableComponent extends HTMLElement {
       availableWidth = wrapperWidth;
     }
     
-    let columnWidth;
-    if (window.innerWidth <= 480) {
-      columnWidth = 120;
-    } else if (window.innerWidth <= 768) {
-      columnWidth = 150;
-    } else {
-      columnWidth = 200;
-    }
-    
-    const requiredWidth = productCount * columnWidth;
-    const minColumnWidth = window.innerWidth <= 480 ? 100 : (window.innerWidth <= 768 ? 120 : 150);
-    const shouldAutoFit = (requiredWidth <= availableWidth) && (availableWidth / productCount >= minColumnWidth);
+    // Squeeze columns down to the minimum readable width before falling back
+    // to horizontal scrolling. Must match the CSS auto-fit min-widths
+    // (150px desktop / 120px mobile); scroll-mode column widths
+    // (200px / 150px) are set in CSS. Below 120px, multi-line text becomes
+    // one word per line — scrolling wider columns reads far better.
+    const minColumnWidth = window.innerWidth <= 768 ? 120 : 150;
+    const shouldAutoFit = availableWidth / productCount >= minColumnWidth;
     
     table.classList.remove(CSS_CLASSES.AUTO_FIT, CSS_CLASSES.SCROLL);
-    
+
     if (shouldAutoFit) {
       table.classList.add(CSS_CLASSES.AUTO_FIT);
       scrollableContent.style.overflowX = 'visible';
-      
-      const equalColumnWidth = Math.ceil(availableWidth / productCount);
-      const productColumns = table.querySelectorAll(`.${CSS_CLASSES.PRODUCT}`);
-      const dataCells = table.querySelectorAll(`.${CSS_CLASSES.CELL}`);
-      
-      productColumns.forEach(column => {
-        column.style.minWidth = `${equalColumnWidth}px`;
-        column.style.width = `${equalColumnWidth}px`;
-      });
-      
-      dataCells.forEach(cell => {
-        cell.style.minWidth = `${equalColumnWidth}px`;
-        cell.style.width = `${equalColumnWidth}px`;
-      });
     } else {
       table.classList.add(CSS_CLASSES.SCROLL);
       scrollableContent.style.overflowX = 'auto';
-      
-      const productColumns = table.querySelectorAll(`.${CSS_CLASSES.PRODUCT}`);
-      const dataCells = table.querySelectorAll(`.${CSS_CLASSES.CELL}`);
-      
-      productColumns.forEach(column => {
-        column.style.minWidth = '';
-        column.style.width = '';
-      });
-      
-      dataCells.forEach(cell => {
-        cell.style.minWidth = '';
-        cell.style.width = '';
-      });
     }
-    
+
+    // Equal column widths are handled by the CSS grid (repeat(n, 1fr)).
+    // Never set rounded pixel widths here: they overflow the container by
+    // a few px and produce a phantom horizontal scrollbar.
+    table
+      .querySelectorAll(`.${CSS_CLASSES.PRODUCT}, .${CSS_CLASSES.CELL}`)
+      .forEach((el) => {
+        el.style.minWidth = '';
+        el.style.width = '';
+      });
+
     this.syncHeights(table);
   }
 
@@ -234,67 +230,45 @@ class ComparisonTableComponent extends HTMLElement {
     const productsHeader = table.querySelector(`.${CSS_CLASSES.PRODUCTS_HEADER}`);
     const criteriaRows = table.querySelectorAll(`.${CSS_CLASSES.CRITERIA}`);
     const dataRows = table.querySelectorAll(`.${CSS_CLASSES.DATA_ROW}`);
-    
-    // Sync heights only when necessary to avoid layout shift
-    const needsSync = this.checkIfHeightsNeedSync(criteriaHeader, productsHeader, criteriaRows, dataRows);
-    if (!needsSync) return;
-    
-    // Use a short CSS transition for smoother visual change
+
+    // Inline-criteria mode has no sticky column to pair rows with.
+    if (!criteriaHeader && criteriaRows.length === 0) return;
+
+    // Reset previously fixed heights first so rows can shrink again after
+    // the viewport grows (otherwise stale mobile heights survive rotation).
     const elements = [criteriaHeader, productsHeader, ...criteriaRows, ...dataRows].filter(Boolean);
     elements.forEach(el => {
-      el.style.transition = 'height 0.2s ease-out';
+      el.style.height = '';
     });
-    
+
     requestAnimationFrame(() => {
       if (criteriaHeader && productsHeader) {
         const headerHeight = Math.max(criteriaHeader.offsetHeight, productsHeader.offsetHeight);
         criteriaHeader.style.height = headerHeight + 'px';
         productsHeader.style.height = headerHeight + 'px';
       }
-      
-      requestAnimationFrame(() => {
-        const rowCount = Math.min(criteriaRows.length, dataRows.length);
-        for (let i = 0; i < rowCount; i++) {
-          const crit = criteriaRows[i];
-          const row = dataRows[i];
-          const maxH = Math.max(crit.offsetHeight, row.offsetHeight);
-          crit.style.height = maxH + 'px';
-          row.style.height = maxH + 'px';
-        }
-        
-        // Remove transition after completion
-        setTimeout(() => {
-          elements.forEach(el => {
-            el.style.transition = '';
-          });
-        }, 200);
-      });
+
+      const rowCount = Math.min(criteriaRows.length, dataRows.length);
+      for (let i = 0; i < rowCount; i++) {
+        const crit = criteriaRows[i];
+        const row = dataRows[i];
+        const maxH = Math.max(crit.offsetHeight, row.offsetHeight);
+        crit.style.height = maxH + 'px';
+        row.style.height = maxH + 'px';
+      }
     });
-  }
-  
-  checkIfHeightsNeedSync(criteriaHeader, productsHeader, criteriaRows, dataRows) {
-    // Determine whether heights need to be synchronized
-    if (criteriaHeader && productsHeader) {
-      const heightDiff = Math.abs(criteriaHeader.offsetHeight - productsHeader.offsetHeight);
-      if (heightDiff > 5) return true; // Only sync if the difference is greater than 5px
-    }
-    
-    const rowCount = Math.min(criteriaRows.length, dataRows.length);
-    for (let i = 0; i < rowCount; i++) {
-      const crit = criteriaRows[i];
-      const row = dataRows[i];
-      const heightDiff = Math.abs(crit.offsetHeight - row.offsetHeight);
-      if (heightDiff > 5) return true;
-    }
-    
-    return false;
   }
 
   cleanup() {
     if (this.resizeHandler) {
       window.removeEventListener('resize', this.resizeHandler);
     }
-    
+
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
+
     if (this.observer) {
       this.observer.disconnect();
     }

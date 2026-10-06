@@ -74,6 +74,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgb(var(--color-icon));
+  color: var(--color-icon-glyph, currentColor);
 }
 
 .guarantees-icon--colored .guarantee__item .h3 {

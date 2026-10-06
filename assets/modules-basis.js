@@ -2,10 +2,15 @@ class ScrollSnapSlider extends HTMLUListElement {
   constructor() {
     super();
     
-    this.prevButton = this.parentNode.querySelector(".slider-buttons .slider-button--prev");
-    this.nextButton = this.parentNode.querySelector(".slider-buttons .slider-button--next");
-    this.indicators = this.parentNode.querySelectorAll(".indicator");
-    this.currentIndicator = this.parentNode.querySelector(".indicator .current-indicator");
+    // A section can place its controls outside the slider's own wrapper.
+    // data-controls names the container that holds them, so a section carrying
+    // several sliders never binds one slider to another's buttons.
+    const controls = (this.dataset.controls && document.getElementById(this.dataset.controls)) || this.parentNode;
+
+    this.prevButton = controls.querySelector(".slider-buttons .slider-button--prev");
+    this.nextButton = controls.querySelector(".slider-buttons .slider-button--next");
+    this.indicators = controls.querySelectorAll(".indicator");
+    this.currentIndicator = controls.querySelector(".indicator .current-indicator");
     this.isAutoplay = (this.dataset.autoplay || "false") === 'true';
     this.isLoop = (this.dataset.loop || "false") === 'true';
     this.isDraggable = (this.dataset.draggable || "false") === 'true';
@@ -55,16 +60,27 @@ class ScrollSnapSlider extends HTMLUListElement {
       this.updateIndicator(e);
     });
 
+    const syncButtonState = () => {
+      this.prevButton?.removeAttribute('disabled');
+      this.nextButton?.removeAttribute('disabled');
+      if (sliderSimple.firstItemInView) {
+        this.prevButton?.setAttribute('disabled', 'disabled');
+      }
+      if (sliderSimple.lastItemInView) {
+        this.nextButton?.setAttribute('disabled', 'disabled');
+      }
+    };
+
     if (!this.isLoop || this.isDraggable) {
-      this.slider.addEventListener("slide-stop", () => {
-        this.prevButton?.removeAttribute('disabled');
-        this.nextButton?.removeAttribute('disabled');
-        if (sliderSimple.firstItemInView) {
-          this.prevButton?.setAttribute('disabled', 'disabled');
-        }
-        if (sliderSimple.lastItemInView) {
-          this.nextButton?.setAttribute('disabled', 'disabled');
-        }
+      this.slider.addEventListener("slide-stop", syncButtonState);
+
+      // A row short enough to fit never scrolls, so slide-stop never fires and
+      // Next keeps the enabled state it was rendered with — it invites a click
+      // that can do nothing. Settle the buttons once the first measurement is
+      // in; a frame is needed because the slide size is measured in one.
+      requestAnimationFrame(() => {
+        sliderSimple.update();
+        syncButtonState();
       });
     }
 

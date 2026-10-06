@@ -8,6 +8,15 @@ body:not(.facet-drawer--open):not(.facet-drawer--opening):not(.facet-drawer--clo
   transition: opacity var(--duration-default) ease;
 }
 
+.quick-view--open .shopify-section-filters-sticky,
+.quick-view--opening .shopify-section-filters-sticky,
+.quick-view--closing:not(.mini-cart--opening) .shopify-section-filters-sticky,
+.similar-products--open .shopify-section-filters-sticky,
+.similar-products--opening .shopify-section-filters-sticky,
+.similar-products--closing:not(.mini-cart--opening) .shopify-section-filters-sticky {
+  z-index: 2;
+}
+
 .shopify-section-filters-sticky > .page-width::after {
   content: '';
   position: absolute;

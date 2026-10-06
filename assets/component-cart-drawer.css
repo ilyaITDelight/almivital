@@ -88,13 +88,19 @@
   --max-height: 100%;
 }
 
+@supports (height: 100dvh) {
+  .cart-drawer {
+    --max-height: 100dvh;
+  }
+}
+
 .shopify-section-header-sticky.shopify-section-header-hidden .cart-drawer {
   height: 100vh;
 }
 
-@supports (height: 100svh) {
+@supports (height: 100dvh) {
   .shopify-section-header-sticky.shopify-section-header-hidden .cart-drawer {
-    height: 100svh;
+    height: 100dvh;
   }
 }
 
@@ -184,6 +190,8 @@ details[open].menu-opening > .cart-drawer {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
+  /* Stop scroll chaining to the page behind the drawer (iOS) */
+  overscroll-behavior: contain;
 }
 
 .mini-cart__main::-webkit-scrollbar {
@@ -618,7 +626,6 @@ details[open].menu-opening > .cart-drawer {
 
 .mini-cart__action .field {
   margin-top: 2rem;
-  --color-keyboard-focus: var(--color-border);
 }
 
 .mini-cart__action .button {
@@ -957,4 +964,104 @@ details[open].menu-opening > .cart-drawer [data-animate] {
 
 .mini-cart__action .cart-discount .field {
   margin-top: 1rem;
+}
+/* Touch devices: enlarge quantity / delete controls to comfortable tap targets
+   (they are 2rem on pointer-fine devices, which is fine for a mouse). */
+@media (pointer: coarse) {
+  .mini-cart__navigation .quantity {
+    width: 12rem;
+    padding: 0.4rem 0;
+  }
+
+  .mini-cart__navigation .quantity__button {
+    flex: 0 0 3.6rem;
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+
+  .mini-cart__navigation .quantity__input {
+    height: 3.6rem;
+    width: 4.4rem;
+  }
+
+  .mini-cart__navigation .delete-product {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+}
+
+/* Optimistic quantity updates: the subtotal shows the client-side figure
+   dimmed until the server render confirms it; a line dropping to zero
+   fades out while its removal is in flight. */
+#mini-cart-subtotal {
+  transition: opacity var(--duration-default) ease;
+}
+
+#mini-cart-subtotal.is-pending {
+  opacity: 0.45;
+}
+
+.mini-cart__navigation > li.cart-item--removing {
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity var(--duration-default) ease;
+}
+
+/* Short viewports (SE-class phones, squat laptop windows): the drawer's
+   fixed header and footer give ground before the scrolling middle gets
+   squeezed into slivers. Taller screens keep every rule above. */
+@media screen and (max-height: 700px) {
+  .mini-cart__footer .tax-note {
+    display: none;
+  }
+
+  .mini-cart__footer .button-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mini-cart__footer .button-container .button {
+    width: auto;
+    flex: 1 1 auto;
+    min-height: 4.4rem;
+  }
+
+  /* Below 480px the theme renders the second action as an underlined
+     link dropped under the CTA; beside a solid button on one row that
+     reads as a glitch, so this row takes the real outline button the
+     drawer already uses from 480px up. */
+  .mini-cart__footer .button-container .button + .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 4.4rem;
+    padding: 0 1.6rem;
+    margin: 0;
+    transform: none;
+    text-decoration: none;
+    border: var(--button-border-width) solid rgb(var(--color-button-border));
+    background-color: rgb(var(--color-button-background));
+    background-image: none;
+    color: rgb(var(--color-button-text));
+    font-family: var(--font-button-family);
+    font-size: var(--font-button-size);
+    font-weight: var(--font-heading-weight);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .mini-cart__actions {
+    padding: 0.4rem 0;
+  }
+}
+
+/* Mandatory snapping in an overflowing drawer vetoes resting positions
+   that show a full card; proximity keeps the nudge without the veto. */
+@media screen and (max-width: 749px) {
+  .mini-cart__main {
+    scroll-snap-type: y proximity;
+  }
 }

@@ -5,6 +5,7 @@
 .pickup-availability--open .promo-popup,
 .quick-view--open .promo-popup,
 .search-modal--open .promo-popup,
+.similar-products--open .promo-popup,
 .details-modal--open .promo-popup {
   z-index: 15;
 }

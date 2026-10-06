@@ -1,3 +1,10 @@
+/* Custom elements default to display:inline, which breaks ResizeObserver:
+   inline elements never report size changes, freezing the table mode at
+   whatever width was measured mid-page-load. */
+comparison-table-component {
+  display: block;
+}
+
 .comparison-table-section {
   margin: 0 auto;
 }
@@ -13,7 +20,6 @@
 .comparison-table {
   display: flex;
   width: 100%;
-  min-height: 400px;
   align-items: stretch;
 }
 
@@ -35,7 +41,6 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(var(--color-border), 0.5) transparent;
   scroll-behavior: smooth;
-  /*touch-action: pan-x;*/
   touch-action: auto;
   overscroll-behavior-x: contain;
   contain: layout; /* Improve performance and prevent layout shifts */
@@ -69,15 +74,6 @@
 .comparison-table--inline-criteria .comparison-table__products-header {
   border-bottom: none;
 }
-
-/*.comparison-table--no-shadow:not(.comparison-table--with-criteria) .comparison-table__product:first-child,
-.comparison-table--no-shadow.comparison-table--inline-criteria .comparison-table__product:first-child {
-  padding-left: 0;
-}
-.comparison-table--no-shadow:not(.comparison-table--with-criteria) .comparison-table__product:last-child,
-.comparison-table--no-shadow.comparison-table--inline-criteria .comparison-table__product:last-child {
-  padding-right: 0;
-}*/
 
 .comparison-table__data-row {
   display: grid;
@@ -147,6 +143,7 @@
 }
 
 .comparison-table__product-image {
+  position: relative;
   width: 100%;
   margin-bottom: 1rem;
   overflow: hidden;
@@ -206,7 +203,8 @@
 .comparison-table__criteria {
   display: grid;
   grid-template-rows: 1fr;
-  align-items: center;
+  /* Matches the top-aligned data cells so label and cell text share the same first line */
+  align-items: start;
   padding: 1.5rem;
   background: rgb(var(--color-highlight));
   border-bottom: 1px solid rgb(var(--color-border));
@@ -241,7 +239,9 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-row: span 2;
-  align-items: center;
+  /* Top-aligned so the first line of every column sits on the same row,
+     even when columns have a different number of lines */
+  align-items: start;
   padding: 2.5rem 1.5rem;
   gap: 1.5rem;
   line-height: 1.4;
@@ -259,8 +259,15 @@
   border-right: none;
 }
 
+/* An empty cell shows a muted em-dash: reads as "not applicable"
+   instead of missing content */
+.comparison-table__cell:empty::before {
+  content: '\2014';
+  color: rgba(var(--color-foreground), 0.25);
+}
+
 .comparison-table--with-criteria .comparison-table__cell {
-  padding: 1.5rem;
+  padding: 1.75rem 2rem;
 }
 
 .comparison-table:not(.comparison-table--with-criteria) .comparison-table__scrollable-content {
@@ -269,7 +276,7 @@
 }
 
 .comparison-table__data-row:hover .comparison-table__cell {
-  background: rgba(var(--color-highlight), 0.3);
+  background: rgba(var(--color-highlight), 0.12);
 }
 
 .comparison-table__criteria:hover {
@@ -308,6 +315,13 @@
   mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
   -webkit-mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
   position: relative;
+  /* Gentle column snapping while swiping */
+  scroll-snap-type: x proximity;
+}
+
+.comparison-table--scroll .comparison-table__product,
+.comparison-table--scroll .comparison-table__cell {
+  scroll-snap-align: start;
 }
 
 @media screen and (max-width: 768px) {
@@ -318,6 +332,14 @@
 
   .comparison-table__sticky-column {
     flex: 0 0 150px;
+  }
+
+  /* Scroll-mode columns: ~40vw on a phone, showing ~2.5 columns —
+     wide enough to read, narrow enough to hint there is more to swipe. */
+  .comparison-table--scroll .comparison-table__product,
+  .comparison-table--scroll .comparison-table__cell {
+    min-width: 150px;
+    width: 150px;
   }
 
   .comparison-table__criteria-icon,
@@ -367,9 +389,9 @@
     line-height: 1.2;
   }
 
+  /* Scroll-mode column width stays 150px (inherited from the 768px block):
+     120px columns are too narrow to read multi-line text content. */
   .comparison-table__product {
-    min-width: 120px;
-    width: 120px;
     padding: 1rem;
   }
 
@@ -389,9 +411,6 @@
   }
 
   .comparison-table__cell {
-    flex: 0 0 120px;
-    min-width: 120px;
-    width: 120px;
     padding: 1rem;
     line-height: 1.2;
   }
@@ -400,32 +419,12 @@
     padding: 1rem;
   }
 
+  /* Keep in sync with minColumnWidth in comparison-table-component.js */
   .comparison-table--auto-fit .comparison-table__product,
   .comparison-table--auto-fit .comparison-table__cell {
-    min-width: 100px;
+    min-width: 120px;
   }
 
-}
-
-#shopify-section-comparison-table .comparison-table-wrapper {
-  background: rgb(var(--color-table-background, var(--color-background)));
-}
-
-#shopify-section-comparison-table .comparison-table__criteria-header,
-#shopify-section-comparison-table .comparison-table__product,
-#shopify-section-comparison-table .comparison-table__cell {
-  background: rgb(var(--color-table-background, var(--color-background)));
-  color: rgb(var(--color-foreground));
-}
-
-#shopify-section-comparison-table .comparison-table__criteria {
-  background: rgb(var(--color-highlight));
-  color: rgb(var(--color-foreground));
-}
-
-#shopify-section-comparison-table .comparison-table__product-button {
-  background: rgb(var(--color-button-background));
-  color: rgb(var(--color-button-text));
 }
 
 .comparison-table__product-button:focus,
@@ -464,6 +463,37 @@
   margin: 0;
 }
 
+.comparison-table__product-text p + p {
+  margin-top: 0.4rem;
+}
+
+/* Elegant ring markers for real richtext lists (replaces hand-typed "○" bullets) */
+.comparison-table__product-text ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.comparison-table__product-text li {
+  position: relative;
+  /* 2.8rem = band icon (1.8rem) + its 1rem gap, so first-column list text
+     lines up with the band label text and markers line up with band icons */
+  padding-inline-start: 2.8rem;
+}
+
+.comparison-table__product-text li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.45em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 0.15rem solid rgb(var(--color-accents, var(--color-highlight)));
+}
+
 /* Merge common SVG sizing/fill */
 .comparison-table__warning-icon svg,
 .comparison-table__criteria-icon svg,
@@ -490,32 +520,40 @@
   border-bottom: none;
 }
 
+/*
+  The inline criteria band is a full-row label — a simple flex row, not a subgrid,
+  so the label is never trapped inside the first column's width on mobile.
+*/
 .comparison-table__inline-criteria {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: span var(--number-of-product-columns);
+  grid-column: 1 / -1;
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
-  justify-items: flex-start;
   background: rgb(var(--color-highlight));
-  border-right: var(--vertical-border-width, 1px) solid rgb(var(--color-border));
+  padding: 1.2rem 2rem;
 }
 
 .comparison-table__inline-criteria .comparison-table__criteria-icon {
-  width: var(--icon-size, 24px);
-  height: var(--icon-size, 24px);
+  align-self: center;
+  width: calc(var(--icon-size, 24px) * 0.75);
+  height: calc(var(--icon-size, 24px) * 0.75);
   color: rgb(var(--color-foreground));
   flex-shrink: 0;
 }
 
 .comparison-table__inline-criteria .comparison-table__criteria-name {
+  /* Keeps the label visible while the row scrolls horizontally */
   position: sticky;
-  left: 0;
+  inset-inline-start: 2rem;
   z-index: 5;
-  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
   min-width: 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.3;
   text-align: start;
 }
 
@@ -539,14 +577,18 @@
 
 @media screen and (max-width: 768px) {
   .comparison-table__inline-criteria {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
-  
-  .comparison-table__inline-criteria .comparison-table__criteria-icon {
-    width: calc(var(--icon-size, 24px) * 0.83);
-    height: calc(var(--icon-size, 24px) * 0.83);
+
+  .comparison-table__inline-criteria .comparison-table__criteria-name {
+    inset-inline-start: 1.5rem;
+    font-size: 1.3rem;
   }
-  
+
+  .comparison-table--with-criteria .comparison-table__cell {
+    padding: 1.25rem 1.5rem;
+  }
+
   .comparison-table--inline-criteria.comparison-table--scroll .comparison-table__scrollable-content {
     mask-image: linear-gradient(to right, black 150px, black calc(100% - 40px), transparent 100%);
     -webkit-mask-image: linear-gradient(to right, black 150px, black calc(100% - 40px), transparent 100%);
@@ -555,12 +597,86 @@
 
 @media screen and (max-width: 480px) {
   .comparison-table__inline-criteria {
-    padding: 1rem;
-    line-height: 1.2;
+    padding: 1rem 1.25rem;
   }
-  
+
+  .comparison-table__inline-criteria .comparison-table__criteria-name {
+    inset-inline-start: 1.25rem;
+  }
+
+  .comparison-table--with-criteria .comparison-table__cell {
+    padding: 1rem 1.25rem;
+  }
+
   .comparison-table--inline-criteria.comparison-table--scroll .comparison-table__scrollable-content {
     mask-image: linear-gradient(to right, black 120px, black calc(100% - 40px), transparent 100%);
     -webkit-mask-image: linear-gradient(to right, black 120px, black calc(100% - 40px), transparent 100%);
+  }
+}
+/* ---------------------------------------------------------------------------
+   Featured column ("Best Seller")
+   Applied per product_column via the "Highlight this column" block setting.
+--------------------------------------------------------------------------- */
+.comparison-table--has-featured .comparison-table__product--featured,
+.comparison-table--has-featured .comparison-table__cell--featured {
+  background:
+    linear-gradient(rgba(var(--color-highlight), 0.08), rgba(var(--color-highlight), 0.08))
+    rgb(var(--color-table-background, var(--color-background)));
+  border-inline: 1px solid rgba(var(--color-accents, var(--color-highlight)), 0.55);
+}
+
+.comparison-table--has-featured .comparison-table__product--featured {
+  border-block-start: 1px solid rgba(var(--color-accents, var(--color-highlight)), 0.55);
+}
+
+/* A featured placeholder column keeps full opacity so fresh installs
+   (no product picked yet) still show the highlight treatment clearly */
+.comparison-table__product--placeholder.comparison-table__product--featured {
+  opacity: 1;
+}
+
+.comparison-table--has-featured .comparison-table__data-row:last-child .comparison-table__cell--featured {
+  border-block-end: 1px solid rgba(var(--color-accents, var(--color-highlight)), 0.55);
+}
+
+.comparison-table__product-badge {
+  position: absolute;
+  top: 1rem;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  z-index: 1;
+  padding: 0.5rem 1.4rem;
+  border-radius: 10rem;
+  background: var(--comparison-badge-background, rgb(var(--color-highlight)));
+  color: var(--comparison-badge-text, rgb(var(--color-foreground)));
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* When one column is featured, the others step back to outline buttons
+   so the featured product's solid button carries the visual weight. */
+.comparison-table--has-featured .comparison-table__product:not(.comparison-table__product--featured) .comparison-table__product-button {
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  box-shadow: inset 0 0 0 0.1rem rgba(var(--color-button-background), 0.7);
+}
+
+.comparison-table--has-featured .comparison-table__product:not(.comparison-table__product--featured) .comparison-table__product-button:hover:not(:disabled) {
+  background: rgb(var(--color-button-background));
+  color: rgb(var(--color-button-text));
+}
+
+@media screen and (max-width: 768px) {
+  .comparison-table__product-badge {
+    top: 0.6rem;
+    padding: 0.35rem 1rem;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
   }
 }

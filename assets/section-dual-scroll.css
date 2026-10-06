@@ -20,10 +20,15 @@
 
 .dual-scroll-layout__left {
   position: relative;
+  /* The grid's 1fr tracks are minmax(auto, 1fr): without a min-width the
+     text panel's gutter padding inflates the left track's min-content and
+     steals the media column's width on wide screens. */
+  min-width: 0;
 }
 
 .dual-scroll-layout__right {
   position: relative;
+  min-width: 0;
 }
 
 .dual-scroll-panel {
@@ -198,19 +203,54 @@
   }
 }
 
+/* Reduced motion parks each image in its resting pose. The merchant's
+   rotation and scale are geometry, not motion - they stay. */
 @media (prefers-reduced-motion: reduce) {
   .dual-scroll-media-image {
     transition: none !important;
     translate: 0 0 !important;
-    rotate: 0deg !important;
-    scale: 1 !important;
+    rotate: var(--media-rotation, 0deg) !important;
+    scale: var(--media-scale, 1) !important;
     opacity: 1 !important;
   }
-  
+
   .dual-scroll-panel__media-image {
     transition: none !important;
-    transform: translateY(0) rotate(-6deg) scale(1.02) !important;
+    transform: translateY(0) rotate(var(--media-rotation, 0deg)) scale(var(--media-scale, 1)) !important;
     opacity: 1 !important;
   }
 }
 
+/*
+  The text panel bleeds to the screen edge, so its own padding is all that
+  places the copy — and a fixed padding leaves it left of the page column that
+  the section's heading sits on, reading as escaped from the layout. The inline
+  start restates the page gutter instead. Viewport units, because the split
+  panel is half the viewport wide and its own percentages cannot see the full
+  width; the end side keeps its fixed padding as inner spacing against the
+  media. These sit after the stacked-layout block so the longhands win its
+  shorthand where the ranges overlap.
+
+  Full-bleed only: the narrow variant caps and centres its own layout, so a
+  viewport-measured gutter lands inside a much smaller panel — on a wide
+  monitor it grows past the panel itself and crushes the copy against the
+  media column.
+*/
+@media screen and (min-width: 750px) and (max-width: 860px) {
+  /*
+    The panel centres its items — vertical in the split view's row, but in the
+    stacked column that same value turns horizontal and floats the shrink-to-fit
+    text box mid-screen, where no padding can reach the column. Stretched, the
+    box spans the panel and the gutter padding lands where it should.
+  */
+  .dual-scroll-panel__text {
+    align-self: stretch;
+    padding-inline: 5rem;
+  }
+}
+
+@media screen and (min-width: 861px) {
+  .dual-scroll-layout:not(.dual-scroll-layout--narrow) .dual-scroll-panel__text {
+    padding-inline-start: calc((100vw - min(100vw, var(--page-width))) / 2 + 5rem);
+  }
+}

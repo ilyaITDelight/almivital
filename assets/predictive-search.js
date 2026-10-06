@@ -15,7 +15,10 @@ class PredictiveSearch extends HTMLElement {
 
   setupEventListeners() {
     this.querySelector('form.search').addEventListener('submit', this.onFormSubmit.bind(this));
-    this.querySelector('button[type="button"]').addEventListener('click', this.close.bind(this));
+    // :not(.voice-search__button) — the optional mic button is also
+    // type="button" and can precede the close button in the field; binding
+    // close() to it would dismiss the results/modal on every mic tap.
+    this.querySelector('button[type="button"]:not(.voice-search__button)').addEventListener('click', this.close.bind(this));
     this.querySelector('button[type="reset"]').addEventListener('click', this.clear.bind(this));
 
     this.input.addEventListener('input', debounce((event) => {
@@ -189,7 +192,46 @@ class PredictiveSearch extends HTMLElement {
     if (selectedProduct) selectedProduct.click();
   }
 
+  // The Predictive Search API does not support every storefront language
+  // (e.g. Hebrew) — without a guard, every keystroke would flash the
+  // loading spinner, fire a doomed 422 request and log an uncaught error.
+  // The search form itself keeps working (/search supports all languages).
+  //
+  // Primary check: Shopify stamps every storefront page with a
+  // #shopify-features JSON whose predictiveSearch flag is false for
+  // unsupported locales — proactive, so not even the first request fires.
+  // Fallback: a 422 response marks the session as unsupported anyway.
+  searchUnsupported() {
+    if (PredictiveSearch.unsupported === undefined) {
+      try {
+        const features = JSON.parse(document.getElementById('shopify-features')?.textContent || '{}');
+        PredictiveSearch.unsupported = features.predictiveSearch === false;
+      } catch (e) {
+        PredictiveSearch.unsupported = false;
+      }
+    }
+    if (PredictiveSearch.unsupported) return true;
+
+    try {
+      return sessionStorage.getItem('predictive-search-unsupported') === '1';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  markSearchUnsupported() {
+    PredictiveSearch.unsupported = true;
+    try {
+      sessionStorage.setItem('predictive-search-unsupported', '1');
+    } catch (e) {
+      // Storage unavailable (privacy mode) — the in-memory flag still
+      // covers this page view.
+    }
+  }
+
   getSearchResults(searchTerm) {
+    if (this.searchUnsupported()) return;
+
     const queryKey = searchTerm.replace(" ", "-").toLowerCase();
     const perPage = this.dataset.perPage || 4;
     this.setLiveRegionLoadingState();
@@ -201,16 +243,24 @@ class PredictiveSearch extends HTMLElement {
     }
 
     fetch(`${theme.routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[limit]')}=${perPage}&${encodeURIComponent('resources[limit_scope]')}=each&section_id=predictive-search`)
-      .then((response) => { 
+      .then((response) => {
         if (!response.ok) {
-          var error = new Error(response.status);
           this.close();
+
+          if (response.status === 422) {
+            this.markSearchUnsupported();
+            console.warn('[predictive-search] Disabled for this session: the storefront language is not supported by the Predictive Search API.');
+            return null;
+          }
+
+          var error = new Error(response.status);
           throw error;
         }
 
         return response.text();
       })
       .then((text) => {
+        if (text === null) return;
         const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
 
         // Save bandwidth keeping the cache in all instances synced

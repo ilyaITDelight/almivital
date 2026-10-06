@@ -219,6 +219,14 @@ if (!customElements.get('product-info')) {
               variant,
             },
           });
+
+          document.dispatchEvent(new CustomEvent('variant:change', {
+            detail: {
+              sectionId: this.sectionId,
+              variant,
+              html,
+            },
+          }));
         };
       }
 

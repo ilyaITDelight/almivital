@@ -76,9 +76,10 @@
     max-width: calc(33.33% - var(--grid-horizontal-spacing) * 2 / 3);
   }
 
-  .collection-list--4-items .flex-grid__item,
-  .collection-list--7-items .flex-grid__item:nth-child(n + 4),
-  .collection-list--10-items .flex-grid__item:nth-child(n + 7) {
+  /* Moodboard widths for the wrapping grid only — a scrolling rail keeps every card equal. */
+  .collection-list--4-items:not(.slider--tablet-up) .flex-grid__item,
+  .collection-list--7-items:not(.slider--tablet-up) .flex-grid__item:nth-child(n + 4),
+  .collection-list--10-items:not(.slider--tablet-up) .flex-grid__item:nth-child(n + 7) {
     width: calc(50% - var(--grid-horizontal-spacing) / 2);
   }
 }

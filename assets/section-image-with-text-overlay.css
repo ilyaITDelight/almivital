@@ -135,3 +135,17 @@
     height: 100%;
   }
 }
+
+/* Full width, an edge-positioned panel bleeds to the screen edge while its
+   copy sits a fixed 7rem in — on wide screens that is off the page column.
+   The outer side takes the gutter; the centered position reads against the
+   image, not the column, and stays untouched. */
+@media screen and (min-width: 750px) {
+  .page-width--full-width .banner--flex-start .banner__content {
+    padding-inline-start: var(--page-gutter);
+  }
+
+  .page-width--full-width .banner--flex-end .banner__content {
+    padding-inline-end: var(--page-gutter);
+  }
+}

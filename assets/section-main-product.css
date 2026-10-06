@@ -19,6 +19,21 @@ product-info {
 
 media-gallery {
   display: block;
+  position: relative;
+}
+
+/* Same tier stack the cards wear, anchored over the gallery's lead media.
+   pointer-events stays off so the stack never blocks zoom or swipe. */
+.product__badges {
+  position: absolute;
+  top: 1.2rem;
+  inset-inline-start: 1.2rem;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  pointer-events: none;
 }
 
 media-gallery .media-wrapper.media-wrapper--intrinsic-size {
@@ -1295,6 +1310,14 @@ product-gallery .product__media-toggle {
     height: 100vh;
   }
 
+  /* The zoomed media stay on the page column: uncapped they span the full
+     viewport, which upscales most sources past their pixels on wide screens.
+     The cap sits on the children, not the scroller, so the scrollbar keeps
+     the viewport edge. */
+  .product-media-modal__content > * {
+    max-width: var(--page-width);
+  }
+
   .product__modal-opener:not(.product__modal-opener--image) {
     display: none;
   }
@@ -1977,3 +2000,9 @@ product-gallery .product__media-toggle {
     border: none;
   }
 }
+
+/* Product page highlights block */
+.product__highlights {
+  margin-top: 0;
+}
+

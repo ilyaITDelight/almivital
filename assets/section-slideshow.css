@@ -29,6 +29,16 @@
   height: var(--image-height);
 }
 
+/* Single-slide legacy: a lone video slide renders grey/blank — the full-area
+   legacy text overlay paints above the media while the video sits below the
+   section background (an image slide does not). Promote the media flex item
+   into its own stacking context so it renders above the overlay's backdrop.
+   z-index works here without an explicit position because .slideshow__right
+   is a flex item. */
+.slideshow--only1.slideshow--legacy .slideshow__right {
+  z-index: 1;
+}
+
 @media screen and (min-width: 750px) {
   .slideshow {
     height: var(--image-height);
@@ -145,6 +155,50 @@
     max-width: calc(100% - 35rem);
     flex: 0 0 calc(100% - 35rem);
   }
+}
+
+/* Hide embedded video controls until background video is fully initialized */
+.slideshow__image-wrapper [data-type="youtube"] iframe,
+.slideshow__image-wrapper [data-type="vimeo"] iframe {
+  opacity: 0;
+}
+
+.slideshow__image-wrapper[loaded] [data-type="youtube"] iframe,
+.slideshow__image-wrapper[loaded] [data-type="vimeo"] iframe {
+  opacity: 1;
+  transition: opacity var(--duration-default, 200ms) ease;
+}
+
+/* Hide native video controls on Safari / iOS for background slideshow videos */
+.slideshow__image video,
+.slideshow__image-wrapper video {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.slideshow__image video::-webkit-media-controls,
+.slideshow__image video::-webkit-media-controls-enclosure,
+.slideshow__image video::-webkit-media-controls-panel,
+.slideshow__image video::-webkit-media-controls-play-button,
+.slideshow__image video::-webkit-media-controls-start-playback-button,
+.slideshow__image video::-webkit-media-controls-current-time-display,
+.slideshow__image video::-webkit-media-controls-time-remaining-display,
+.slideshow__image video::-webkit-media-controls-timeline,
+.slideshow__image video::-webkit-media-controls-mute-button,
+.slideshow__image video::-webkit-media-controls-volume-slider,
+.slideshow__image video::-webkit-media-controls-fullscreen-button,
+.slideshow__image video::-webkit-media-controls-rewind-button,
+.slideshow__image video::-webkit-media-controls-fast-forward-button,
+.slideshow__image video::-webkit-media-controls-seek-back-button,
+.slideshow__image video::-webkit-media-controls-seek-forward-button,
+.slideshow__image video::-webkit-media-controls-return-to-realtime-button,
+.slideshow__image video::-webkit-media-controls-toggle-closed-captions-button {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .slideshow__content {

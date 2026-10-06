@@ -27,16 +27,11 @@ class TimelineComponent extends HTMLElement {
     this.windowHeight = 0;
     this.isInViewport = false;
 
-    // Touch
-    this.touchStartY = 0;
-    this.touchEndY = 0;
-
     // Misc
     this._raf = null;           // scroll rAF lock
     this._abort = new AbortController(); // for listeners/observers
     this._resizeObserver = null;
     this._io = null;            // single IntersectionObserver
-    this._manualSlideChange = false; // flag to prevent scroll interference
   }
 
   connectedCallback() {
@@ -55,7 +50,7 @@ class TimelineComponent extends HTMLElement {
     this._setupEventListeners();
 
     this._updateDimensions();
-    this._updateActiveSlide(0);
+    this._render();
   }
 
   _cleanup() {
@@ -106,7 +101,7 @@ class TimelineComponent extends HTMLElement {
     this._resizeObserver.observe(document.documentElement);
 
     // Single IntersectionObserver for:
-    // 1) section visibility (activates slide updates)
+    // 1) section visibility (activates rendering)
     // 2) lazy image preloading (inside this component)
     this._io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -116,7 +111,7 @@ class TimelineComponent extends HTMLElement {
         if (target === this.timelineSection) {
           this.isInViewport = entry.isIntersecting;
           if (this.isInViewport) {
-            this._updateActiveSlide(this._getCurrentSlideIndex());
+            this._render();
           }
           continue;
         }
@@ -146,19 +141,13 @@ class TimelineComponent extends HTMLElement {
   _setupEventListeners() {
     const { signal } = this._abort;
 
+    // Native scrolling is the only driver — wheel, trackpad, touch and
+    // programmatic scrolls all land here, and the frame renders from wherever
+    // the page actually is. Nothing intercepts the gesture.
     window.addEventListener("scroll", () => this._handleScroll(), { passive: true, signal });
     window.addEventListener("resize", () => this._handleResize(), { passive: true, signal });
 
     document.addEventListener("keydown", (e) => this._handleKeydown(e), { signal });
-
-    this.addEventListener("touchstart", (e) => {
-      this.touchStartY = e.touches[0].clientY;
-    }, { passive: true, signal });
-
-    this.addEventListener("touchend", (e) => {
-      this.touchEndY = e.changedTouches[0].clientY;
-      this._handleSwipe();
-    }, { passive: true, signal });
   }
 
   // ---------- Measurements ----------
@@ -166,66 +155,73 @@ class TimelineComponent extends HTMLElement {
     this.windowHeight = window.innerHeight || document.documentElement.clientHeight;
   }
 
-  // More stable than offsetTop math; avoids forced reflow chains.
-  _getCurrentSlideIndex() {
-    if (!this.isInViewport || this.totalSlides <= 1) return Math.max(0, this.currentSlideIndex);
+  // ---------- Rendering ----------
+  // Every position is a pure function of scroll progress, written each frame:
+  // the section's travel maps onto the gaps between slides, and within a gap
+  // the outgoing and incoming pair sit at the exact fraction the scroll is at.
+  // Nothing here has a duration — reversing the scroll reverses the motion,
+  // stopping mid-gesture freezes it mid-flight, and the pace is the reader's.
+  _render() {
+    if (!this.totalSlides) return;
 
     const rect = this.timelineSection.getBoundingClientRect();
-    const sectionPx = Math.max(1, rect.height - this.windowHeight); // avoid /0
-    const progress = this._clamp((0 - rect.top) / sectionPx, 0, 1);  // 0..1
-    const idx = Math.round(progress * (this.totalSlides - 1));
-    return this._clamp(idx, 0, this.totalSlides - 1);
-    // Note: using clamp prevents jitter at edges
+    const span = Math.max(1, rect.height - this.windowHeight);
+    const progress = this._clamp(-rect.top / span, 0, 1);
+
+    if (this.totalSlides === 1) {
+      this._place(this.slides[0], 0, 1);
+      this._place(this.timelineItems[0], -50, 1);
+      this._setDiscrete(0);
+      return;
+    }
+
+    const t = progress * (this.totalSlides - 1);
+    const i = Math.min(this.totalSlides - 2, Math.floor(t));
+    const frac = t - i;
+
+    this.slides.forEach((slide, j) => {
+      if (j === i) {
+        // Outgoing: drifts up a tenth of its height and fades as the gap runs
+        this._place(slide, -10 * frac, 1 - frac);
+      } else if (j === i + 1) {
+        // Incoming: rises from the bottom edge to rest
+        this._place(slide, 100 * (1 - frac), frac);
+      } else {
+        this._place(slide, j < i ? -10 : 100, 0);
+      }
+    });
+
+    this.timelineItems.forEach((item, j) => {
+      if (j === i) {
+        // The centred date leaves downward, mirroring the bar's direction
+        this._place(item, -50 + 150 * frac, 1 - frac);
+      } else if (j === i + 1) {
+        this._place(item, -100 + 50 * frac, frac);
+      } else {
+        this._place(item, j < i ? 100 : -100, 0);
+      }
+    });
+
+    this._setDiscrete(Math.round(t));
   }
 
-  // ---------- Updates ----------
-  _updateActiveSlide(slideIndex) {
+  _place(el, yPercent, opacity) {
+    if (!el) return;
+    el.style.transform = `translateY(${yPercent}%)`;
+    el.style.opacity = String(opacity);
+  }
+
+  // The classes stay discrete on purpose: they carry pointer-events and the
+  // dot's accent — state, not motion. The dot keeps its timed transition,
+  // which is what the animation speed setting governs.
+  _setDiscrete(slideIndex) {
     if (slideIndex === this.currentSlideIndex) return;
 
     this.currentSlideIndex = slideIndex;
 
-    // Toggle active classes
-    this.slides.forEach(el => el.classList.remove("active"));
-    this.timelineItems.forEach(el => el.classList.remove("active"));
-    this.timelineDot?.classList.remove("active");
-
-    const activeSlide = this.querySelector(`.slide[data-slide="${slideIndex}"]`);
-    const activeItem  = this.querySelector(`.timeline-item[data-slide="${slideIndex}"]`);
-
-    activeSlide?.classList.add("active");
-    activeItem?.classList.add("active");
+    this.slides.forEach((el, j) => el.classList.toggle("active", j === slideIndex));
+    this.timelineItems.forEach((el, j) => el.classList.toggle("active", j === slideIndex));
     this.timelineDot?.classList.add("active");
-
-    // Positioning via transforms—batch in a single rAF to avoid multiple layouts
-    requestAnimationFrame(() => {
-      this.slides.forEach((slide) => {
-        const i = parseInt(slide.dataset.slide || "0", 10);
-        if (i < slideIndex) {
-          slide.style.transform = "translateY(-10%)";
-          slide.style.opacity = "0";
-        } else if (i === slideIndex) {
-          slide.style.transform = "translateY(-1px)";
-          slide.style.opacity = "1";
-        } else {
-          slide.style.transform = "translateY(100%)";
-          slide.style.opacity = "0";
-        }
-      });
-
-      this.timelineItems.forEach((item) => {
-        const i = parseInt(item.dataset.slide || "0", 10);
-        if (i < slideIndex) {
-          item.style.transform = "translateY(100%)";
-          item.style.opacity = "0";
-        } else if (i === slideIndex) {
-          item.style.transform = "translateY(-50%)";
-          item.style.opacity = "1";
-        } else {
-          item.style.transform = "translateY(-100%)";
-          item.style.opacity = "0";
-        }
-      });
-    });
 
     // Notify listeners
     this.dispatchEvent(new CustomEvent("slidechange", {
@@ -238,19 +234,16 @@ class TimelineComponent extends HTMLElement {
   _handleScroll() {
     if (!this.isInViewport) return;
     if (this._raf) return; // throttle via rAF
-    
-    // Skip scroll-based slide updates if we just made a manual change
-    if (this._manualSlideChange) return;
 
     this._raf = requestAnimationFrame(() => {
       this._raf = null;
-      this._updateActiveSlide(this._getCurrentSlideIndex());
+      this._render();
     });
   }
 
   _handleResize() {
     this._updateDimensions();
-    this._updateActiveSlide(this._getCurrentSlideIndex());
+    this._render();
   }
 
   _handleKeydown(e) {
@@ -278,64 +271,32 @@ class TimelineComponent extends HTMLElement {
     }
   }
 
-  _handleSwipe() {
-    const threshold = 50;
-    const idx = this.currentSlideIndex;
-
-    if (this.touchEndY < this.touchStartY - threshold && idx < this.totalSlides - 1) {
-      this.scrollToSlide(idx + 1);
-    } else if (this.touchEndY > this.touchStartY + threshold && idx > 0) {
-      this.scrollToSlide(idx - 1);
-    }
-  }
-
   // ---------- Scrolling ----------
-  scrollToSlide(slideIndex) {
+  // Moves the page, not the slides: the scrub renders every intermediate frame
+  // of the smooth scroll on its own, so this needs no guard against itself.
+  scrollToSlide(slideIndex, behavior = "smooth") {
     if (!this.timelineSection || this.totalSlides <= 1) return;
 
     const rect = this.timelineSection.getBoundingClientRect();
     const sectionTopAbs = window.scrollY + rect.top; // absolute top
-    const sectionScrollSpan = Math.max(1, this.timelineSection.scrollHeight - this.windowHeight);
+    const span = Math.max(1, rect.height - this.windowHeight);
 
     const ratio = slideIndex / (this.totalSlides - 1);
-    const target = sectionTopAbs + sectionScrollSpan * ratio;
-
-    window.scrollTo({ top: target, behavior: "smooth" });
+    window.scrollTo({ top: sectionTopAbs + span * ratio, behavior });
   }
 
   // ---------- Public API ----------
   goToSlide(i)      { if (i >= 0 && i < this.totalSlides) this.scrollToSlide(i); }
-  
-  // Method specifically for Theme Editor - immediately updates slide state and scrolls
+
+  // Theme Editor entry point: land on the block's scroll position outright,
+  // and the next rendered frame shows that slide settled.
   goToSlideImmediate(i) {
     if (i >= 0 && i < this.totalSlides) {
-      // Set flag to prevent scroll handler interference
-      this._manualSlideChange = true;
-      
-      // Immediately update the slide state
-      this._updateActiveSlide(i);
-      
-      // Then scroll to bring timeline into view
-      if (this.timelineSection) {
-        const rect = this.timelineSection.getBoundingClientRect();
-        const targetScrollTop = window.scrollY + rect.top - 100; // 100px offset from top
-        
-        window.scrollTo({ 
-          top: targetScrollTop, 
-          behavior: 'smooth' 
-        });
-        
-        // Clear the flag after scroll animation completes
-        setTimeout(() => {
-          this._manualSlideChange = false;
-        }, 1000); // Give scroll animation time to complete
-      } else {
-        // Clear flag immediately if no scrolling
-        this._manualSlideChange = false;
-      }
+      this.scrollToSlide(i, "instant");
+      this._render();
     }
   }
-  
+
   nextSlide()       { this.goToSlide(Math.min(this.currentSlideIndex + 1, this.totalSlides - 1)); }
   previousSlide()   { this.goToSlide(Math.max(this.currentSlideIndex - 1, 0)); }
   getCurrentSlide() { return this.currentSlideIndex; }

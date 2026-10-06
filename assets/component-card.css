@@ -193,6 +193,16 @@
   color: rgba(var(--color-foreground), 0.7);
 }
 
+/* Clamp long product titles to 2 lines and reserve the 2-line box so the
+   price row stays aligned between neighboring cards */
+.card--product .card-information__text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 2.6em;
+}
+
 .card-information__button {
   pointer-events: none;
   display: flex;
@@ -302,11 +312,16 @@
 }
 
 @media screen and (hover: none) and (max-width: 1366px), screen and (max-width: 749px) {
+  /* 4.4rem = minimum comfortable touch target */
+  .card-information__button {
+    height: 4.4rem;
+  }
+
   .card-information__button .button {
     text-indent: -9999px;
     flex: 0 0 auto;
-    width: 3.6rem;
-    min-height: 3.6rem;
+    width: 4.4rem;
+    min-height: 4.4rem;
     min-width: auto;
     padding: 0;
     border-radius: 50%;
@@ -635,3 +650,250 @@
     cursor: grabbing;
   }
 }
+
+/* Product highlights row */
+.card-information__highlights {
+  --hl-text-rgb: var(--color-foreground);
+  --hl-text: rgb(var(--hl-text-rgb));
+  --hl-bg: rgba(var(--color-foreground), 0.04);
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  gap: 1.6rem;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--hl-bg);
+  border-radius: min(var(--card-radius, 0.8rem), 1.2rem);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+  /* Matches the inline padding, so resting at 0 is itself a snap position -
+     without it the first chip's snap point sits one padding inside and the
+     browser corrects any glide home with a visible 12px jump. */
+  scroll-padding-inline: 1.2rem;
+  -webkit-mask-image: linear-gradient(to right, black 0, black calc(100% - 2.4rem), transparent 100%);
+  mask-image: linear-gradient(to right, black 0, black calc(100% - 2.4rem), transparent 100%);
+  transition: background-color var(--duration-default) ease;
+}
+
+.card-information__highlights::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.card-product:hover .card-information__highlights {
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+.card-information__highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 7rem;
+  scroll-snap-align: start;
+}
+
+/* Merchant data mixes scripts freely; plaintext lets each value pick its
+   own direction, so "12 months" keeps its order inside an RTL page. */
+.card-information__highlight-value {
+  unicode-bidi: plaintext;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  font-family: var(--font-button-family);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: var(--hl-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-information__highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.3rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: rgba(var(--hl-text-rgb), 0.08);
+  color: rgba(var(--hl-text-rgb), 0.75);
+}
+
+.card-information__highlight-icon .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.card-information__highlight-label {
+  max-width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin-top: 0.3rem;
+  color: rgba(var(--hl-text-rgb), 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 749px) {
+  .card-information__highlights {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    gap: 0.5rem 0.8rem;
+    scroll-padding-inline: 1rem;
+  }
+
+  .card-information__highlight-value {
+    font-size: 1.1rem;
+    gap: 0.3rem;
+  }
+
+  .card-information__highlight-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    padding: 0.25rem;
+  }
+
+  .card-information__highlight-label {
+    font-size: 1rem;
+  }
+}
+
+/* Chips: the shared tinted strip dissolves and each spec carries its own
+   bordered tile — the boundaries do the separating, so the text aligns to
+   the start instead of floating centred in a common band. */
+.card-information__highlights--chips {
+  background-color: transparent;
+  /* A hair of inline padding keeps the first and last tiles' borders off
+     the clip edge — flush, the end border loses to subpixel rounding. */
+  padding: 0.1rem 0.2rem;
+  gap: 0.6rem;
+  scroll-padding-inline: 0.2rem;
+  /* The hover glide writes scrollLeft frame by frame; proximity snap keeps
+     yanking those writes onto chip starts and the glide turns into steps.
+     The strip's edge fade goes for the same reason — the glide itself shows
+     what waits off-screen, and a faded chip border reads as a broken tile. */
+  scroll-snap-type: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.card-product:hover .card-information__highlights--chips {
+  background-color: transparent;
+}
+
+.card-information__highlights--chips .card-information__highlight {
+  align-items: flex-start;
+  text-align: start;
+  min-width: auto;
+  border: 0.1rem solid rgba(var(--color-border), 0.7);
+  background-color: rgb(var(--color-background));
+  padding: 0.7rem 0.9rem 0.6rem;
+  border-radius: var(--card-radius, 0);
+}
+
+/* Grid: every spec visible at once — the two-column lattice trades the
+   scroll (and its glide) away entirely. The !important matches the base
+   strip's own display declaration. */
+.card-information__highlights--grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: visible;
+}
+
+.card-information__highlights--grid .card-information__highlight {
+  align-items: flex-start;
+}
+
+/* Lattice cells are narrow; ellipsis there reads as a rendering bug, so
+   long values and labels wrap instead of clipping. */
+.card-information__highlights--grid .card-information__highlight-value,
+.card-information__highlights--grid .card-information__highlight-label {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  text-align: start;
+}
+
+/* Pills: value and label share one line and the row wraps instead of
+   scrolling; the pill radius is the badge exception's, deliberately. */
+.card-information__highlights--pills {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.card-information__highlights--pills .card-information__highlight {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+}
+
+.card-information__highlights--pills .card-information__highlight-label {
+  margin-top: 0;
+}
+
+/* Sheet: the editorial reading — one spec per line, label leading, value
+   trailing, a dotted leader running between them the way packaging and
+   tables of contents do. Nothing scrolls. The shared markup keeps value
+   before label, so order (not DOM) seats the three columns. */
+.card-information__highlights--sheet {
+  flex-direction: column;
+  background-color: transparent;
+  padding: 0;
+  gap: 0;
+  overflow: visible;
+  scroll-snap-type: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.card-information__highlights--sheet .card-information__highlight {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  min-width: 0;
+  text-align: start;
+  padding: 0.55rem 0;
+}
+
+.card-information__highlights--sheet .card-information__highlight-label {
+  order: 1;
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.card-information__highlights--sheet .card-information__highlight::after {
+  content: '';
+  order: 2;
+  flex: 1 1 auto;
+  min-width: 1.6rem;
+  height: 0;
+  border-bottom: 0.2rem dotted rgba(var(--color-border), 0.6);
+}
+
+.card-information__highlights--sheet .card-information__highlight-value {
+  order: 3;
+}
+

@@ -7,6 +7,28 @@
   display: block;
 }
 
+/*
+  Edge-to-edge rail. The list spans the viewport and carries the page gutter as
+  its own padding, so the row starts on the page column and then runs off the
+  screen instead of stopping at the margin. The list stays the scroll container,
+  which is both what the slider script drives and what makes the padding reach:
+  a scroll container clips at its padding box, so the gutter has to sit on the
+  scrolling element rather than on a wrapper around it.
+  Item widths are unchanged — a percentage of the list's content box, which this
+  padding leaves exactly equal to the page column.
+*/
+.slider--bleed {
+  --slider-gutter: calc((100% - min(100%, var(--page-width))) / 2 + 1.5rem);
+  padding-inline: var(--slider-gutter);
+  scroll-padding-inline-start: var(--slider-gutter);
+}
+
+@media screen and (min-width: 750px) {
+  .slider--bleed {
+    --slider-gutter: calc((100% - min(100%, var(--page-width))) / 2 + 5rem);
+  }
+}
+
 
 .slider-mobile-gutter + .view-all {
   margin-top: 3rem;
@@ -83,6 +105,17 @@
     padding-bottom: 0;
   }
 
+  /*
+    A container declaring mandatory snap needs snap points. .slider__slide
+    carries them, but sections attach that class from their mobile swipe setting
+    while this rail comes from the desktop one — with the two set differently the
+    row would declare mandatory snap and have nothing to snap to, and rest
+    mid-card instead of on the gutter.
+  */
+  .slider.slider--tablet-up > .flex-grid__item {
+    scroll-snap-align: start;
+  }
+
   .slider.slider--tablet-up::-webkit-scrollbar {
     display: initial;
   }
@@ -117,8 +150,12 @@
   }
 }
 
-/* Scrollbar */
-
+/*
+  A styled, persistent scrollbar, by choice. In Chromium any scrollbar
+  styling — this or the standard properties — paints the bar at rest and
+  overrides the platform's overlay fade, so a styled bar and the native fade
+  cannot be combined. Rows that show controls instead are the exception below.
+*/
 .slider {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -202,6 +239,28 @@
   margin-inline-end: 1.4rem;
 }
 
+/*
+  One affordance per row, decided by the heading. Controls and a scrollbar say
+  the same thing twice, and the controls are the better half of the pair:
+  reachable from the keyboard, they carry a disabled state, and they cost no
+  layout — a classic scrollbar reserves a band under the cards that overlay
+  platforms never show, so the same row is a different height on Windows than
+  on a Mac. But the controls live in the heading row, so a row with no heading
+  has nowhere to put them and navigates by the platform's scrollbar instead —
+  the class marks the rows that actually render controls, which sections only
+  do under a visible heading. Below 750px the controls are hidden everywhere
+  and the scrollbar keeps the job.
+*/
+@media screen and (min-width: 750px) {
+  .slider.slider--has-controls {
+    scrollbar-width: none;
+  }
+
+  .slider.slider--has-controls::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .slider-buttons {
   display: flex;
   align-items: center;
@@ -215,6 +274,58 @@
 @media screen and (min-width: 990px) {
   .slider-buttons {
     display: none;
+  }
+}
+
+/*
+  Controls promoted into the heading row have to survive that wholesale hide:
+  a desktop row that scrolls is exactly where a pointer with no swipe gesture
+  needs them. The .*-hide utilities still win, so a row short enough to fit
+  keeps no buttons at all.
+*/
+.title-wrapper .slider-buttons {
+  display: flex;
+}
+
+/*
+  In the heading row the controls are pinned, not flowed: as a flex sibling they
+  push a centred heading off-centre — the wrapper centres the pair, not the
+  heading. Pinned to the end they leave every alignment where it was, and swap
+  ends under a right-aligned heading rather than sit under it. They only render
+  under a visible heading, so the wrapper always has a heading to size the pin
+  against — a headingless row navigates by scrollbar instead.
+*/
+.title-wrapper:has(> .slider-buttons) {
+  position: relative;
+}
+
+.title-wrapper > .slider-buttons {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.title-wrapper.right > .slider-buttons {
+  inset-inline-end: auto;
+  inset-inline-start: 0;
+}
+
+/*
+  A bleeding section hands page-width to the heading row itself, so the row's
+  padding is the page gutter — and absolute insets resolve against the padding
+  box, which would pin the controls to the screen edge instead of the column.
+  These insets restate the gutter; the controls only show from 750px up, so only
+  that padding value is needed.
+*/
+@media screen and (min-width: 750px) {
+  .title-wrapper.page-width > .slider-buttons {
+    inset-inline-end: 5rem;
+  }
+
+  .title-wrapper.page-width.right > .slider-buttons {
+    inset-inline-end: auto;
+    inset-inline-start: 5rem;
   }
 }
 

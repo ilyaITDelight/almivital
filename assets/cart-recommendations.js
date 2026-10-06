@@ -23,11 +23,6 @@ class CartRecommendations extends HTMLElement {
         if (recommendations && recommendations.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
         }
-        // Scroll the mini-cart drawer to the top after recommendations load
-        const miniCartMain = document.querySelector('#main-cart-items');
-        if (miniCartMain) {
-          miniCartMain.scrollTop -= miniCartMain.scrollHeight;
-        }
       })
       .catch(e => {
         console.error(e);

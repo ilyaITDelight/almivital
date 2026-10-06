@@ -16,6 +16,8 @@ lookbook-component .quick-view__summary {
   transform: none;
   box-shadow: none;
   transition: none;
+  /* will-change would make this zero-height summary the hotspot's containing block */
+  will-change: auto;
 }
 
 lookbook-component .quick-view__summary::after {

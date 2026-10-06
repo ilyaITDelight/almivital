@@ -325,3 +325,13 @@
     animation: none !important;
   }
 }
+/* Full width, the slide overlay spans the viewport and places its box with a
+   fixed 5rem — on wide screens edge-positioned copy sits off the page column.
+   Symmetric gutters keep every box position on the column and leave centered
+   boxes centered; below the page width this equals the 5rem it replaces. */
+@media screen and (min-width: 750px) {
+  .page-width--full-width .slider--showcase .banner__content {
+    padding-inline-start: var(--page-gutter);
+    padding-inline-end: var(--page-gutter);
+  }
+}

@@ -1,3 +1,14 @@
+// The mega menu's backdrop paints at z:-1 while the header's country/language
+// lists sit at z:2, below the dropdown content at z:101 — the surfaces cannot
+// layer, so a menu and an open localization list must never show together.
+function closeHeaderLocalization() {
+  document.querySelectorAll('localization-form.on-header').forEach((form) => {
+    if (typeof form.hidePanel === 'function' && form.elements && !form.elements.panel.hasAttribute('hidden')) {
+      form.hidePanel();
+    }
+  });
+}
+
 class DropdownMenu extends HTMLElement {
   constructor() {
     super();
@@ -74,6 +85,8 @@ class DropdownMenu extends HTMLElement {
   }
 
   removeClasses() {
+    closeHeaderLocalization();
+
     const menus = this.header.querySelectorAll(this.selectors.menus);
 
     menus.forEach((menu) => {
@@ -195,6 +208,74 @@ class MegaMenu extends HTMLElement {
     this.addEventListener('keydown', this.handleKeydown.bind(this));
     // Open dropdown on focus for accessibility
     this.addEventListener('focusin', this.handleFocusIn.bind(this));
+
+    // Showcase rail tabs — delegated on the element so the bindings
+    // survive the deferred-loading innerHTML swap. Tabs switch on CLICK,
+    // not hover: hover-switching yanks the content away whenever the
+    // pointer strays over the rail while the visitor is still reading.
+    // The tabs are real collection links — the first click selects the
+    // tab, a click on the already-active tab follows the link.
+    if (this.classList.contains('is-showcase')) {
+      this.addEventListener('click', this.handleShowcaseClick.bind(this));
+      this.addEventListener('focusin', this.handleShowcaseFocus.bind(this));
+    }
+  }
+
+  handleShowcaseClick(event) {
+    const tab = event.target.closest('[data-showcase-tab]');
+    if (!tab || !this.contains(tab)) return;
+    if (tab.hasAttribute('data-active')) return; // second click: navigate
+
+    event.preventDefault();
+    this.activateShowcaseTab(tab);
+  }
+
+  handleShowcaseFocus(event) {
+    // Keyboard only (:focus-visible): switch the panel while tabbing
+    // through the rail. Mouse clicks also focus the tab — without this
+    // guard the focus would activate it first and the click would then
+    // see an active tab and navigate on the FIRST click.
+    const tab = event.target.closest('[data-showcase-tab]');
+    if (tab && tab.matches(':focus-visible')) this.activateShowcaseTab(tab);
+  }
+
+  activateShowcaseTab(tab) {
+    if (tab.hasAttribute('data-active')) return;
+    const index = tab.dataset.showcaseTab;
+
+    // Tab headings respond immediately — their color/background/border
+    // changes are CSS transitions on .mega-showcase__tab.
+    this.querySelectorAll('[data-showcase-tab]').forEach((el) => {
+      if (el === tab) el.setAttribute('data-active', '');
+      else el.removeAttribute('data-active');
+    });
+
+    const swap = () => {
+      this.querySelectorAll('[data-showcase-panel]').forEach((el) => {
+        el.hidden = el.dataset.showcasePanel !== index;
+      });
+      // The header background backing the dropdown was sized when the
+      // menu opened; a taller tab would spill past it onto the page
+      // below. Re-measure on every swap (its transition animates it).
+      if (this.header) this.showSublist();
+    };
+
+    // Content crossfades instead of popping: dip the container out, swap
+    // panels and re-measure the background while nothing is visible, then
+    // fade back in. Rapid tab hops reset the timer, so only the final tab
+    // is committed and the container dips just once.
+    const panels = this.querySelector('.mega-showcase__panels');
+    if (!panels) {
+      swap();
+      return;
+    }
+
+    clearTimeout(this.showcaseSwapTimer);
+    panels.classList.add('is-switching');
+    this.showcaseSwapTimer = setTimeout(() => {
+      swap();
+      panels.classList.remove('is-switching');
+    }, 150);
   }
 
   handleMouseover() {
@@ -265,6 +346,8 @@ class MegaMenu extends HTMLElement {
   }
 
   removeClasses() {
+    closeHeaderLocalization();
+
     const menus = this.header.querySelectorAll(this.selectors.menus);
     menus.forEach((menu) => {
       menu.reset();
@@ -350,6 +433,18 @@ class MegaMenu extends HTMLElement {
     if (totalHeaderHeight > 0) {
       document.documentElement.style.setProperty('--header-height', `${totalHeaderHeight}px`);
     }
+  }
+
+  deferredLoadCallback() {
+    if (typeof this.reset === 'function') {
+      this.reset();
+    }
+    
+    requestAnimationFrame(() => {
+      if (typeof this.handleMouseover === 'function') {
+        this.handleMouseover();
+      }
+    });
   }
 }
 customElements.define('mega-menu', MegaMenu);

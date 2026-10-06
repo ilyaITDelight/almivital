@@ -27,6 +27,9 @@
   color: rgb(var(--color-foreground));
   transform: scale(0);
   transition: transform var(--duration-default) ease;
+  /* Promoted ahead of time: scaling up from zero on an unpromoted element
+     rasterizes mid-transition and can land a frame late as a visible snap. */
+  will-change: transform;
 }
 
 .quick-view__summary::after {
@@ -59,23 +62,13 @@
   }
 }
 
+/* No hover motion of its own: the card hover already reveals the button,
+   and the similar-products trigger beside it is still — one voice for the
+   card's corner icons. */
 @media screen and (min-width: 750px) {
   .quick-view__summary {
     width: 4.4rem;
     height: 4.4rem;
-  }
-
-  .quick-view__summary:hover::after {
-    animation: beat 0.6s infinite ease;
-  }
-  
-  @keyframes beat {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
   }
 }
 
@@ -156,7 +149,9 @@
   margin-right: -2.2rem;
   color: rgb(var(--color-foreground));
   background-color: rgb(var(--color-background));
-  box-shadow: 0 0 4rem rgba(var(--color-foreground), 0.2);
+  /* A tight lift, not a wide glow — iOS banding turns broad low-alpha halos
+     into visible rings over the dimmed page behind the sheet. */
+  box-shadow: 0 0.2rem 1.6rem rgba(var(--color-foreground), 0.18);
   border: none;
   outline: none;
   padding: 0;
@@ -230,12 +225,12 @@
     overflow: hidden;
     height: calc(100% - 10rem);
     max-height: 79rem;
-    margin: 0 5rem;
+    /* The dialog stays on the page column: uncapped it grows with the
+       viewport and spans wall to wall on wide screens. The min() keeps the
+       5rem gaps where the viewport is the smaller constraint. */
+    margin: 0 auto;
+    max-width: min(var(--page-width), calc(100% - 10rem));
   }
-}
-
-.quick-view__content:empty {
-  display: block;
 }
 
 .quick-view__content::before,

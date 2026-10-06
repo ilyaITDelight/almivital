@@ -314,3 +314,20 @@
 .tab-collage .tab-collage__item use-animate {
   pointer-events: none;
 }
+
+/* Full width, the text half bleeds to the screen edge and its list carries
+   page-width padding that cannot bind inside a 50% column — copy sits 5rem
+   from the screen while the section's own heading sits on the page column.
+   The outer side takes the gutter; the stretch guards against the column's
+   align-items turning the list into a floating shrink-to-fit box. */
+@media screen and (min-width: 750px) {
+  .page-width--full-width .tab-collage:not(.tab-collage__grid--reverse) .tab-collage__content {
+    align-self: stretch;
+    padding-inline-start: var(--page-gutter);
+  }
+
+  .page-width--full-width .tab-collage__grid--reverse .tab-collage__content {
+    align-self: stretch;
+    padding-inline-end: var(--page-gutter);
+  }
+}

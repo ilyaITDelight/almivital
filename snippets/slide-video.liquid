@@ -16,6 +16,7 @@
   endif
 -%}
 
+{% render 'video-structured-data', video: block.settings.video, video_url: block.settings.video_url, title: block.settings.heading, poster: block.settings.image %}
 <div class="slideshow__image-wrapper media-wrapper banner__media">
   <div class="slideshow__image media media--{{ section.settings.image_ratio }} media-mobile--{{ section.settings.mobile_image_ratio }}">
     {%- if block.settings.video != blank -%}

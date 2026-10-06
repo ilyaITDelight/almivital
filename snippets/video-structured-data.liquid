@@ -1,0 +1,107 @@
+{%- comment -%}
+  Emits a VideoObject JSON-LD block for one video, so search engines can
+  index it. A video is only emitted when a machine-readable thumbnail
+  exists - search indexing requires one, and a thumbnail-less VideoObject
+  restates the very gap this snippet closes. Vimeo therefore needs a
+  cover image; YouTube derives its own thumbnail; hosted videos carry a
+  preview image of their own.
+
+  Accepts:
+  - video: {Object} video media - a section's video setting or a product
+    video/external_video media object
+  - video_url: {Object} video_url setting (YouTube or Vimeo)
+  - title: {String} name for the video (falls back to the video's alt,
+    then the page title)
+  - description: {String} optional description
+  - poster: {Object} image used as the thumbnail when the video itself
+    offers none (external videos), and as a cover override
+{%- endcomment -%}
+{%- liquid
+  assign vsd_name = title | strip_html | strip
+  assign vsd_thumb = blank
+  assign vsd_thumb_image = blank
+  assign vsd_content_url = blank
+  assign vsd_embed_url = blank
+
+  if video != blank
+    if vsd_name == blank
+      assign vsd_name = video.alt | strip_html | strip
+    endif
+    if video.media_type == 'external_video'
+      assign vsd_thumb_image = poster | default: video.preview_image
+      if video.host == 'youtube'
+        assign vsd_embed_url = 'https://www.youtube.com/embed/' | append: video.external_id
+      elsif video.host == 'vimeo'
+        assign vsd_embed_url = 'https://player.vimeo.com/video/' | append: video.external_id
+      endif
+    else
+      assign vsd_thumb_image = video.preview_image | default: poster
+      for vsd_source in video.sources
+        if vsd_source.format == 'mp4'
+          assign vsd_content_url = vsd_source.url
+          break
+        endif
+      endfor
+    endif
+  elsif video_url != blank
+    assign vsd_thumb_image = poster
+    if video_url.type == 'youtube'
+      assign vsd_embed_url = 'https://www.youtube.com/embed/' | append: video_url.id
+      if vsd_thumb_image == blank
+        assign vsd_thumb = 'https://i.ytimg.com/vi/' | append: video_url.id | append: '/hqdefault.jpg'
+      endif
+    elsif video_url.type == 'vimeo'
+      assign vsd_embed_url = 'https://player.vimeo.com/video/' | append: video_url.id
+    endif
+  endif
+
+  if vsd_thumb == blank and vsd_thumb_image != blank
+    assign vsd_thumb = vsd_thumb_image | image_url: width: 1280
+  endif
+
+  # CDN urls come back protocol-relative; structured data wants absolute.
+  unless vsd_thumb == blank or vsd_thumb contains 'https:'
+    assign vsd_thumb = vsd_thumb | prepend: 'https:'
+  endunless
+  unless vsd_content_url == blank or vsd_content_url contains 'https:'
+    assign vsd_content_url = vsd_content_url | prepend: 'https:'
+  endunless
+
+  if vsd_name == blank
+    assign vsd_name = page_title
+  endif
+
+  # Liquid exposes no upload date on video media; the page's own date is
+  # the closest truthful stand-in, and search tooling treats a missing
+  # date as a warning, not a blocker.
+  assign vsd_upload_date = blank
+  if article.published_at != blank
+    assign vsd_upload_date = article.published_at
+  elsif product.published_at != blank
+    assign vsd_upload_date = product.published_at
+  elsif page.published_at != blank
+    assign vsd_upload_date = page.published_at
+  endif
+-%}
+{%- if vsd_thumb != blank and vsd_name != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": {{ vsd_name | json }},
+      "thumbnailUrl": {{ vsd_thumb | json }}
+      {%- if description != blank -%},
+      "description": {{ description | strip_html | strip | json }}
+      {%- endif -%}
+      {%- if vsd_content_url != blank -%},
+      "contentUrl": {{ vsd_content_url | json }}
+      {%- endif -%}
+      {%- if vsd_embed_url != blank -%},
+      "embedUrl": {{ vsd_embed_url | json }}
+      {%- endif -%}
+      {%- if vsd_upload_date != blank -%},
+      "uploadDate": {{ vsd_upload_date | date: '%Y-%m-%dT%H:%M:%S%z' | json }}
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}

@@ -17,11 +17,11 @@
       <path fill-rule="evenodd" clip-rule="evenodd" d="M363.3 100.7l144 144C510.4 247.8 512 251.9 512 255.1s-1.562 8.188-4.688 11.31l-144 144c-6.25 6.25-16.38 6.25-22.62 0s-6.25-16.38 0-22.62l116.7-116.7H16c-8.844 0-16-7.156-16-15.1c0-8.844 7.156-16 16-16h441.4l-116.7-116.7c-6.25-6.25-6.25-16.38 0-22.62S357.1 94.44 363.3 100.7z" fill="currentColor"/>
     </svg>
   {%- when 'arrow-right-wide-line' -%}
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
       <path d="M15.6315 12L10.8838 3.03212L9.11622 3.9679L13.3685 12L9.11622 20.0321L10.8838 20.9679L15.6315 12Z"></path>
     </svg>
   {%- when 'arrow-left-wide-line' -%}
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
       <path d="M8.36853 12L13.1162 3.03212L14.8838 3.9679L10.6315 12L14.8838 20.0321L13.1162 20.9679L8.36853 12Z"></path>
     </svg>
   {%- when 'back' -%}
@@ -173,7 +173,7 @@
     </svg>
   {%- when 'images' -%}
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-images" fill="none" viewBox="0 0 576 512">
-      <path d="M464 448H96c-35.35 0-64-28.65-64-64V112C32 103.2 24.84 96 16 96S0 103.2 0 112V384c0 53.02 42.98 96 96 96h368c8.836 0 16-7.164 16-16S472.8 448 464 448zM224 152c13.26 0 24-10.75 24-24s-10.74-24-24-24c-13.25 0-24 10.75-24 24S210.8 152 224 152zM410.6 139.9c-11.28-15.81-38.5-15.94-49.1-.0313l-44.03 61.43l-6.969-8.941c-11.44-14.46-36.97-14.56-48.4 .0313L198.2 272.8C191 281.9 190 294.3 195.5 304.3C200.8 313.1 211.1 320 222.4 320h259.2c11 0 21.17-5.805 26.54-15.09c0-.0313-.0313 .0313 0 0c5.656-9.883 5.078-21.84-1.578-31.15L410.6 139.9zM226.2 287.9l58.25-75.61l20.09 25.66c4.348 5.545 17.6 10.65 25.59-.5332l54.44-78.75l92.68 129.2H226.2zM512 32H160c-35.35 0-64 28.65-64 64v224c0 35.35 28.65 64 64 64H512c35.35 0 64-28.65 64-64V96C576 60.65 547.3 32 512 32zM544 320c0 17.64-14.36 32-32 32H160c-17.64 0-32-14.36-32-32V96c0-17.64 14.36-32 32-32h352c17.64 0 32 14.36 32 32V320z"/>
+      <path d="M464 448H96c-35.35 0-64-28.65-64-64V112C32 103.2 24.84 96 16 96S0 103.2 0 112V384c0 53.02 42.98 96 96 96h368c8.836 0 16-7.164 16-16S472.8 448 464 448zM224 152c13.26 0 24-10.75 24-24s-10.74-24-24-24c-13.25 0-24 10.75-24 24S210.8 152 224 152zM410.6 139.9c-11.28-15.81-38.5-15.94-49.1-.0313l-44.03 61.43l-6.969-8.941c-11.44-14.46-36.97-14.56-48.4 .0313L198.2 272.8C191 281.9 190 294.3 195.5 304.3C200.8 313.1 211.1 320 222.4 320h259.2c11 0 21.17-5.805 26.54-15.09c0-.0313-.0313 .0313 0 0c5.656-9.883 5.078-21.84-1.578-31.15L410.6 139.9zM226.2 287.9l58.25-75.61l20.09 25.66c4.348 5.545 17.6 10.65 25.59-.5332l54.44-78.75l92.68 129.2H226.2zM512 32H160c-35.35 0-64 28.65-64 64v224c0 35.35 28.65 64 64 64H512c35.35 0 64-28.65 64-64V96C576 60.65 547.3 32 512 32zM544 320c0 17.64-14.36 32-32 32H160c-17.64 0-32-14.36-32-32V96c0-17.64 14.36-32 32-32h352c17.64 0 32 14.36 32 32V320z" fill="currentColor"/>
     </svg>
   {%- when 'info' -%}
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-info" fill="none" viewBox="0 0 512 512">
@@ -286,5 +286,138 @@
       <path fill-rule="evenodd" clip-rule="evenodd" d="M4.66724 7.93978C4.66655 7.66364 4.88984 7.43922 5.16598 7.43853L10.6996 7.42464C10.9758 7.42395 11.2002 7.64724 11.2009 7.92339C11.2016 8.19953 10.9783 8.42395 10.7021 8.42464L5.16849 8.43852C4.89235 8.43922 4.66793 8.21592 4.66724 7.93978Z" fill="currentColor"/>
       <path fill-rule="evenodd" clip-rule="evenodd" d="M7.92576 4.66463C8.2019 4.66394 8.42632 4.88723 8.42702 5.16337L8.4409 10.697C8.44159 10.9732 8.2183 11.1976 7.94215 11.1983C7.66601 11.199 7.44159 10.9757 7.4409 10.6995L7.42702 5.16588C7.42633 4.88974 7.64962 4.66532 7.92576 4.66463Z" fill="currentColor"/>
       <path fill-rule="evenodd" clip-rule="evenodd" d="M12.8324 3.03011C10.1255 0.323296 5.73693 0.323296 3.03011 3.03011C0.323296 5.73693 0.323296 10.1256 3.03011 12.8324C5.73693 15.5392 10.1255 15.5392 12.8324 12.8324C15.5392 10.1256 15.5392 5.73693 12.8324 3.03011ZM2.32301 2.32301C5.42035 -0.774336 10.4421 -0.774336 13.5395 2.32301C16.6101 5.39361 16.6366 10.3556 13.619 13.4588L18.2473 18.0871C18.4426 18.2824 18.4426 18.599 18.2473 18.7943C18.0521 18.9895 17.7355 18.9895 17.5402 18.7943L12.8778 14.1318C9.76383 16.6223 5.20839 16.4249 2.32301 13.5395C-0.774335 10.4421 -0.774335 5.42035 2.32301 2.32301Z" fill="currentColor"/>
+    </svg>
+  {%- comment -%}
+    Spec icons: named for what a product attribute means, not for a UI
+    control, so the highlights metafield's third field has a vocabulary
+    to draw from.
+  {%- endcomment -%}
+  {%- when 'drop' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-drop" fill="none" viewBox="0 0 24 24">
+      <path d="M12 3.5c3 4 6 6.7 6 10a6 6 0 1 1-12 0c0-3.3 3-6 6-10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'leaf' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-leaf" fill="none" viewBox="0 0 24 24">
+      <path d="M19 4c.5 7-2 15-9.5 15C6 19 4.5 16.5 4.5 14.5 4.5 8 12 4.5 19 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M5.5 19c3-4.5 6.5-8 10-10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  {%- when 'sun' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-sun" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  {%- when 'clock' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-clock" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 7.5V12l3.2 1.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'shield' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-shield" fill="none" viewBox="0 0 24 24">
+      <path d="M12 3l7 2.8v5.7c0 4-2.8 6.9-7 9-4.2-2.1-7-5-7-9V5.8L12 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="m9 11.8 2.1 2.1 3.9-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'sparkle' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-sparkle" fill="none" viewBox="0 0 24 24">
+      <path d="M12 3.5 13.8 10 20.5 12 13.8 14 12 20.5 10.2 14 3.5 12 10.2 10 12 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'flask' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-flask" fill="none" viewBox="0 0 24 24">
+      <path d="M9.5 3.5h5M10.5 3.5v5.2L5.4 17a2.4 2.4 0 0 0 2.1 3.5h9a2.4 2.4 0 0 0 2.1-3.5l-5.1-8.3V3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.5 14.5h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  {%- when 'recycle' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-recycle" fill="none" viewBox="0 0 24 24">
+      <path d="M17.5 8.5a7 7 0 1 0 2 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M17.8 3.8v4.9h-4.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'box' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-box" fill="none" viewBox="0 0 24 24">
+      <path d="m12 3 8 4v10l-8 4-8-4V7l8-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'scale' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-scale" fill="none" viewBox="0 0 24 24">
+      <path d="M12 5v14.5M8 19.5h8M5.5 7h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5.5 7 3.2 11.9a2.7 2 0 0 0 4.6 0L5.5 7zM18.5 7l-2.3 4.9a2.7 2 0 0 0 4.6 0L18.5 7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'flame' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-flame" fill="none" viewBox="0 0 24 24">
+      <path d="M12 3.5c.4 2.9-.8 4.7-2.3 6.2-1.3 1.3-2.2 2.8-2.2 4.7a6.5 6.5 0 0 0 13 0c0-2.5-1.2-4.5-2.6-6-.4 1.5-1.1 2.4-2.2 3 .1-2.7-1-6-3.7-7.9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'star-line' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-star-line" fill="none" viewBox="0 0 24 24">
+      <path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 9.7l5.4-.8L12 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'snowflake' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-snowflake" fill="none" viewBox="0 0 24 24">
+      <path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M12 3l-1.8 1.8M12 3l1.8 1.8M12 21l-1.8-1.8M12 21l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  {%- when 'smile' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-smile" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8.6 14a4.4 4.4 0 0 0 6.8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M9.2 9.6h.01M14.8 9.6h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+  {%- when 'rabbit' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-rabbit" fill="none" viewBox="0 0 24 24">
+      <path d="M9 10.5C7.8 8.6 7.2 5.6 8.2 3.6c1.6.8 2.7 3 3 5.2M13.4 9.4c-.2-2.3.6-4.9 2.4-5.8.8 2 .3 5-.9 6.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="12" cy="15.5" rx="5.5" ry="5" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M10 15h.01M14 15h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+  {%- when 'flower' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-flower" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 9.4V4.6M14.3 10.7l4.1-2.4M14.3 13.3l4.1 2.4M12 14.6v4.8M9.7 13.3l-4.1 2.4M9.7 10.7 5.6 8.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  {%- when 'sprout' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-sprout" fill="none" viewBox="0 0 24 24">
+      <path d="M12 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M12 13C12 9.5 9.5 7 5.5 7 5.5 10.5 8 13 12 13z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M12 10.5c.4-2.8 2.4-4.5 6.5-4.5-.3 3.4-2.5 5.3-6.5 5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'pipette' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-pipette" fill="none" viewBox="0 0 24 24">
+      <path d="m14.5 6.5 3 3M17 3.5l3.5 3.5-2.3 2.3-3.5-3.5L17 3.5zM13.8 7.2 5.5 15.5c-.6.6-1 1.5-1 2.4v2.6h2.6c.9 0 1.8-.4 2.4-1l8.3-8.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'jar' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-jar" fill="none" viewBox="0 0 24 24">
+      <rect x="6" y="8.5" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M7.5 5.5h9v3h-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'spray' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-spray" fill="none" viewBox="0 0 24 24">
+      <path d="M8 9.5h6V20a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V9.5zM9.5 9.5v-3h3v3M9.5 6.5V4.8a1 1 0 0 1 1-1h1" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M16.5 4.5h.01M19 6.5h.01M16.5 8.5h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  {%- when 'moon' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-moon" fill="none" viewBox="0 0 24 24">
+      <path d="M20 13.5A8 8 0 0 1 10.5 4 8 8 0 1 0 20 13.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'percent' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-percent" fill="none" viewBox="0 0 24 24">
+      <path d="M18.5 5.5l-13 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="7.5" cy="7.5" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="16.5" cy="16.5" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
+  {%- when 'award' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-award" fill="none" viewBox="0 0 24 24">
+      <circle cx="12" cy="9" r="5.5" stroke="currentColor" stroke-width="1.8"/>
+      <path d="m9 13.5-1.5 7L12 18l4.5 2.5-1.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'feather' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-feather" fill="none" viewBox="0 0 24 24">
+      <path d="M19 5c-5 0-11 3-12.5 10.5L5 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M19 5c1 4.5-1 10-8.5 11.5M8.5 12.5H14M10.5 8.5l4.5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'thermometer' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-thermometer" fill="none" viewBox="0 0 24 24">
+      <path d="M10 14.2V5a2 2 0 1 1 4 0v9.2a4.2 4.2 0 1 1-4 0z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M12 17.5v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  {%- when 'heart-pulse' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-heart-pulse" fill="none" viewBox="0 0 24 24">
+      <path d="M12 20S4 14.5 4 9.2C4 6.4 6.2 4.5 8.6 4.5c1.4 0 2.7.7 3.4 1.8.7-1.1 2-1.8 3.4-1.8 2.4 0 4.6 1.9 4.6 4.7C20 14.5 12 20 12 20z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M6.5 11.5h3l1.2-2.4 1.8 4 1.2-1.6h3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 {%- endcase -%}

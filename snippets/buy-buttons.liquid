@@ -54,7 +54,7 @@
       {%- if gift_card_recipient_feature_active -%}
         {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
       {%- endif -%}
-      <div class="product-form__buttons{% if product.quantity_price_breaks_configured? %} with--price-break{% endif %}">
+      <div id="ProductBuyButtons-{{ section_id }}" class="product-form__buttons{% if product.quantity_price_breaks_configured? %} with--price-break{% endif %}">
         {%- liquid
           assign check_against_inventory = true
           if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'

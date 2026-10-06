@@ -12,15 +12,24 @@
     {%- for link in menu.links limit: limit offset: offset -%}
       {%- liquid
         assign enable_mega_menu = false
+        assign enable_mega_showcase = false
         if enable_dropdown_menu
           assign link_title_handle = link.title | downcase | handle
 
+          # A showcase block wins over a classic mega_menu block bound to the
+          # same menu item; trust items have no menu_title and never match.
           for block in blocks
             assign menu_title_handle = block.settings.menu_title | downcase | handle
-            if menu_title_handle == link_title_handle
-              assign enable_mega_menu = true
+            if menu_title_handle == blank or menu_title_handle != link_title_handle
+              continue
+            endif
+            if block.type == 'mega_menu_showcase'
+              assign enable_mega_showcase = true
               assign mega_menu_block = block
               break
+            elsif block.type == 'mega_menu'
+              assign enable_mega_menu = true
+              assign mega_menu_block = block
             endif
           endfor
         endif
@@ -28,7 +37,9 @@
       <li>
         {%- if link.links != blank -%}
           {%- if enable_dropdown_menu -%}
-            {%- if enable_mega_menu -%}
+            {%- if enable_mega_showcase -%}
+              {% render 'mega-menu-showcase', link: link, block: mega_menu_block, enable_highlight: enable_highlight, highlight_labels: highlight_labels, highlight_style: highlight_style %}
+            {%- elsif enable_mega_menu -%}
               {% render 'mega-menu', link: link, block: mega_menu_block, enable_highlight: enable_highlight, highlight_labels: highlight_labels, highlight_style: highlight_style %}
             {%- else -%}
               <dropdown-menu>

@@ -55,7 +55,8 @@
   {%- endif -%}
 
   theme.shopSettings = {
-    moneyFormat: {{ shop.money_format | json }},
+    moneyFormat: {% if settings.currency_code_enabled %}{{ shop.money_with_currency_format | json }}{% else %}{{ shop.money_format | json }}{% endif %},
+    moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
     isoCode: {{ cart.currency.iso_code | json }},
     cartDrawer: {{ settings.cart_drawer_enabled }},
     currencyCode: {{ settings.currency_code_enabled }},
@@ -64,7 +65,7 @@
 
   theme.settings = {
     themeName: 'Be Yours',
-    themeVersion: '8.6.0',
+    themeVersion: '9.5.1',
     agencyId: ''
   };
 

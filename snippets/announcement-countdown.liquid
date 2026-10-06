@@ -60,12 +60,18 @@
 
   <script>
     (function() {
-      const container = document.querySelector('[data-countdown-date="{{ block.settings.date | escape }}"]');
+      // The script tag sits right after its own countdown container —
+      // resolve by position so two blocks with the same date don't both
+      // bind to the first one. Fallback to the date selector for safety.
+      let container = document.currentScript && document.currentScript.previousElementSibling;
+      if (!container || !container.matches || !container.matches('.announcement-countdown')) {
+        container = document.querySelector('[data-countdown-date="{{ block.settings.date | escape }}"]');
+      }
       if (!container) return;
 
       const dateStr = container.dataset.countdownDate;
       let targetDate;
-      
+
       if (dateStr.includes('T')) {
         targetDate = new Date(dateStr);
       } else {
@@ -82,13 +88,18 @@
       const minutesEl = container.querySelector('[data-minutes]');
       const secondsEl = container.querySelector('[data-seconds]');
 
+      // Must be declared BEFORE the first updateCountdown() call: as a
+      // `const` below it, an already-expired date throws a ReferenceError
+      // (temporal dead zone) on page load.
+      let intervalId = null;
+
       function updateCountdown() {
         const now = new Date();
         const diff = targetDate - now;
 
         if (diff <= 0) {
           container.dataset.expired = 'true';
-          clearInterval(intervalId);
+          if (intervalId !== null) clearInterval(intervalId);
           return;
         }
 
@@ -104,7 +115,10 @@
       }
 
       updateCountdown();
-      const intervalId = setInterval(updateCountdown, 1000);
+      // No point ticking a countdown that is already over
+      if (container.dataset.expired !== 'true') {
+        intervalId = setInterval(updateCountdown, 1000);
+      }
     })();
   </script>
 {%- endif -%}

@@ -12,8 +12,10 @@
   - enable_quick_view: {Boolean} Enable the quick view feature. Default: true
   - enable_color_swatches: {Boolean} Enable the product color swatches. Default: false
   - enable_countdown: {Boolean} Enable the product countdown. Default: true
+  - show_product_highlights: {Boolean} Show product highlights/specs row from metafield. Default: false
   - enable_image_fill: {Boolean} Enable the image fill. Default: true
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - columns_mobile: {String} Mobile column count of the parent grid ('1' or '2'), used to size images. Default: '2' (optional)
   - section_id: {String} The ID of the section that contains this card.
   - button_custom_class: {String} custom class for the button
   - disable_image_click: {Boolean} Image should NOT be clickable. Default: false (optional)
@@ -93,6 +95,24 @@
             {%- assign swatch_value = value.name | split: ' ' | last | handle -%}
             {%- if color_count < max_count -%}
               {%- liquid
+                comment
+                  value.variant only resolves while the variant is available;
+                  a sold-out shade still owns its image, link and id, so fall
+                  back to the first variant carrying this option value and an
+                  image. The swatch background, zoom srcset and deep link all
+                  read from this one resolved variant.
+                endcomment
+                assign swatch_variant = value.variant
+                unless swatch_variant.image
+                  assign swatch_value_name = value.name | default: value
+                  assign swatch_option_key = 'option' | append: option.position
+                  for swatch_variant_candidate in card_product.variants
+                    if swatch_variant_candidate[swatch_option_key] == swatch_value_name and swatch_variant_candidate.image
+                      assign swatch_variant = swatch_variant_candidate
+                      break
+                    endif
+                  endfor
+                endunless
                 if native_swatch_eligible == true
                   assign swatch = value.swatch
                   if swatch.image
@@ -108,8 +128,8 @@
                   endif
                 else
                   if settings.color_swatches_source == 'variant'
-                    if value.variant.image
-                      assign color_variant_image = value.variant.image | image_url: width: 50
+                    if swatch_variant.image
+                      assign color_variant_image = swatch_variant.image | image_url: width: 50
                       assign swatch_value = 'url(' | append: color_variant_image | append: ')'
                     endif
                   else
@@ -161,8 +181,8 @@
                 class="color-swatch"
                 style="--swatch--background: {{ swatch_value }};{% if swatch_focal_point %} --swatch-focal-point: {{ swatch_focal_point }};{% endif %}"
                 title="{{ value | escape }}"
-                {%- if value.variant.image %}
-                  {%- assign variant_image = value.variant.image -%}
+                {%- if swatch_variant.image %}
+                  {%- assign variant_image = swatch_variant.image -%}
                   data-srcset="{%- if variant_image.width >= 165 -%}{{ variant_image | image_url: width: 165 }} 165w{%- endif -%}
                     {%- if variant_image.width >= 360 -%},{{ variant_image | image_url: width: 360 }} 360w{%- endif -%}
                     {%- if variant_image.width >= 533 -%},{{ variant_image | image_url: width: 533 }} 533w{%- endif -%}
@@ -183,12 +203,12 @@
                 {% endif -%}
 
                 {%- if card_product.available and enable_quick_buy_2nd %}
-                  data-variant-id="{{ value.variant.id }}"
+                  data-variant-id="{{ swatch_variant.id }}"
                   data-product-handle="{{ card_product.handle | escape }}"
                   data-collection-handle="{{ collection.handle | escape }}"
                 {% endif -%}
               >
-                <a href="{{ value.variant.url }}" tabindex="-1">
+                <a href="{{ swatch_variant.url }}" tabindex="-1">
                   <span class="visually-hidden">{{ value }}</span>
                 </a>
               </color-swatch>
@@ -228,7 +248,8 @@
         assign card_product_media = card_product.featured_media
       -%}
 
-      {%- capture sizes -%}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 10rem) / 4), (min-width: 750px) calc((100vw - 10rem) / 3), calc(62vw - 3rem){%- endcapture -%}
+      {%- comment -%} Mobile slice matches the real grid: ~50vw in the default 2-column grid, full width in 1-column grids. {%- endcomment -%}
+      {%- capture sizes -%}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 10rem) / 4), (min-width: 750px) calc((100vw - 10rem) / 3), {% if columns_mobile == '1' %}calc(100vw - 3rem){% else %}calc(50vw - 2rem){% endif %}{%- endcapture -%}
       {%- liquid
         assign image_loading = 'eager'
         if lazy_load
@@ -401,9 +422,6 @@
         {{ card_product.title | escape }}
       </a>
 
-      {% comment %} TODO: metafield {% endcomment %}
-      <span class="caption-large light">{{ block.settings.text | escape }}</span>
-
       {% render 'price', product: card_product %}
       {%- if card_product.quantity_price_breaks_configured? -%}
         <div class="card__information-volume-pricing-note">
@@ -437,6 +455,48 @@
           echo color_swatches
         endif
       -%}
+
+      {%- if show_product_highlights and card_product.metafields.theme.highlights.value != blank -%}
+        {%- liquid
+          # chips is the shared tile base; grid and pills layer onto it.
+          assign hl_class = ''
+          assign hl_style = highlights_style_override | default: 'auto'
+          if hl_style == 'auto' or hl_style == blank
+            assign hl_style = settings.highlights_style | default: 'strip'
+          endif
+          unless hl_style == 'strip' or hl_style == 'sheet'
+            assign hl_class = ' card-information__highlights--chips'
+          endunless
+          if hl_style == 'sheet'
+            assign hl_class = ' card-information__highlights--sheet'
+          elsif hl_style == 'grid'
+            assign hl_class = hl_class | append: ' card-information__highlights--grid'
+          elsif hl_style == 'pills'
+            assign hl_class = hl_class | append: ' card-information__highlights--pills'
+          endif
+        -%}
+        <div class="card-information__highlights{{ hl_class }}"{% unless hl_style == 'grid' or hl_style == 'pills' or hl_style == 'sheet' %} data-hover-scroll{% endunless %}>
+          {%- for highlight in card_product.metafields.theme.highlights.value -%}
+            {%- assign highlight_parts = highlight | split: '|' -%}
+            {%- assign highlight_label = highlight_parts[0] | strip -%}
+            {%- assign highlight_value = highlight_parts[1] | strip -%}
+            {%- assign highlight_icon = highlight_parts[2] | strip -%}
+            {%- if highlight_value != blank -%}
+              <div class="card-information__highlight">
+                <span class="card-information__highlight-value">
+                  {%- if highlight_icon != blank -%}
+                    <span class="card-information__highlight-icon">
+                      {% render 'icon', icon: highlight_icon %}
+                    </span>
+                  {%- endif -%}
+                  {{ highlight_value | escape }}
+                </span>
+                <span class="card-information__highlight-label">{{ highlight_label | escape }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     </div>
 
     <div class="card-information__button{% if show_countdown %} with-countdown{% endif %}">
@@ -478,7 +538,14 @@
           {%- endif -%}
         {%- endif -%}
       {%- else -%}
-        <button class="button button--small button--soldout" type="button" disabled="disabled">{{ 'products.product.sold_out' | t }}</button>
+        {%- if settings.similar_products_mode != 'disabled' -%}
+          {%- comment -%} Sold out is a dead end — offer the way sideways instead {%- endcomment -%}
+          <similar-products-button class="{{ button_class }} button--similar" role="button" tabindex="0" data-product-id="{{ card_product.id }}">
+            {{ 'products.product.similar_products' | t }}
+          </similar-products-button>
+        {%- else -%}
+          <button class="button button--small button--soldout" type="button" disabled="disabled">{{ 'products.product.sold_out' | t }}</button>
+        {%- endif -%}
       {%- endif -%}
     </div>
   </div>
@@ -488,13 +555,22 @@
       {%- capture badge_styles -%}
         {%- if card_product.metafields.theme.label_color.value != blank -%}
           --color-badge-background: {{ card_product.metafields.theme.label_color.value }}; --color-badge-border: var(--color-badge-background);
-          {%- assign input_bg_color = card_product.metafields.theme.label_color.value -%}
-          {%- assign asif_contrast_black = input_bg_color | color_contrast: '#000000' -%}
-          {%- assign asif_contrast_white = input_bg_color | color_contrast: '#ffffff' -%}
-          {%- if asif_contrast_black > asif_contrast_white -%}
-            {%- assign chosen_text_color = '#000000' -%}
+          {%- comment -%}
+            The text metafield overrides the black/white auto pick; the
+            outline setting borrows whichever text color wins, so a badge
+            lighter than the card image keeps a visible shape.
+          {%- endcomment -%}
+          {%- if card_product.metafields.theme.label_text_color.value != blank -%}
+            {%- assign chosen_text_color = card_product.metafields.theme.label_text_color.value -%}
           {%- else -%}
-            {%- assign chosen_text_color = '#ffffff' -%}
+            {%- assign input_bg_color = card_product.metafields.theme.label_color.value -%}
+            {%- assign asif_contrast_black = input_bg_color | color_contrast: '#000000' -%}
+            {%- assign asif_contrast_white = input_bg_color | color_contrast: '#ffffff' -%}
+            {%- if asif_contrast_black > asif_contrast_white -%}
+              {%- assign chosen_text_color = '#000000' -%}
+            {%- else -%}
+              {%- assign chosen_text_color = '#ffffff' -%}
+            {%- endif -%}
           {%- endif -%}
           --color-badge-foreground: {{ chosen_text_color }};
         {%- endif -%}
@@ -541,9 +617,21 @@
           {% render 'icon', icon: 'search-alt' %}
         </summary>
         <quick-view class="quick-view" data-product-url="{{ card_url }}">
-          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-view__content" tabindex="-1"></div>
+          <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-view__content ignore-empty" tabindex="-1"></div>
         </quick-view>
       </details>
     </quick-view-drawer>
+  {%- endif -%}
+
+  {%- if settings.similar_products_mode == 'all' and card_product.available and enable_similar_products != false -%}
+    {%- comment -%}
+      hidden + the stylesheet's display:flex is the FOUC guard: the trigger's
+      stylesheet loads non-blocking at the end of the body, and until it
+      lands the raw icon would paint full-size inside the card. The author
+      display wins over the attribute the moment the styles arrive.
+    {%- endcomment -%}
+    <similar-products-button class="similar-products__trigger" role="button" tabindex="0" hidden data-product-id="{{ card_product.id }}" aria-label="{{ 'products.product.similar_products' | t | escape }}">
+      {% render 'icon', icon: 'images' %}
+    </similar-products-button>
   {%- endif -%}
 </div>

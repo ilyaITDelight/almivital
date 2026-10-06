@@ -41,6 +41,7 @@
             <label class="visually-hidden" for="{{ section_id }}">{{ 'general.search.search' | t }}</label>
             <input type="hidden" name="type" value="{{ settings.search_results }}"/>
             <input type="hidden" name="options[prefix]" value="last"/>
+            {%- render 'voice-search-button' -%}
             {%- if settings.predictive_search_enabled -%}
               <div class="predictive-search__loading-state">
                 {% render 'icon', icon: 'spinner' %}

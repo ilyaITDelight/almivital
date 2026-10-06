@@ -41,8 +41,24 @@
       endif
     else
       if block.settings.swatch_source == 'variant'
-        if value.variant.image
-          assign color_variant_image = value.variant.image | image_url: width: 50
+        assign swatch_variant = value.variant
+        unless swatch_variant.image
+          comment
+            value.variant only resolves while the variant is available; a
+            sold-out shade still owns its image, so fall back to the first
+            variant carrying this option value and an image.
+          endcomment
+          assign swatch_value_name = value.name | default: value
+          assign swatch_option_key = 'option' | append: option.position
+          for swatch_variant_candidate in product.variants
+            if swatch_variant_candidate[swatch_option_key] == swatch_value_name and swatch_variant_candidate.image
+              assign swatch_variant = swatch_variant_candidate
+              break
+            endif
+          endfor
+        endunless
+        if swatch_variant.image
+          assign color_variant_image = swatch_variant.image | image_url: width: 50
           assign swatch_value = 'url(' | append: color_variant_image | append: ')'
         endif
       else
@@ -118,7 +134,7 @@
       {{ label_unavailable }}
     {%- endcapture -%}
     {%- liquid
-      render 'swatch-input', id: input_id, name: input_name, value: value, product_form_id: product_form_id, checked: value.selected, visually_disabled: option_disabled, shape: block.settings.swatch_type, source: block.settings.swatch_source, option: option, product: product, help_text: help_text, additional_props: input_dataset
+      render 'swatch-input', id: input_id, name: input_name, value: value, swatch: value.swatch, product_form_id: product_form_id, checked: value.selected, visually_disabled: option_disabled, shape: block.settings.swatch_type, source: block.settings.swatch_source, option: option, product: product, help_text: help_text, additional_props: input_dataset
     -%}
   {%- elsif picker_type == 'button' -%}
     <input

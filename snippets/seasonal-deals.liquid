@@ -2,7 +2,8 @@
   {{ 'component-seasonal-deals.css' | asset_url | stylesheet_tag }}
   <header-popover data-target="deal-drawer">
     <button class="header__icon" popovertarget="deal-drawer" aria-label="{{ 'accessibility.open_deals_drawer' | t }}">
-      {% render 'icon-guarantee', icon: 'price_tag' %}
+      {%- assign drawer_icon = icon | default: 'price_tag' -%}
+      {% render 'icon-guarantee', icon: drawer_icon %}
     </button>
     <div id="deal-drawer" popover>
       <div class="seasonal-deal__header">

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Eigene Farben verwenden"
         }
+      },
+      "edge_to_edge": {
+        "label": "Reihe bis zu den Bildschirmrändern ausdehnen",
+        "info": "Gilt bei aktiviertem Scrollen. Die Überschrift behält den Seitenrand."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Produktkarte"
         },
+        "show_product_highlights": {
+          "info": "Wichtige Spezifikationen aus dem Metafeld `theme.highlights` (Liste) anzeigen. Format pro Eintrag: `Label|Wert` oder `Label|Wert|Icon`.",
+          "label": "Produkt-Highlights anzeigen"
+        },
         "show_quick_buy": {
           "label": "Schaltfläche zum schnellen Hinzufügen aktivieren"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Tabellenhintergrund"
         },
+        "colors_accents": {
+          "label": "Akzentmarken",
+          "info": "Aufzählungspunkte und die Umrandung der hervorgehobenen Spalte. Leer lassen, um die Hervorhebungsfarbe zu verwenden."
+        },
+        "colors_badge_background": {
+          "label": "Badge-Hintergrund",
+          "info": "Leer lassen, um die Hervorhebungsfarbe zu verwenden."
+        },
+        "colors_badge_text": {
+          "label": "Badge-Text",
+          "info": "Leer lassen, um die Textfarbe zu verwenden."
+        },
         "table_style": {
           "header": {
             "content": "Tabellenstil"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Produktbeschreibung"
+            },
+            "highlight": {
+              "label": "Diese Spalte hervorheben",
+              "info": "Getönter Hintergrund und goldener Rahmen, damit dieses Produkt hervorsticht. Andere Spalten erhalten Outline-Buttons."
+            },
+            "highlight_badge": {
+              "label": "Text des Hervorhebungs-Badges",
+              "info": "Wird auf dem Produktbild angezeigt, wenn die Spalte hervorgehoben ist"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Aktivieren Sie die Schaltfläche \"Alle anzeigen\", wenn die Liste mehr Sammlungen enthält als angezeigt"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Farbfächer",
+      "settings": {
+        "product": {
+          "label": "Produkt",
+          "info": "Verknüpft den Fächer mit dem Produkt und nutzt dessen Bild, wenn keines hochgeladen ist."
+        },
+        "image": {
+          "label": "Bild",
+          "info": "Ein transparentes PNG wirkt am besten über dem Fächer."
+        },
+        "image_width": {
+          "label": "Bildgröße"
+        },
+        "fan_style": {
+          "label": "Fächerstil",
+          "options__1": {
+            "label": "Blüte"
+          },
+          "options__2": {
+            "label": "Handfächer"
+          },
+          "info": "Der Handfächer zeigt jeden Farbton vollständig – ideal für Bild-Farbtöne."
+        },
+        "hover_ring": {
+          "label": "Leuchtring beim Überfahren",
+          "options__1": {
+            "label": "Farbton-Farbe"
+          },
+          "options__2": {
+            "label": "Eigene Farbe"
+          },
+          "options__3": {
+            "label": "Regenbogen-Halo"
+          },
+          "options__4": {
+            "label": "Aus"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Ringfarbe"
+        },
+        "fan_trigger": {
+          "label": "Auffächern",
+          "options__1": {
+            "label": "Beim Scrollen in den Sichtbereich"
+          },
+          "options__2": {
+            "label": "Beim Überfahren mit der Maus"
+          },
+          "info": "Auf Smartphones fächert es immer beim Scrollen auf."
+        },
+        "shade_corner_radius": {
+          "label": "Eckenradius der Farbtöne"
+        },
+        "image_corner_radius": {
+          "label": "Eckenradius des Bildes"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Farbton",
+          "settings": {
+            "color": {
+              "label": "Farbe"
+            },
+            "image": {
+              "label": "Bild",
+              "info": "Ersetzt die Farbe – z. B. Textur- oder Variantenfoto."
+            },
+            "label": {
+              "label": "Bezeichnung",
+              "info": "Wird beim Darüberfahren als Tooltip angezeigt."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Farbfächer"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Kollektion"
         },
+        "product_list": {
+          "label": "Produkte",
+          "info": "Wähle Produkte zum Hervorheben aus. Wenn festgelegt, überschreiben sie die Kollektion oben."
+        },
         "products_to_show": {
           "label": "Maximal anzuzeigende Produkte"
         },
@@ -1624,6 +1728,9 @@
           "label": "Ziehen zum Scrollen aktivieren (Desktop)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Ähnliche Produkte"
     },
     "tabbed-featured-collections": {
       "name": "Registerkarten-Kollektionen",
@@ -1639,6 +1746,20 @@
               "info": "Leer lassen, um den Kollektionstitel zu verwenden"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Tab-Stil",
+          "options__1": {
+            "label": "Unterstrich"
+          },
+          "options__2": {
+            "label": "Gefüllt"
+          }
+        },
+        "tab_alignment": {
+          "label": "Tab-Ausrichtung"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Megamenü schmal machen"
             },
+            "defer_loading": {
+              "label": "Verzögertes Laden",
+              "info": "Lädt den Inhalt des Mega-Menüs nur, wenn der Benutzer darüber fährt. Reduziert die anfängliche Ladezeit der Seite."
+            },
             "paragraph": {
               "content": "Das Mega-Menü wird nur auf dem Desktop angezeigt und erfordert die Option \"Dropdown-Menü aktivieren\" in den Einstellungen."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Mega-Menübilder anzeigen"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Mega-Menü — Produktschaufenster",
+          "settings": {
+            "paragraph": {
+              "content": "Untergeordnete Links des Menüpunkts werden zu Tabs. Tabs mit Kategorie-Link zeigen deren erste Produkte; andere Tabs listen ihre eigenen Links."
+            },
+            "products_per_tab": {
+              "label": "Produkte pro Tab"
+            },
+            "header__promo": {
+              "content": "Aktion"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Ausfüllen"
+              }
+            },
+            "view_all_link": {
+              "label": "Link für „Alle anzeigen“",
+              "info": "Leer lassen, um den Link des Menüpunkts zu verwenden."
+            },
+            "show_in_drawer": {
+              "label": "Im mobilen Menü anzeigen",
+              "info": "Zeigt dieses Schaufenster auch im mobilen Menü für denselben Menüpunkt an."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Menü-Icon-Badge",
+          "settings": {
+            "paragraph": {
+              "content": "Wird unten in jedem Produktschaufenster-Mega-Menü angezeigt (bis zu 4)."
+            },
+            "icon": {
+              "label": "Symbol",
+              "options__1": {
+                "label": "LKW"
+              },
+              "options__2": {
+                "label": "Häkchen"
+              },
+              "options__3": {
+                "label": "Häkchen (alternativ)"
+              },
+              "options__4": {
+                "label": "Häkchen im Kreis"
+              },
+              "options__5": {
+                "label": "Geschenk"
+              },
+              "options__6": {
+                "label": "Rabatt"
+              },
+              "options__7": {
+                "label": "Herz"
+              },
+              "options__8": {
+                "label": "Info"
+              },
+              "options__9": {
+                "label": "Fragezeichen"
+              },
+              "options__10": {
+                "label": "Haus"
+              },
+              "options__11": {
+                "label": "Lineal"
+              },
+              "options__12": {
+                "label": "Klemmbrett"
+              },
+              "options__13": {
+                "label": "Person"
+              },
+              "options__14": {
+                "label": "Tasche"
+              },
+              "options__15": {
+                "label": "Warenkorb"
+              },
+              "options__16": {
+                "label": "Bilder"
+              },
+              "options__17": {
+                "label": "Liste"
+              },
+              "options__18": {
+                "label": "Globus"
+              },
+              "options__19": {
+                "label": "Stift"
+              },
+              "options__20": {
+                "label": "Lupe"
+              },
+              "options__21": {
+                "label": "Netzwerk"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Tropfen"
+              },
+              "options__24": {
+                "label": "Blatt"
+              },
+              "options__25": {
+                "label": "Sonne"
+              },
+              "options__26": {
+                "label": "Uhr"
+              },
+              "options__27": {
+                "label": "Schild"
+              },
+              "options__28": {
+                "label": "Funkeln"
+              },
+              "options__29": {
+                "label": "Kolben"
+              },
+              "options__30": {
+                "label": "Recycling"
+              },
+              "options__31": {
+                "label": "Karton"
+              },
+              "options__32": {
+                "label": "Anzeige"
+              },
+              "options__33": {
+                "label": "Flamme"
+              },
+              "options__34": {
+                "label": "Stern"
+              },
+              "options__35": {
+                "label": "Schneeflocke"
+              },
+              "options__36": {
+                "label": "Lächeln"
+              },
+              "options__37": {
+                "label": "Hase"
+              },
+              "options__38": {
+                "label": "Blume"
+              },
+              "options__39": {
+                "label": "Spross"
+              },
+              "options__40": {
+                "label": "Pipette"
+              },
+              "options__41": {
+                "label": "Tiegel"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Mond"
+              },
+              "options__44": {
+                "label": "Prozent"
+              },
+              "options__45": {
+                "label": "Auszeichnung"
+              },
+              "options__46": {
+                "label": "Feder"
+              },
+              "options__47": {
+                "label": "Thermometer"
+              },
+              "options__48": {
+                "label": "Herzschlag"
+              }
+            },
+            "heading": {
+              "label": "Überschrift"
+            },
+            "text": {
+              "label": "Text"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Sprachauswahl",
           "info": "Gehe zu den [Spracheinstellungen](/admin/settings/languages), um eine Sprache hinzuzufügen."
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Menü-Drawer-Promotion",
+            "info": "Eine optionale Bild- oder Textkarte am unteren Rand des Menü-Drawers."
+          },
+          "image": {
+            "label": "Bild"
+          },
+          "heading": {
+            "label": "Überschrift"
+          },
+          "link": {
+            "label": "Link"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Seitenleiste",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Bildlogo für Handys"
         },
+        "search_style": {
+          "label": "Suchstil auf dem Desktop",
+          "info": "\"Suchleiste\" zeigt ein dauerhaft sichtbares Suchfeld im Desktop-Header an. Bei der Logo-Position \"Mitte, Menü aufgeteilt\" ist kein Platz dafür – das Symbol bleibt erhalten.",
+          "options__1": {
+            "label": "Symbol"
+          },
+          "options__2": {
+            "label": "Suchleiste"
+          }
+        },
         "show_line_separator": {
           "label": "Trennlinie anzeigen"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Menüelemente der ersten Ebene in Großbuchstaben"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Glocke"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Beschreibung"
         },
+        "highlights": {
+          "name": "Produkt-Highlights",
+          "settings": {
+            "info": {
+              "content": "Wichtige Spezifikationen aus dem Metafeld `theme.highlights` (Liste) anzeigen. Format pro Eintrag: `Label|Wert` oder `Label|Wert|Icon`."
+            }
+          }
+        },
         "image": {
           "name": "Bild",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Mengenauswahl anzeigen"
+            },
+            "follow_buy_buttons": {
+              "label": "Anzeigen, solange die Kauf-Buttons außerhalb des Bildschirms sind",
+              "info": "Die Leiste erscheint ab dem Laden der Seite, bis die Kauf-Buttons sichtbar werden, nicht erst nach dem Vorbeiscrollen."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify erlaubt für jede Variante nur ein Medium. Um mehrere Medien einer Produktoption zuzuweisen, verwenden Sie die [ALT-Methode](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Blenden Sie die Medien anderer Varianten nach Auswahl einer Variante aus"
+        },
+        "show_gallery_badges": {
+          "label": "Badges in der Galerie anzeigen",
+          "info": "Die Labels des Produkts plus Sale- und Ausverkauft-Badges über dem ersten Bild."
         },
         "image_ratio": {
           "info": "Desktop-Layout muss \"Slider\" sein.",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Karten zoomen"
+        },
+        "map_language": {
+          "label": "Map language",
+          "info": "Language for map labels, directions, and controls. 'Auto' uses the store's current language.",
+          "options__auto": {
+            "label": "Auto (store language)"
+          },
+          "options__browser": {
+            "label": "Browser default"
+          }
+        },
+        "map_region": {
+          "label": "Map region",
+          "info": "Optional. Region for geocoding bias (e.g. VN, US, JP). Affects search results and map behavior.",
+          "placeholder": "e.g. VN"
         },
         "mobile_text_box_position": {
           "label": "Mobiles Layout",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Überschrift"
         },
+        "inline_banner": {
+          "name": "Inline-Banner",
+          "settings": {
+            "border_radius": {
+              "label": "Randradius"
+            },
+            "image_height": {
+              "label": "Bildhöhe"
+            }
+          }
+        },
         "subheading": {
           "name": "Unterüberschrift"
         },
@@ -4480,6 +4865,9 @@
         "name": "Reichtext"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Textbreite"
+        },
         "horizontal_content": {
           "label": "Inhalte horizontal darstellen"
         }
@@ -5190,6 +5578,249 @@
           "info": "Zeigt oben einen dünnen Balken an, der den Prozentsatz des Seiten-Scrollens anzeigt."
         }
       }
+    },
+    "video-collection": {
+      "name": "Shoppable Video",
+      "settings": {
+        "columns_desktop": {
+          "label": "Anzahl der Spalten auf dem Desktop"
+        },
+        "card_ratio": {
+          "label": "Kartenverhältnis",
+          "options__1": {
+            "label": "Hochformat (9:16)"
+          },
+          "options__2": {
+            "label": "Porträt (3:4)"
+          },
+          "options__3": {
+            "label": "Quadratisch (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Abstände zwischen den Bildern"
+        },
+        "autoplay": {
+          "label": "Automatisch abspielen im Sichtbereich",
+          "info": "Stumme Schleifen. Clips werden erst beim Scrollen geladen und nie bei reduzierter Bewegung."
+        },
+        "show_title": {
+          "label": "Titel anzeigen"
+        },
+        "show_price": {
+          "label": "Preis anzeigen"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Videokarte",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "Hochformat-Clips wirken am besten."
+            },
+            "cover_image": {
+              "label": "Titelbild",
+              "info": "Wird vor dem Abspielen angezeigt. Standard ist das Vorschaubild des Videos."
+            },
+            "product": {
+              "label": "Produkt",
+              "info": "Liefert Titel, Preis und Link."
+            },
+            "title": {
+              "label": "Titel",
+              "info": "Überschreibt den Produkttitel."
+            },
+            "label": {
+              "label": "Label",
+              "info": "Kurzer Hinweis über dem Clip, zum Beispiel Tutorial oder Vorher & nachher."
+            },
+            "link": {
+              "label": "Link",
+              "info": "Überschreibt den Produktlink."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Shoppable Video"
+      }
+    },
+    "skin-quiz": {
+      "name": "Haut-Quiz",
+      "settings": {
+        "show_progress": {
+          "label": "Fortschrittsbalken anzeigen"
+        },
+        "intro_text": {
+          "label": "Einleitungstext"
+        },
+        "intro_button_label": {
+          "label": "Beschriftung des Startbuttons"
+        },
+        "start_attention": {
+          "label": "Hinweis auf den Start-Button",
+          "info": "Lenkt den Blick auf den Start-Button. Für Besucher mit reduzierter Bewegung deaktiviert.",
+          "options__1": {
+            "label": "Keiner"
+          },
+          "options__2": {
+            "label": "Skizzierter Pfeil"
+          },
+          "options__3": {
+            "label": "Pulsierendes Leuchten"
+          }
+        },
+        "start_attention_color": {
+          "label": "Farbe des Hinweises",
+          "info": "Leer lassen, um die Hervorhebungsfarbe der Sektion zu verwenden."
+        },
+        "background_effect": {
+          "label": "Hintergrundanimation",
+          "info": "Nur dekorativ. Die Farben folgen der Sektionspalette; bei reduzierter Bewegung deaktiviert.",
+          "options__1": {
+            "label": "Keine"
+          },
+          "options__2": {
+            "label": "Aurora"
+          },
+          "options__3": {
+            "label": "Mesh"
+          },
+          "options__4": {
+            "label": "Ringe"
+          },
+          "options__5": {
+            "label": "Schimmer"
+          },
+          "options__6": {
+            "label": "Flüssig"
+          },
+          "options__7": {
+            "label": "Seide"
+          },
+          "options__8": {
+            "label": "Raster"
+          },
+          "options__9": {
+            "label": "Wellen"
+          },
+          "options__10": {
+            "label": "Bild"
+          }
+        },
+        "background_intensity": {
+          "label": "Intensität des Hintergrunds",
+          "options__1": {
+            "label": "Dezent"
+          },
+          "options__2": {
+            "label": "Mittel"
+          },
+          "options__3": {
+            "label": "Kräftig"
+          },
+          "info": "Legt auch fest, wie stark das Hintergrundbild durchscheint."
+        },
+        "background_effect_color": {
+          "label": "Farbe der Hintergrundanimation",
+          "info": "Leer lassen, um die Hervorhebungsfarbe der Sektion zu verwenden."
+        },
+        "section_width": {
+          "label": "Sektionsbreite",
+          "options__1": {
+            "label": "Schmal"
+          },
+          "options__2": {
+            "label": "Standard"
+          },
+          "options__3": {
+            "label": "Volle Breite"
+          }
+        },
+        "background_image": {
+          "label": "Hintergrundbild",
+          "info": "Wird nur verwendet, wenn die Hintergrundanimation auf Bild steht. Es bewegt sich langsam und liegt unter einem Schleier in der Hintergrundfarbe der Sektion."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Ergebnis 1"
+        },
+        "options__2": {
+          "label": "Ergebnis 2"
+        },
+        "options__3": {
+          "label": "Ergebnis 3"
+        },
+        "options__4": {
+          "label": "Ergebnis 4"
+        },
+        "options__5": {
+          "label": "Ergebnis 5"
+        },
+        "options__6": {
+          "label": "Ergebnis 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Frage",
+          "settings": {
+            "title": {
+              "label": "Frage"
+            },
+            "help": {
+              "label": "Hilfetext"
+            },
+            "option_1": {
+              "content": "Antwort 1"
+            },
+            "option_2": {
+              "content": "Antwort 2"
+            },
+            "option_3": {
+              "content": "Antwort 3"
+            },
+            "option_4": {
+              "content": "Antwort 4"
+            },
+            "option_label": {
+              "label": "Antwort"
+            },
+            "option_hint": {
+              "label": "Antworthinweis"
+            },
+            "option_result": {
+              "label": "Zählt für",
+              "info": "Das Ergebnis mit den meisten Stimmen gewinnt. Bei Gleichstand gewinnt das Ergebnis mit der niedrigsten Nummer."
+            }
+          }
+        },
+        "result": {
+          "name": "Ergebnis",
+          "settings": {
+            "order_note": {
+              "content": "Ergebnisse werden nach ihrer Reihenfolge hier nummeriert. Antworten verweisen auf diese Nummern."
+            },
+            "product_1": {
+              "label": "Produkt Schritt 1"
+            },
+            "product_2": {
+              "label": "Produkt Schritt 2"
+            },
+            "product_3": {
+              "label": "Produkt Schritt 3"
+            },
+            "product_note": {
+              "label": "Warum dieser Schritt"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Haut-Quiz"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Hintergrund des Sale-Etiketts"
         },
+        "colors_sale_badge_text": {
+          "label": "Text des Sale-Badges",
+          "info": "Leer lassen, um die Hintergrundfarbe des Farbschemas zu verwenden."
+        },
         "colors_sale_price": {
           "label": "Verkaufspreis"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Verschiedenes"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Farbschemata",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 Farbschemata. Sections können sich über eine color_scheme-Einstellung anmelden, um die Palette ohne sektionsspezifische Farbeinstellungen zu ändern. Bestehende globale Farbeinstellungen funktionieren weiterhin; dies ist additiv."
+        },
+        "background": {
+          "label": "Hintergrund"
+        },
+        "background_gradient": {
+          "label": "Hintergrund-Gradient"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button": {
+          "label": "Hintergrund Vollfarben-Button"
+        },
+        "button_label": {
+          "label": "Text Vollfarben-Button"
+        },
+        "secondary_button_label": {
+          "label": "Text Umriss-Button"
+        },
+        "shadow": {
+          "label": "Schatten"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Platz zwischen Vorlagenabschnitten",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Textrichtung"
+        },
+        "rtl_auto": {
+          "label": "Rechts-nach-links-Layout für RTL-Sprachen",
+          "info": "Spiegelt das Layout automatisch, wenn die Shopsprache Arabisch, Hebräisch, Persisch, Urdu oder eine andere Rechts-nach-links-Schrift ist. Die Übersetzung text_direction_trigger gilt weiterhin und hat Vorrang, wenn sie rtl lautet."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Kachel-layouts",
       "settings": {
+        "badges": {
+          "content": "Badges"
+        },
+        "badge_outline": {
+          "label": "Badge-Kontur",
+          "info": "Umrandet jedes Badge mit seiner Textfarbe."
+        },
+        "badge_shape": {
+          "label": "Badge-Form",
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Pille"
+          }
+        },
+        "badge_rotate": {
+          "label": "Badge-Neigung"
+        },
+        "highlights": {
+          "content": "Produktdaten"
+        },
+        "highlights_style": {
+          "label": "Stil der Produktdaten",
+          "info": "Kacheln gleiten beim Überfahren der Karte durch verdeckte Angaben.",
+          "options__1": {
+            "label": "Leiste"
+          },
+          "options__2": {
+            "label": "Kacheln"
+          },
+          "options__3": {
+            "label": "Kacheln — Raster"
+          },
+          "options__4": {
+            "label": "Pillen"
+          },
+          "options__5": {
+            "label": "Datenblatt"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Stil der Produktdaten — Produktseite",
+          "options__1": {
+            "label": "Wie Produktkacheln"
+          }
+        },
         "color_swatches": {
           "content": "Farbfelder"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Produktdetails in einem Popup anzeigen, ohne die aktuelle Seite zu verlassen.",
           "label": "Schnellansicht-Funktion aktivieren"
+        },
+        "similar_products": {
+          "content": "Ähnliche Produkte"
+        },
+        "similar_products_mode": {
+          "label": "Schaltfläche „Ähnliche Produkte“",
+          "info": "Öffnet von Shopify generierte Empfehlungen aus Produktkacheln. Ergebnisse in der Search-&-Discovery-App anpassen.",
+          "options__1": {
+            "label": "Aus"
+          },
+          "options__2": {
+            "label": "Nur ausverkaufte Produkte"
+          },
+          "options__3": {
+            "label": "Alle Produkte"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Alle Inhalte"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Sprachsuche aktivieren",
+          "info": "Fügt Suchfeldern in unterstützten Browsern (Chrome, Edge, Safari) eine Mikrofon-Schaltfläche hinzu. Die Spracherkennung erfolgt im Browser des Besuchers."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Kapitalisierung"
         },
+        "heading_capitalize_tracking": {
+          "label": "Buchstabenabstand bei Großschreibung",
+          "info": "Fügt Produkt- und Artikelkarten-Titeln einen weiten Abstand hinzu, wenn Überschriften großgeschrieben werden."
+        },
         "heading_center": {
           "label": "Mitte Überschriften"
         },
         "heading_scale": {
           "label": "Skalierung der Schriftgröße",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Automatisch skaliert Überschriftengrößen stufenlos mit der Bildschirmbreite. Klassisch verwendet feste Größen für Mobilgeräte und Desktop.",
+          "label": "Größenverhalten",
+          "options__1": {
+            "label": "Klassisch"
+          },
+          "options__2": {
+            "label": "Automatisch (fluid)"
+          }
         },
         "price_superscript": {
           "label": "Preisdezimalstelle hochgestellt"
@@ -5744,6 +6496,15 @@
           "label": "Navigationsgröße",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Navigations-Schriftstärke",
+          "options__1": {
+            "label": "Wie Schriftart"
+          },
+          "options__2": {
+            "label": "Halbfett"
+          }
+        },
         "type_price_font": {
           "label": "Schriftart für Preise",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Überschriften"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Glass-Design",
+      "settings": {
+        "paragraph": {
+          "content": "Wenden Sie einen Milchglas-Effekt inspiriert von modernem UI-Design auf die Oberflächen und Elemente Ihres Themes an."
+        },
+        "glass_design_enabled": {
+          "label": "Glass-Design aktivieren"
+        },
+        "header__1": {
+          "content": "Anpassung"
+        },
+        "glass_blur_intensity": {
+          "label": "Unschärfe-Intensität"
+        },
+        "glass_bg_opacity": {
+          "label": "Hintergrund-Deckkraft"
+        },
+        "glass_border_opacity": {
+          "label": "Rahmen-Deckkraft"
+        },
+        "glass_tint_color": {
+          "label": "Tönungsfarbe"
         }
       }
     }

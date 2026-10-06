@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "accessibility": {
     "account": "Cuenta",
@@ -273,8 +264,10 @@
     },
     "search": {
       "clear": "Borrar",
+      "listening": "Escuchando…",
       "placeholder": "Buscar",
-      "search": "Buscar en nuestro sitio"
+      "search": "Buscar en nuestro sitio",
+      "voice_search": "Búsqueda por voz"
     },
     "share": {
       "close": "Cerrar compartición",
@@ -443,6 +436,8 @@
       "quick_view": "Vista rápida",
       "share": "Compartir este producto",
       "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pago.",
+      "similar_products": "Productos similares",
+      "similar_products_empty": "No se encontraron productos similares",
       "size_chart": "Guía de tallas",
       "size_chart_trigger": "Tamaño",
       "sold_out": "Agotado",
@@ -511,11 +506,8 @@
       "taxes_included_shipping_at_checkout_with_policy_html": "Impuestos incluidos. Descuentos y <a href=\"{{ link }}\">envío</a> calculados en la pantalla de pago.",
       "taxes_included_shipping_at_checkout_without_policy": "Impuestos incluidos. Descuentos y envío calculados en la pantalla de pago.",
       "title": "Su carrito",
-      "update": "Actualizar"
-    },
-    "comparison_table": {
-      "shop_button": "Comprar",
-      "placeholder_product": "Su producto"
+      "update": "Actualizar",
+      "recommendations_heading": "También te puede gustar"
     },
     "collection_list": {
       "view_all": "Ver todo"
@@ -525,6 +517,10 @@
       "no_products": "Lo sentimos, no hay productos en esta colección",
       "title": "Colección",
       "use_fewer_filters_html": "Utilizar menos filtros o <a class=\"{{ class }}\" href=\"{{ link }}\">borrar todo</a>"
+    },
+    "comparison_table": {
+      "shop_button": "Comprar",
+      "placeholder_product": "Su producto"
     },
     "featured_blog": {
       "onboarding_content": "Dé a sus clientes un resumen de su publicación de blog",
@@ -574,8 +570,61 @@
       "variant_total": "Total de variantes",
       "view_cart": "Ver carrito"
     },
+    "store_locator": {
+      "gmap_strings": {
+        "locator_back_button_cta": "Volver",
+        "locator_directions_button_label": "Cómo llegar a %0%",
+        "locator_list_header": "Encuentra una ubicación cerca de ti",
+        "locator_list_subheading": "Todas las ubicaciones",
+        "locator_list_subheading_with_search": "Ubicaciones más cercanas",
+        "locator_search_location_marker_title": "Mi ubicación",
+        "locator_search_prompt": "Introduce tu dirección o código postal",
+        "locator_view_details_cta": "Ver detalles",
+        "place_clear_aria_label": "Borrar",
+        "place_closed": "Cerrado",
+        "place_closed_permanently": "Cerrado permanentemente",
+        "place_closed_temporarily": "Cerrado temporalmente",
+        "place_closes": "Cierra %0%",
+        "place_has_delivery": "Entrega a domicilio",
+        "place_has_dine_in": "Comer en el local",
+        "place_has_takeout": "Para llevar",
+        "place_no_delivery": "Sin entrega a domicilio",
+        "place_no_dine_in": "Sin servicio en el local",
+        "place_no_takeout": "Sin servicio para llevar",
+        "place_open_always": "Abierto las 24 horas",
+        "place_open_now": "Abierto ahora",
+        "place_opening_hours_default_summary": "Ver horario de apertura",
+        "place_opening_hours_aria_label": "Horario semanal de apertura",
+        "place_opens": "Abre %0%",
+        "place_operational": "En funcionamiento",
+        "place_photo_alt": "Foto de %0%",
+        "place_photo_attribution_prefix": "Foto de",
+        "place_photo_back_aria_label": "Volver",
+        "place_photo_next_aria_label": "Siguiente",
+        "place_photo_prev_aria_label": "Anterior",
+        "place_photo_tile_aria_label": "Abrir foto %0%",
+        "place_rating_aria_label": "1 estrella||%0% estrellas",
+        "place_reviews_author_photo_alt": "Foto de %0%",
+        "place_reviews_more": "Más reseñas",
+        "place_reviews_section_caption": "Más relevantes",
+        "place_reviews_section_heading": "Reseñas de usuarios de Google",
+        "place_search_aria_label": "Buscar"
+      }
+    },
     "video": {
       "load_video": "Cargar vídeo: {{ description }}"
+    },
+    "video-collection": {
+      "toggle_sound": "Activar o desactivar el sonido"
+    },
+    "skin-quiz": {
+      "progress": "Pregunta {{ current }} de {{ total }}",
+      "back": "Atrás",
+      "restart": "Repetir el test",
+      "add_routine": "Añadir rutina",
+      "no_email": "No hace falta email para ver tu resultado.",
+      "setup_note": "Añade al menos una pregunta y un resultado para activar el test.",
+      "start": "Hacer el test"
     }
   },
   "templates": {

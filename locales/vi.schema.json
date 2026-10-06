@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Tùy chỉnh màu sắc"
         }
+      },
+      "edge_to_edge": {
+        "label": "Kéo hàng ra sát mép màn hình",
+        "info": "Áp dụng khi bật cuộn. Tiêu đề vẫn giữ lề trang."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Thẻ sản phẩm"
         },
+        "show_product_highlights": {
+          "info": "Hiển thị thông số sản phẩm từ metafield list `theme.highlights`. Mỗi item theo định dạng: `Nhãn|Giá trị` hoặc `Nhãn|Giá trị|icon`.",
+          "label": "Hiển thị thông tin nổi bật của sản phẩm"
+        },
         "show_quick_buy": {
           "label": "Bật nút thêm nhanh"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Nền bảng"
         },
+        "colors_accents": {
+          "label": "Dấu nhấn",
+          "info": "Chấm đầu dòng và viền cột nổi bật. Để trống để dùng màu nhấn mạnh."
+        },
+        "colors_badge_background": {
+          "label": "Nền badge",
+          "info": "Để trống để dùng màu nhấn mạnh."
+        },
+        "colors_badge_text": {
+          "label": "Chữ badge",
+          "info": "Để trống để dùng màu chữ."
+        },
         "table_style": {
           "header": {
             "content": "Kiểu bảng"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Mô tả sản phẩm"
+            },
+            "highlight": {
+              "label": "Làm nổi bật cột này",
+              "info": "Nền phủ màu và viền vàng giúp sản phẩm này nổi bật. Các cột khác chuyển sang nút viền."
+            },
+            "highlight_badge": {
+              "label": "Chữ trên huy hiệu nổi bật",
+              "info": "Hiển thị trên ảnh sản phẩm khi cột được làm nổi bật"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Bật nút \"Xem tất cả\" nếu danh sách bao gồm nhiều bộ sưu tập hơn số lượng hiển thị"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Quạt màu",
+      "settings": {
+        "product": {
+          "label": "Sản phẩm",
+          "info": "Liên kết quạt màu tới sản phẩm và dùng ảnh của sản phẩm khi chưa tải ảnh riêng."
+        },
+        "image": {
+          "label": "Hình ảnh",
+          "info": "Ảnh PNG nền trong suốt hiển thị đẹp nhất trên quạt màu."
+        },
+        "image_width": {
+          "label": "Kích thước hình ảnh"
+        },
+        "fan_style": {
+          "label": "Kiểu xoè",
+          "options__1": {
+            "label": "Nở tại tâm"
+          },
+          "options__2": {
+            "label": "Xoè lá bài"
+          },
+          "info": "Xoè lá bài cho thấy trọn từng tông màu — hợp khi tông màu là hình ảnh."
+        },
+        "hover_ring": {
+          "label": "Vòng sáng khi hover",
+          "options__1": {
+            "label": "Theo màu shade"
+          },
+          "options__2": {
+            "label": "Màu tuỳ chọn"
+          },
+          "options__3": {
+            "label": "Halo 7 màu"
+          },
+          "options__4": {
+            "label": "Tắt"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Màu vòng sáng"
+        },
+        "fan_trigger": {
+          "label": "Xoè quạt",
+          "options__1": {
+            "label": "Khi cuộn vào tầm nhìn"
+          },
+          "options__2": {
+            "label": "Khi rê chuột"
+          },
+          "info": "Trên điện thoại luôn xoè khi vào tầm nhìn."
+        },
+        "shade_corner_radius": {
+          "label": "Bo góc tông màu"
+        },
+        "image_corner_radius": {
+          "label": "Bo góc hình ảnh"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Tông màu",
+          "settings": {
+            "color": {
+              "label": "Màu sắc"
+            },
+            "image": {
+              "label": "Hình ảnh",
+              "info": "Thay cho màu — ảnh chất liệu hoặc ảnh biến thể."
+            },
+            "label": {
+              "label": "Nhãn",
+              "info": "Hiện dưới dạng tooltip khi rê chuột."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Quạt màu"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Bộ sưu tập"
         },
+        "product_list": {
+          "label": "Sản phẩm",
+          "info": "Chọn sản phẩm để hiển thị. Khi được chọn, danh sách này thay thế bộ sưu tập ở trên."
+        },
         "products_to_show": {
           "label": "Số lượng sản phẩm hiển thị tối đa"
         },
@@ -1624,6 +1728,9 @@
           "label": "Bật kéo để cuộn (máy tính để bàn)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Sản phẩm tương tự"
     },
     "tabbed-featured-collections": {
       "name": "Bộ sưu tập tab",
@@ -1639,6 +1746,20 @@
               "info": "Để trống để sử dụng tên bộ sưu tập"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Kiểu tab",
+          "options__1": {
+            "label": "Gạch chân"
+          },
+          "options__2": {
+            "label": "Đổ nền"
+          }
+        },
+        "tab_alignment": {
+          "label": "Căn chỉnh tab"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Thu hẹp mega menu"
             },
+            "defer_loading": {
+              "label": "Trì hoãn tải",
+              "info": "Chỉ tải nội dung mega menu khi người dùng di chuột. Giảm thời gian tải trang ban đầu."
+            },
             "paragraph": {
               "content": "Menu mega chỉ được hiển thị trên màn hình và yêu cầu tùy chọn \"Bật menu thả xuống\" trong cài đặt phần."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Hiển thị hình ảnh mega menu"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Mega menu — trưng bày sản phẩm",
+          "settings": {
+            "paragraph": {
+              "content": "Các liên kết con của mục menu trở thành tab. Tab liên kết đến bộ sưu tập sẽ hiển thị các sản phẩm đầu tiên; tab khác liệt kê liên kết con của nó."
+            },
+            "products_per_tab": {
+              "label": "Số sản phẩm mỗi tab"
+            },
+            "header__promo": {
+              "content": "Khuyến mãi"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Lấp đầy"
+              }
+            },
+            "view_all_link": {
+              "label": "Liên kết nút “Xem tất cả”",
+              "info": "Để trống để dùng liên kết của mục menu."
+            },
+            "show_in_drawer": {
+              "label": "Hiển thị trong menu di động",
+              "info": "Lặp lại khối trưng bày này trong menu di động cho cùng mục menu."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Huy hiệu icon trong menu",
+          "settings": {
+            "paragraph": {
+              "content": "Hiển thị ở cuối mọi mega menu trưng bày sản phẩm (tối đa 4)."
+            },
+            "icon": {
+              "label": "Biểu tượng",
+              "options__1": {
+                "label": "Xe tải"
+              },
+              "options__2": {
+                "label": "Dấu kiểm"
+              },
+              "options__3": {
+                "label": "Dấu kiểm (kiểu khác)"
+              },
+              "options__4": {
+                "label": "Dấu kiểm trong vòng tròn"
+              },
+              "options__5": {
+                "label": "Quà tặng"
+              },
+              "options__6": {
+                "label": "Giảm giá"
+              },
+              "options__7": {
+                "label": "Trái tim"
+              },
+              "options__8": {
+                "label": "Thông tin"
+              },
+              "options__9": {
+                "label": "Dấu hỏi"
+              },
+              "options__10": {
+                "label": "Ngôi nhà"
+              },
+              "options__11": {
+                "label": "Thước"
+              },
+              "options__12": {
+                "label": "Bảng kẹp giấy"
+              },
+              "options__13": {
+                "label": "Người"
+              },
+              "options__14": {
+                "label": "Túi xách"
+              },
+              "options__15": {
+                "label": "Giỏ hàng"
+              },
+              "options__16": {
+                "label": "Hình ảnh"
+              },
+              "options__17": {
+                "label": "Danh sách"
+              },
+              "options__18": {
+                "label": "Quả địa cầu"
+              },
+              "options__19": {
+                "label": "Bút"
+              },
+              "options__20": {
+                "label": "Kính lúp"
+              },
+              "options__21": {
+                "label": "Mạng lưới"
+              },
+              "options__22": {
+                "label": "Thu phóng"
+              },
+              "options__23": {
+                "label": "Giọt nước"
+              },
+              "options__24": {
+                "label": "Chiếc lá"
+              },
+              "options__25": {
+                "label": "Mặt trời"
+              },
+              "options__26": {
+                "label": "Đồng hồ"
+              },
+              "options__27": {
+                "label": "Khiên"
+              },
+              "options__28": {
+                "label": "Lấp lánh"
+              },
+              "options__29": {
+                "label": "Bình thí nghiệm"
+              },
+              "options__30": {
+                "label": "Tái chế"
+              },
+              "options__31": {
+                "label": "Hộp"
+              },
+              "options__32": {
+                "label": "Đồng hồ đo"
+              },
+              "options__33": {
+                "label": "Ngọn lửa"
+              },
+              "options__34": {
+                "label": "Ngôi sao"
+              },
+              "options__35": {
+                "label": "Bông tuyết"
+              },
+              "options__36": {
+                "label": "Mặt cười"
+              },
+              "options__37": {
+                "label": "Thỏ"
+              },
+              "options__38": {
+                "label": "Bông hoa"
+              },
+              "options__39": {
+                "label": "Mầm cây"
+              },
+              "options__40": {
+                "label": "Ống nhỏ giọt"
+              },
+              "options__41": {
+                "label": "Hũ"
+              },
+              "options__42": {
+                "label": "Chai xịt"
+              },
+              "options__43": {
+                "label": "Mặt trăng"
+              },
+              "options__44": {
+                "label": "Phần trăm"
+              },
+              "options__45": {
+                "label": "Huy hiệu"
+              },
+              "options__46": {
+                "label": "Lông vũ"
+              },
+              "options__47": {
+                "label": "Nhiệt kế"
+              },
+              "options__48": {
+                "label": "Nhịp tim"
+              }
+            },
+            "heading": {
+              "label": "Tiêu đề"
+            },
+            "text": {
+              "label": "Nội dung"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Hộp chọn ngôn ngữ",
           "info": "Để thêm ngôn ngữ, vào [cài đặt ngôn ngữ](/admin/settings/languages)."
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Quảng bá trong menu",
+            "info": "Thẻ hình ảnh hoặc chữ tùy chọn hiển thị ở cuối menu drawer."
+          },
+          "image": {
+            "label": "Hình ảnh"
+          },
+          "heading": {
+            "label": "Tiêu đề"
+          },
+          "link": {
+            "label": "Liên kết"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Thanh bên",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Hình ảnh logo trên thiết bị di động"
         },
+        "search_style": {
+          "label": "Kiểu tìm kiếm trên máy tính",
+          "info": "\"Thanh tìm kiếm\" hiển thị ô tìm kiếm luôn hiện hữu trên đầu trang ở máy tính. Vị trí logo \"Trung tâm, chia menu\" không đủ chỗ nên sẽ giữ biểu tượng.",
+          "options__1": {
+            "label": "Biểu tượng"
+          },
+          "options__2": {
+            "label": "Thanh tìm kiếm"
+          }
+        },
         "show_line_separator": {
           "label": "Hiển thị đường phân cách"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Các mục menu cấp một viết hoa"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Chuông"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Miêu tả"
         },
+        "highlights": {
+          "name": "Thông tin nổi bật của sản phẩm",
+          "settings": {
+            "info": {
+              "content": "Hiển thị thông số sản phẩm từ metafield list `theme.highlights`. Mỗi item theo định dạng: `Nhãn|Giá trị` hoặc `Nhãn|Giá trị|icon`."
+            }
+          }
+        },
         "image": {
           "name": "Hình ảnh",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Hiển thị bộ chọn số lượng"
+            },
+            "follow_buy_buttons": {
+              "label": "Hiển thị khi nút mua nằm ngoài màn hình",
+              "info": "Thanh xuất hiện ngay khi mở trang cho đến khi nút mua hiện ra, thay vì chỉ sau khi cuộn qua nút."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify giới hạn mỗi biến thể chỉ có một phương tiện. Để gán nhiều phương tiện cho một tùy chọn sản phẩm, hãy sử dụng [phương pháp ALT](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Ẩn phương tiện của các biến thể khác sau khi chọn một biến thể"
+        },
+        "show_gallery_badges": {
+          "label": "Hiện badge trên thư viện ảnh",
+          "info": "Nhãn của sản phẩm cùng badge giảm giá và hết hàng, đè lên ảnh đầu tiên."
         },
         "image_ratio": {
           "info": "Yêu cầu bố cục trên màn thành \"Thanh trượt\".",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Thu phóng bản đồ"
+        },
+        "map_language": {
+          "label": "Ngôn ngữ bản đồ",
+          "info": "Ngôn ngữ cho nhãn bản đồ, chỉ đường và điều khiển. 'Tự động' sử dụng ngôn ngữ hiện tại của cửa hàng.",
+          "options__auto": {
+            "label": "Tự động (ngôn ngữ cửa hàng)"
+          },
+          "options__browser": {
+            "label": "Mặc định trình duyệt"
+          }
+        },
+        "map_region": {
+          "label": "Khu vực bản đồ",
+          "info": "Tùy chọn. Khu vực để ưu tiên geocoding (vd: VN, US, JP). Ảnh hưởng đến kết quả tìm kiếm và hành vi bản đồ.",
+          "placeholder": "vd: VN"
         },
         "mobile_text_box_position": {
           "label": "Bố cục trên di động",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Tiêu đề"
         },
+        "inline_banner": {
+          "name": "Banner nội tuyến",
+          "settings": {
+            "border_radius": {
+              "label": "Bán kính bo góc"
+            },
+            "image_height": {
+              "label": "Chiều cao hình ảnh"
+            }
+          }
+        },
         "subheading": {
           "name": "Tiêu đề phụ"
         },
@@ -4480,6 +4865,9 @@
         "name": "Văn bản đa dạng thức"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Chiều rộng văn bản"
+        },
         "horizontal_content": {
           "label": "Tạo nội dung theo chiều ngang"
         }
@@ -5190,6 +5578,249 @@
           "info": "Hiển thị một thanh mỏng ở trên cùng thể hiện phần trăm trang đã cuộn."
         }
       }
+    },
+    "video-collection": {
+      "name": "Video mua sắm",
+      "settings": {
+        "columns_desktop": {
+          "label": "Số cột trên máy tính để bàn"
+        },
+        "card_ratio": {
+          "label": "Tỉ lệ thẻ",
+          "options__1": {
+            "label": "Dọc (9:16)"
+          },
+          "options__2": {
+            "label": "Chân dung (3:4)"
+          },
+          "options__3": {
+            "label": "Vuông (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Không gian trống giữa các hình ảnh"
+        },
+        "autoplay": {
+          "label": "Tự động phát khi hiển thị",
+          "info": "Vòng lặp không tiếng. Clip chỉ tải khi cuộn tới, và không phát khi khách chọn giảm chuyển động."
+        },
+        "show_title": {
+          "label": "Hiển thị tiêu đề"
+        },
+        "show_price": {
+          "label": "Hiển thị giá"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Thẻ video",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "Clip dọc hiển thị đẹp nhất."
+            },
+            "cover_image": {
+              "label": "Ảnh bìa",
+              "info": "Hiện trước khi phát. Mặc định lấy ảnh xem trước của video."
+            },
+            "product": {
+              "label": "Sản phẩm",
+              "info": "Cung cấp tiêu đề, giá và liên kết."
+            },
+            "title": {
+              "label": "Tiêu đề",
+              "info": "Ghi đè tiêu đề sản phẩm."
+            },
+            "label": {
+              "label": "Nhãn",
+              "info": "Nhãn ngắn hiện trên clip, ví dụ Hướng dẫn hoặc Trước & sau."
+            },
+            "link": {
+              "label": "Liên kết",
+              "info": "Ghi đè liên kết sản phẩm."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Video mua sắm"
+      }
+    },
+    "skin-quiz": {
+      "name": "Trắc nghiệm da",
+      "settings": {
+        "show_progress": {
+          "label": "Hiện thanh tiến trình"
+        },
+        "intro_text": {
+          "label": "Nội dung mở đầu"
+        },
+        "intro_button_label": {
+          "label": "Nhãn nút bắt đầu"
+        },
+        "start_attention": {
+          "label": "Hiệu ứng thu hút vào nút bắt đầu",
+          "info": "Hướng ánh nhìn của khách vào nút bắt đầu. Tự tắt với khách ưu tiên giảm chuyển động.",
+          "options__1": {
+            "label": "Không"
+          },
+          "options__2": {
+            "label": "Mũi tên phác thảo"
+          },
+          "options__3": {
+            "label": "Quầng sáng nhấp nháy"
+          }
+        },
+        "start_attention_color": {
+          "label": "Màu hiệu ứng thu hút",
+          "info": "Để trống để dùng màu nhấn mạnh của section."
+        },
+        "background_effect": {
+          "label": "Hiệu ứng nền",
+          "info": "Chỉ để trang trí. Màu lấy theo bảng màu của section; tự tắt với khách chọn giảm chuyển động.",
+          "options__1": {
+            "label": "Không"
+          },
+          "options__2": {
+            "label": "Cực quang"
+          },
+          "options__3": {
+            "label": "Lưới màu"
+          },
+          "options__4": {
+            "label": "Vòng tròn"
+          },
+          "options__5": {
+            "label": "Vệt sáng"
+          },
+          "options__6": {
+            "label": "Chất lỏng"
+          },
+          "options__7": {
+            "label": "Lụa"
+          },
+          "options__8": {
+            "label": "Lưới kẻ"
+          },
+          "options__9": {
+            "label": "Sóng"
+          },
+          "options__10": {
+            "label": "Hình ảnh"
+          }
+        },
+        "background_intensity": {
+          "label": "Độ đậm của nền",
+          "options__1": {
+            "label": "Nhẹ"
+          },
+          "options__2": {
+            "label": "Vừa"
+          },
+          "options__3": {
+            "label": "Đậm"
+          },
+          "info": "Cũng quyết định ảnh nền lộ ra bao nhiêu."
+        },
+        "background_effect_color": {
+          "label": "Màu hiệu ứng nền",
+          "info": "Để trống để dùng màu nhấn mạnh của section."
+        },
+        "section_width": {
+          "label": "Chiều rộng section",
+          "options__1": {
+            "label": "Hẹp"
+          },
+          "options__2": {
+            "label": "Mặc định"
+          },
+          "options__3": {
+            "label": "Tràn viền"
+          }
+        },
+        "background_image": {
+          "label": "Ảnh nền",
+          "info": "Chỉ dùng khi hiệu ứng nền đặt là Hình ảnh. Ảnh trôi chậm và nằm dưới một lớp phủ màu nền của section."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Kết quả 1"
+        },
+        "options__2": {
+          "label": "Kết quả 2"
+        },
+        "options__3": {
+          "label": "Kết quả 3"
+        },
+        "options__4": {
+          "label": "Kết quả 4"
+        },
+        "options__5": {
+          "label": "Kết quả 5"
+        },
+        "options__6": {
+          "label": "Kết quả 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Câu hỏi",
+          "settings": {
+            "title": {
+              "label": "Câu hỏi"
+            },
+            "help": {
+              "label": "Văn bản gợi ý"
+            },
+            "option_1": {
+              "content": "Đáp án 1"
+            },
+            "option_2": {
+              "content": "Đáp án 2"
+            },
+            "option_3": {
+              "content": "Đáp án 3"
+            },
+            "option_4": {
+              "content": "Đáp án 4"
+            },
+            "option_label": {
+              "label": "Đáp án"
+            },
+            "option_hint": {
+              "label": "Gợi ý cho đáp án"
+            },
+            "option_result": {
+              "label": "Tính điểm cho",
+              "info": "Kết quả nhiều phiếu nhất sẽ thắng. Hoà điểm thì lấy kết quả có số nhỏ nhất."
+            }
+          }
+        },
+        "result": {
+          "name": "Kết quả",
+          "settings": {
+            "order_note": {
+              "content": "Kết quả được đánh số theo thứ tự ở đây. Đáp án của câu hỏi trỏ tới các số này."
+            },
+            "product_1": {
+              "label": "Sản phẩm bước 1"
+            },
+            "product_2": {
+              "label": "Sản phẩm bước 2"
+            },
+            "product_3": {
+              "label": "Sản phẩm bước 3"
+            },
+            "product_note": {
+              "label": "Vì sao có bước này"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Trắc nghiệm da"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Nền của huy hiệu giảm giá"
         },
+        "colors_sale_badge_text": {
+          "label": "Chữ badge giảm giá",
+          "info": "Để trống để dùng màu nền của bảng màu."
+        },
         "colors_sale_price": {
           "label": "Giá bán"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Khác"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Bộ màu",
+      "settings": {
+        "paragraph": {
+          "content": "Bộ màu theo chuẩn Theme OS 2.0. Section có thể opt-in qua setting color_scheme để đổi bảng màu mà không cần setting màu riêng. Các setting màu global hiện tại vẫn dùng được; đây là bổ sung."
+        },
+        "background": {
+          "label": "Nền"
+        },
+        "background_gradient": {
+          "label": "Nền gradient"
+        },
+        "text": {
+          "label": "Chữ"
+        },
+        "button": {
+          "label": "Nền nút bấm chính"
+        },
+        "button_label": {
+          "label": "Chữ trên nút bấm chính"
+        },
+        "secondary_button_label": {
+          "label": "Chữ trên nút bấm viền"
+        },
+        "shadow": {
+          "label": "Đổ bóng"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Khoảng cách giữa các mục mẫu",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Hướng chữ"
+        },
+        "rtl_auto": {
+          "label": "Bố cục phải sang trái cho ngôn ngữ RTL",
+          "info": "Tự động lật bố cục khi ngôn ngữ cửa hàng là tiếng Ả Rập, Do Thái, Ba Tư, Urdu hoặc hệ chữ viết phải sang trái khác. Bản dịch text_direction_trigger vẫn hoạt động và luôn được ưu tiên khi ghi rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Ô sản phẩm",
       "settings": {
+        "badges": {
+          "content": "Badge"
+        },
+        "badge_outline": {
+          "label": "Viền badge",
+          "info": "Viền mỗi badge bằng màu chữ của nó."
+        },
+        "badge_shape": {
+          "label": "Hình dạng badge",
+          "options__1": {
+            "label": "Mặc định theme"
+          },
+          "options__2": {
+            "label": "Viên nhộng"
+          }
+        },
+        "badge_rotate": {
+          "label": "Độ nghiêng badge"
+        },
+        "highlights": {
+          "content": "Thông số sản phẩm"
+        },
+        "highlights_style": {
+          "label": "Kiểu thông số",
+          "info": "Kiểu ô rời tự lướt qua các thông số bị khuất khi rê chuột lên card.",
+          "options__1": {
+            "label": "Dải liền"
+          },
+          "options__2": {
+            "label": "Ô rời"
+          },
+          "options__3": {
+            "label": "Ô rời — lưới"
+          },
+          "options__4": {
+            "label": "Viên nhộng"
+          },
+          "options__5": {
+            "label": "Bảng thông số"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Kiểu thông số — trang sản phẩm",
+          "options__1": {
+            "label": "Theo thẻ sản phẩm"
+          }
+        },
         "color_swatches": {
           "content": "Mẫu màu"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Xem chi tiết sản phẩm trong cửa sổ bật lên mà không cần rời khỏi trang hiện tại.",
           "label": "Bật tính năng xem nhanh"
+        },
+        "similar_products": {
+          "content": "Sản phẩm tương tự"
+        },
+        "similar_products_mode": {
+          "label": "Nút sản phẩm tương tự",
+          "info": "Mở gợi ý do Shopify cung cấp từ thẻ sản phẩm. Tùy chỉnh kết quả trong ứng dụng Search & Discovery.",
+          "options__1": {
+            "label": "Tắt"
+          },
+          "options__2": {
+            "label": "Chỉ sản phẩm hết hàng"
+          },
+          "options__3": {
+            "label": "Tất cả sản phẩm"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Tất cả nội dung"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Bật tìm kiếm bằng giọng nói",
+          "info": "Thêm nút micro vào ô tìm kiếm trên các trình duyệt hỗ trợ (Chrome, Edge, Safari). Việc nhận dạng giọng nói do trình duyệt của khách xử lý."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Viết hoa"
         },
+        "heading_capitalize_tracking": {
+          "label": "Giãn cách chữ khi in hoa",
+          "info": "Thêm giãn cách rộng cho tiêu đề card sản phẩm và bài viết khi tiêu đề được in hoa."
+        },
         "heading_center": {
           "label": "Tiêu đề trung tâm"
         },
         "heading_scale": {
           "label": "Tỷ lệ kích thước nét chữ",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Tự động co giãn mượt cỡ tiêu đề theo chiều rộng màn hình. Cổ điển dùng cỡ cố định cho di động và máy tính.",
+          "label": "Cách tính cỡ chữ",
+          "options__1": {
+            "label": "Cổ điển"
+          },
+          "options__2": {
+            "label": "Tự động (linh hoạt)"
+          }
         },
         "price_superscript": {
           "label": "Chỉ số trên cho phần thập phân trong giá"
@@ -5744,6 +6496,15 @@
           "label": "Menu cỡ",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Độ đậm menu điều hướng",
+          "options__1": {
+            "label": "Theo font chữ"
+          },
+          "options__2": {
+            "label": "Đậm vừa"
+          }
+        },
         "type_price_font": {
           "label": "Giá",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Tiêu đề"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Thiết kế kính mờ",
+      "settings": {
+        "paragraph": {
+          "content": "Áp dụng hiệu ứng kính mờ lấy cảm hứng từ thiết kế giao diện hiện đại lên các bề mặt và thành phần của giao diện."
+        },
+        "glass_design_enabled": {
+          "label": "Bật thiết kế kính mờ"
+        },
+        "header__1": {
+          "content": "Tùy chỉnh"
+        },
+        "glass_blur_intensity": {
+          "label": "Độ mờ"
+        },
+        "glass_bg_opacity": {
+          "label": "Độ trong suốt nền"
+        },
+        "glass_border_opacity": {
+          "label": "Độ trong suốt viền"
+        },
+        "glass_tint_color": {
+          "label": "Màu phủ"
         }
       }
     }

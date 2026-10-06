@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Bruk egendefinerte farger"
         }
+      },
+      "edge_to_edge": {
+        "label": "Strekk raden til skjermkantene",
+        "info": "Gjelder når rulling er på. Overskriften beholder sidemargen."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Produktkort"
         },
+        "show_product_highlights": {
+          "info": "Vis viktige spesifikasjoner fra metafeltet `theme.highlights` (liste). Format for hver oppføring: `Etikett|Verdi` eller `Etikett|Verdi|ikon`.",
+          "label": "Vis produktets høydepunkter"
+        },
         "show_quick_buy": {
           "label": "Aktiver knapp for hurtigtillegging"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Tabellbakgrunn"
         },
+        "colors_accents": {
+          "label": "Aksentmerker",
+          "info": "Kulepunkter og omrisset til den fremhevede kolonnen. La stå tom for å bruke fremhevingsfargen."
+        },
+        "colors_badge_background": {
+          "label": "Merkebakgrunn",
+          "info": "La stå tom for å bruke fremhevingsfargen."
+        },
+        "colors_badge_text": {
+          "label": "Merketekst",
+          "info": "La stå tom for å bruke tekstfargen."
+        },
         "table_style": {
           "header": {
             "content": "Tabellstil"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Produktbeskrivelse"
+            },
+            "highlight": {
+              "label": "Fremhev denne kolonnen",
+              "info": "Tonet bakgrunn og gullkant som får dette produktet til å skille seg ut. Andre kolonner får omrissknapper."
+            },
+            "highlight_badge": {
+              "label": "Tekst på fremhevingsmerke",
+              "info": "Vises på produktbildet når kolonnen er fremhevet"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Aktiver «Se alle»-knappen hvis listen inneholder flere samlinger enn vist"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Fargevifte",
+      "settings": {
+        "product": {
+          "label": "Produkt",
+          "info": "Kobler viften til produktet og bruker produktbildet når ingen er lastet opp."
+        },
+        "image": {
+          "label": "Bilde",
+          "info": "En gjennomsiktig PNG passer best over viften."
+        },
+        "image_width": {
+          "label": "Bildestørrelse"
+        },
+        "fan_style": {
+          "label": "Viftestil",
+          "options__1": {
+            "label": "Blomstring"
+          },
+          "options__2": {
+            "label": "Håndvifte"
+          },
+          "info": "Håndviften viser hver fargetone helt – passer for bildetoner."
+        },
+        "hover_ring": {
+          "label": "Ring ved pekerbevegelse",
+          "options__1": {
+            "label": "Fargetonens farge"
+          },
+          "options__2": {
+            "label": "Egendefinert farge"
+          },
+          "options__3": {
+            "label": "Regnbuehalo"
+          },
+          "options__4": {
+            "label": "Av"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Ringfarge"
+        },
+        "fan_trigger": {
+          "label": "Utfolding",
+          "options__1": {
+            "label": "Når den rulles inn i visning"
+          },
+          "options__2": {
+            "label": "Ved pekerbevegelse"
+          },
+          "info": "På mobil foldes den alltid ut ved visning."
+        },
+        "shade_corner_radius": {
+          "label": "Hjørneradius for fargetoner"
+        },
+        "image_corner_radius": {
+          "label": "Hjørneradius for bilde"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Fargetone",
+          "settings": {
+            "color": {
+              "label": "Farge"
+            },
+            "image": {
+              "label": "Bilde",
+              "info": "Erstatter fargen – en tekstur eller variantbilde."
+            },
+            "label": {
+              "label": "Etikett",
+              "info": "Vises som verktøytips når du holder musepekeren over."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Fargevifte"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Samling"
         },
+        "product_list": {
+          "label": "Produkter",
+          "info": "Velg produkter du vil fremheve. Når de er angitt, overstyrer de samlingen ovenfor."
+        },
         "products_to_show": {
           "label": "Maksimalt antall produkter å vise"
         },
@@ -1624,6 +1728,9 @@
           "label": "Aktiver dra for å bla (desktop)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Lignende produkter"
     },
     "tabbed-featured-collections": {
       "name": "Fanesamlinger",
@@ -1639,6 +1746,20 @@
               "info": "La stå tom for å bruke samlingstittelen"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Fanestil",
+          "options__1": {
+            "label": "Understrek"
+          },
+          "options__2": {
+            "label": "Fylt"
+          }
+        },
+        "tab_alignment": {
+          "label": "Justering av faner"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Gjør en megameny smal"
             },
+            "defer_loading": {
+              "label": "Utsatt innlasting",
+              "info": "Laster innholdet i megamenyen bare når brukeren holder musen over. Reduserer sidens første innlastingstid."
+            },
             "paragraph": {
               "content": "Megamenyen vises kun på skrivebordet og krever alternativet «Aktiver rullegardinmeny» i seksjonsinnstillingene."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Vis megamenybilder"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Megameny — produktutstilling",
+          "settings": {
+            "paragraph": {
+              "content": "Menyens underlenker blir faner. Faner som lenker til en kolleksjon viser dens første produkter; andre faner lister sine egne lenker."
+            },
+            "products_per_tab": {
+              "label": "Produkter per fane"
+            },
+            "header__promo": {
+              "content": "Kampanje"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Fyll"
+              }
+            },
+            "view_all_link": {
+              "label": "Lenke for «Vis alle»",
+              "info": "La stå tom for å bruke menyelementets lenke."
+            },
+            "show_in_drawer": {
+              "label": "Vis i mobilmenyen",
+              "info": "Gjentar denne utstillingen i mobilmenyen for samme menyelement."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Ikonmerke i meny",
+          "settings": {
+            "paragraph": {
+              "content": "Vises nederst i hver produktutstillings-megameny (opptil 4)."
+            },
+            "icon": {
+              "label": "Ikon",
+              "options__1": {
+                "label": "Lastebil"
+              },
+              "options__2": {
+                "label": "Hake"
+              },
+              "options__3": {
+                "label": "Hake (alternativ)"
+              },
+              "options__4": {
+                "label": "Hake i sirkel"
+              },
+              "options__5": {
+                "label": "Gave"
+              },
+              "options__6": {
+                "label": "Rabatt"
+              },
+              "options__7": {
+                "label": "Hjerte"
+              },
+              "options__8": {
+                "label": "Info"
+              },
+              "options__9": {
+                "label": "Spørsmålstegn"
+              },
+              "options__10": {
+                "label": "Hus"
+              },
+              "options__11": {
+                "label": "Linjal"
+              },
+              "options__12": {
+                "label": "Skriveplate"
+              },
+              "options__13": {
+                "label": "Person"
+              },
+              "options__14": {
+                "label": "Veske"
+              },
+              "options__15": {
+                "label": "Handlekurv"
+              },
+              "options__16": {
+                "label": "Bilder"
+              },
+              "options__17": {
+                "label": "Liste"
+              },
+              "options__18": {
+                "label": "Globus"
+              },
+              "options__19": {
+                "label": "Penn"
+              },
+              "options__20": {
+                "label": "Forstørrelsesglass"
+              },
+              "options__21": {
+                "label": "Nettverk"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Dråpe"
+              },
+              "options__24": {
+                "label": "Blad"
+              },
+              "options__25": {
+                "label": "Sol"
+              },
+              "options__26": {
+                "label": "Klokke"
+              },
+              "options__27": {
+                "label": "Skjold"
+              },
+              "options__28": {
+                "label": "Glitter"
+              },
+              "options__29": {
+                "label": "Kolbe"
+              },
+              "options__30": {
+                "label": "Resirkulering"
+              },
+              "options__31": {
+                "label": "Eske"
+              },
+              "options__32": {
+                "label": "Måler"
+              },
+              "options__33": {
+                "label": "Flamme"
+              },
+              "options__34": {
+                "label": "Stjerne"
+              },
+              "options__35": {
+                "label": "Snøfnugg"
+              },
+              "options__36": {
+                "label": "Smil"
+              },
+              "options__37": {
+                "label": "Kanin"
+              },
+              "options__38": {
+                "label": "Blomst"
+              },
+              "options__39": {
+                "label": "Spire"
+              },
+              "options__40": {
+                "label": "Pipette"
+              },
+              "options__41": {
+                "label": "Krukke"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Måne"
+              },
+              "options__44": {
+                "label": "Prosent"
+              },
+              "options__45": {
+                "label": "Utmerkelse"
+              },
+              "options__46": {
+                "label": "Fjær"
+              },
+              "options__47": {
+                "label": "Termometer"
+              },
+              "options__48": {
+                "label": "Hjerteslag"
+              }
+            },
+            "heading": {
+              "label": "Overskrift"
+            },
+            "text": {
+              "label": "Tekst"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Språkvelger",
           "info": "Gå til [språkinnstillingene](/admin/settings/languages) for å legge til et språk."
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Menykampanje",
+            "info": "Et valgfritt bilde- eller tekstkort som vises nederst i menyskuffen."
+          },
+          "image": {
+            "label": "Bilde"
+          },
+          "heading": {
+            "label": "Overskrift"
+          },
+          "link": {
+            "label": "Lenke"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Sidepanel",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Mobil bilde logo"
         },
+        "search_style": {
+          "label": "Søkestil på datamaskin",
+          "info": "«Søkefelt» viser et alltid synlig søkefelt i toppteksten på datamaskin. Logoposisjonen «Senter, menydeling» har ikke plass til det og beholder ikonet.",
+          "options__1": {
+            "label": "Ikon"
+          },
+          "options__2": {
+            "label": "Søkefelt"
+          }
+        },
         "show_line_separator": {
           "label": "Vis skillelinje"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Menyelementer på første nivå med store bokstaver"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Bjelle"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Beskrivelse"
         },
+        "highlights": {
+          "name": "Produktets høydepunkter",
+          "settings": {
+            "info": {
+              "content": "Vis viktige spesifikasjoner fra metafeltet `theme.highlights` (liste). Format for hver oppføring: `Etikett|Verdi` eller `Etikett|Verdi|ikon`."
+            }
+          }
+        },
         "image": {
           "name": "Bilde",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Vis mengdevelger"
+            },
+            "follow_buy_buttons": {
+              "label": "Vis når kjøpsknappene er utenfor skjermen",
+              "info": "Linjen vises fra siden lastes til kjøpsknappene kommer til syne, ikke bare etter at du har rullet forbi dem."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify begrenser hver variant til ett medium. For å tilordne flere medier til et produktalternativ, bruk [ALT-metoden](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Skjul andre varianters media etter å ha valgt en variant"
+        },
+        "show_gallery_badges": {
+          "label": "Vis merker på galleriet",
+          "info": "Produktets etiketter pluss salgs- og utsolgt-merker, over det første bildet."
         },
         "image_ratio": {
           "info": "Krever skrivebordslayout for å være «Slider».",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Kart zoome"
+        },
+        "map_language": {
+          "label": "Kartspråk",
+          "info": "Språk for kartetiketter, veibeskrivelser og kontroller. 'Auto' bruker butikkens nåværende språk.",
+          "options__auto": {
+            "label": "Auto (butikkspråk)"
+          },
+          "options__browser": {
+            "label": "Nettleserstandard"
+          }
+        },
+        "map_region": {
+          "label": "Kartregion",
+          "info": "Valgfritt. Region for geokodingsbias (f.eks. NO, US, JP). Påvirker søkeresultater og kartatferd.",
+          "placeholder": "f.eks. NO"
         },
         "mobile_text_box_position": {
           "label": "Mobilt oppsett",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Overskrift"
         },
+        "inline_banner": {
+          "name": "Innebygd banner",
+          "settings": {
+            "border_radius": {
+              "label": "Hjørneradius"
+            },
+            "image_height": {
+              "label": "Bildehøyde"
+            }
+          }
+        },
         "subheading": {
           "name": "Underoverskrift"
         },
@@ -4480,6 +4865,9 @@
         "name": "Rik tekst"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Tekstbredde"
+        },
         "horizontal_content": {
           "label": "Gjør innholdet horisontalt"
         }
@@ -5190,6 +5578,249 @@
           "info": "Viser en tynn linje øverst som indikerer prosentandelen av siden som er rullet."
         }
       }
+    },
+    "video-collection": {
+      "name": "Handlbar video",
+      "settings": {
+        "columns_desktop": {
+          "label": "Antall kolonner på datamaskin"
+        },
+        "card_ratio": {
+          "label": "Kortforhold",
+          "options__1": {
+            "label": "Stående (9:16)"
+          },
+          "options__2": {
+            "label": "Portrett (3:4)"
+          },
+          "options__3": {
+            "label": "Kvadrat (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Mellomrom mellom bilder"
+        },
+        "autoplay": {
+          "label": "Spill av automatisk når synlig",
+          "info": "Lydløse løkker. Klipp lastes bare når de rulles inn i visning, og aldri ved redusert bevegelse."
+        },
+        "show_title": {
+          "label": "Vis tittel"
+        },
+        "show_price": {
+          "label": "Vis pris"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Videokort",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "Stående klipp fungerer best."
+            },
+            "cover_image": {
+              "label": "Forsidebilde",
+              "info": "Vises før avspilling. Standard er videoens eget forhåndsbilde."
+            },
+            "product": {
+              "label": "Produkt",
+              "info": "Gir tittel, pris og lenke."
+            },
+            "title": {
+              "label": "Tittel",
+              "info": "Overstyrer produkttittelen."
+            },
+            "label": {
+              "label": "Etikett",
+              "info": "Kort etikett over klippet, for eksempel Veiledning eller Før og etter."
+            },
+            "link": {
+              "label": "Lenke",
+              "info": "Overstyrer produktlenken."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Handlbar video"
+      }
+    },
+    "skin-quiz": {
+      "name": "Hudquiz",
+      "settings": {
+        "show_progress": {
+          "label": "Vis fremdriftslinje"
+        },
+        "intro_text": {
+          "label": "Introtekst"
+        },
+        "intro_button_label": {
+          "label": "Etikett for startknapp"
+        },
+        "start_attention": {
+          "label": "Oppmerksomhetseffekt for startknappen",
+          "info": "Leder blikket mot startknappen. Slås av for besøkende som foretrekker redusert bevegelse.",
+          "options__1": {
+            "label": "Ingen"
+          },
+          "options__2": {
+            "label": "Skissert pil"
+          },
+          "options__3": {
+            "label": "Pulserende glød"
+          }
+        },
+        "start_attention_color": {
+          "label": "Farge på oppmerksomhetseffekten",
+          "info": "La stå tom for å bruke seksjonens fremhevingsfarge."
+        },
+        "background_effect": {
+          "label": "Bakgrunnsanimasjon",
+          "info": "Kun dekorativt. Fargene følger seksjonspaletten; slås av ved redusert bevegelse.",
+          "options__1": {
+            "label": "Ingen"
+          },
+          "options__2": {
+            "label": "Nordlys"
+          },
+          "options__3": {
+            "label": "Mesh"
+          },
+          "options__4": {
+            "label": "Ringer"
+          },
+          "options__5": {
+            "label": "Skjær"
+          },
+          "options__6": {
+            "label": "Flytende"
+          },
+          "options__7": {
+            "label": "Silke"
+          },
+          "options__8": {
+            "label": "Rutenett"
+          },
+          "options__9": {
+            "label": "Bølger"
+          },
+          "options__10": {
+            "label": "Bilde"
+          }
+        },
+        "background_intensity": {
+          "label": "Intensitet på bakgrunn",
+          "options__1": {
+            "label": "Diskret"
+          },
+          "options__2": {
+            "label": "Middels"
+          },
+          "options__3": {
+            "label": "Kraftig"
+          },
+          "info": "Bestemmer også hvor mye bakgrunnsbildet vises."
+        },
+        "background_effect_color": {
+          "label": "Farge på bakgrunnsanimasjon",
+          "info": "La stå tom for å bruke seksjonens fremhevingsfarge."
+        },
+        "section_width": {
+          "label": "Bredde på seksjon",
+          "options__1": {
+            "label": "Smal"
+          },
+          "options__2": {
+            "label": "Standard"
+          },
+          "options__3": {
+            "label": "Full bredde"
+          }
+        },
+        "background_image": {
+          "label": "Bakgrunnsbilde",
+          "info": "Brukes bare når bakgrunnsanimasjonen er satt til Bilde. Det driver sakte og ligger under et slør i seksjonens bakgrunnsfarge."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Resultat 1"
+        },
+        "options__2": {
+          "label": "Resultat 2"
+        },
+        "options__3": {
+          "label": "Resultat 3"
+        },
+        "options__4": {
+          "label": "Resultat 4"
+        },
+        "options__5": {
+          "label": "Resultat 5"
+        },
+        "options__6": {
+          "label": "Resultat 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Spørsmål",
+          "settings": {
+            "title": {
+              "label": "Spørsmål"
+            },
+            "help": {
+              "label": "Hjelpetekst"
+            },
+            "option_1": {
+              "content": "Svar 1"
+            },
+            "option_2": {
+              "content": "Svar 2"
+            },
+            "option_3": {
+              "content": "Svar 3"
+            },
+            "option_4": {
+              "content": "Svar 4"
+            },
+            "option_label": {
+              "label": "Svar"
+            },
+            "option_hint": {
+              "label": "Svarhint"
+            },
+            "option_result": {
+              "label": "Gir poeng til",
+              "info": "Resultatet med flest stemmer vinner. Ved likt vinner resultatet med lavest nummer."
+            }
+          }
+        },
+        "result": {
+          "name": "Resultat",
+          "settings": {
+            "order_note": {
+              "content": "Resultater nummereres etter rekkefølgen her. Svar peker på disse numrene."
+            },
+            "product_1": {
+              "label": "Produkt steg 1"
+            },
+            "product_2": {
+              "label": "Produkt steg 2"
+            },
+            "product_3": {
+              "label": "Produkt steg 3"
+            },
+            "product_note": {
+              "label": "Hvorfor dette steget"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Hudquiz"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Bakgrunn for salgsmerke"
         },
+        "colors_sale_badge_text": {
+          "label": "Tekst på salgsmerke",
+          "info": "La stå tomt for å bruke fargeskjemaets bakgrunnsfarge."
+        },
         "colors_sale_price": {
           "label": "Salgs pris"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Diverse"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Fargeskjemaer",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 fargeskjemaer. Seksjoner kan velge inn via en color_scheme-innstilling for å bytte palett uten fargeinnstillinger per seksjon. Eksisterende globale fargeinnstillinger fungerer fortsatt; dette er additivt."
+        },
+        "background": {
+          "label": "Bakgrunn"
+        },
+        "background_gradient": {
+          "label": "Bakgrunnsgradient"
+        },
+        "text": {
+          "label": "Tekst"
+        },
+        "button": {
+          "label": "Bakgrunn for heltrukket knapp"
+        },
+        "button_label": {
+          "label": "Etikett for heltrukket knapp"
+        },
+        "secondary_button_label": {
+          "label": "Etikett for omrissknapp"
+        },
+        "shadow": {
+          "label": "Skygge"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Mellomrom mellom malseksjoner",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Tekstretning"
+        },
+        "rtl_auto": {
+          "label": "Høyre-til-venstre-oppsett for RTL-språk",
+          "info": "Speilvender oppsettet automatisk når butikkspråket er arabisk, hebraisk, persisk, urdu eller et annet språk som skrives fra høyre til venstre. Oversettelsen text_direction_trigger gjelder fortsatt og vinner alltid når den sier rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Produktbokser",
       "settings": {
+        "badges": {
+          "content": "Merker"
+        },
+        "badge_outline": {
+          "label": "Merkekontur",
+          "info": "Gir hvert merke en kontur i tekstfargen."
+        },
+        "badge_shape": {
+          "label": "Merkeform",
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Pille"
+          }
+        },
+        "badge_rotate": {
+          "label": "Merkehelling"
+        },
+        "highlights": {
+          "content": "Produktspesifikasjoner"
+        },
+        "highlights_style": {
+          "label": "Spesifikasjonsstil",
+          "info": "Brikker glir gjennom skjulte spesifikasjoner når kortet holdes over.",
+          "options__1": {
+            "label": "Stripe"
+          },
+          "options__2": {
+            "label": "Brikker"
+          },
+          "options__3": {
+            "label": "Brikker — rutenett"
+          },
+          "options__4": {
+            "label": "Piller"
+          },
+          "options__5": {
+            "label": "Spesifikasjonsark"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Spesifikasjonsstil — produktside",
+          "options__1": {
+            "label": "Følg produktkortene"
+          }
+        },
         "color_swatches": {
           "content": "Fargeprøver"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Se produktdetaljer i en popup uten å forlate gjeldende side.",
           "label": "Aktiver hurtigvisningsfunksjonen"
+        },
+        "similar_products": {
+          "content": "Lignende produkter"
+        },
+        "similar_products_mode": {
+          "label": "Knapp for lignende produkter",
+          "info": "Åpner Shopify-genererte anbefalinger fra produktkort. Tilpass resultatene i Search & Discovery-appen.",
+          "options__1": {
+            "label": "Av"
+          },
+          "options__2": {
+            "label": "Kun utsolgte produkter"
+          },
+          "options__3": {
+            "label": "Alle produkter"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Alt innhold"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Aktiver talesøk",
+          "info": "Legger til en mikrofonknapp i søkefeltene i støttede nettlesere (Chrome, Edge, Safari). Talegjenkjenning behandles av besøkendes nettleser."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Bruk store bokstaver"
         },
+        "heading_capitalize_tracking": {
+          "label": "Bokstavavstand ved store bokstaver",
+          "info": "Gir bred bokstavavstand til produkt- og artikkelkorttitler når overskrifter skrives med store bokstaver."
+        },
         "heading_center": {
           "label": "Senteroverskrifter"
         },
         "heading_scale": {
           "label": "Skriftstørrelsesskala",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Automatisk skalerer overskriftsstørrelser jevnt med skjermbredden. Klassisk bruker faste størrelser for mobil og datamaskin.",
+          "label": "Størrelsesoppførsel",
+          "options__1": {
+            "label": "Klassisk"
+          },
+          "options__2": {
+            "label": "Automatisk (flytende)"
+          }
         },
         "price_superscript": {
           "label": "Prisdesimal i hevet skrift"
@@ -5744,6 +6496,15 @@
           "label": "Navigasjonsstørrelse",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Navigasjonstykkelse",
+          "options__1": {
+            "label": "Følg skrifttypen"
+          },
+          "options__2": {
+            "label": "Halvfet"
+          }
+        },
         "type_price_font": {
           "label": "Prisfont",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Overskrifter"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Glassdesign",
+      "settings": {
+        "paragraph": {
+          "content": "Bruk en frostet glasseffekt inspirert av moderne UI-design på temaets overflater og elementer."
+        },
+        "glass_design_enabled": {
+          "label": "Aktiver glassdesign"
+        },
+        "header__1": {
+          "content": "Tilpasning"
+        },
+        "glass_blur_intensity": {
+          "label": "Uskarphet-intensitet"
+        },
+        "glass_bg_opacity": {
+          "label": "Bakgrunnsopasitet"
+        },
+        "glass_border_opacity": {
+          "label": "Kantopasitet"
+        },
+        "glass_tint_color": {
+          "label": "Tonefarge"
         }
       }
     }

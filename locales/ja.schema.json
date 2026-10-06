@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "カスタムカラーを使用"
         }
+      },
+      "edge_to_edge": {
+        "label": "行を画面の端まで広げる",
+        "info": "スクロールが有効な場合に適用されます。見出しはページの余白を保ちます。"
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "商品カード"
         },
+        "show_product_highlights": {
+          "info": "メタフィールド `theme.highlights`（リスト）から主要な仕様を表示します。各項目の形式: `ラベル|値` または `ラベル|値|アイコン`。",
+          "label": "商品ハイライトを表示"
+        },
         "show_quick_buy": {
           "label": "「クイック追加」ボタンを有効にする"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "テーブル背景"
         },
+        "colors_accents": {
+          "label": "アクセントマーク",
+          "info": "箇条書きの点と注目列の枠線。空欄の場合は強調色を使用します。"
+        },
+        "colors_badge_background": {
+          "label": "バッジの背景",
+          "info": "空欄の場合は強調色を使用します。"
+        },
+        "colors_badge_text": {
+          "label": "バッジの文字",
+          "info": "空欄の場合はテキストの色を使用します。"
+        },
         "table_style": {
           "header": {
             "content": "テーブルスタイル"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "商品説明"
+            },
+            "highlight": {
+              "label": "この列を強調表示",
+              "info": "背景に色を付け、ゴールドの枠線でこの商品を目立たせます。他の列のボタンはアウトライン表示になります。"
+            },
+            "highlight_badge": {
+              "label": "強調バッジのテキスト",
+              "info": "列が強調表示されているとき、商品画像の上に表示されます"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "リストにはコレクションが表示より多い場合には「すべて見る」ボタンを有効にする"
         }
+      }
+    },
+    "color-fan": {
+      "name": "カラーファン",
+      "settings": {
+        "product": {
+          "label": "商品",
+          "info": "ファンを商品にリンクし、画像未設定時は商品画像を使用します。"
+        },
+        "image": {
+          "label": "画像",
+          "info": "背景が透明なPNGが最適です。"
+        },
+        "image_width": {
+          "label": "画像サイズ"
+        },
+        "fan_style": {
+          "label": "ファンスタイル",
+          "options__1": {
+            "label": "ブルーム"
+          },
+          "options__2": {
+            "label": "手持ちファン"
+          },
+          "info": "手持ちファンは各シェード全体が見えます。画像シェードに最適です。"
+        },
+        "hover_ring": {
+          "label": "ホバーリング",
+          "options__1": {
+            "label": "シェードカラー"
+          },
+          "options__2": {
+            "label": "カスタムカラー"
+          },
+          "options__3": {
+            "label": "レインボーハロー"
+          },
+          "options__4": {
+            "label": "オフ"
+          }
+        },
+        "hover_ring_color": {
+          "label": "リングカラー"
+        },
+        "fan_trigger": {
+          "label": "ファン展開",
+          "options__1": {
+            "label": "画面に表示されたとき"
+          },
+          "options__2": {
+            "label": "ホバー時"
+          },
+          "info": "モバイルでは常に表示時に展開します。"
+        },
+        "shade_corner_radius": {
+          "label": "シェードの角丸"
+        },
+        "image_corner_radius": {
+          "label": "画像の角丸"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "シェード",
+          "settings": {
+            "color": {
+              "label": "カラー"
+            },
+            "image": {
+              "label": "画像",
+              "info": "カラーの代わりに使用します。テクスチャやバリエーション写真など。"
+            },
+            "label": {
+              "label": "ラベル",
+              "info": "ホバー時にツールチップとして表示されます。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "カラーファン"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "コレクション"
         },
+        "product_list": {
+          "label": "商品",
+          "info": "紹介する商品を選択します。設定すると、上のコレクションより優先されます。"
+        },
         "products_to_show": {
           "label": "表示できる最大の商品数"
         },
@@ -1624,6 +1728,9 @@
           "label": "ドラッグでスクロールを有効にする（デスクトップ）"
         }
       }
+    },
+    "similar-products": {
+      "name": "類似商品"
     },
     "tabbed-featured-collections": {
       "name": "タブ付きコレクション",
@@ -1639,6 +1746,20 @@
               "info": "空白のままにするとコレクションタイトルが使用されます"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "タブのスタイル",
+          "options__1": {
+            "label": "下線"
+          },
+          "options__2": {
+            "label": "塗りつぶし"
+          }
+        },
+        "tab_alignment": {
+          "label": "タブの配置"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "メガメニューを狭くする"
             },
+            "defer_loading": {
+              "label": "遅延読み込み",
+              "info": "ユーザーがメガメニューにマウスオーバーしたときだけ内容を読み込み、ページの初回読み込み時間を短縮します。"
+            },
             "paragraph": {
               "content": "メガメニューはデスクトップにのみ表示され、セクション設定の[ドロップダウンメニューを有効にする]オプションが必要です。"
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "メガメニューを表示する"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "メガメニュー — 商品ショーケース",
+          "settings": {
+            "paragraph": {
+              "content": "メニュー項目の子リンクがタブになります。コレクションにリンクするタブは最初の商品を表示し、その他のタブは自身のリンクを一覧表示します。"
+            },
+            "products_per_tab": {
+              "label": "タブごとの商品数"
+            },
+            "header__promo": {
+              "content": "プロモーション"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "いっぱいに表示"
+              }
+            },
+            "view_all_link": {
+              "label": "「すべて表示」のリンク",
+              "info": "空欄の場合はメニュー項目のリンクを使用します。"
+            },
+            "show_in_drawer": {
+              "label": "モバイルメニューに表示",
+              "info": "同じメニュー項目のモバイルメニュー内にこのショーケースを表示します。"
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "メニューアイコンバッジ",
+          "settings": {
+            "paragraph": {
+              "content": "商品ショーケースのメガメニューの下部に表示されます（最大4件）。"
+            },
+            "icon": {
+              "label": "アイコン",
+              "options__1": {
+                "label": "トラック"
+              },
+              "options__2": {
+                "label": "チェックマーク"
+              },
+              "options__3": {
+                "label": "チェックマーク（別種）"
+              },
+              "options__4": {
+                "label": "丸付きチェック"
+              },
+              "options__5": {
+                "label": "ギフト"
+              },
+              "options__6": {
+                "label": "割引"
+              },
+              "options__7": {
+                "label": "ハート"
+              },
+              "options__8": {
+                "label": "情報"
+              },
+              "options__9": {
+                "label": "疑問符"
+              },
+              "options__10": {
+                "label": "家"
+              },
+              "options__11": {
+                "label": "定規"
+              },
+              "options__12": {
+                "label": "クリップボード"
+              },
+              "options__13": {
+                "label": "人物"
+              },
+              "options__14": {
+                "label": "バッグ"
+              },
+              "options__15": {
+                "label": "カート"
+              },
+              "options__16": {
+                "label": "画像"
+              },
+              "options__17": {
+                "label": "リスト"
+              },
+              "options__18": {
+                "label": "地球儀"
+              },
+              "options__19": {
+                "label": "ペン"
+              },
+              "options__20": {
+                "label": "虫眼鏡"
+              },
+              "options__21": {
+                "label": "ネットワーク"
+              },
+              "options__22": {
+                "label": "ズーム"
+              },
+              "options__23": {
+                "label": "しずく"
+              },
+              "options__24": {
+                "label": "葉"
+              },
+              "options__25": {
+                "label": "太陽"
+              },
+              "options__26": {
+                "label": "時計"
+              },
+              "options__27": {
+                "label": "盾"
+              },
+              "options__28": {
+                "label": "きらめき"
+              },
+              "options__29": {
+                "label": "フラスコ"
+              },
+              "options__30": {
+                "label": "リサイクル"
+              },
+              "options__31": {
+                "label": "箱"
+              },
+              "options__32": {
+                "label": "メーター"
+              },
+              "options__33": {
+                "label": "炎"
+              },
+              "options__34": {
+                "label": "星"
+              },
+              "options__35": {
+                "label": "雪の結晶"
+              },
+              "options__36": {
+                "label": "スマイル"
+              },
+              "options__37": {
+                "label": "うさぎ"
+              },
+              "options__38": {
+                "label": "花"
+              },
+              "options__39": {
+                "label": "芽"
+              },
+              "options__40": {
+                "label": "スポイト"
+              },
+              "options__41": {
+                "label": "ジャー"
+              },
+              "options__42": {
+                "label": "スプレー"
+              },
+              "options__43": {
+                "label": "月"
+              },
+              "options__44": {
+                "label": "パーセント"
+              },
+              "options__45": {
+                "label": "アワード"
+              },
+              "options__46": {
+                "label": "羽"
+              },
+              "options__47": {
+                "label": "温度計"
+              },
+              "options__48": {
+                "label": "鼓動"
+              }
+            },
+            "heading": {
+              "label": "見出し"
+            },
+            "text": {
+              "label": "テキスト"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "言語セレクター",
           "info": "言語を追加するには、[言語設定](/admin/settings/languages) に移動します"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "メニュードロワーのプロモーション",
+            "info": "メニュードロワーの下部に表示される、画像またはテキストのカード（任意）。"
+          },
+          "image": {
+            "label": "画像"
+          },
+          "heading": {
+            "label": "見出し"
+          },
+          "link": {
+            "label": "リンク"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "サイドバー",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "モバイル画像ロゴ"
         },
+        "search_style": {
+          "label": "デスクトップの検索スタイル",
+          "info": "「検索バー」はデスクトップのヘッダーに常時表示される検索フィールドを表示します。ロゴ位置「センター、オフキャンバスメニュー」ではスペースがないため、アイコンのままになります。",
+          "options__1": {
+            "label": "アイコン"
+          },
+          "options__2": {
+            "label": "検索バー"
+          }
+        },
         "show_line_separator": {
           "label": "区切り線を表示にする"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "大文字の1階層メニュー項目"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "ベル"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "詳細"
         },
+        "highlights": {
+          "name": "商品ハイライト",
+          "settings": {
+            "info": {
+              "content": "メタフィールド `theme.highlights`（リスト）から主要な仕様を表示します。各項目の形式: `ラベル|値` または `ラベル|値|アイコン`。"
+            }
+          }
+        },
         "image": {
           "name": "画像",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "数量選択肢を表示する"
+            },
+            "follow_buy_buttons": {
+              "label": "購入ボタンが画面外にある間は表示",
+              "info": "スクロールで購入ボタンを通過した後だけでなく、ページを開いた時点から購入ボタンが見えるまでバーを表示します。"
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopifyは各バリアントに対して一つのメディアのみを許可しています。製品オプションに複数のメディアを割り当てるには、[ALT方法](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)を使用してください",
           "label": "ヴァリアントを選定する語、ほかのヴァリアントメディアを非表示にする"
+        },
+        "show_gallery_badges": {
+          "label": "ギャラリーにバッジを表示",
+          "info": "商品のラベルとセール・売り切れバッジを最初の画像に重ねて表示します。"
         },
         "image_ratio": {
           "info": "デスクトップレイアウトは「スライダー」である必要があります。",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "マップズーム"
+        },
+        "map_language": {
+          "label": "地図の言語",
+          "info": "地図のラベル、道案内、コントロールの言語。「自動」はストアの現在の言語を使用します。",
+          "options__auto": {
+            "label": "自動（ストアの言語）"
+          },
+          "options__browser": {
+            "label": "ブラウザのデフォルト"
+          }
+        },
+        "map_region": {
+          "label": "地図のリージョン",
+          "info": "任意。ジオコーディングのバイアス用リージョン（例：JP、US）。検索結果と地図の動作に影響します。",
+          "placeholder": "例：JP"
         },
         "mobile_text_box_position": {
           "label": "モバイルレイアウト",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "ヘッディング"
         },
+        "inline_banner": {
+          "name": "インラインバナー",
+          "settings": {
+            "border_radius": {
+              "label": "角の丸み"
+            },
+            "image_height": {
+              "label": "画像の高さ"
+            }
+          }
+        },
         "subheading": {
           "name": "サブヘディング"
         },
@@ -4480,6 +4865,9 @@
         "name": "リッチテキスト"
       },
       "settings": {
+        "content_max_width": {
+          "label": "テキストの幅"
+        },
         "horizontal_content": {
           "label": "コンテンツを水平で表示"
         }
@@ -5190,6 +5578,249 @@
           "info": "ページのスクロール率を示す細いバーを上部に表示します。"
         }
       }
+    },
+    "video-collection": {
+      "name": "ショッパブルビデオ",
+      "settings": {
+        "columns_desktop": {
+          "label": "デスクトップの列数"
+        },
+        "card_ratio": {
+          "label": "カードの比率",
+          "options__1": {
+            "label": "縦型 (9:16)"
+          },
+          "options__2": {
+            "label": "ポートレート (3:4)"
+          },
+          "options__3": {
+            "label": "正方形 (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "画像の間のスペース"
+        },
+        "autoplay": {
+          "label": "表示時に自動再生",
+          "info": "ミュートのループ再生。クリップはスクロールで表示されたときのみ読み込まれ、動きを減らす設定では再生しません。"
+        },
+        "show_title": {
+          "label": "タイトルを表示する"
+        },
+        "show_price": {
+          "label": "価格を表示する"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "ビデオカード",
+          "settings": {
+            "video": {
+              "label": "ビデオ",
+              "info": "縦型のクリップが最適です。"
+            },
+            "cover_image": {
+              "label": "カバー画像",
+              "info": "再生前に表示されます。既定はビデオのプレビュー画像です。"
+            },
+            "product": {
+              "label": "商品",
+              "info": "タイトル、価格、リンクを提供します。"
+            },
+            "title": {
+              "label": "タイトル",
+              "info": "商品タイトルを上書きします。"
+            },
+            "label": {
+              "label": "ラベル",
+              "info": "クリップ上に表示される短いタグ。例: チュートリアル、ビフォーアフター。"
+            },
+            "link": {
+              "label": "リンク",
+              "info": "商品リンクを上書きします。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "ショッパブルビデオ"
+      }
+    },
+    "skin-quiz": {
+      "name": "スキン診断",
+      "settings": {
+        "show_progress": {
+          "label": "進捗バーを表示する"
+        },
+        "intro_text": {
+          "label": "導入テキスト"
+        },
+        "intro_button_label": {
+          "label": "開始ボタンのラベル"
+        },
+        "start_attention": {
+          "label": "開始ボタンの注目エフェクト",
+          "info": "開始ボタンに視線を誘導します。動きを減らす設定の訪問者には無効になります。",
+          "options__1": {
+            "label": "なし"
+          },
+          "options__2": {
+            "label": "手描き風の矢印"
+          },
+          "options__3": {
+            "label": "点滅するグロー"
+          }
+        },
+        "start_attention_color": {
+          "label": "注目エフェクトの色",
+          "info": "空欄の場合はセクションの強調色を使用します。"
+        },
+        "background_effect": {
+          "label": "背景アニメーション",
+          "info": "装飾用です。色はセクションのパレットに従い、動きを減らす設定では無効になります。",
+          "options__1": {
+            "label": "なし"
+          },
+          "options__2": {
+            "label": "オーロラ"
+          },
+          "options__3": {
+            "label": "メッシュ"
+          },
+          "options__4": {
+            "label": "リング"
+          },
+          "options__5": {
+            "label": "シーン"
+          },
+          "options__6": {
+            "label": "リキッド"
+          },
+          "options__7": {
+            "label": "シルク"
+          },
+          "options__8": {
+            "label": "グリッド"
+          },
+          "options__9": {
+            "label": "ウェーブ"
+          },
+          "options__10": {
+            "label": "画像"
+          }
+        },
+        "background_intensity": {
+          "label": "背景の強さ",
+          "options__1": {
+            "label": "控えめ"
+          },
+          "options__2": {
+            "label": "標準"
+          },
+          "options__3": {
+            "label": "強め"
+          },
+          "info": "背景画像がどの程度見えるかも決まります。"
+        },
+        "background_effect_color": {
+          "label": "背景アニメーションの色",
+          "info": "空欄の場合はセクションの強調色を使用します。"
+        },
+        "section_width": {
+          "label": "セクションの幅",
+          "options__1": {
+            "label": "狭い"
+          },
+          "options__2": {
+            "label": "標準"
+          },
+          "options__3": {
+            "label": "全幅"
+          }
+        },
+        "background_image": {
+          "label": "背景画像",
+          "info": "背景アニメーションを「画像」にしたときだけ使われます。ゆっくり動き、セクションの背景色のベールの下に配置されます。"
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "結果 1"
+        },
+        "options__2": {
+          "label": "結果 2"
+        },
+        "options__3": {
+          "label": "結果 3"
+        },
+        "options__4": {
+          "label": "結果 4"
+        },
+        "options__5": {
+          "label": "結果 5"
+        },
+        "options__6": {
+          "label": "結果 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "質問",
+          "settings": {
+            "title": {
+              "label": "質問"
+            },
+            "help": {
+              "label": "補足テキスト"
+            },
+            "option_1": {
+              "content": "回答 1"
+            },
+            "option_2": {
+              "content": "回答 2"
+            },
+            "option_3": {
+              "content": "回答 3"
+            },
+            "option_4": {
+              "content": "回答 4"
+            },
+            "option_label": {
+              "label": "回答"
+            },
+            "option_hint": {
+              "label": "回答の補足"
+            },
+            "option_result": {
+              "label": "加点する結果",
+              "info": "最も票の多い結果が選ばれます。同数の場合は番号の小さい結果が選ばれます。"
+            }
+          }
+        },
+        "result": {
+          "name": "結果",
+          "settings": {
+            "order_note": {
+              "content": "結果はここでの並び順で番号が付きます。回答はその番号を指します。"
+            },
+            "product_1": {
+              "label": "ステップ1の商品"
+            },
+            "product_2": {
+              "label": "ステップ2の商品"
+            },
+            "product_3": {
+              "label": "ステップ3の商品"
+            },
+            "product_note": {
+              "label": "このステップの理由"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "スキン診断"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "セールバッジの背景"
         },
+        "colors_sale_badge_text": {
+          "label": "セールバッジの文字",
+          "info": "空欄の場合はカラースキームの背景色を使用します。"
+        },
         "colors_sale_price": {
           "label": "特価"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "雑多"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "カラースキーム",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 カラースキーム。セクションは color_scheme 設定でオプトインしてパレットを切り替えられます。既存のグローバルカラー設定はそのまま機能します。これは追加機能です。"
+        },
+        "background": {
+          "label": "背景"
+        },
+        "background_gradient": {
+          "label": "背景グラデーション"
+        },
+        "text": {
+          "label": "テキスト"
+        },
+        "button": {
+          "label": "ソリッドボタン背景"
+        },
+        "button_label": {
+          "label": "ソリッドボタンラベル"
+        },
+        "secondary_button_label": {
+          "label": "アウトラインボタンラベル"
+        },
+        "shadow": {
+          "label": "シャドウ"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "セクション間のスペース",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "文字方向"
+        },
+        "rtl_auto": {
+          "label": "RTL言語の右から左レイアウト",
+          "info": "ストアの言語がアラビア語、ヘブライ語、ペルシア語、ウルドゥー語などの右から左に書く言語の場合、レイアウトを自動的に反転します。text_direction_trigger の翻訳は引き続き有効で、rtl と指定されている場合は常に優先されます。"
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "商品タイル",
       "settings": {
+        "badges": {
+          "content": "バッジ"
+        },
+        "badge_outline": {
+          "label": "バッジの輪郭線",
+          "info": "各バッジを文字色で縁取ります。"
+        },
+        "badge_shape": {
+          "label": "バッジの形",
+          "options__1": {
+            "label": "テーマ標準"
+          },
+          "options__2": {
+            "label": "ピル型"
+          }
+        },
+        "badge_rotate": {
+          "label": "バッジの傾き"
+        },
+        "highlights": {
+          "content": "商品スペック"
+        },
+        "highlights_style": {
+          "label": "スペックのスタイル",
+          "info": "チップはカードにカーソルを重ねると隠れたスペックへ自動でスライドします。",
+          "options__1": {
+            "label": "ストリップ"
+          },
+          "options__2": {
+            "label": "チップ"
+          },
+          "options__3": {
+            "label": "チップ — グリッド"
+          },
+          "options__4": {
+            "label": "ピル"
+          },
+          "options__5": {
+            "label": "スペックシート"
+          }
+        },
+        "highlights_style_product": {
+          "label": "スペックのスタイル — 商品ページ",
+          "options__1": {
+            "label": "商品カードに従う"
+          }
+        },
         "color_swatches": {
           "content": "カラースウォッチ"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "現在のページを遷移しないまま、ポップアップで商品詳細を見る。",
           "label": "クイックビュー機能を可能にする"
+        },
+        "similar_products": {
+          "content": "類似商品"
+        },
+        "similar_products_mode": {
+          "label": "類似商品ボタン",
+          "info": "商品カードからShopifyが生成するレコメンドを開きます。結果はSearch & Discoveryアプリでカスタマイズできます。",
+          "options__1": {
+            "label": "オフ"
+          },
+          "options__2": {
+            "label": "売り切れ商品のみ"
+          },
+          "options__3": {
+            "label": "すべての商品"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "すべてのコンテンツ"
           }
+        },
+        "voice_search_enabled": {
+          "label": "音声検索を有効にする",
+          "info": "対応ブラウザ（Chrome、Edge、Safari）の検索フィールドにマイクボタンを追加します。音声認識は訪問者のブラウザで処理されます。"
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "大文字にする"
         },
+        "heading_capitalize_tracking": {
+          "label": "大文字時の字間",
+          "info": "見出しを大文字にしたとき、商品カードと記事カードのタイトルに広い字間を追加します。"
+        },
         "heading_center": {
           "label": "見出しのセンタリング"
         },
         "heading_scale": {
           "label": "文字サイズスケール",
           "unit": "パーセンテージ"
+        },
+        "heading_size_mode": {
+          "info": "自動は画面幅に合わせて見出しサイズを滑らかに調整します。クラシックはモバイルとデスクトップで固定サイズを使用します。",
+          "label": "サイズの動作",
+          "options__1": {
+            "label": "クラシック"
+          },
+          "options__2": {
+            "label": "自動（フルード）"
+          }
         },
         "price_superscript": {
           "label": "価格の小数点以下を上付きにする"
@@ -5744,6 +6496,15 @@
           "label": "ナビゲーションのサイズ",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "ナビゲーションの太さ",
+          "options__1": {
+            "label": "フォントに従う"
+          },
+          "options__2": {
+            "label": "セミボールド"
+          }
+        },
         "type_price_font": {
           "label": "価格フォント",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "ヘッディング"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "グラスデザイン",
+      "settings": {
+        "paragraph": {
+          "content": "モダンなUIデザインにインスパイアされたすりガラス効果をテーマのサーフェスと要素に適用します。"
+        },
+        "glass_design_enabled": {
+          "label": "グラスデザインを有効にする"
+        },
+        "header__1": {
+          "content": "カスタマイズ"
+        },
+        "glass_blur_intensity": {
+          "label": "ぼかしの強さ"
+        },
+        "glass_bg_opacity": {
+          "label": "背景の不透明度"
+        },
+        "glass_border_opacity": {
+          "label": "ボーダーの不透明度"
+        },
+        "glass_tint_color": {
+          "label": "ティントカラー"
         }
       }
     }

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Utilize cores personalizadas"
         }
+      },
+      "edge_to_edge": {
+        "label": "Estender a linha até às margens do ecrã",
+        "info": "Aplica-se quando o deslocamento está ativado. O título mantém a margem da página."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Cartão do produto"
         },
+        "show_product_highlights": {
+          "info": "Apresenta especificações principais do metacampo `theme.highlights` (lista). Formato por item: `Etiqueta|Valor` ou `Etiqueta|Valor|ícone`.",
+          "label": "Mostrar destaques do produto"
+        },
         "show_quick_buy": {
           "label": "Ativar botão de adição rápida"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Fundo da tabela"
         },
+        "colors_accents": {
+          "label": "Marcas de destaque",
+          "info": "Marcadores e contorno da coluna em destaque. Deixe vazio para usar a cor de destaque."
+        },
+        "colors_badge_background": {
+          "label": "Fundo do selo",
+          "info": "Deixe vazio para usar a cor de destaque."
+        },
+        "colors_badge_text": {
+          "label": "Texto do selo",
+          "info": "Deixe vazio para usar a cor do texto."
+        },
         "table_style": {
           "header": {
             "content": "Estilo da tabela"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Descrição do produto"
+            },
+            "highlight": {
+              "label": "Destacar esta coluna",
+              "info": "Fundo com tonalidade e contorno dourado para destacar este produto. As outras colunas passam a ter botões de contorno."
+            },
+            "highlight_badge": {
+              "label": "Texto do selo de destaque",
+              "info": "Apresentado na imagem do produto quando a coluna está destacada"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Ative o botão \"Ver tudo\" se a lista incluir mais coleções do que as mostradas"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Leque de cores",
+      "settings": {
+        "product": {
+          "label": "Produto",
+          "info": "Liga o leque ao produto e usa a imagem dele quando nenhuma é carregada."
+        },
+        "image": {
+          "label": "Imagem",
+          "info": "Um PNG transparente fica melhor sobre o leque."
+        },
+        "image_width": {
+          "label": "Tamanho da imagem"
+        },
+        "fan_style": {
+          "label": "Estilo do leque",
+          "options__1": {
+            "label": "Flor"
+          },
+          "options__2": {
+            "label": "Leque de mão"
+          },
+          "info": "O leque de mão mostra cada tom por inteiro — ideal para tons com imagem."
+        },
+        "hover_ring": {
+          "label": "Anel ao passar o cursor",
+          "options__1": {
+            "label": "Cor do tom"
+          },
+          "options__2": {
+            "label": "Cor personalizada"
+          },
+          "options__3": {
+            "label": "Halo arco-íris"
+          },
+          "options__4": {
+            "label": "Desativado"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Cor do anel"
+        },
+        "fan_trigger": {
+          "label": "Abertura do leque",
+          "options__1": {
+            "label": "Ao surgir no ecrã"
+          },
+          "options__2": {
+            "label": "Ao passar o cursor"
+          },
+          "info": "Em telemóveis abre sempre ao surgir no ecrã."
+        },
+        "shade_corner_radius": {
+          "label": "Raio dos cantos dos tons"
+        },
+        "image_corner_radius": {
+          "label": "Raio dos cantos da imagem"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Tom",
+          "settings": {
+            "color": {
+              "label": "Cor"
+            },
+            "image": {
+              "label": "Imagem",
+              "info": "Substitui a cor — uma textura ou foto da variante."
+            },
+            "label": {
+              "label": "Etiqueta",
+              "info": "Mostrada como dica ao passar o cursor."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Leque de cores"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Coleção"
         },
+        "product_list": {
+          "label": "Produtos",
+          "info": "Escolha produtos para destacar. Quando definidos, substituem a coleção acima."
+        },
         "products_to_show": {
           "label": "Máximo de produtos a serem exibidos"
         },
@@ -1624,6 +1728,9 @@
           "label": "Ativar arrastar para rolar (desktop)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Produtos semelhantes"
     },
     "tabbed-featured-collections": {
       "name": "Coleções com separadores",
@@ -1639,6 +1746,20 @@
               "info": "Deixe em branco para usar o título da coleção"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Estilo dos separadores",
+          "options__1": {
+            "label": "Sublinhado"
+          },
+          "options__2": {
+            "label": "Preenchido"
+          }
+        },
+        "tab_alignment": {
+          "label": "Alinhamento dos separadores"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Tornar o mega menu estreito"
             },
+            "defer_loading": {
+              "label": "Carregamento adiado",
+              "info": "Carrega o conteúdo do mega menu apenas quando o utilizador passa o rato por cima. Reduz o tempo de carregamento inicial da página."
+            },
             "paragraph": {
               "content": "O mega menu é exibido apenas na área de trabalho e requer a opção \"Ativar menu Dropdown\" nas configurações da seção."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Mostrar imagens do mega menu"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Mega menu — montra de produtos",
+          "settings": {
+            "paragraph": {
+              "content": "As ligações secundárias do item de menu tornam-se separadores. Separadores ligados a uma coleção mostram os seus primeiros produtos; os restantes listam as suas próprias ligações."
+            },
+            "products_per_tab": {
+              "label": "Produtos por separador"
+            },
+            "header__promo": {
+              "content": "Promoção"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Preencher"
+              }
+            },
+            "view_all_link": {
+              "label": "Ligação de “Ver tudo”",
+              "info": "Deixe em branco para usar a ligação do item de menu."
+            },
+            "show_in_drawer": {
+              "label": "Mostrar no menu móvel",
+              "info": "Repete esta montra no menu móvel para o mesmo item de menu."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Distintivo de ícone do menu",
+          "settings": {
+            "paragraph": {
+              "content": "Apresentado no fundo de cada mega menu de montra de produtos (até 4)."
+            },
+            "icon": {
+              "label": "Ícone",
+              "options__1": {
+                "label": "Camião"
+              },
+              "options__2": {
+                "label": "Visto"
+              },
+              "options__3": {
+                "label": "Visto (alternativo)"
+              },
+              "options__4": {
+                "label": "Visto em círculo"
+              },
+              "options__5": {
+                "label": "Presente"
+              },
+              "options__6": {
+                "label": "Desconto"
+              },
+              "options__7": {
+                "label": "Coração"
+              },
+              "options__8": {
+                "label": "Informação"
+              },
+              "options__9": {
+                "label": "Ponto de interrogação"
+              },
+              "options__10": {
+                "label": "Casa"
+              },
+              "options__11": {
+                "label": "Régua"
+              },
+              "options__12": {
+                "label": "Prancheta"
+              },
+              "options__13": {
+                "label": "Pessoa"
+              },
+              "options__14": {
+                "label": "Saco"
+              },
+              "options__15": {
+                "label": "Carrinho"
+              },
+              "options__16": {
+                "label": "Imagens"
+              },
+              "options__17": {
+                "label": "Lista"
+              },
+              "options__18": {
+                "label": "Globo"
+              },
+              "options__19": {
+                "label": "Caneta"
+              },
+              "options__20": {
+                "label": "Lupa"
+              },
+              "options__21": {
+                "label": "Rede"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Gota"
+              },
+              "options__24": {
+                "label": "Folha"
+              },
+              "options__25": {
+                "label": "Sol"
+              },
+              "options__26": {
+                "label": "Relógio"
+              },
+              "options__27": {
+                "label": "Escudo"
+              },
+              "options__28": {
+                "label": "Brilho"
+              },
+              "options__29": {
+                "label": "Frasco"
+              },
+              "options__30": {
+                "label": "Reciclagem"
+              },
+              "options__31": {
+                "label": "Caixa"
+              },
+              "options__32": {
+                "label": "Indicador"
+              },
+              "options__33": {
+                "label": "Chama"
+              },
+              "options__34": {
+                "label": "Estrela"
+              },
+              "options__35": {
+                "label": "Floco de neve"
+              },
+              "options__36": {
+                "label": "Sorriso"
+              },
+              "options__37": {
+                "label": "Coelho"
+              },
+              "options__38": {
+                "label": "Flor"
+              },
+              "options__39": {
+                "label": "Rebento"
+              },
+              "options__40": {
+                "label": "Pipeta"
+              },
+              "options__41": {
+                "label": "Boião"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Lua"
+              },
+              "options__44": {
+                "label": "Percentagem"
+              },
+              "options__45": {
+                "label": "Prémio"
+              },
+              "options__46": {
+                "label": "Pena"
+              },
+              "options__47": {
+                "label": "Termómetro"
+              },
+              "options__48": {
+                "label": "Pulsação"
+              }
+            },
+            "heading": {
+              "label": "Título"
+            },
+            "text": {
+              "label": "Texto"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Seletor de idioma",
           "info": "Para adicionar um idioma, vá a [definições de idioma.](/admin/settings/languages)"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Promoção no menu lateral",
+            "info": "Um cartão opcional de imagem ou texto apresentado na parte inferior do menu lateral."
+          },
+          "image": {
+            "label": "Imagem"
+          },
+          "heading": {
+            "label": "Título"
+          },
+          "link": {
+            "label": "Ligação"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Barra lateral",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Imagem do logotipo para móvel"
         },
+        "search_style": {
+          "label": "Estilo de pesquisa no computador",
+          "info": "\"Barra de pesquisa\" mostra um campo de pesquisa sempre visível no cabeçalho em computador. A posição do logótipo \"Centro, divisão de menu\" não tem espaço e mantém o ícone.",
+          "options__1": {
+            "label": "Ícone"
+          },
+          "options__2": {
+            "label": "Barra de pesquisa"
+          }
+        },
         "show_line_separator": {
           "label": "Mostrar linha separadora"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Itens de menu de primeiro nível em maiúsculas"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Sino"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Descrição"
         },
+        "highlights": {
+          "name": "Destaques do produto",
+          "settings": {
+            "info": {
+              "content": "Apresenta especificações principais do metacampo `theme.highlights` (lista). Formato por item: `Etiqueta|Valor` ou `Etiqueta|Valor|ícone`."
+            }
+          }
+        },
         "image": {
           "name": "Imagem",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Mostrar seletor de quantidade"
+            },
+            "follow_buy_buttons": {
+              "label": "Mostrar enquanto os botões de compra estão fora do ecrã",
+              "info": "A barra aparece desde o carregamento da página até os botões de compra ficarem visíveis, e não apenas depois de os passar."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "O Shopify limita cada variante a um único meio. Para atribuir vários meios a uma opção de produto, use o [método ALT](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Ocultar a mídia de outras variantes após selecionar uma variante"
+        },
+        "show_gallery_badges": {
+          "label": "Mostrar selos na galeria",
+          "info": "As etiquetas do produto mais os selos de promoção e esgotado, sobre a primeira imagem."
         },
         "image_ratio": {
           "info": "Requer que o Disposição da área de trabalho seja \"Controle deslizante\".",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Zoom do mapa"
+        },
+        "map_language": {
+          "label": "Idioma do mapa",
+          "info": "Idioma para etiquetas, direções e controlos do mapa. 'Auto' usa o idioma atual da loja.",
+          "options__auto": {
+            "label": "Auto (idioma da loja)"
+          },
+          "options__browser": {
+            "label": "Padrão do navegador"
+          }
+        },
+        "map_region": {
+          "label": "Região do mapa",
+          "info": "Opcional. Região para enviesamento de geocodificação (ex. PT, US, JP). Afeta os resultados de pesquisa e o comportamento do mapa.",
+          "placeholder": "ex. PT"
         },
         "mobile_text_box_position": {
           "label": "Disposição móvel",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Título"
         },
+        "inline_banner": {
+          "name": "Banner em linha",
+          "settings": {
+            "border_radius": {
+              "label": "Raio da borda"
+            },
+            "image_height": {
+              "label": "Altura da imagem"
+            }
+          }
+        },
         "subheading": {
           "name": "Subtítulo"
         },
@@ -4480,6 +4865,9 @@
         "name": "Rich text"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Largura do texto"
+        },
         "horizontal_content": {
           "label": "Apresentar conteúdos na horizontal"
         }
@@ -5190,6 +5578,249 @@
           "info": "Exibe uma barra fina no topo indicando a porcentagem de rolagem da página."
         }
       }
+    },
+    "video-collection": {
+      "name": "Vídeo comprável",
+      "settings": {
+        "columns_desktop": {
+          "label": "Número de colunas no ambiente de trabalho"
+        },
+        "card_ratio": {
+          "label": "Proporção do cartão",
+          "options__1": {
+            "label": "Vertical (9:16)"
+          },
+          "options__2": {
+            "label": "Retrato (3:4)"
+          },
+          "options__3": {
+            "label": "Quadrado (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Espaçamento entre imagens"
+        },
+        "autoplay": {
+          "label": "Reproduzir automaticamente quando visível",
+          "info": "Ciclos sem som. Os clipes só carregam ao deslocar, e nunca com movimento reduzido."
+        },
+        "show_title": {
+          "label": "Mostrar título"
+        },
+        "show_price": {
+          "label": "Mostrar preço"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Cartão de vídeo",
+          "settings": {
+            "video": {
+              "label": "Vídeo",
+              "info": "Os clipes verticais funcionam melhor."
+            },
+            "cover_image": {
+              "label": "Imagem de capa",
+              "info": "Apresentada antes da reprodução. Por defeito, a pré-visualização do vídeo."
+            },
+            "product": {
+              "label": "produtos",
+              "info": "Fornece o título, o preço e a ligação."
+            },
+            "title": {
+              "label": "Título",
+              "info": "Substitui o título do produto."
+            },
+            "label": {
+              "label": "Etiqueta",
+              "info": "Etiqueta curta sobre o clipe, por exemplo Tutorial ou Antes e depois."
+            },
+            "link": {
+              "label": "Ligação",
+              "info": "Substitui a ligação do produto."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Vídeo comprável"
+      }
+    },
+    "skin-quiz": {
+      "name": "Questionário de pele",
+      "settings": {
+        "show_progress": {
+          "label": "Mostrar barra de progresso"
+        },
+        "intro_text": {
+          "label": "Texto de introdução"
+        },
+        "intro_button_label": {
+          "label": "Etiqueta do botão de início"
+        },
+        "start_attention": {
+          "label": "Sinal de atenção do botão de início",
+          "info": "Direciona o olhar para o botão de início. Desativado para visitantes que preferem movimento reduzido.",
+          "options__1": {
+            "label": "Nenhum"
+          },
+          "options__2": {
+            "label": "Seta esboçada"
+          },
+          "options__3": {
+            "label": "Brilho pulsante"
+          }
+        },
+        "start_attention_color": {
+          "label": "Cor do sinal",
+          "info": "Deixe vazio para usar a cor de destaque da secção."
+        },
+        "background_effect": {
+          "label": "Animação de fundo",
+          "info": "Apenas decorativa. As cores seguem a paleta da secção; é desativada com movimento reduzido.",
+          "options__1": {
+            "label": "Nenhuma"
+          },
+          "options__2": {
+            "label": "Aurora"
+          },
+          "options__3": {
+            "label": "Malha"
+          },
+          "options__4": {
+            "label": "Anéis"
+          },
+          "options__5": {
+            "label": "Brilho"
+          },
+          "options__6": {
+            "label": "Líquido"
+          },
+          "options__7": {
+            "label": "Seda"
+          },
+          "options__8": {
+            "label": "Grelha"
+          },
+          "options__9": {
+            "label": "Ondas"
+          },
+          "options__10": {
+            "label": "Imagem"
+          }
+        },
+        "background_intensity": {
+          "label": "Intensidade do fundo",
+          "options__1": {
+            "label": "Subtil"
+          },
+          "options__2": {
+            "label": "Média"
+          },
+          "options__3": {
+            "label": "Forte"
+          },
+          "info": "Define também o quanto a imagem de fundo transparece."
+        },
+        "background_effect_color": {
+          "label": "Cor da animação de fundo",
+          "info": "Deixe vazio para usar a cor de destaque da secção."
+        },
+        "section_width": {
+          "label": "Largura da secção",
+          "options__1": {
+            "label": "Estreita"
+          },
+          "options__2": {
+            "label": "Predefinida"
+          },
+          "options__3": {
+            "label": "Largura total"
+          }
+        },
+        "background_image": {
+          "label": "Imagem de fundo",
+          "info": "Usada apenas quando a animação de fundo está definida como Imagem. Desloca-se lentamente sob um véu da cor de fundo da secção."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Resultado 1"
+        },
+        "options__2": {
+          "label": "Resultado 2"
+        },
+        "options__3": {
+          "label": "Resultado 3"
+        },
+        "options__4": {
+          "label": "Resultado 4"
+        },
+        "options__5": {
+          "label": "Resultado 5"
+        },
+        "options__6": {
+          "label": "Resultado 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Pergunta",
+          "settings": {
+            "title": {
+              "label": "Pergunta"
+            },
+            "help": {
+              "label": "Texto de ajuda"
+            },
+            "option_1": {
+              "content": "Resposta 1"
+            },
+            "option_2": {
+              "content": "Resposta 2"
+            },
+            "option_3": {
+              "content": "Resposta 3"
+            },
+            "option_4": {
+              "content": "Resposta 4"
+            },
+            "option_label": {
+              "label": "Resposta"
+            },
+            "option_hint": {
+              "label": "Dica da resposta"
+            },
+            "option_result": {
+              "label": "Pontua para",
+              "info": "Vence o resultado com mais votos. Em caso de empate vence o de número mais baixo."
+            }
+          }
+        },
+        "result": {
+          "name": "Resultado",
+          "settings": {
+            "order_note": {
+              "content": "Os resultados são numerados pela ordem aqui. As respostas apontam para esses números."
+            },
+            "product_1": {
+              "label": "Produto do passo 1"
+            },
+            "product_2": {
+              "label": "Produto do passo 2"
+            },
+            "product_3": {
+              "label": "Produto do passo 3"
+            },
+            "product_note": {
+              "label": "Porquê este passo"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Questionário de pele"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Fundo do emblema de venda"
         },
+        "colors_sale_badge_text": {
+          "label": "Texto do selo de promoção",
+          "info": "Deixar vazio para usar a cor de fundo do esquema."
+        },
         "colors_sale_price": {
           "label": "Preço de venda"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Diversos"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Esquemas de cor",
+      "settings": {
+        "paragraph": {
+          "content": "Esquemas de cor do Theme OS 2.0. As secções podem aderir através de uma definição color_scheme para trocar a paleta sem definições de cor por secção. As definições de cor globais existentes continuam a funcionar; isto é aditivo."
+        },
+        "background": {
+          "label": "Fundo"
+        },
+        "background_gradient": {
+          "label": "Gradiente de fundo"
+        },
+        "text": {
+          "label": "Texto"
+        },
+        "button": {
+          "label": "Fundo de botão sólido"
+        },
+        "button_label": {
+          "label": "Rótulo de botão sólido"
+        },
+        "secondary_button_label": {
+          "label": "Rótulo de botão de contorno"
+        },
+        "shadow": {
+          "label": "Sombra"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Espaço entre as secções do modelo",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Direção do texto"
+        },
+        "rtl_auto": {
+          "label": "Esquema da direita para a esquerda para idiomas RTL",
+          "info": "Inverte automaticamente o esquema quando o idioma da loja é árabe, hebraico, persa, urdu ou outra escrita da direita para a esquerda. A tradução text_direction_trigger continua a funcionar e prevalece sempre que indicar rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Blocos de produtos",
       "settings": {
+        "badges": {
+          "content": "Selos"
+        },
+        "badge_outline": {
+          "label": "Contorno dos selos",
+          "info": "Contorna cada selo com a cor do seu texto."
+        },
+        "badge_shape": {
+          "label": "Forma dos selos",
+          "options__1": {
+            "label": "Padrão"
+          },
+          "options__2": {
+            "label": "Pílula"
+          }
+        },
+        "badge_rotate": {
+          "label": "Inclinação dos selos"
+        },
+        "highlights": {
+          "content": "Especificações"
+        },
+        "highlights_style": {
+          "label": "Estilo das especificações",
+          "info": "As fichas deslizam pelas especificações ocultas ao passar o cursor.",
+          "options__1": {
+            "label": "Faixa"
+          },
+          "options__2": {
+            "label": "Fichas"
+          },
+          "options__3": {
+            "label": "Fichas — grelha"
+          },
+          "options__4": {
+            "label": "Pílulas"
+          },
+          "options__5": {
+            "label": "Ficha técnica"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Estilo das especificações — página de produto",
+          "options__1": {
+            "label": "Segundo os cartões de produto"
+          }
+        },
         "color_swatches": {
           "content": "Amostras de cores"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Veja os detalhes do produto em um pop-up sem sair da página atual.",
           "label": "Ativar o recurso de visualização rápida"
+        },
+        "similar_products": {
+          "content": "Produtos semelhantes"
+        },
+        "similar_products_mode": {
+          "label": "Botão de produtos semelhantes",
+          "info": "Abre recomendações geradas pela Shopify a partir dos cartões de produto. Personalize os resultados na aplicação Search & Discovery.",
+          "options__1": {
+            "label": "Desativado"
+          },
+          "options__2": {
+            "label": "Apenas produtos esgotados"
+          },
+          "options__3": {
+            "label": "Todos os produtos"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Todo o conteúdo"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Ativar pesquisa por voz",
+          "info": "Adiciona um botão de microfone aos campos de pesquisa em navegadores compatíveis (Chrome, Edge, Safari). O reconhecimento de voz é processado pelo navegador do visitante."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Capitalizar"
         },
+        "heading_capitalize_tracking": {
+          "label": "Espaçamento de letras em maiúsculas",
+          "info": "Adiciona espaçamento amplo aos títulos dos cartões de produto e artigo quando os títulos estão em maiúsculas."
+        },
         "heading_center": {
           "label": "Título centrais"
         },
         "heading_scale": {
           "label": "Escala de tamanho da fonte",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Automático ajusta suavemente o tamanho dos títulos consoante a largura do ecrã. Clássico usa tamanhos fixos para telemóvel e computador.",
+          "label": "Comportamento do tamanho",
+          "options__1": {
+            "label": "Clássico"
+          },
+          "options__2": {
+            "label": "Automático (fluido)"
+          }
         },
         "price_superscript": {
           "label": "Décimas do preço em sobrescrito"
@@ -5744,6 +6496,15 @@
           "label": "Tamanho da navegação",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Peso da navegação",
+          "options__1": {
+            "label": "Segundo o tipo de letra"
+          },
+          "options__2": {
+            "label": "Seminegrito"
+          }
+        },
         "type_price_font": {
           "label": "Tipo de letra dos preços",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Título"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Design de vidro",
+      "settings": {
+        "paragraph": {
+          "content": "Aplique um efeito de vidro fosco inspirado no design moderno às superfícies e elementos do seu tema."
+        },
+        "glass_design_enabled": {
+          "label": "Ativar design de vidro"
+        },
+        "header__1": {
+          "content": "Personalização"
+        },
+        "glass_blur_intensity": {
+          "label": "Intensidade de desfoque"
+        },
+        "glass_bg_opacity": {
+          "label": "Opacidade do fundo"
+        },
+        "glass_border_opacity": {
+          "label": "Opacidade da borda"
+        },
+        "glass_tint_color": {
+          "label": "Cor de tonalidade"
         }
       }
     }

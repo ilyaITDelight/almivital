@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "使用自定义颜色"
         }
+      },
+      "edge_to_edge": {
+        "label": "让整行延伸至屏幕边缘",
+        "info": "在开启滚动时生效。标题仍保持页面边距。"
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "产品卡"
         },
+        "show_product_highlights": {
+          "info": "从元字段 `theme.highlights`（列表）显示关键规格。每项格式：`标签|值` 或 `标签|值|图标`。",
+          "label": "显示产品亮点"
+        },
         "show_quick_buy": {
           "label": "启用快速添加按钮"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "表格背景"
         },
+        "colors_accents": {
+          "label": "点缀标记",
+          "info": "列表圆点和精选列的边框。留空则使用突出颜色。"
+        },
+        "colors_badge_background": {
+          "label": "徽章背景",
+          "info": "留空则使用突出颜色。"
+        },
+        "colors_badge_text": {
+          "label": "徽章文字",
+          "info": "留空则使用文字颜色。"
+        },
         "table_style": {
           "header": {
             "content": "表格样式"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "产品描述"
+            },
+            "highlight": {
+              "label": "突出显示此列",
+              "info": "使用浅色背景和金色边框让该产品脱颖而出。其他列将使用描边按钮。"
+            },
+            "highlight_badge": {
+              "label": "突出显示徽章文字",
+              "info": "当该列被突出显示时，显示在产品图片上"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "如果列表包含的集合比显示的多，则启用“查看全部”按钮"
         }
+      }
+    },
+    "color-fan": {
+      "name": "色彩扇",
+      "settings": {
+        "product": {
+          "label": "商品",
+          "info": "将色彩扇链接到商品，未上传图片时使用商品图片。"
+        },
+        "image": {
+          "label": "图片",
+          "info": "透明背景的 PNG 效果最佳。"
+        },
+        "image_width": {
+          "label": "图片尺寸"
+        },
+        "fan_style": {
+          "label": "展开样式",
+          "options__1": {
+            "label": "绽放"
+          },
+          "options__2": {
+            "label": "折扇"
+          },
+          "info": "折扇可完整展示每个色调，适合图片色调。"
+        },
+        "hover_ring": {
+          "label": "悬停光环",
+          "options__1": {
+            "label": "色调颜色"
+          },
+          "options__2": {
+            "label": "自定义颜色"
+          },
+          "options__3": {
+            "label": "七彩光环"
+          },
+          "options__4": {
+            "label": "关闭"
+          }
+        },
+        "hover_ring_color": {
+          "label": "光环颜色"
+        },
+        "fan_trigger": {
+          "label": "展开方式",
+          "options__1": {
+            "label": "滚动进入视野时"
+          },
+          "options__2": {
+            "label": "悬停时"
+          },
+          "info": "手机上始终在进入视野时展开。"
+        },
+        "shade_corner_radius": {
+          "label": "色调圆角"
+        },
+        "image_corner_radius": {
+          "label": "图片圆角"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "色调",
+          "settings": {
+            "color": {
+              "label": "颜色"
+            },
+            "image": {
+              "label": "图片",
+              "info": "替代颜色——材质或款式图片。"
+            },
+            "label": {
+              "label": "标签",
+              "info": "悬停时显示为工具提示。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "色彩扇"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "收藏"
         },
+        "product_list": {
+          "label": "产品",
+          "info": "选择要展示的产品。设置后将覆盖上方的收藏。"
+        },
         "products_to_show": {
           "label": "要显示的最大产品数"
         },
@@ -1624,6 +1728,9 @@
           "label": "啟用拖曳捲動（桌面）"
         }
       }
+    },
+    "similar-products": {
+      "name": "相似商品"
     },
     "tabbed-featured-collections": {
       "name": "选项卡集合",
@@ -1639,6 +1746,20 @@
               "info": "留空以使用集合标题"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "标签页样式",
+          "options__1": {
+            "label": "下划线"
+          },
+          "options__2": {
+            "label": "填充"
+          }
+        },
+        "tab_alignment": {
+          "label": "标签页对齐"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "缩小大型菜单"
             },
+            "defer_loading": {
+              "label": "延迟加载",
+              "info": "仅在用户将鼠标悬停在 mega 菜单上时才加载其内容，可缩短页面初始加载时间。"
+            },
             "paragraph": {
               "content": "超级菜单仅显示在桌面上，需要在部分设置中选择“启用下拉菜单”选项。"
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "显示大型菜单图片"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "多级菜单 — 产品橱窗",
+          "settings": {
+            "paragraph": {
+              "content": "菜单项的子链接将成为选项卡。链接到产品系列的选项卡会显示其前几个产品；其他选项卡列出自己的链接。"
+            },
+            "products_per_tab": {
+              "label": "每个选项卡的产品数"
+            },
+            "header__promo": {
+              "content": "促销"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "填充"
+              }
+            },
+            "view_all_link": {
+              "label": "“查看全部”链接",
+              "info": "留空则使用菜单项的链接。"
+            },
+            "show_in_drawer": {
+              "label": "在移动菜单中显示",
+              "info": "在移动菜单中为同一菜单项重复显示此产品橱窗。"
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "菜单图标徽章",
+          "settings": {
+            "paragraph": {
+              "content": "显示在每个产品橱窗多级菜单的底部（最多 4 个）。"
+            },
+            "icon": {
+              "label": "图标",
+              "options__1": {
+                "label": "卡车"
+              },
+              "options__2": {
+                "label": "对勾"
+              },
+              "options__3": {
+                "label": "对勾（备选）"
+              },
+              "options__4": {
+                "label": "圆圈对勾"
+              },
+              "options__5": {
+                "label": "礼品"
+              },
+              "options__6": {
+                "label": "折扣"
+              },
+              "options__7": {
+                "label": "爱心"
+              },
+              "options__8": {
+                "label": "信息"
+              },
+              "options__9": {
+                "label": "问号"
+              },
+              "options__10": {
+                "label": "房屋"
+              },
+              "options__11": {
+                "label": "尺子"
+              },
+              "options__12": {
+                "label": "写字板"
+              },
+              "options__13": {
+                "label": "人物"
+              },
+              "options__14": {
+                "label": "手提袋"
+              },
+              "options__15": {
+                "label": "购物车"
+              },
+              "options__16": {
+                "label": "图片"
+              },
+              "options__17": {
+                "label": "列表"
+              },
+              "options__18": {
+                "label": "地球"
+              },
+              "options__19": {
+                "label": "钢笔"
+              },
+              "options__20": {
+                "label": "放大镜"
+              },
+              "options__21": {
+                "label": "网络"
+              },
+              "options__22": {
+                "label": "缩放"
+              },
+              "options__23": {
+                "label": "水滴"
+              },
+              "options__24": {
+                "label": "叶子"
+              },
+              "options__25": {
+                "label": "太阳"
+              },
+              "options__26": {
+                "label": "时钟"
+              },
+              "options__27": {
+                "label": "盾牌"
+              },
+              "options__28": {
+                "label": "闪光"
+              },
+              "options__29": {
+                "label": "烧瓶"
+              },
+              "options__30": {
+                "label": "回收"
+              },
+              "options__31": {
+                "label": "盒子"
+              },
+              "options__32": {
+                "label": "仪表"
+              },
+              "options__33": {
+                "label": "火焰"
+              },
+              "options__34": {
+                "label": "星星"
+              },
+              "options__35": {
+                "label": "雪花"
+              },
+              "options__36": {
+                "label": "笑脸"
+              },
+              "options__37": {
+                "label": "兔子"
+              },
+              "options__38": {
+                "label": "花朵"
+              },
+              "options__39": {
+                "label": "嫩芽"
+              },
+              "options__40": {
+                "label": "滴管"
+              },
+              "options__41": {
+                "label": "罐子"
+              },
+              "options__42": {
+                "label": "喷雾"
+              },
+              "options__43": {
+                "label": "月亮"
+              },
+              "options__44": {
+                "label": "百分比"
+              },
+              "options__45": {
+                "label": "奖章"
+              },
+              "options__46": {
+                "label": "羽毛"
+              },
+              "options__47": {
+                "label": "温度计"
+              },
+              "options__48": {
+                "label": "心跳"
+              }
+            },
+            "heading": {
+              "label": "标题"
+            },
+            "text": {
+              "label": "文本"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "语言选择器",
           "info": "若要添加语言，请转到您的 [语言设置](/admin/settings/languages)。"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "菜单抽屉推广",
+            "info": "显示在菜单抽屉底部的可选图片或文字卡片。"
+          },
+          "image": {
+            "label": "图片"
+          },
+          "heading": {
+            "label": "标题"
+          },
+          "link": {
+            "label": "链接"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "侧边栏",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "手机图片标志"
         },
+        "search_style": {
+          "label": "桌面端搜索样式",
+          "info": "“搜索栏”会在桌面端页眉中始终显示搜索框。“中心，菜单拆分”徽标位置没有空间，将继续显示图标。",
+          "options__1": {
+            "label": "图标"
+          },
+          "options__2": {
+            "label": "搜索栏"
+          }
+        },
         "show_line_separator": {
           "label": "显示分隔线"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "首层菜单项大写"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "铃铛"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "描述"
         },
+        "highlights": {
+          "name": "产品亮点",
+          "settings": {
+            "info": {
+              "content": "从元字段 `theme.highlights`（列表）显示关键规格。每项格式：`标签|值` 或 `标签|值|图标`。"
+            }
+          }
+        },
         "image": {
           "name": "图片",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "显示数量选择器"
+            },
+            "follow_buy_buttons": {
+              "label": "购买按钮不在屏幕内时显示",
+              "info": "从页面加载起即显示该栏，直到购买按钮进入视野，而不仅是滚动经过之后。"
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify将每个变体限制为一个媒体。要将多个媒体分配给产品选项，请使用[ALT方法](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "选择变体后隐藏其他变体的媒体"
+        },
+        "show_gallery_badges": {
+          "label": "在图库上显示徽章",
+          "info": "商品标签及促销、售罄徽章，叠加在第一张图片上。"
         },
         "image_ratio": {
           "info": "要求桌面布局为“滑块”。",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "地图缩放"
+        },
+        "map_language": {
+          "label": "地图语言",
+          "info": "地图标签、路线和控件的语言。'自动'使用商店当前的语言。",
+          "options__auto": {
+            "label": "自动（商店语言）"
+          },
+          "options__browser": {
+            "label": "浏览器默认"
+          }
+        },
+        "map_region": {
+          "label": "地图区域",
+          "info": "可选。用于地理编码偏向的区域（如 CN、US、JP）。影响搜索结果和地图行为。",
+          "placeholder": "如 CN"
         },
         "mobile_text_box_position": {
           "label": "移动布局",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "标题"
         },
+        "inline_banner": {
+          "name": "内联横幅",
+          "settings": {
+            "border_radius": {
+              "label": "边框圆角"
+            },
+            "image_height": {
+              "label": "图片高度"
+            }
+          }
+        },
         "subheading": {
           "name": "副标题"
         },
@@ -4480,6 +4865,9 @@
         "name": "富文本"
       },
       "settings": {
+        "content_max_width": {
+          "label": "文字宽度"
+        },
         "horizontal_content": {
           "label": "让内容以水平方式显示"
         }
@@ -5190,6 +5578,249 @@
           "info": "在顶部显示一个细条，表示页面滚动的百分比。"
         }
       }
+    },
+    "video-collection": {
+      "name": "可购物视频",
+      "settings": {
+        "columns_desktop": {
+          "label": "桌面上的列数"
+        },
+        "card_ratio": {
+          "label": "卡片比例",
+          "options__1": {
+            "label": "竖版 (9:16)"
+          },
+          "options__2": {
+            "label": "纵向 (3:4)"
+          },
+          "options__3": {
+            "label": "正方形 (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "图像间间距"
+        },
+        "autoplay": {
+          "label": "进入视野时自动播放",
+          "info": "静音循环。视频仅在滚动到可见时加载，若访客选择减弱动态效果则不播放。"
+        },
+        "show_title": {
+          "label": "显示标题"
+        },
+        "show_price": {
+          "label": "显示价格"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "视频卡片",
+          "settings": {
+            "video": {
+              "label": "视频",
+              "info": "竖版短片效果最佳。"
+            },
+            "cover_image": {
+              "label": "封面图片",
+              "info": "播放前显示。默认使用视频自带的预览图。"
+            },
+            "product": {
+              "label": "产品",
+              "info": "提供标题、价格和链接。"
+            },
+            "title": {
+              "label": "标题",
+              "info": "覆盖产品标题。"
+            },
+            "label": {
+              "label": "标签",
+              "info": "显示在视频上的简短标签，例如“教程”或“使用前后对比”。"
+            },
+            "link": {
+              "label": "链接",
+              "info": "覆盖产品链接。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "可购物视频"
+      }
+    },
+    "skin-quiz": {
+      "name": "肌肤测试",
+      "settings": {
+        "show_progress": {
+          "label": "显示进度条"
+        },
+        "intro_text": {
+          "label": "开场文字"
+        },
+        "intro_button_label": {
+          "label": "开始按钮文字"
+        },
+        "start_attention": {
+          "label": "开始按钮注意力提示",
+          "info": "引导视线看向开始按钮。对偏好减弱动态效果的访客自动关闭。",
+          "options__1": {
+            "label": "无"
+          },
+          "options__2": {
+            "label": "手绘箭头"
+          },
+          "options__3": {
+            "label": "脉冲光晕"
+          }
+        },
+        "start_attention_color": {
+          "label": "提示颜色",
+          "info": "留空则使用该区块的突出颜色。"
+        },
+        "background_effect": {
+          "label": "背景动效",
+          "info": "仅作装饰。颜色跟随本区块的配色；访客选择减弱动态效果时自动关闭。",
+          "options__1": {
+            "label": "无"
+          },
+          "options__2": {
+            "label": "极光"
+          },
+          "options__3": {
+            "label": "网格"
+          },
+          "options__4": {
+            "label": "光环"
+          },
+          "options__5": {
+            "label": "流光"
+          },
+          "options__6": {
+            "label": "流体"
+          },
+          "options__7": {
+            "label": "丝绸"
+          },
+          "options__8": {
+            "label": "网格"
+          },
+          "options__9": {
+            "label": "波浪"
+          },
+          "options__10": {
+            "label": "图片"
+          }
+        },
+        "background_intensity": {
+          "label": "背景强度",
+          "options__1": {
+            "label": "轻微"
+          },
+          "options__2": {
+            "label": "适中"
+          },
+          "options__3": {
+            "label": "强烈"
+          },
+          "info": "同时决定背景图片透出的程度。"
+        },
+        "background_effect_color": {
+          "label": "背景动效颜色",
+          "info": "留空则使用该区块的突出颜色。"
+        },
+        "section_width": {
+          "label": "区块宽度",
+          "options__1": {
+            "label": "窄"
+          },
+          "options__2": {
+            "label": "默认"
+          },
+          "options__3": {
+            "label": "全宽"
+          }
+        },
+        "background_image": {
+          "label": "背景图片",
+          "info": "仅在背景动效设为「图片」时使用。图片会缓慢移动，并覆盖一层区块背景色的遮罩。"
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "结果 1"
+        },
+        "options__2": {
+          "label": "结果 2"
+        },
+        "options__3": {
+          "label": "结果 3"
+        },
+        "options__4": {
+          "label": "结果 4"
+        },
+        "options__5": {
+          "label": "结果 5"
+        },
+        "options__6": {
+          "label": "结果 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "问题",
+          "settings": {
+            "title": {
+              "label": "问题"
+            },
+            "help": {
+              "label": "辅助说明"
+            },
+            "option_1": {
+              "content": "答案 1"
+            },
+            "option_2": {
+              "content": "答案 2"
+            },
+            "option_3": {
+              "content": "答案 3"
+            },
+            "option_4": {
+              "content": "答案 4"
+            },
+            "option_label": {
+              "label": "答案"
+            },
+            "option_hint": {
+              "label": "答案提示"
+            },
+            "option_result": {
+              "label": "计分给",
+              "info": "得票最多的结果胜出。得票相同时，取编号最小的结果。"
+            }
+          }
+        },
+        "result": {
+          "name": "结果",
+          "settings": {
+            "order_note": {
+              "content": "结果按此处顺序编号，问题的答案指向这些编号。"
+            },
+            "product_1": {
+              "label": "第 1 步产品"
+            },
+            "product_2": {
+              "label": "第 2 步产品"
+            },
+            "product_3": {
+              "label": "第 3 步产品"
+            },
+            "product_note": {
+              "label": "这一步的理由"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "肌肤测试"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "促销徽章背景"
         },
+        "colors_sale_badge_text": {
+          "label": "促销徽章文字",
+          "info": "留空则使用配色方案的背景色。"
+        },
         "colors_sale_price": {
           "label": "销售价格"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "杂项"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "颜色方案",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 颜色方案。各 section 可通过 color_scheme 设置启用,无需为每个 section 单独配置颜色即可切换色板。现有全局颜色设置仍然有效;这是附加功能。"
+        },
+        "background": {
+          "label": "背景"
+        },
+        "background_gradient": {
+          "label": "背景渐变"
+        },
+        "text": {
+          "label": "文字"
+        },
+        "button": {
+          "label": "实心按钮背景"
+        },
+        "button_label": {
+          "label": "实心按钮标签"
+        },
+        "secondary_button_label": {
+          "label": "描边按钮标签"
+        },
+        "shadow": {
+          "label": "阴影"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "模板分区之间的间距",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "文字方向"
+        },
+        "rtl_auto": {
+          "label": "RTL 语言的从右到左布局",
+          "info": "当商店语言为阿拉伯语、希伯来语、波斯语、乌尔都语或其他从右到左书写的文字时，自动翻转布局。text_direction_trigger 翻译仍然有效，当其为 rtl 时始终优先。"
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "产品标签",
       "settings": {
+        "badges": {
+          "content": "徽章"
+        },
+        "badge_outline": {
+          "label": "徽章描边",
+          "info": "用文字颜色为每个徽章描边。"
+        },
+        "badge_shape": {
+          "label": "徽章形状",
+          "options__1": {
+            "label": "主题默认"
+          },
+          "options__2": {
+            "label": "胶囊形"
+          }
+        },
+        "badge_rotate": {
+          "label": "徽章倾斜"
+        },
+        "highlights": {
+          "content": "产品规格"
+        },
+        "highlights_style": {
+          "label": "规格样式",
+          "info": "悬停商品卡时，卡片样式会自动滑过被遮挡的规格。",
+          "options__1": {
+            "label": "条带"
+          },
+          "options__2": {
+            "label": "卡片"
+          },
+          "options__3": {
+            "label": "卡片 — 网格"
+          },
+          "options__4": {
+            "label": "胶囊"
+          },
+          "options__5": {
+            "label": "规格清单"
+          }
+        },
+        "highlights_style_product": {
+          "label": "规格样式 — 商品页",
+          "options__1": {
+            "label": "跟随商品卡片"
+          }
+        },
         "color_swatches": {
           "content": "色板"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "无需离开当前页面即可在弹出窗口中查看产品详细信息。",
           "label": "启用快速查看功能"
+        },
+        "similar_products": {
+          "content": "相似商品"
+        },
+        "similar_products_mode": {
+          "label": "相似商品按钮",
+          "info": "从商品卡打开由 Shopify 生成的推荐。可在 Search & Discovery 应用中自定义结果。",
+          "options__1": {
+            "label": "关闭"
+          },
+          "options__2": {
+            "label": "仅售罄商品"
+          },
+          "options__3": {
+            "label": "所有商品"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "所有内容"
           }
+        },
+        "voice_search_enabled": {
+          "label": "启用语音搜索",
+          "info": "在受支持的浏览器（Chrome、Edge、Safari）的搜索框中添加麦克风按钮。语音识别由访客的浏览器处理。"
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "大写"
         },
+        "heading_capitalize_tracking": {
+          "label": "大写时的字距",
+          "info": "标题设为大写时，为产品卡和文章卡标题添加较宽字距。"
+        },
         "heading_center": {
           "label": "中心标题"
         },
         "heading_scale": {
           "label": "字体尺寸比例",
           "unit": "百分比符号比符号"
+        },
+        "heading_size_mode": {
+          "info": "自动会随屏幕宽度平滑缩放标题字号。经典在移动端和桌面端使用固定字号。",
+          "label": "尺寸模式",
+          "options__1": {
+            "label": "经典"
+          },
+          "options__2": {
+            "label": "自动（流式）"
+          }
         },
         "price_superscript": {
           "label": "上标价格小数点"
@@ -5744,6 +6496,15 @@
           "label": "导航尺寸",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "导航字重",
+          "options__1": {
+            "label": "跟随字体"
+          },
+          "options__2": {
+            "label": "半粗体"
+          }
+        },
         "type_price_font": {
           "label": "价格字体",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "标题"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "玻璃设计",
+      "settings": {
+        "paragraph": {
+          "content": "将受现代UI设计启发的磨砂玻璃效果应用于主题的表面和元素。"
+        },
+        "glass_design_enabled": {
+          "label": "启用玻璃设计"
+        },
+        "header__1": {
+          "content": "自定义"
+        },
+        "glass_blur_intensity": {
+          "label": "模糊强度"
+        },
+        "glass_bg_opacity": {
+          "label": "背景不透明度"
+        },
+        "glass_border_opacity": {
+          "label": "边框不透明度"
+        },
+        "glass_tint_color": {
+          "label": "色调颜色"
         }
       }
     }

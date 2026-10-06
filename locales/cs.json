@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "accessibility": {
     "account": "Účet",
@@ -273,8 +264,10 @@
     },
     "search": {
       "clear": "Vymazat",
+      "listening": "Poslouchám…",
       "placeholder": "Vyhledávání",
-      "search": "Vyhledávat naše stránky"
+      "search": "Vyhledávat naše stránky",
+      "voice_search": "Hlasové vyhledávání"
     },
     "share": {
       "close": "Zavřít okno pro sdílení",
@@ -443,6 +436,8 @@
       "quick_view": "Rychlý pohled",
       "share": "Sdílejte tento produkt",
       "shipping_policy_html": "<a href=\"{{ link }}\">Poštovné</a> se vypočítá na pokladně.",
+      "similar_products": "Podobné produkty",
+      "similar_products_empty": "Nebyly nalezeny žádné podobné produkty",
       "size_chart": "Průvodce velikostí",
       "size_chart_trigger": "Velikost",
       "sold_out": "Vyprodáno",
@@ -511,11 +506,8 @@
       "taxes_included_shipping_at_checkout_with_policy_html": "Včetně daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
       "taxes_included_shipping_at_checkout_without_policy": "Včetně daní. Slevy a poštovné se vypočítají na pokladně.",
       "title": "Váš košík",
-      "update": "Aktualizace"
-    },
-    "comparison_table": {
-      "shop_button": "Obchod",
-      "placeholder_product": "Váš produkt"
+      "update": "Aktualizace",
+      "recommendations_heading": "Mohlo by se vám také líbit"
     },
     "collection_list": {
       "view_all": "Zobrazit vše"
@@ -525,6 +517,10 @@
       "no_products": "Litujeme, v této kolekci nejsou žádné produkty",
       "title": "Sbírka",
       "use_fewer_filters_html": "Použijte méně filtrů nebo <a class=\"{{ class }}\" href=\"{{ link }}\">vymažte vše</a>"
+    },
+    "comparison_table": {
+      "shop_button": "Obchod",
+      "placeholder_product": "Váš produkt"
     },
     "featured_blog": {
       "onboarding_content": "Poskytněte svým zákazníkům shrnutí vašeho blogového příspěvku",
@@ -576,8 +572,61 @@
       "variant_total": "Varianta celkem",
       "view_cart": "Zobrazit košík"
     },
+    "store_locator": {
+      "gmap_strings": {
+        "locator_back_button_cta": "Zpět",
+        "locator_directions_button_label": "Navigace k %0%",
+        "locator_list_header": "Najděte pobočku ve svém okolí",
+        "locator_list_subheading": "Všechny pobočky",
+        "locator_list_subheading_with_search": "Nejbližší pobočky",
+        "locator_search_location_marker_title": "Moje poloha",
+        "locator_search_prompt": "Zadejte adresu nebo PSČ",
+        "locator_view_details_cta": "Zobrazit podrobnosti",
+        "place_clear_aria_label": "Vymazat",
+        "place_closed": "Zavřeno",
+        "place_closed_permanently": "Trvale zavřeno",
+        "place_closed_temporarily": "Dočasně zavřeno",
+        "place_closes": "Zavírá %0%",
+        "place_has_delivery": "Rozvoz",
+        "place_has_dine_in": "Posezení v restauraci",
+        "place_has_takeout": "Jídlo s sebou",
+        "place_no_delivery": "Bez rozvozu",
+        "place_no_dine_in": "Bez posezení",
+        "place_no_takeout": "Bez jídla s sebou",
+        "place_open_always": "Otevřeno 24 hodin",
+        "place_open_now": "Nyní otevřeno",
+        "place_opening_hours_default_summary": "Zobrazit otevírací dobu",
+        "place_opening_hours_aria_label": "Týdenní otevírací doba",
+        "place_opens": "Otevírá %0%",
+        "place_operational": "V provozu",
+        "place_photo_alt": "Fotografie %0%",
+        "place_photo_attribution_prefix": "Fotografie od",
+        "place_photo_back_aria_label": "Zpět",
+        "place_photo_next_aria_label": "Další",
+        "place_photo_prev_aria_label": "Předchozí",
+        "place_photo_tile_aria_label": "Otevřít fotografii %0%",
+        "place_rating_aria_label": "1 hvězda||%0% hvězd",
+        "place_reviews_author_photo_alt": "Fotografie %0%",
+        "place_reviews_more": "Více recenzí",
+        "place_reviews_section_caption": "Nejrelevantnější",
+        "place_reviews_section_heading": "Recenze od uživatelů Googlu",
+        "place_search_aria_label": "Hledat"
+      }
+    },
     "video": {
       "load_video": "Načíst video: {{ description }}"
+    },
+    "video-collection": {
+      "toggle_sound": "Zapnout nebo vypnout zvuk"
+    },
+    "skin-quiz": {
+      "progress": "Otázka {{ current }} z {{ total }}",
+      "back": "Zpět",
+      "restart": "Zopakovat kvíz",
+      "add_routine": "Přidat rutinu",
+      "no_email": "K zobrazení výsledku není potřeba e-mail.",
+      "setup_note": "Pro aktivaci kvízu přidej alespoň jednu otázku a jeden výsledek.",
+      "start": "Spustit kvíz"
     }
   },
   "templates": {

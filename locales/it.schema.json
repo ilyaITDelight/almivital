@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Usa colori personalizzati"
         }
+      },
+      "edge_to_edge": {
+        "label": "Estendi la riga fino ai bordi dello schermo",
+        "info": "Si applica quando lo scorrimento è attivo. Il titolo mantiene il margine della pagina."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Scheda prodotto"
         },
+        "show_product_highlights": {
+          "info": "Mostra le specifiche chiave dal metafield `theme.highlights` (elenco). Formato per ogni elemento: `Etichetta|Valore` o `Etichetta|Valore|icona`.",
+          "label": "Mostra i punti salienti del prodotto"
+        },
         "show_quick_buy": {
           "label": "Abilita il pulsante di aggiunta rapida"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Sfondo tabella"
         },
+        "colors_accents": {
+          "label": "Segni di accento",
+          "info": "Punti elenco e contorno della colonna in evidenza. Lascia vuoto per usare il colore di evidenziazione."
+        },
+        "colors_badge_background": {
+          "label": "Sfondo del badge",
+          "info": "Lascia vuoto per usare il colore di evidenziazione."
+        },
+        "colors_badge_text": {
+          "label": "Testo del badge",
+          "info": "Lascia vuoto per usare il colore del testo."
+        },
         "table_style": {
           "header": {
             "content": "Stile tabella"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Descrizione prodotto"
+            },
+            "highlight": {
+              "label": "Evidenzia questa colonna",
+              "info": "Sfondo colorato e bordo dorato per far risaltare questo prodotto. Le altre colonne usano pulsanti con contorno."
+            },
+            "highlight_badge": {
+              "label": "Testo del badge in evidenza",
+              "info": "Mostrato sull'immagine del prodotto quando la colonna è evidenziata"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Abilita il pulsante \"Visualizza tutto\" se l'elenco include più raccolte di quelle mostrate"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Ventaglio di colori",
+      "settings": {
+        "product": {
+          "label": "Prodotto",
+          "info": "Collega il ventaglio al prodotto e ne usa l'immagine quando non ne viene caricata una."
+        },
+        "image": {
+          "label": "Immagine",
+          "info": "Un PNG trasparente rende al meglio sul ventaglio."
+        },
+        "image_width": {
+          "label": "Dimensione dell'immagine"
+        },
+        "fan_style": {
+          "label": "Stile ventaglio",
+          "options__1": {
+            "label": "Fioritura"
+          },
+          "options__2": {
+            "label": "Ventaglio a mano"
+          },
+          "info": "Il ventaglio a mano mostra ogni tonalità per intero: ideale per tonalità con immagine."
+        },
+        "hover_ring": {
+          "label": "Anello al passaggio del mouse",
+          "options__1": {
+            "label": "Colore della tonalità"
+          },
+          "options__2": {
+            "label": "Colore personalizzato"
+          },
+          "options__3": {
+            "label": "Alone arcobaleno"
+          },
+          "options__4": {
+            "label": "Disattivato"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Colore dell'anello"
+        },
+        "fan_trigger": {
+          "label": "Apertura del ventaglio",
+          "options__1": {
+            "label": "Quando appare sullo schermo"
+          },
+          "options__2": {
+            "label": "Al passaggio del mouse"
+          },
+          "info": "Su mobile si apre sempre quando appare sullo schermo."
+        },
+        "shade_corner_radius": {
+          "label": "Raggio angoli delle tonalità"
+        },
+        "image_corner_radius": {
+          "label": "Raggio angoli dell'immagine"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Tonalità",
+          "settings": {
+            "color": {
+              "label": "Colore"
+            },
+            "image": {
+              "label": "Immagine",
+              "info": "Sostituisce il colore: una texture o foto della variante."
+            },
+            "label": {
+              "label": "Etichetta",
+              "info": "Mostrata come tooltip al passaggio del mouse."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Ventaglio di colori"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Collezione"
         },
+        "product_list": {
+          "label": "Prodotti",
+          "info": "Scegli i prodotti da mettere in evidenza. Se impostati, prevalgono sulla collezione sopra."
+        },
         "products_to_show": {
           "label": "Massimo di prodotti da mostrare"
         },
@@ -1624,6 +1728,9 @@
           "label": "Abilita trascinamento per scorrere (desktop)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Prodotti simili"
     },
     "tabbed-featured-collections": {
       "name": "Collezioni a schede",
@@ -1639,6 +1746,20 @@
               "info": "Lasciare vuoto per usare il titolo della collezione"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Stile delle schede",
+          "options__1": {
+            "label": "Sottolineatura"
+          },
+          "options__2": {
+            "label": "Pieno"
+          }
+        },
+        "tab_alignment": {
+          "label": "Allineamento delle schede"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Rendi il mega menu stretto"
             },
+            "defer_loading": {
+              "label": "Caricamento differito",
+              "info": "Carica il contenuto del mega menu solo quando l'utente passa il mouse. Riduce il tempo di caricamento iniziale della pagina."
+            },
             "paragraph": {
               "content": "Il mega menu viene visualizzato solo sul desktop e richiede l'opzione \"Abilita menu a discesa\" nelle impostazioni della sezione."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Mostra immagini di mega menu"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Mega menu — vetrina prodotti",
+          "settings": {
+            "paragraph": {
+              "content": "I link secondari della voce di menu diventano schede. Le schede collegate a una collezione mostrano i suoi primi prodotti; le altre elencano i propri link."
+            },
+            "products_per_tab": {
+              "label": "Prodotti per scheda"
+            },
+            "header__promo": {
+              "content": "Promozione"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Riempi"
+              }
+            },
+            "view_all_link": {
+              "label": "Link “Vedi tutto”",
+              "info": "Lascia vuoto per usare il link della voce di menu."
+            },
+            "show_in_drawer": {
+              "label": "Mostra nel menu mobile",
+              "info": "Ripete questa vetrina nel menu mobile per la stessa voce di menu."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Badge icona del menu",
+          "settings": {
+            "paragraph": {
+              "content": "Mostrato in fondo a ogni mega menu vetrina prodotti (fino a 4)."
+            },
+            "icon": {
+              "label": "Icona",
+              "options__1": {
+                "label": "Camion"
+              },
+              "options__2": {
+                "label": "Spunta"
+              },
+              "options__3": {
+                "label": "Spunta (variante)"
+              },
+              "options__4": {
+                "label": "Spunta nel cerchio"
+              },
+              "options__5": {
+                "label": "Regalo"
+              },
+              "options__6": {
+                "label": "Sconto"
+              },
+              "options__7": {
+                "label": "Cuore"
+              },
+              "options__8": {
+                "label": "Info"
+              },
+              "options__9": {
+                "label": "Punto interrogativo"
+              },
+              "options__10": {
+                "label": "Casa"
+              },
+              "options__11": {
+                "label": "Righello"
+              },
+              "options__12": {
+                "label": "Blocco appunti"
+              },
+              "options__13": {
+                "label": "Persona"
+              },
+              "options__14": {
+                "label": "Borsa"
+              },
+              "options__15": {
+                "label": "Carrello"
+              },
+              "options__16": {
+                "label": "Immagini"
+              },
+              "options__17": {
+                "label": "Elenco"
+              },
+              "options__18": {
+                "label": "Globo"
+              },
+              "options__19": {
+                "label": "Penna"
+              },
+              "options__20": {
+                "label": "Lente d'ingrandimento"
+              },
+              "options__21": {
+                "label": "Rete"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Goccia"
+              },
+              "options__24": {
+                "label": "Foglia"
+              },
+              "options__25": {
+                "label": "Sole"
+              },
+              "options__26": {
+                "label": "Orologio"
+              },
+              "options__27": {
+                "label": "Scudo"
+              },
+              "options__28": {
+                "label": "Scintilla"
+              },
+              "options__29": {
+                "label": "Fiala"
+              },
+              "options__30": {
+                "label": "Riciclo"
+              },
+              "options__31": {
+                "label": "Scatola"
+              },
+              "options__32": {
+                "label": "Indicatore"
+              },
+              "options__33": {
+                "label": "Fiamma"
+              },
+              "options__34": {
+                "label": "Stella"
+              },
+              "options__35": {
+                "label": "Fiocco di neve"
+              },
+              "options__36": {
+                "label": "Sorriso"
+              },
+              "options__37": {
+                "label": "Coniglio"
+              },
+              "options__38": {
+                "label": "Fiore"
+              },
+              "options__39": {
+                "label": "Germoglio"
+              },
+              "options__40": {
+                "label": "Pipetta"
+              },
+              "options__41": {
+                "label": "Vasetto"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Luna"
+              },
+              "options__44": {
+                "label": "Percentuale"
+              },
+              "options__45": {
+                "label": "Premio"
+              },
+              "options__46": {
+                "label": "Piuma"
+              },
+              "options__47": {
+                "label": "Termometro"
+              },
+              "options__48": {
+                "label": "Battito"
+              }
+            },
+            "heading": {
+              "label": "Titolo"
+            },
+            "text": {
+              "label": "Testo"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Selettore lingua",
           "info": "Per aggiungere una lingua, vai alle [impostazioni lingua.](/admin/settings/languages)"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Promozione nel menu laterale",
+            "info": "Una scheda immagine o testo opzionale mostrata in fondo al menu laterale."
+          },
+          "image": {
+            "label": "Immagine"
+          },
+          "heading": {
+            "label": "Titolo"
+          },
+          "link": {
+            "label": "Link"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Barra laterale",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Logo per dispositivi mobili"
         },
+        "search_style": {
+          "label": "Stile di ricerca su desktop",
+          "info": "\"Barra di ricerca\" mostra un campo di ricerca sempre visibile nell'header su desktop. La posizione del logo \"Centro, menu diviso\" non ha spazio e mantiene l'icona.",
+          "options__1": {
+            "label": "Icona"
+          },
+          "options__2": {
+            "label": "Barra di ricerca"
+          }
+        },
         "show_line_separator": {
           "label": "Mostra la linea di separazione"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Elementi del menu di primo livello in maiuscolo"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Campana"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Descrizione"
         },
+        "highlights": {
+          "name": "Punti salienti del prodotto",
+          "settings": {
+            "info": {
+              "content": "Mostra le specifiche chiave dal metafield `theme.highlights` (elenco). Formato per ogni elemento: `Etichetta|Valore` o `Etichetta|Valore|icona`."
+            }
+          }
+        },
         "image": {
           "name": "Immagine",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Mostra il selettore della quantità"
+            },
+            "follow_buy_buttons": {
+              "label": "Mostra quando i pulsanti di acquisto sono fuori schermo",
+              "info": "La barra appare dal caricamento della pagina finché i pulsanti di acquisto non entrano in vista, non solo dopo averli superati."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify limita ogni variante a un solo media. Per assegnare più media a un'opzione di prodotto, utilizzare il [metodo ALT](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Nascondi i media delle alter variant dopo aver selezionato una variante"
+        },
+        "show_gallery_badges": {
+          "label": "Mostra i badge sulla galleria",
+          "info": "Le etichette del prodotto più i badge sconto ed esaurito, sulla prima immagine."
         },
         "image_ratio": {
           "info": "Richiede che il layout del desktop sia \"Barra di scorrimento\".",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Zoom mappa"
+        },
+        "map_language": {
+          "label": "Lingua della mappa",
+          "info": "Lingua per etichette, indicazioni stradali e controlli della mappa. 'Auto' usa la lingua corrente del negozio.",
+          "options__auto": {
+            "label": "Auto (lingua del negozio)"
+          },
+          "options__browser": {
+            "label": "Predefinito del browser"
+          }
+        },
+        "map_region": {
+          "label": "Regione della mappa",
+          "info": "Opzionale. Regione per bias geocoding (es. IT, US, JP). Influisce sui risultati di ricerca e sul comportamento della mappa.",
+          "placeholder": "es. IT"
         },
         "mobile_text_box_position": {
           "label": "Disposizione mobile",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Intestazione"
         },
+        "inline_banner": {
+          "name": "Banner in linea",
+          "settings": {
+            "border_radius": {
+              "label": "Raggio del bordo"
+            },
+            "image_height": {
+              "label": "Altezza immagine"
+            }
+          }
+        },
         "subheading": {
           "name": "Sottotitolo"
         },
@@ -4480,6 +4865,9 @@
         "name": "Testo ricco"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Larghezza del testo"
+        },
         "horizontal_content": {
           "label": "Crea contenuto in orizzontale"
         }
@@ -5190,6 +5578,249 @@
           "info": "Mostra una barra sottile in alto che indica la percentuale di scorrimento della pagina."
         }
       }
+    },
+    "video-collection": {
+      "name": "Video acquistabile",
+      "settings": {
+        "columns_desktop": {
+          "label": "Numero di colonne su desktop"
+        },
+        "card_ratio": {
+          "label": "Proporzione della scheda",
+          "options__1": {
+            "label": "Verticale (9:16)"
+          },
+          "options__2": {
+            "label": "Ritratto (3:4)"
+          },
+          "options__3": {
+            "label": "Quadrato (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Spaziatura tra le immagini"
+        },
+        "autoplay": {
+          "label": "Riproduci automaticamente quando visibile",
+          "info": "Cicli senza audio. I clip si caricano solo allo scorrimento, mai con movimento ridotto."
+        },
+        "show_title": {
+          "label": "Mostra titolo"
+        },
+        "show_price": {
+          "label": "Mostra prezzo"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Scheda video",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "I clip verticali rendono al meglio."
+            },
+            "cover_image": {
+              "label": "Immagine di copertina",
+              "info": "Mostrata prima della riproduzione. Predefinita: anteprima del video."
+            },
+            "product": {
+              "label": "Prodotto",
+              "info": "Fornisce titolo, prezzo e link."
+            },
+            "title": {
+              "label": "Titolo",
+              "info": "Sostituisce il titolo del prodotto."
+            },
+            "label": {
+              "label": "Etichetta",
+              "info": "Breve etichetta sopra il clip, per esempio Tutorial o Prima e dopo."
+            },
+            "link": {
+              "label": "Link",
+              "info": "Sostituisce il link del prodotto."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Video acquistabile"
+      }
+    },
+    "skin-quiz": {
+      "name": "Quiz pelle",
+      "settings": {
+        "show_progress": {
+          "label": "Mostra barra di avanzamento"
+        },
+        "intro_text": {
+          "label": "Testo introduttivo"
+        },
+        "intro_button_label": {
+          "label": "Etichetta del pulsante di avvio"
+        },
+        "start_attention": {
+          "label": "Richiamo visivo del pulsante di avvio",
+          "info": "Guida lo sguardo verso il pulsante di avvio. Disattivato per i visitatori che preferiscono il movimento ridotto.",
+          "options__1": {
+            "label": "Nessuno"
+          },
+          "options__2": {
+            "label": "Freccia abbozzata"
+          },
+          "options__3": {
+            "label": "Bagliore pulsante"
+          }
+        },
+        "start_attention_color": {
+          "label": "Colore del richiamo",
+          "info": "Lascia vuoto per usare il colore di evidenziazione della sezione."
+        },
+        "background_effect": {
+          "label": "Animazione di sfondo",
+          "info": "Solo decorativa. I colori seguono la palette della sezione; disattivata con movimento ridotto.",
+          "options__1": {
+            "label": "Nessuna"
+          },
+          "options__2": {
+            "label": "Aurora"
+          },
+          "options__3": {
+            "label": "Mesh"
+          },
+          "options__4": {
+            "label": "Anelli"
+          },
+          "options__5": {
+            "label": "Riflesso"
+          },
+          "options__6": {
+            "label": "Liquido"
+          },
+          "options__7": {
+            "label": "Seta"
+          },
+          "options__8": {
+            "label": "Griglia"
+          },
+          "options__9": {
+            "label": "Onde"
+          },
+          "options__10": {
+            "label": "Immagine"
+          }
+        },
+        "background_intensity": {
+          "label": "Intensità dello sfondo",
+          "options__1": {
+            "label": "Delicata"
+          },
+          "options__2": {
+            "label": "Media"
+          },
+          "options__3": {
+            "label": "Intensa"
+          },
+          "info": "Definisce anche quanto traspare l'immagine di sfondo."
+        },
+        "background_effect_color": {
+          "label": "Colore dell'animazione di sfondo",
+          "info": "Lascia vuoto per usare il colore di evidenziazione della sezione."
+        },
+        "section_width": {
+          "label": "Larghezza della sezione",
+          "options__1": {
+            "label": "Stretta"
+          },
+          "options__2": {
+            "label": "Predefinita"
+          },
+          "options__3": {
+            "label": "Larghezza intera"
+          }
+        },
+        "background_image": {
+          "label": "Immagine di sfondo",
+          "info": "Usata solo quando l'animazione di sfondo è impostata su Immagine. Si muove lentamente sotto un velo del colore di sfondo della sezione."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Risultato 1"
+        },
+        "options__2": {
+          "label": "Risultato 2"
+        },
+        "options__3": {
+          "label": "Risultato 3"
+        },
+        "options__4": {
+          "label": "Risultato 4"
+        },
+        "options__5": {
+          "label": "Risultato 5"
+        },
+        "options__6": {
+          "label": "Risultato 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Domanda",
+          "settings": {
+            "title": {
+              "label": "Domanda"
+            },
+            "help": {
+              "label": "Testo di aiuto"
+            },
+            "option_1": {
+              "content": "Risposta 1"
+            },
+            "option_2": {
+              "content": "Risposta 2"
+            },
+            "option_3": {
+              "content": "Risposta 3"
+            },
+            "option_4": {
+              "content": "Risposta 4"
+            },
+            "option_label": {
+              "label": "Risposta"
+            },
+            "option_hint": {
+              "label": "Suggerimento risposta"
+            },
+            "option_result": {
+              "label": "Assegna punti a",
+              "info": "Vince il risultato con più voti. In caso di parità vince quello con il numero più basso."
+            }
+          }
+        },
+        "result": {
+          "name": "Risultato",
+          "settings": {
+            "order_note": {
+              "content": "I risultati sono numerati secondo l'ordine qui. Le risposte puntano a questi numeri."
+            },
+            "product_1": {
+              "label": "Prodotto passo 1"
+            },
+            "product_2": {
+              "label": "Prodotto passo 2"
+            },
+            "product_3": {
+              "label": "Prodotto passo 3"
+            },
+            "product_note": {
+              "label": "Perché questo passo"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Quiz pelle"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Sfondo del badge di vendita"
         },
+        "colors_sale_badge_text": {
+          "label": "Testo del badge sconto",
+          "info": "Lasciare vuoto per usare il colore di sfondo dello schema."
+        },
         "colors_sale_price": {
           "label": "Prezzo di vendita"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Varie"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Schemi colore",
+      "settings": {
+        "paragraph": {
+          "content": "Schemi colore Theme OS 2.0. Le sezioni possono attivare l'opzione tramite un'impostazione color_scheme per cambiare palette senza impostazioni colore per sezione. Le impostazioni colore globali esistenti continuano a funzionare; questa è una funzionalità additiva."
+        },
+        "background": {
+          "label": "Sfondo"
+        },
+        "background_gradient": {
+          "label": "Gradiente di sfondo"
+        },
+        "text": {
+          "label": "Testo"
+        },
+        "button": {
+          "label": "Sfondo pulsante pieno"
+        },
+        "button_label": {
+          "label": "Etichetta pulsante pieno"
+        },
+        "secondary_button_label": {
+          "label": "Etichetta pulsante con bordo"
+        },
+        "shadow": {
+          "label": "Ombra"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Spazio tra le sezioni del modello",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Direzione del testo"
+        },
+        "rtl_auto": {
+          "label": "Layout da destra a sinistra per le lingue RTL",
+          "info": "Inverte automaticamente il layout quando la lingua del negozio è arabo, ebraico, persiano, urdu o un'altra scrittura da destra a sinistra. La traduzione text_direction_trigger resta valida e prevale sempre quando indica rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Scatola del prodotto",
       "settings": {
+        "badges": {
+          "content": "Badge"
+        },
+        "badge_outline": {
+          "label": "Contorno dei badge",
+          "info": "Contorna ogni badge con il colore del suo testo."
+        },
+        "badge_shape": {
+          "label": "Forma dei badge",
+          "options__1": {
+            "label": "Predefinita"
+          },
+          "options__2": {
+            "label": "Pillola"
+          }
+        },
+        "badge_rotate": {
+          "label": "Inclinazione dei badge"
+        },
+        "highlights": {
+          "content": "Specifiche prodotto"
+        },
+        "highlights_style": {
+          "label": "Stile delle specifiche",
+          "info": "Le schede scorrono tra le specifiche nascoste al passaggio del mouse.",
+          "options__1": {
+            "label": "Fascia"
+          },
+          "options__2": {
+            "label": "Schede"
+          },
+          "options__3": {
+            "label": "Schede — griglia"
+          },
+          "options__4": {
+            "label": "Pillole"
+          },
+          "options__5": {
+            "label": "Scheda tecnica"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Stile delle specifiche — pagina prodotto",
+          "options__1": {
+            "label": "Come le schede prodotto"
+          }
+        },
         "color_swatches": {
           "content": "Campioni di colore"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Visualizza i dettagli del prodotto in un popup senza uscire dalla pagina corrente.",
           "label": "Abilita la funzione di visualizzazione rapida"
+        },
+        "similar_products": {
+          "content": "Prodotti simili"
+        },
+        "similar_products_mode": {
+          "label": "Pulsante prodotti simili",
+          "info": "Apre consigli generati da Shopify dalle schede prodotto. Personalizza i risultati nell'app Search & Discovery.",
+          "options__1": {
+            "label": "Disattivato"
+          },
+          "options__2": {
+            "label": "Solo prodotti esauriti"
+          },
+          "options__3": {
+            "label": "Tutti i prodotti"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Tutti i contenuti"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Attiva la ricerca vocale",
+          "info": "Aggiunge un pulsante microfono ai campi di ricerca nei browser supportati (Chrome, Edge, Safari). Il riconoscimento vocale è elaborato dal browser del visitatore."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Capitalizzare"
         },
+        "heading_capitalize_tracking": {
+          "label": "Spaziatura lettere in maiuscolo",
+          "info": "Aggiunge una spaziatura ampia ai titoli delle schede prodotto e articolo quando i titoli sono in maiuscolo."
+        },
         "heading_center": {
           "label": "Intestazioni centrali"
         },
         "heading_scale": {
           "label": "Scala della dimensione del carattere",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Automatico ridimensiona gradualmente i titoli in base alla larghezza dello schermo. Classico usa dimensioni fisse per mobile e desktop.",
+          "label": "Comportamento delle dimensioni",
+          "options__1": {
+            "label": "Classico"
+          },
+          "options__2": {
+            "label": "Automatico (fluido)"
+          }
         },
         "price_superscript": {
           "label": "Decimali del prezzo in apice"
@@ -5744,6 +6496,15 @@
           "label": "Dimensioni di navigazione",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Peso della navigazione",
+          "options__1": {
+            "label": "Come il carattere"
+          },
+          "options__2": {
+            "label": "Semi-grassetto"
+          }
+        },
         "type_price_font": {
           "label": "Carattere prezzi",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Intestazioni"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Design vetro",
+      "settings": {
+        "paragraph": {
+          "content": "Applica un effetto vetro smerigliato ispirato al design moderno alle superfici e agli elementi del tuo tema."
+        },
+        "glass_design_enabled": {
+          "label": "Abilita design vetro"
+        },
+        "header__1": {
+          "content": "Personalizzazione"
+        },
+        "glass_blur_intensity": {
+          "label": "Intensità sfocatura"
+        },
+        "glass_bg_opacity": {
+          "label": "Opacità sfondo"
+        },
+        "glass_border_opacity": {
+          "label": "Opacità bordo"
+        },
+        "glass_tint_color": {
+          "label": "Colore tinta"
         }
       }
     }

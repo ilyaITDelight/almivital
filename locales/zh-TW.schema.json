@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "使用自訂色彩"
         }
+      },
+      "edge_to_edge": {
+        "label": "讓整列延伸至螢幕邊緣",
+        "info": "在開啟捲動時生效。標題仍保持頁面邊界。"
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "產品卡"
         },
+        "show_product_highlights": {
+          "info": "從元欄位 `theme.highlights`（清單）顯示關鍵規格。每項格式：`標籤|值` 或 `標籤|值|圖示`。",
+          "label": "顯示產品亮點"
+        },
         "show_quick_buy": {
           "label": "啟用「快速新增」按鈕"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "表格背景"
         },
+        "colors_accents": {
+          "label": "點綴標記",
+          "info": "列表圓點和精選列的邊框。留空則使用突出顏色。"
+        },
+        "colors_badge_background": {
+          "label": "徽章背景",
+          "info": "留空則使用突出顏色。"
+        },
+        "colors_badge_text": {
+          "label": "徽章文字",
+          "info": "留空則使用文字顏色。"
+        },
         "table_style": {
           "header": {
             "content": "表格樣式"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "產品描述"
+            },
+            "highlight": {
+              "label": "醒目顯示此欄",
+              "info": "使用淺色背景與金色邊框讓此產品脫穎而出。其他欄位將使用外框按鈕。"
+            },
+            "highlight_badge": {
+              "label": "醒目顯示徽章文字",
+              "info": "當此欄被醒目顯示時，顯示在產品圖片上"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "如果列表包含的集合比顯示的多，則啟用“查看全部”按鈕"
         }
+      }
+    },
+    "color-fan": {
+      "name": "色彩扇",
+      "settings": {
+        "product": {
+          "label": "商品",
+          "info": "將色彩扇連結到商品，未上傳圖片時使用商品圖片。"
+        },
+        "image": {
+          "label": "圖片",
+          "info": "透明背景的 PNG 效果最佳。"
+        },
+        "image_width": {
+          "label": "圖片尺寸"
+        },
+        "fan_style": {
+          "label": "展開樣式",
+          "options__1": {
+            "label": "綻放"
+          },
+          "options__2": {
+            "label": "摺扇"
+          },
+          "info": "摺扇可完整展示每個色調，適合圖片色調。"
+        },
+        "hover_ring": {
+          "label": "懸停光環",
+          "options__1": {
+            "label": "色調顏色"
+          },
+          "options__2": {
+            "label": "自訂顏色"
+          },
+          "options__3": {
+            "label": "七彩光環"
+          },
+          "options__4": {
+            "label": "關閉"
+          }
+        },
+        "hover_ring_color": {
+          "label": "光環顏色"
+        },
+        "fan_trigger": {
+          "label": "展開方式",
+          "options__1": {
+            "label": "捲動進入視野時"
+          },
+          "options__2": {
+            "label": "懸停時"
+          },
+          "info": "手機上始終在進入視野時展開。"
+        },
+        "shade_corner_radius": {
+          "label": "色調圓角"
+        },
+        "image_corner_radius": {
+          "label": "圖片圓角"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "色調",
+          "settings": {
+            "color": {
+              "label": "顏色"
+            },
+            "image": {
+              "label": "圖片",
+              "info": "替代顏色——材質或款式圖片。"
+            },
+            "label": {
+              "label": "標籤",
+              "info": "懸停時顯示為工具提示。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "色彩扇"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "收藏"
         },
+        "product_list": {
+          "label": "產品",
+          "info": "選擇要展示的產品。設定後將覆蓋上方的收藏。"
+        },
         "products_to_show": {
           "label": "產品數量顯示上限"
         },
@@ -1624,6 +1728,9 @@
           "label": "啟用拖曳捲動（桌面）"
         }
       }
+    },
+    "similar-products": {
+      "name": "相似商品"
     },
     "tabbed-featured-collections": {
       "name": "分頁集合",
@@ -1639,6 +1746,20 @@
               "info": "留空以使用集合標題"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "頁籤樣式",
+          "options__1": {
+            "label": "底線"
+          },
+          "options__2": {
+            "label": "填滿"
+          }
+        },
+        "tab_alignment": {
+          "label": "頁籤對齊"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "縮小大型菜單"
             },
+            "defer_loading": {
+              "label": "延遲載入",
+              "info": "僅在使用者將游標懸停在超級選單上時才載入其內容，可縮短頁面初始載入時間。"
+            },
             "paragraph": {
               "content": "超級菜單僅顯示在桌面上，需要在部分設置中選擇“啟用下拉菜單”選項。"
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "顯示大型菜單圖片"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "多級選單 — 產品櫥窗",
+          "settings": {
+            "paragraph": {
+              "content": "選單項目的子連結將成為分頁。連結到商品系列的分頁會顯示其前幾項產品；其他分頁列出自己的連結。"
+            },
+            "products_per_tab": {
+              "label": "每個分頁的產品數"
+            },
+            "header__promo": {
+              "content": "促銷"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "填滿"
+              }
+            },
+            "view_all_link": {
+              "label": "「查看全部」連結",
+              "info": "留空則使用選單項目的連結。"
+            },
+            "show_in_drawer": {
+              "label": "在行動版選單中顯示",
+              "info": "在行動版選單中為同一選單項目重複顯示此產品櫥窗。"
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "選單圖示徽章",
+          "settings": {
+            "paragraph": {
+              "content": "顯示在每個產品櫥窗多級選單的底部（最多 4 個）。"
+            },
+            "icon": {
+              "label": "圖示",
+              "options__1": {
+                "label": "卡車"
+              },
+              "options__2": {
+                "label": "勾號"
+              },
+              "options__3": {
+                "label": "勾號（替代）"
+              },
+              "options__4": {
+                "label": "圓圈勾號"
+              },
+              "options__5": {
+                "label": "禮品"
+              },
+              "options__6": {
+                "label": "折扣"
+              },
+              "options__7": {
+                "label": "愛心"
+              },
+              "options__8": {
+                "label": "資訊"
+              },
+              "options__9": {
+                "label": "問號"
+              },
+              "options__10": {
+                "label": "房屋"
+              },
+              "options__11": {
+                "label": "尺規"
+              },
+              "options__12": {
+                "label": "寫字板"
+              },
+              "options__13": {
+                "label": "人物"
+              },
+              "options__14": {
+                "label": "手提袋"
+              },
+              "options__15": {
+                "label": "購物車"
+              },
+              "options__16": {
+                "label": "圖片"
+              },
+              "options__17": {
+                "label": "清單"
+              },
+              "options__18": {
+                "label": "地球"
+              },
+              "options__19": {
+                "label": "鋼筆"
+              },
+              "options__20": {
+                "label": "放大鏡"
+              },
+              "options__21": {
+                "label": "網路"
+              },
+              "options__22": {
+                "label": "縮放"
+              },
+              "options__23": {
+                "label": "水滴"
+              },
+              "options__24": {
+                "label": "葉子"
+              },
+              "options__25": {
+                "label": "太陽"
+              },
+              "options__26": {
+                "label": "時鐘"
+              },
+              "options__27": {
+                "label": "盾牌"
+              },
+              "options__28": {
+                "label": "閃光"
+              },
+              "options__29": {
+                "label": "燒瓶"
+              },
+              "options__30": {
+                "label": "回收"
+              },
+              "options__31": {
+                "label": "盒子"
+              },
+              "options__32": {
+                "label": "儀表"
+              },
+              "options__33": {
+                "label": "火焰"
+              },
+              "options__34": {
+                "label": "星星"
+              },
+              "options__35": {
+                "label": "雪花"
+              },
+              "options__36": {
+                "label": "笑臉"
+              },
+              "options__37": {
+                "label": "兔子"
+              },
+              "options__38": {
+                "label": "花朵"
+              },
+              "options__39": {
+                "label": "嫩芽"
+              },
+              "options__40": {
+                "label": "滴管"
+              },
+              "options__41": {
+                "label": "罐子"
+              },
+              "options__42": {
+                "label": "噴霧"
+              },
+              "options__43": {
+                "label": "月亮"
+              },
+              "options__44": {
+                "label": "百分比"
+              },
+              "options__45": {
+                "label": "獎章"
+              },
+              "options__46": {
+                "label": "羽毛"
+              },
+              "options__47": {
+                "label": "溫度計"
+              },
+              "options__48": {
+                "label": "心跳"
+              }
+            },
+            "heading": {
+              "label": "標題"
+            },
+            "text": {
+              "label": "文字"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "語言選擇器",
           "info": "若要新增語言，請前往 [language settings](/admin/settings/languages)。"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "選單抽屜推廣",
+            "info": "顯示在選單抽屜底部的可選圖片或文字卡片。"
+          },
+          "image": {
+            "label": "圖片"
+          },
+          "heading": {
+            "label": "標題"
+          },
+          "link": {
+            "label": "連結"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "側邊欄",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "手機影像標誌"
         },
+        "search_style": {
+          "label": "桌面版搜尋樣式",
+          "info": "「搜尋列」會在桌面版頁首中永遠顯示搜尋欄位。「中心，菜單拆分」標誌位置沒有空間，將繼續顯示圖示。",
+          "options__1": {
+            "label": "圖示"
+          },
+          "options__2": {
+            "label": "搜尋列"
+          }
+        },
         "show_line_separator": {
           "label": "顯示分隔線"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "首層菜單項目大寫"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "鈴鐺"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "描述"
         },
+        "highlights": {
+          "name": "產品亮點",
+          "settings": {
+            "info": {
+              "content": "從元欄位 `theme.highlights`（清單）顯示關鍵規格。每項格式：`標籤|值` 或 `標籤|值|圖示`。"
+            }
+          }
+        },
         "image": {
           "name": "圖片",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "顯示數量選擇器"
+            },
+            "follow_buy_buttons": {
+              "label": "購買按鈕不在畫面內時顯示",
+              "info": "從頁面載入起即顯示該列，直到購買按鈕進入畫面，而不僅是捲動經過之後。"
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify將每個變體限制為一種媒體。要將多個媒體分配給產品選項，請使用[ALT方法](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "選擇變體後隱藏其他變體的媒體"
+        },
+        "show_gallery_badges": {
+          "label": "在圖庫上顯示徽章",
+          "info": "商品標籤及促銷、售罄徽章，疊加在第一張圖片上。"
         },
         "image_ratio": {
           "info": "要求桌面佈局為“滑塊”。",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "地圖縮放"
+        },
+        "map_language": {
+          "label": "地圖語言",
+          "info": "地圖標籤、路線和控制項的語言。「自動」使用商店目前的語言。",
+          "options__auto": {
+            "label": "自動（商店語言）"
+          },
+          "options__browser": {
+            "label": "瀏覽器預設"
+          }
+        },
+        "map_region": {
+          "label": "地圖區域",
+          "info": "選填。用於地理編碼偏向的區域（如 TW、US、JP）。影響搜尋結果和地圖行為。",
+          "placeholder": "如 TW"
         },
         "mobile_text_box_position": {
           "label": "移動佈局",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "標題"
         },
+        "inline_banner": {
+          "name": "內嵌橫幅",
+          "settings": {
+            "border_radius": {
+              "label": "邊框圓角"
+            },
+            "image_height": {
+              "label": "圖片高度"
+            }
+          }
+        },
         "subheading": {
           "name": "副標題"
         },
@@ -4480,6 +4865,9 @@
         "name": "富文本"
       },
       "settings": {
+        "content_max_width": {
+          "label": "文字寬度"
+        },
         "horizontal_content": {
           "label": "以水平方向顯示內容"
         }
@@ -5190,6 +5578,249 @@
           "info": "在頂部顯示一個細條，表示頁面滾動的百分比。"
         }
       }
+    },
+    "video-collection": {
+      "name": "可購物影片",
+      "settings": {
+        "columns_desktop": {
+          "label": "桌面版的欄數"
+        },
+        "card_ratio": {
+          "label": "卡片比例",
+          "options__1": {
+            "label": "直式 (9:16)"
+          },
+          "options__2": {
+            "label": "直向 (3:4)"
+          },
+          "options__3": {
+            "label": "正方形 (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "圖片間距"
+        },
+        "autoplay": {
+          "label": "進入視線範圍時自動播放",
+          "info": "靜音循環播放。影片只在捲動至可見時載入，若訪客選擇減少動態效果則不播放。"
+        },
+        "show_title": {
+          "label": "顯示標題"
+        },
+        "show_price": {
+          "label": "顯示價格"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "影片卡片",
+          "settings": {
+            "video": {
+              "label": "影片",
+              "info": "直式短片效果最佳。"
+            },
+            "cover_image": {
+              "label": "封面圖片",
+              "info": "播放前顯示。預設使用影片本身的預覽圖。"
+            },
+            "product": {
+              "label": "產品",
+              "info": "提供標題、價格與連結。"
+            },
+            "title": {
+              "label": "標題",
+              "info": "覆寫產品標題。"
+            },
+            "label": {
+              "label": "標籤",
+              "info": "顯示在影片上的簡短標籤，例如「教學」或「使用前後對比」。"
+            },
+            "link": {
+              "label": "連結",
+              "info": "覆寫產品連結。"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "可購物影片"
+      }
+    },
+    "skin-quiz": {
+      "name": "肌膚測驗",
+      "settings": {
+        "show_progress": {
+          "label": "顯示進度列"
+        },
+        "intro_text": {
+          "label": "開場文字"
+        },
+        "intro_button_label": {
+          "label": "開始按鈕文字"
+        },
+        "start_attention": {
+          "label": "開始按鈕注意力提示",
+          "info": "引導視線看向開始按鈕。對偏好減少動態效果的訪客自動關閉。",
+          "options__1": {
+            "label": "無"
+          },
+          "options__2": {
+            "label": "手繪箭頭"
+          },
+          "options__3": {
+            "label": "脈衝光暈"
+          }
+        },
+        "start_attention_color": {
+          "label": "提示顏色",
+          "info": "留空則使用該區塊的突出顏色。"
+        },
+        "background_effect": {
+          "label": "背景動效",
+          "info": "僅作裝飾。顏色沿用本區塊的配色；訪客選擇減少動態效果時自動關閉。",
+          "options__1": {
+            "label": "無"
+          },
+          "options__2": {
+            "label": "極光"
+          },
+          "options__3": {
+            "label": "網格"
+          },
+          "options__4": {
+            "label": "光環"
+          },
+          "options__5": {
+            "label": "流光"
+          },
+          "options__6": {
+            "label": "流體"
+          },
+          "options__7": {
+            "label": "絲綢"
+          },
+          "options__8": {
+            "label": "網格"
+          },
+          "options__9": {
+            "label": "波浪"
+          },
+          "options__10": {
+            "label": "圖片"
+          }
+        },
+        "background_intensity": {
+          "label": "背景強度",
+          "options__1": {
+            "label": "輕微"
+          },
+          "options__2": {
+            "label": "適中"
+          },
+          "options__3": {
+            "label": "強烈"
+          },
+          "info": "同時決定背景圖片透出的程度。"
+        },
+        "background_effect_color": {
+          "label": "背景動效顏色",
+          "info": "留空則使用該區塊的突出顏色。"
+        },
+        "section_width": {
+          "label": "區塊寬度",
+          "options__1": {
+            "label": "窄"
+          },
+          "options__2": {
+            "label": "預設"
+          },
+          "options__3": {
+            "label": "全寬"
+          }
+        },
+        "background_image": {
+          "label": "背景圖片",
+          "info": "僅在背景動效設為「圖片」時使用。圖片會緩慢移動，並覆蓋一層區塊背景色的遮罩。"
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "結果 1"
+        },
+        "options__2": {
+          "label": "結果 2"
+        },
+        "options__3": {
+          "label": "結果 3"
+        },
+        "options__4": {
+          "label": "結果 4"
+        },
+        "options__5": {
+          "label": "結果 5"
+        },
+        "options__6": {
+          "label": "結果 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "問題",
+          "settings": {
+            "title": {
+              "label": "問題"
+            },
+            "help": {
+              "label": "輔助說明"
+            },
+            "option_1": {
+              "content": "答案 1"
+            },
+            "option_2": {
+              "content": "答案 2"
+            },
+            "option_3": {
+              "content": "答案 3"
+            },
+            "option_4": {
+              "content": "答案 4"
+            },
+            "option_label": {
+              "label": "答案"
+            },
+            "option_hint": {
+              "label": "答案提示"
+            },
+            "option_result": {
+              "label": "計分給",
+              "info": "得票最多的結果勝出。票數相同時，取編號最小的結果。"
+            }
+          }
+        },
+        "result": {
+          "name": "結果",
+          "settings": {
+            "order_note": {
+              "content": "結果依此處順序編號，問題的答案指向這些編號。"
+            },
+            "product_1": {
+              "label": "第 1 步產品"
+            },
+            "product_2": {
+              "label": "第 2 步產品"
+            },
+            "product_3": {
+              "label": "第 3 步產品"
+            },
+            "product_note": {
+              "label": "這一步的理由"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "肌膚測驗"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "促銷徽章背景"
         },
+        "colors_sale_badge_text": {
+          "label": "促銷徽章文字",
+          "info": "留空則使用配色方案的背景色。"
+        },
         "colors_sale_price": {
           "label": "銷售價格"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "雜項"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "色彩方案",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 色彩方案。各區段可透過 color_scheme 設定啟用,無需逐區段設定即可切換色盤。現有全域顏色設定仍可使用;這是附加功能。"
+        },
+        "background": {
+          "label": "背景"
+        },
+        "background_gradient": {
+          "label": "背景漸層"
+        },
+        "text": {
+          "label": "文字"
+        },
+        "button": {
+          "label": "實心按鈕背景"
+        },
+        "button_label": {
+          "label": "實心按鈕標籤"
+        },
+        "secondary_button_label": {
+          "label": "外框按鈕標籤"
+        },
+        "shadow": {
+          "label": "陰影"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "範本區段間的間距",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "文字方向"
+        },
+        "rtl_auto": {
+          "label": "RTL 語言的從右到左版面配置",
+          "info": "當商店語言為阿拉伯語、希伯來語、波斯語、烏爾都語或其他從右到左書寫的文字時，自動翻轉版面配置。text_direction_trigger 翻譯仍然有效，當其為 rtl 時一律優先。"
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "產品標籤",
       "settings": {
+        "badges": {
+          "content": "徽章"
+        },
+        "badge_outline": {
+          "label": "徽章描邊",
+          "info": "用文字顏色為每個徽章描邊。"
+        },
+        "badge_shape": {
+          "label": "徽章形狀",
+          "options__1": {
+            "label": "主題預設"
+          },
+          "options__2": {
+            "label": "膠囊形"
+          }
+        },
+        "badge_rotate": {
+          "label": "徽章傾斜"
+        },
+        "highlights": {
+          "content": "產品規格"
+        },
+        "highlights_style": {
+          "label": "規格樣式",
+          "info": "懸停商品卡時，卡片樣式會自動滑過被遮擋的規格。",
+          "options__1": {
+            "label": "條帶"
+          },
+          "options__2": {
+            "label": "卡片"
+          },
+          "options__3": {
+            "label": "卡片 — 網格"
+          },
+          "options__4": {
+            "label": "膠囊"
+          },
+          "options__5": {
+            "label": "規格清單"
+          }
+        },
+        "highlights_style_product": {
+          "label": "規格樣式 — 商品頁",
+          "options__1": {
+            "label": "跟隨商品卡片"
+          }
+        },
         "color_swatches": {
           "content": "色板"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "無需離開當前頁面即可在彈出窗口中查看產品詳細信息。",
           "label": "啟用快速查看功能"
+        },
+        "similar_products": {
+          "content": "相似商品"
+        },
+        "similar_products_mode": {
+          "label": "相似商品按鈕",
+          "info": "從商品卡開啟由 Shopify 產生的推薦。可在 Search & Discovery 應用程式中自訂結果。",
+          "options__1": {
+            "label": "關閉"
+          },
+          "options__2": {
+            "label": "僅售完商品"
+          },
+          "options__3": {
+            "label": "所有商品"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "所有內容"
           }
+        },
+        "voice_search_enabled": {
+          "label": "啟用語音搜尋",
+          "info": "在受支援的瀏覽器（Chrome、Edge、Safari）的搜尋欄位中新增麥克風按鈕。語音辨識由訪客的瀏覽器處理。"
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "大寫"
         },
+        "heading_capitalize_tracking": {
+          "label": "大寫時的字距",
+          "info": "標題設為大寫時，為產品卡和文章卡標題添加較寬字距。"
+        },
         "heading_center": {
           "label": "中心標題"
         },
         "heading_scale": {
           "label": "字體尺寸比例",
           "unit": "百分比符號比符號"
+        },
+        "heading_size_mode": {
+          "info": "自動會隨螢幕寬度平滑縮放標題字級。經典在行動裝置與桌面使用固定字級。",
+          "label": "尺寸模式",
+          "options__1": {
+            "label": "經典"
+          },
+          "options__2": {
+            "label": "自動（流式）"
+          }
         },
         "price_superscript": {
           "label": "價格小數點後位數上標"
@@ -5744,6 +6496,15 @@
           "label": "導航尺寸",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "導航字重",
+          "options__1": {
+            "label": "跟隨字體"
+          },
+          "options__2": {
+            "label": "半粗體"
+          }
+        },
         "type_price_font": {
           "label": "價格字型",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "標題"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "玻璃設計",
+      "settings": {
+        "paragraph": {
+          "content": "將受現代UI設計啟發的磨砂玻璃效果應用於主題的表面和元素。"
+        },
+        "glass_design_enabled": {
+          "label": "啟用玻璃設計"
+        },
+        "header__1": {
+          "content": "自訂"
+        },
+        "glass_blur_intensity": {
+          "label": "模糊強度"
+        },
+        "glass_bg_opacity": {
+          "label": "背景不透明度"
+        },
+        "glass_border_opacity": {
+          "label": "邊框不透明度"
+        },
+        "glass_tint_color": {
+          "label": "色調顏色"
         }
       }
     }

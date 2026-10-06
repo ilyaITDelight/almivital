@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Använd anpassade färger"
         }
+      },
+      "edge_to_edge": {
+        "label": "Sträck raden till skärmkanterna",
+        "info": "Gäller när rullning är på. Rubriken behåller sidmarginalen."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Produktkort"
         },
+        "show_product_highlights": {
+          "info": "Visa viktiga specifikationer från metafältet `theme.highlights` (lista). Format för varje post: `Etikett|Värde` eller `Etikett|Värde|ikon`.",
+          "label": "Visa produkthöjdpunkter"
+        },
         "show_quick_buy": {
           "label": "Aktivera knapp för snabb tilläggning"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Tabellbakgrund"
         },
+        "colors_accents": {
+          "label": "Accentmarkeringar",
+          "info": "Punkter och den framhävda kolumnens kontur. Lämna tomt för att använda framhävningsfärgen."
+        },
+        "colors_badge_background": {
+          "label": "Märkesbakgrund",
+          "info": "Lämna tomt för att använda framhävningsfärgen."
+        },
+        "colors_badge_text": {
+          "label": "Märkestext",
+          "info": "Lämna tomt för att använda textfärgen."
+        },
         "table_style": {
           "header": {
             "content": "Tabellstil"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Produktbeskrivning"
+            },
+            "highlight": {
+              "label": "Framhäv den här kolumnen",
+              "info": "Tonad bakgrund och guldkant som gör att produkten sticker ut. Övriga kolumner får konturknappar."
+            },
+            "highlight_badge": {
+              "label": "Text på framhävningsmärke",
+              "info": "Visas på produktbilden när kolumnen är framhävd"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Aktivera knappen \"Visa alla\" om listan innehåller fler samlingar än vad som visas"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Färgsolfjäder",
+      "settings": {
+        "product": {
+          "label": "Produkt",
+          "info": "Kopplar solfjädern till produkten och använder dess bild när ingen laddats upp."
+        },
+        "image": {
+          "label": "Bild",
+          "info": "En transparent PNG passar bäst över solfjädern."
+        },
+        "image_width": {
+          "label": "Bildstorlek"
+        },
+        "fan_style": {
+          "label": "Solfjäderstil",
+          "options__1": {
+            "label": "Blomning"
+          },
+          "options__2": {
+            "label": "Handsolfjäder"
+          },
+          "info": "Handsolfjädern visar varje nyans helt – passar bildnyanser."
+        },
+        "hover_ring": {
+          "label": "Ring vid hovring",
+          "options__1": {
+            "label": "Nyansens färg"
+          },
+          "options__2": {
+            "label": "Anpassad färg"
+          },
+          "options__3": {
+            "label": "Regnbågshalo"
+          },
+          "options__4": {
+            "label": "Av"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Ringfärg"
+        },
+        "fan_trigger": {
+          "label": "Utfällning",
+          "options__1": {
+            "label": "När den rullas in i vyn"
+          },
+          "options__2": {
+            "label": "Vid hovring"
+          },
+          "info": "På mobiler fälls den alltid ut i vyn."
+        },
+        "shade_corner_radius": {
+          "label": "Hörnradie för nyanser"
+        },
+        "image_corner_radius": {
+          "label": "Hörnradie för bild"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Nyans",
+          "settings": {
+            "color": {
+              "label": "Färg"
+            },
+            "image": {
+              "label": "Bild",
+              "info": "Ersätter färgen – en textur eller variantbild."
+            },
+            "label": {
+              "label": "Etikett",
+              "info": "Visas som verktygstips när du hovrar."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Färgsolfjäder"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Samling"
         },
+        "product_list": {
+          "label": "Produkter",
+          "info": "Välj produkter att visa. När de anges åsidosätter de samlingen ovan."
+        },
         "products_to_show": {
           "label": "Maximalt antal produkter att visa"
         },
@@ -1624,6 +1728,9 @@
           "label": "Aktivera dra för att rulla (desktop)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Liknande produkter"
     },
     "tabbed-featured-collections": {
       "name": "Fliksamlingar",
@@ -1639,6 +1746,20 @@
               "info": "Lämna tom för att använda samlingens titel"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Flikstil",
+          "options__1": {
+            "label": "Understrykning"
+          },
+          "options__2": {
+            "label": "Fylld"
+          }
+        },
+        "tab_alignment": {
+          "label": "Flikjustering"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Gör megamenyn smal"
             },
+            "defer_loading": {
+              "label": "Fördröjd inläsning",
+              "info": "Läser in innehållet i megamenyn först när användaren håller muspekaren över. Minskar sidans första inläsningstid."
+            },
             "paragraph": {
               "content": "Megamenyn visas endast på skrivbordet och kräver alternativet \"Aktivera rullgardinsmeny\" i avsnittsinställningarna."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Visa megamenybilder"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Megameny — produktskyltfönster",
+          "settings": {
+            "paragraph": {
+              "content": "Menyalternativets underlänkar blir flikar. Flikar som länkar till en kollektion visar dess första produkter; övriga listar sina egna länkar."
+            },
+            "products_per_tab": {
+              "label": "Produkter per flik"
+            },
+            "header__promo": {
+              "content": "Kampanj"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Fyll"
+              }
+            },
+            "view_all_link": {
+              "label": "Länk för ”Visa alla”",
+              "info": "Lämna tomt för att använda menyalternativets länk."
+            },
+            "show_in_drawer": {
+              "label": "Visa i mobilmenyn",
+              "info": "Upprepar detta skyltfönster i mobilmenyn för samma menyobjekt."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Ikonmärke i meny",
+          "settings": {
+            "paragraph": {
+              "content": "Visas längst ned i varje produktskyltfönster-megameny (upp till 4)."
+            },
+            "icon": {
+              "label": "Ikon",
+              "options__1": {
+                "label": "Lastbil"
+              },
+              "options__2": {
+                "label": "Bock"
+              },
+              "options__3": {
+                "label": "Bock (alternativ)"
+              },
+              "options__4": {
+                "label": "Bock i cirkel"
+              },
+              "options__5": {
+                "label": "Present"
+              },
+              "options__6": {
+                "label": "Rabatt"
+              },
+              "options__7": {
+                "label": "Hjärta"
+              },
+              "options__8": {
+                "label": "Info"
+              },
+              "options__9": {
+                "label": "Frågetecken"
+              },
+              "options__10": {
+                "label": "Hus"
+              },
+              "options__11": {
+                "label": "Linjal"
+              },
+              "options__12": {
+                "label": "Skrivplatta"
+              },
+              "options__13": {
+                "label": "Person"
+              },
+              "options__14": {
+                "label": "Väska"
+              },
+              "options__15": {
+                "label": "Varukorg"
+              },
+              "options__16": {
+                "label": "Bilder"
+              },
+              "options__17": {
+                "label": "Lista"
+              },
+              "options__18": {
+                "label": "Glob"
+              },
+              "options__19": {
+                "label": "Penna"
+              },
+              "options__20": {
+                "label": "Förstoringsglas"
+              },
+              "options__21": {
+                "label": "Nätverk"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Droppe"
+              },
+              "options__24": {
+                "label": "Löv"
+              },
+              "options__25": {
+                "label": "Sol"
+              },
+              "options__26": {
+                "label": "Klocka"
+              },
+              "options__27": {
+                "label": "Sköld"
+              },
+              "options__28": {
+                "label": "Glitter"
+              },
+              "options__29": {
+                "label": "Kolv"
+              },
+              "options__30": {
+                "label": "Återvinning"
+              },
+              "options__31": {
+                "label": "Låda"
+              },
+              "options__32": {
+                "label": "Mätare"
+              },
+              "options__33": {
+                "label": "Låga"
+              },
+              "options__34": {
+                "label": "Stjärna"
+              },
+              "options__35": {
+                "label": "Snöflinga"
+              },
+              "options__36": {
+                "label": "Leende"
+              },
+              "options__37": {
+                "label": "Kanin"
+              },
+              "options__38": {
+                "label": "Blomma"
+              },
+              "options__39": {
+                "label": "Grodd"
+              },
+              "options__40": {
+                "label": "Pipett"
+              },
+              "options__41": {
+                "label": "Burk"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Måne"
+              },
+              "options__44": {
+                "label": "Procent"
+              },
+              "options__45": {
+                "label": "Utmärkelse"
+              },
+              "options__46": {
+                "label": "Fjäder"
+              },
+              "options__47": {
+                "label": "Termometer"
+              },
+              "options__48": {
+                "label": "Hjärtslag"
+              }
+            },
+            "heading": {
+              "label": "Rubrik"
+            },
+            "text": {
+              "label": "Text"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Språkväljare",
           "info": "För att lägga till ett språk, gå till dina [språkinställningar.](/admin/settings/languages)"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Menykampanj",
+            "info": "Ett valfritt bild- eller textkort som visas längst ner i menylådan."
+          },
+          "image": {
+            "label": "Bild"
+          },
+          "heading": {
+            "label": "Rubrik"
+          },
+          "link": {
+            "label": "Länk"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Sidopanel",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Logotyp på mobiler"
         },
+        "search_style": {
+          "label": "Sökstil på dator",
+          "info": "\"Sökfält\" visar ett alltid synligt sökfält i sidhuvudet på dator. Logotypplaceringen \"Center, meny delad\" har inte plats för det och behåller ikonen.",
+          "options__1": {
+            "label": "Ikon"
+          },
+          "options__2": {
+            "label": "Sökfält"
+          }
+        },
         "show_line_separator": {
           "label": "Visa separationsrad"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Menyelement på första nivån med stora bokstäver"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Klocka"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Beskrivning"
         },
+        "highlights": {
+          "name": "Produkthöjdpunkter",
+          "settings": {
+            "info": {
+              "content": "Visa viktiga specifikationer från metafältet `theme.highlights` (lista). Format för varje post: `Etikett|Värde` eller `Etikett|Värde|ikon`."
+            }
+          }
+        },
         "image": {
           "name": "Bild",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Visa kvantitetsväljare"
+            },
+            "follow_buy_buttons": {
+              "label": "Visa när köpknapparna är utanför skärmen",
+              "info": "Fältet visas från att sidan laddas tills köpknapparna syns, inte bara efter att du rullat förbi dem."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify begränsar varje variant till ett medium. För att tilldela flera medier till ett produktalternativ, använd [ALT-metoden](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Dölj andra varianters media efter att ha valt en variant"
+        },
+        "show_gallery_badges": {
+          "label": "Visa märken på galleriet",
+          "info": "Produktens etiketter plus rea- och slutsåld-märken, över den första bilden."
         },
         "image_ratio": {
           "info": "Kräver skrivbordslayout för att vara \"Skjutreglage\".",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Kart zoom"
+        },
+        "map_language": {
+          "label": "Kartspråk",
+          "info": "Språk för kartetiketter, vägbeskrivningar och kontroller. 'Auto' använder butikens nuvarande språk.",
+          "options__auto": {
+            "label": "Auto (butiksspråk)"
+          },
+          "options__browser": {
+            "label": "Webbläsarens standard"
+          }
+        },
+        "map_region": {
+          "label": "Kartregion",
+          "info": "Valfritt. Region för geokodningsbias (t.ex. SE, US, JP). Påverkar sökresultat och kartbeteende.",
+          "placeholder": "t.ex. SE"
         },
         "mobile_text_box_position": {
           "label": "Mobil layout",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Rubrik"
         },
+        "inline_banner": {
+          "name": "Inline-banner",
+          "settings": {
+            "border_radius": {
+              "label": "Kantradie"
+            },
+            "image_height": {
+              "label": "Bildhöjd"
+            }
+          }
+        },
         "subheading": {
           "name": "Underrubrik"
         },
@@ -4480,6 +4865,9 @@
         "name": "Rik text"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Textbredd"
+        },
         "horizontal_content": {
           "label": "Gör innehållet horisontellt"
         }
@@ -5190,6 +5578,249 @@
           "info": "Visar en tunn stapel högst upp som visar hur stor andel av sidan som rullats."
         }
       }
+    },
+    "video-collection": {
+      "name": "Shoppingbar video",
+      "settings": {
+        "columns_desktop": {
+          "label": "Antalet kolumner på skrivbordet"
+        },
+        "card_ratio": {
+          "label": "Kortförhållande",
+          "options__1": {
+            "label": "Stående (9:16)"
+          },
+          "options__2": {
+            "label": "Porträtt (3:4)"
+          },
+          "options__3": {
+            "label": "Kvadrat (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Mellanrum mellan bilderna"
+        },
+        "autoplay": {
+          "label": "Spela upp automatiskt när synlig",
+          "info": "Ljudlösa loopar. Klipp laddas bara när de rullas in i vy, och aldrig vid reducerad rörelse."
+        },
+        "show_title": {
+          "label": "Visa titel"
+        },
+        "show_price": {
+          "label": "Visa pris"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Videokort",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "Stående klipp fungerar bäst."
+            },
+            "cover_image": {
+              "label": "Omslagsbild",
+              "info": "Visas före uppspelning. Standard är videons egen förhandsbild."
+            },
+            "product": {
+              "label": "Produkt",
+              "info": "Ger titel, pris och länk."
+            },
+            "title": {
+              "label": "Titel",
+              "info": "Ersätter produkttiteln."
+            },
+            "label": {
+              "label": "Etikett",
+              "info": "Kort etikett över klippet, till exempel Guide eller Före och efter."
+            },
+            "link": {
+              "label": "Länk",
+              "info": "Ersätter produktlänken."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Shoppingbar video"
+      }
+    },
+    "skin-quiz": {
+      "name": "Hudquiz",
+      "settings": {
+        "show_progress": {
+          "label": "Visa förloppsindikator"
+        },
+        "intro_text": {
+          "label": "Introduktionstext"
+        },
+        "intro_button_label": {
+          "label": "Etikett för startknapp"
+        },
+        "start_attention": {
+          "label": "Uppmärksamhetseffekt för startknappen",
+          "info": "Leder blicken mot startknappen. Stängs av för besökare som föredrar reducerad rörelse.",
+          "options__1": {
+            "label": "Ingen"
+          },
+          "options__2": {
+            "label": "Skissad pil"
+          },
+          "options__3": {
+            "label": "Pulserande glöd"
+          }
+        },
+        "start_attention_color": {
+          "label": "Färg på uppmärksamhetseffekten",
+          "info": "Lämna tomt för att använda sektionens framhävningsfärg."
+        },
+        "background_effect": {
+          "label": "Bakgrundsanimation",
+          "info": "Endast dekorativ. Färgerna följer sektionens palett; stängs av vid reducerad rörelse.",
+          "options__1": {
+            "label": "Ingen"
+          },
+          "options__2": {
+            "label": "Norrsken"
+          },
+          "options__3": {
+            "label": "Mesh"
+          },
+          "options__4": {
+            "label": "Ringar"
+          },
+          "options__5": {
+            "label": "Skimmer"
+          },
+          "options__6": {
+            "label": "Flytande"
+          },
+          "options__7": {
+            "label": "Siden"
+          },
+          "options__8": {
+            "label": "Rutnät"
+          },
+          "options__9": {
+            "label": "Vågor"
+          },
+          "options__10": {
+            "label": "Bild"
+          }
+        },
+        "background_intensity": {
+          "label": "Bakgrundens intensitet",
+          "options__1": {
+            "label": "Diskret"
+          },
+          "options__2": {
+            "label": "Mellan"
+          },
+          "options__3": {
+            "label": "Stark"
+          },
+          "info": "Avgör även hur mycket bakgrundsbilden syns."
+        },
+        "background_effect_color": {
+          "label": "Färg på bakgrundsanimation",
+          "info": "Lämna tomt för att använda sektionens framhävningsfärg."
+        },
+        "section_width": {
+          "label": "Sektionens bredd",
+          "options__1": {
+            "label": "Smal"
+          },
+          "options__2": {
+            "label": "Standard"
+          },
+          "options__3": {
+            "label": "Full bredd"
+          }
+        },
+        "background_image": {
+          "label": "Bakgrundsbild",
+          "info": "Används endast när bakgrundsanimationen är satt till Bild. Den rör sig långsamt under en slöja i sektionens bakgrundsfärg."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Resultat 1"
+        },
+        "options__2": {
+          "label": "Resultat 2"
+        },
+        "options__3": {
+          "label": "Resultat 3"
+        },
+        "options__4": {
+          "label": "Resultat 4"
+        },
+        "options__5": {
+          "label": "Resultat 5"
+        },
+        "options__6": {
+          "label": "Resultat 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Fråga",
+          "settings": {
+            "title": {
+              "label": "Fråga"
+            },
+            "help": {
+              "label": "Hjälptext"
+            },
+            "option_1": {
+              "content": "Svar 1"
+            },
+            "option_2": {
+              "content": "Svar 2"
+            },
+            "option_3": {
+              "content": "Svar 3"
+            },
+            "option_4": {
+              "content": "Svar 4"
+            },
+            "option_label": {
+              "label": "Svar"
+            },
+            "option_hint": {
+              "label": "Svarsledtråd"
+            },
+            "option_result": {
+              "label": "Ger poäng till",
+              "info": "Resultatet med flest röster vinner. Vid lika vinner det med lägst nummer."
+            }
+          }
+        },
+        "result": {
+          "name": "Resultat",
+          "settings": {
+            "order_note": {
+              "content": "Resultat numreras efter ordningen här. Svar pekar på dessa nummer."
+            },
+            "product_1": {
+              "label": "Produkt steg 1"
+            },
+            "product_2": {
+              "label": "Produkt steg 2"
+            },
+            "product_3": {
+              "label": "Produkt steg 3"
+            },
+            "product_note": {
+              "label": "Varför detta steg"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Hudquiz"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Försäljningsmärkets bakgrund"
         },
+        "colors_sale_badge_text": {
+          "label": "Text på reamärke",
+          "info": "Lämna tomt för att använda färgschemats bakgrundsfärg."
+        },
         "colors_sale_price": {
           "label": "Försäljningspris"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Diverse"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Färgscheman",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 färgscheman. Sektioner kan välja in via en color_scheme-inställning för att byta palett utan färginställningar per sektion. Befintliga globala färginställningar fungerar fortfarande; detta är ett tillägg."
+        },
+        "background": {
+          "label": "Bakgrund"
+        },
+        "background_gradient": {
+          "label": "Bakgrundsgradient"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button": {
+          "label": "Bakgrund för solid knapp"
+        },
+        "button_label": {
+          "label": "Etikett för solid knapp"
+        },
+        "secondary_button_label": {
+          "label": "Etikett för konturknapp"
+        },
+        "shadow": {
+          "label": "Skugga"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Mellanrum mellan mallavsnitt",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Textriktning"
+        },
+        "rtl_auto": {
+          "label": "Höger-till-vänster-layout för RTL-språk",
+          "info": "Speglar layouten automatiskt när butikens språk är arabiska, hebreiska, persiska, urdu eller ett annat språk som skrivs från höger till vänster. Översättningen text_direction_trigger gäller fortfarande och vinner alltid när den anger rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Produktlådor",
       "settings": {
+        "badges": {
+          "content": "Märken"
+        },
+        "badge_outline": {
+          "label": "Märkeskontur",
+          "info": "Ger varje märke en kontur i textfärgen."
+        },
+        "badge_shape": {
+          "label": "Märkesform",
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Piller"
+          }
+        },
+        "badge_rotate": {
+          "label": "Märkeslutning"
+        },
+        "highlights": {
+          "content": "Produktspecifikationer"
+        },
+        "highlights_style": {
+          "label": "Specifikationsstil",
+          "info": "Brickor glider genom dolda specifikationer när kortet hovras.",
+          "options__1": {
+            "label": "Remsa"
+          },
+          "options__2": {
+            "label": "Brickor"
+          },
+          "options__3": {
+            "label": "Brickor — rutnät"
+          },
+          "options__4": {
+            "label": "Piller"
+          },
+          "options__5": {
+            "label": "Specifikationsblad"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Specifikationsstil — produktsida",
+          "options__1": {
+            "label": "Följ produktkorten"
+          }
+        },
         "color_swatches": {
           "content": "Färgprover"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Visa produktinformation i en popup utan att lämna den aktuella sidan.",
           "label": "Aktivera snabbvisning funktionen"
+        },
+        "similar_products": {
+          "content": "Liknande produkter"
+        },
+        "similar_products_mode": {
+          "label": "Knapp för liknande produkter",
+          "info": "Öppnar Shopify-genererade rekommendationer från produktkort. Anpassa resultaten i appen Search & Discovery.",
+          "options__1": {
+            "label": "Av"
+          },
+          "options__2": {
+            "label": "Endast slutsålda produkter"
+          },
+          "options__3": {
+            "label": "Alla produkter"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Allt innehåll"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Aktivera röstsökning",
+          "info": "Lägger till en mikrofonknapp i sökfälten i webbläsare som stöds (Chrome, Edge, Safari). Taligenkänning bearbetas av besökarens webbläsare."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Kapitalisera"
         },
+        "heading_capitalize_tracking": {
+          "label": "Bokstavsavstånd vid versaler",
+          "info": "Ger brett bokstavsavstånd till produkt- och artikelkortstitlar när rubriker skrivs med versaler."
+        },
         "heading_center": {
           "label": "Mittrubriker"
         },
         "heading_scale": {
           "label": "Skala för teckenstorlek",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Automatisk skalar rubrikstorlekar mjukt efter skärmens bredd. Klassisk använder fasta storlekar för mobil och dator.",
+          "label": "Storleksbeteende",
+          "options__1": {
+            "label": "Klassisk"
+          },
+          "options__2": {
+            "label": "Automatisk (flytande)"
+          }
         },
         "price_superscript": {
           "label": "Högerskrivet pris decimaltal"
@@ -5744,6 +6496,15 @@
           "label": "Navigation storlek",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Navigeringens vikt",
+          "options__1": {
+            "label": "Följ typsnittet"
+          },
+          "options__2": {
+            "label": "Halvfet"
+          }
+        },
         "type_price_font": {
           "label": "Priser typsnitt",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Rubriker"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Glasdesign",
+      "settings": {
+        "paragraph": {
+          "content": "Applicera en frostad glaseffekt inspirerad av modern UI-design på ditt temas ytor och element."
+        },
+        "glass_design_enabled": {
+          "label": "Aktivera glasdesign"
+        },
+        "header__1": {
+          "content": "Anpassning"
+        },
+        "glass_blur_intensity": {
+          "label": "Oskärpa-intensitet"
+        },
+        "glass_bg_opacity": {
+          "label": "Bakgrundsopacitet"
+        },
+        "glass_border_opacity": {
+          "label": "Kantopacitet"
+        },
+        "glass_tint_color": {
+          "label": "Tonfärg"
         }
       }
     }

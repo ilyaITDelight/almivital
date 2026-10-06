@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Utilisez des couleurs personnalisées"
         }
+      },
+      "edge_to_edge": {
+        "label": "Étendre la rangée jusqu'aux bords de l'écran",
+        "info": "S'applique lorsque le défilement est activé. Le titre conserve la marge de la page."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Fiche produit"
         },
+        "show_product_highlights": {
+          "info": "Affichez les spécifications clés depuis le métachamp `theme.highlights` (liste). Format de chaque élément : `Étiquette|Valeur` ou `Étiquette|Valeur|icône`.",
+          "label": "Afficher les caractéristiques du produit"
+        },
         "show_quick_buy": {
           "label": "Activer le bouton d'ajout rapide"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Arrière-plan du tableau"
         },
+        "colors_accents": {
+          "label": "Marques d'accent",
+          "info": "Puces et contour de la colonne mise en avant. Laissez vide pour utiliser la couleur de mise en évidence."
+        },
+        "colors_badge_background": {
+          "label": "Fond du badge",
+          "info": "Laissez vide pour utiliser la couleur de mise en évidence."
+        },
+        "colors_badge_text": {
+          "label": "Texte du badge",
+          "info": "Laissez vide pour utiliser la couleur du texte."
+        },
         "table_style": {
           "header": {
             "content": "Style du tableau"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Description du produit"
+            },
+            "highlight": {
+              "label": "Mettre cette colonne en avant",
+              "info": "Fond teinté et bordure dorée pour faire ressortir ce produit. Les autres colonnes passent en boutons contour."
+            },
+            "highlight_badge": {
+              "label": "Texte du badge de mise en avant",
+              "info": "Affiché sur l'image du produit lorsque la colonne est mise en avant"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Activer le bouton \"View all\" si la liste comprend plus de collections que celles affichées"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Éventail de couleurs",
+      "settings": {
+        "product": {
+          "label": "Produit",
+          "info": "Relie l'éventail au produit et utilise son image si aucune n'est téléversée."
+        },
+        "image": {
+          "label": "Image",
+          "info": "Un PNG transparent rend mieux sur l'éventail."
+        },
+        "image_width": {
+          "label": "Taille de l'image"
+        },
+        "fan_style": {
+          "label": "Style d'éventail",
+          "options__1": {
+            "label": "Floraison"
+          },
+          "options__2": {
+            "label": "Éventail à main"
+          },
+          "info": "L'éventail à main montre chaque teinte en entier — idéal pour les teintes en image."
+        },
+        "hover_ring": {
+          "label": "Anneau au survol",
+          "options__1": {
+            "label": "Couleur de la teinte"
+          },
+          "options__2": {
+            "label": "Couleur personnalisée"
+          },
+          "options__3": {
+            "label": "Halo arc-en-ciel"
+          },
+          "options__4": {
+            "label": "Désactivé"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Couleur de l'anneau"
+        },
+        "fan_trigger": {
+          "label": "Déploiement",
+          "options__1": {
+            "label": "À l'apparition à l'écran"
+          },
+          "options__2": {
+            "label": "Au survol"
+          },
+          "info": "Sur mobile, l'éventail se déploie toujours à l'apparition."
+        },
+        "shade_corner_radius": {
+          "label": "Arrondi des teintes"
+        },
+        "image_corner_radius": {
+          "label": "Arrondi de l'image"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Teinte",
+          "settings": {
+            "color": {
+              "label": "Couleur"
+            },
+            "image": {
+              "label": "Image",
+              "info": "Remplace la couleur — texture ou photo de variante."
+            },
+            "label": {
+              "label": "Libellé",
+              "info": "Affiché en infobulle au survol."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Éventail de couleurs"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Collection"
         },
+        "product_list": {
+          "label": "Produits",
+          "info": "Choisissez des produits à mettre en avant. Lorsqu'ils sont définis, ils remplacent la collection ci-dessus."
+        },
         "products_to_show": {
           "label": "Nombre maximal de produits à afficher"
         },
@@ -1624,6 +1728,9 @@
           "label": "Activer le glisser pour faire défiler (bureau)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Produits similaires"
     },
     "tabbed-featured-collections": {
       "name": "Collections à onglets",
@@ -1639,6 +1746,20 @@
               "info": "Laisser vide pour utiliser le titre de la collection"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Style des onglets",
+          "options__1": {
+            "label": "Souligné"
+          },
+          "options__2": {
+            "label": "Rempli"
+          }
+        },
+        "tab_alignment": {
+          "label": "Alignement des onglets"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Rend le méga menu étroit"
             },
+            "defer_loading": {
+              "label": "Chargement différé",
+              "info": "Charger le contenu du méga menu uniquement lorsque l'utilisateur le survole. Réduit le temps de chargement initial de la page."
+            },
             "paragraph": {
               "content": "Le méga menu s'affiche uniquement sur l'écran et nécessite l'option \"Activer le menu déroulant\" dans les paramètres de la section."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Afficher les images du méga menu"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Méga menu — vitrine de produits",
+          "settings": {
+            "paragraph": {
+              "content": "Les liens enfants de l'élément de menu deviennent des onglets. Les onglets liés à une collection affichent ses premiers produits ; les autres listent leurs propres liens."
+            },
+            "products_per_tab": {
+              "label": "Produits par onglet"
+            },
+            "header__promo": {
+              "content": "Promotion"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Remplir"
+              }
+            },
+            "view_all_link": {
+              "label": "Lien « Tout afficher »",
+              "info": "Laisser vide pour utiliser le lien de l'élément de menu."
+            },
+            "show_in_drawer": {
+              "label": "Afficher dans le menu mobile",
+              "info": "Répète cette vitrine dans le menu mobile pour le même élément de menu."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Badge d'icône du menu",
+          "settings": {
+            "paragraph": {
+              "content": "Affiché en bas de chaque méga menu vitrine de produits (jusqu'à 4)."
+            },
+            "icon": {
+              "label": "Icône",
+              "options__1": {
+                "label": "Camion"
+              },
+              "options__2": {
+                "label": "Coche"
+              },
+              "options__3": {
+                "label": "Coche (variante)"
+              },
+              "options__4": {
+                "label": "Coche dans un cercle"
+              },
+              "options__5": {
+                "label": "Cadeau"
+              },
+              "options__6": {
+                "label": "Remise"
+              },
+              "options__7": {
+                "label": "Cœur"
+              },
+              "options__8": {
+                "label": "Info"
+              },
+              "options__9": {
+                "label": "Point d'interrogation"
+              },
+              "options__10": {
+                "label": "Maison"
+              },
+              "options__11": {
+                "label": "Règle"
+              },
+              "options__12": {
+                "label": "Presse-papiers"
+              },
+              "options__13": {
+                "label": "Personne"
+              },
+              "options__14": {
+                "label": "Sac"
+              },
+              "options__15": {
+                "label": "Panier"
+              },
+              "options__16": {
+                "label": "Images"
+              },
+              "options__17": {
+                "label": "Liste"
+              },
+              "options__18": {
+                "label": "Globe"
+              },
+              "options__19": {
+                "label": "Stylo"
+              },
+              "options__20": {
+                "label": "Loupe"
+              },
+              "options__21": {
+                "label": "Réseau"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Goutte"
+              },
+              "options__24": {
+                "label": "Feuille"
+              },
+              "options__25": {
+                "label": "Soleil"
+              },
+              "options__26": {
+                "label": "Horloge"
+              },
+              "options__27": {
+                "label": "Bouclier"
+              },
+              "options__28": {
+                "label": "Éclat"
+              },
+              "options__29": {
+                "label": "Fiole"
+              },
+              "options__30": {
+                "label": "Recyclage"
+              },
+              "options__31": {
+                "label": "Boîte"
+              },
+              "options__32": {
+                "label": "Jauge"
+              },
+              "options__33": {
+                "label": "Flamme"
+              },
+              "options__34": {
+                "label": "Étoile"
+              },
+              "options__35": {
+                "label": "Flocon"
+              },
+              "options__36": {
+                "label": "Sourire"
+              },
+              "options__37": {
+                "label": "Lapin"
+              },
+              "options__38": {
+                "label": "Fleur"
+              },
+              "options__39": {
+                "label": "Pousse"
+              },
+              "options__40": {
+                "label": "Pipette"
+              },
+              "options__41": {
+                "label": "Pot"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Lune"
+              },
+              "options__44": {
+                "label": "Pourcentage"
+              },
+              "options__45": {
+                "label": "Récompense"
+              },
+              "options__46": {
+                "label": "Plume"
+              },
+              "options__47": {
+                "label": "Thermomètre"
+              },
+              "options__48": {
+                "label": "Pouls"
+              }
+            },
+            "heading": {
+              "label": "Titre"
+            },
+            "text": {
+              "label": "Texte"
             }
           }
         },
@@ -2226,6 +2539,21 @@
           "content": "Sélecteur de langue",
           "info": "Pour ajouter une langue, allez à vos [paramètres de langue.](/admin/settings/languages)"
         },
+        "drawer_promo": {
+          "header": {
+            "content": "Promotion du menu latéral",
+            "info": "Une carte image ou texte optionnelle affichée en bas du menu latéral."
+          },
+          "image": {
+            "label": "Image"
+          },
+          "heading": {
+            "label": "Titre"
+          },
+          "link": {
+            "label": "Lien"
+          }
+        },
         "header_sidebar": {
           "header": {
             "content": "Barre latérale",
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Image du logo mobile"
         },
+        "search_style": {
+          "label": "Style de recherche sur ordinateur",
+          "info": "« Barre de recherche » affiche un champ de recherche toujours visible dans l'en-tête sur ordinateur. La position de logo « Centre, diviser le menu » n'a pas la place et conserve l'icône.",
+          "options__1": {
+            "label": "Icône"
+          },
+          "options__2": {
+            "label": "Barre de recherche"
+          }
+        },
         "show_line_separator": {
           "label": "Afficher la ligne de séparation"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Éléments de menu de premier niveau en majuscules"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Cloche"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Description"
         },
+        "highlights": {
+          "name": "Caractéristiques du produit",
+          "settings": {
+            "info": {
+              "content": "Affiche les spécifications clés depuis le métachamp `theme.highlights` (liste). Format de chaque élément : `Étiquette|Valeur` ou `Étiquette|Valeur|icône`."
+            }
+          }
+        },
         "image": {
           "name": "Image",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Afficher le sélecteur de quantité"
+            },
+            "follow_buy_buttons": {
+              "label": "Afficher tant que les boutons d'achat sont hors écran",
+              "info": "La barre apparaît dès le chargement de la page jusqu'à ce que les boutons d'achat deviennent visibles, et pas seulement après les avoir dépassés."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify limite chaque variante à un seul média. Pour attribuer plusieurs médias à une option de produit, utilisez la [méthode ALT](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Masquer les médias des autres variantes après avoir sélectionné une variante"
+        },
+        "show_gallery_badges": {
+          "label": "Afficher les badges sur la galerie",
+          "info": "Les étiquettes du produit plus les badges promo et épuisé, sur la première image."
         },
         "image_ratio": {
           "info": "Nécessite que la mise en page de l'écran soit \"Curseur\".",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Zoom de la carte"
+        },
+        "map_language": {
+          "label": "Langue de la carte",
+          "info": "Langue pour les étiquettes, itinéraires et commandes de la carte. 'Auto' utilise la langue actuelle de la boutique.",
+          "options__auto": {
+            "label": "Auto (langue de la boutique)"
+          },
+          "options__browser": {
+            "label": "Par défaut du navigateur"
+          }
+        },
+        "map_region": {
+          "label": "Région de la carte",
+          "info": "Optionnel. Région pour le biais de géocodage (ex. FR, US, JP). Affecte les résultats de recherche et le comportement de la carte.",
+          "placeholder": "ex. FR"
         },
         "mobile_text_box_position": {
           "label": "Mise en page mobile",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Titre"
         },
+        "inline_banner": {
+          "name": "Bannière en ligne",
+          "settings": {
+            "border_radius": {
+              "label": "Rayon de bordure"
+            },
+            "image_height": {
+              "label": "Hauteur de l'image"
+            }
+          }
+        },
         "subheading": {
           "name": "Sous-titre"
         },
@@ -4480,6 +4865,9 @@
         "name": "Texte riche"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Largeur du texte"
+        },
         "horizontal_content": {
           "label": "Afficher le contenu horizontalement"
         }
@@ -5190,6 +5578,249 @@
           "info": "Affiche une fine barre en haut indiquant le pourcentage de défilement de la page."
         }
       }
+    },
+    "video-collection": {
+      "name": "Vidéo shoppable",
+      "settings": {
+        "columns_desktop": {
+          "label": "Nombre de colonnes sur ordinateur"
+        },
+        "card_ratio": {
+          "label": "Proportion de la carte",
+          "options__1": {
+            "label": "Vertical (9:16)"
+          },
+          "options__2": {
+            "label": "Portrait (3:4)"
+          },
+          "options__3": {
+            "label": "Carré (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Espace entre les images"
+        },
+        "autoplay": {
+          "label": "Lecture automatique à l'affichage",
+          "info": "Boucles sans son. Les clips se chargent au défilement uniquement, jamais en mouvement réduit."
+        },
+        "show_title": {
+          "label": "Afficher le titre"
+        },
+        "show_price": {
+          "label": "Afficher le prix"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Carte vidéo",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "Les clips verticaux rendent le mieux."
+            },
+            "cover_image": {
+              "label": "Image de couverture",
+              "info": "Affichée avant la lecture. Par défaut, l'aperçu de la vidéo."
+            },
+            "product": {
+              "label": "Produit",
+              "info": "Fournit le titre, le prix et le lien."
+            },
+            "title": {
+              "label": "Titre",
+              "info": "Remplace le titre du produit."
+            },
+            "label": {
+              "label": "Étiquette",
+              "info": "Court libellé affiché sur le clip, par exemple Tutoriel ou Avant / après."
+            },
+            "link": {
+              "label": "Lien",
+              "info": "Remplace le lien du produit."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Vidéo shoppable"
+      }
+    },
+    "skin-quiz": {
+      "name": "Quiz peau",
+      "settings": {
+        "show_progress": {
+          "label": "Afficher la barre de progression"
+        },
+        "intro_text": {
+          "label": "Texte d'introduction"
+        },
+        "intro_button_label": {
+          "label": "Libellé du bouton de départ"
+        },
+        "start_attention": {
+          "label": "Signal d'attention du bouton de départ",
+          "info": "Attire le regard vers le bouton de départ. Désactivé pour les visiteurs qui préfèrent réduire les animations.",
+          "options__1": {
+            "label": "Aucun"
+          },
+          "options__2": {
+            "label": "Flèche esquissée"
+          },
+          "options__3": {
+            "label": "Halo pulsé"
+          }
+        },
+        "start_attention_color": {
+          "label": "Couleur du signal",
+          "info": "Laissez vide pour utiliser la couleur de mise en évidence de la section."
+        },
+        "background_effect": {
+          "label": "Animation d'arrière-plan",
+          "info": "Décoratif uniquement. Les couleurs suivent la palette de la section ; désactivé en mouvement réduit.",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Aurore"
+          },
+          "options__3": {
+            "label": "Maillage"
+          },
+          "options__4": {
+            "label": "Anneaux"
+          },
+          "options__5": {
+            "label": "Reflet"
+          },
+          "options__6": {
+            "label": "Liquide"
+          },
+          "options__7": {
+            "label": "Soie"
+          },
+          "options__8": {
+            "label": "Grille"
+          },
+          "options__9": {
+            "label": "Vagues"
+          },
+          "options__10": {
+            "label": "Image"
+          }
+        },
+        "background_intensity": {
+          "label": "Intensité de l'arrière-plan",
+          "options__1": {
+            "label": "Subtile"
+          },
+          "options__2": {
+            "label": "Moyenne"
+          },
+          "options__3": {
+            "label": "Forte"
+          },
+          "info": "Définit aussi dans quelle mesure l'image d'arrière-plan transparaît."
+        },
+        "background_effect_color": {
+          "label": "Couleur de l'animation d'arrière-plan",
+          "info": "Laissez vide pour utiliser la couleur de mise en évidence de la section."
+        },
+        "section_width": {
+          "label": "Largeur de la section",
+          "options__1": {
+            "label": "Étroite"
+          },
+          "options__2": {
+            "label": "Par défaut"
+          },
+          "options__3": {
+            "label": "Pleine largeur"
+          }
+        },
+        "background_image": {
+          "label": "Image d'arrière-plan",
+          "info": "Utilisée uniquement lorsque l'animation d'arrière-plan est réglée sur Image. Elle dérive lentement sous un voile de la couleur de fond de la section."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Résultat 1"
+        },
+        "options__2": {
+          "label": "Résultat 2"
+        },
+        "options__3": {
+          "label": "Résultat 3"
+        },
+        "options__4": {
+          "label": "Résultat 4"
+        },
+        "options__5": {
+          "label": "Résultat 5"
+        },
+        "options__6": {
+          "label": "Résultat 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Question",
+          "settings": {
+            "title": {
+              "label": "Question"
+            },
+            "help": {
+              "label": "Texte d'aide"
+            },
+            "option_1": {
+              "content": "Réponse 1"
+            },
+            "option_2": {
+              "content": "Réponse 2"
+            },
+            "option_3": {
+              "content": "Réponse 3"
+            },
+            "option_4": {
+              "content": "Réponse 4"
+            },
+            "option_label": {
+              "label": "Réponse"
+            },
+            "option_hint": {
+              "label": "Indice de réponse"
+            },
+            "option_result": {
+              "label": "Compte pour",
+              "info": "Le résultat le plus voté l'emporte. En cas d'égalité, le résultat au numéro le plus bas gagne."
+            }
+          }
+        },
+        "result": {
+          "name": "Résultat",
+          "settings": {
+            "order_note": {
+              "content": "Les résultats sont numérotés selon leur ordre ici. Les réponses pointent vers ces numéros."
+            },
+            "product_1": {
+              "label": "Produit étape 1"
+            },
+            "product_2": {
+              "label": "Produit étape 2"
+            },
+            "product_3": {
+              "label": "Produit étape 3"
+            },
+            "product_note": {
+              "label": "Pourquoi cette étape"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Quiz peau"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Fond de l'étiquette de vente"
         },
+        "colors_sale_badge_text": {
+          "label": "Texte du badge promo",
+          "info": "Laisser vide pour utiliser la couleur de fond du jeu de couleurs."
+        },
         "colors_sale_price": {
           "label": "Prix soldé"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Divers"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Palettes de couleurs",
+      "settings": {
+        "paragraph": {
+          "content": "Palettes de couleurs Theme OS 2.0. Les sections peuvent s'inscrire via un paramètre color_scheme pour changer de palette sans paramètres de couleur par section. Les paramètres de couleur globaux existants fonctionnent toujours ; ceci est additif."
+        },
+        "background": {
+          "label": "Arrière-plan"
+        },
+        "background_gradient": {
+          "label": "Dégradé d'arrière-plan"
+        },
+        "text": {
+          "label": "Texte"
+        },
+        "button": {
+          "label": "Fond du bouton plein"
+        },
+        "button_label": {
+          "label": "Étiquette du bouton plein"
+        },
+        "secondary_button_label": {
+          "label": "Étiquette du bouton contour"
+        },
+        "shadow": {
+          "label": "Ombre"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Espace entre les sections de modèle",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Sens du texte"
+        },
+        "rtl_auto": {
+          "label": "Mise en page de droite à gauche pour les langues RTL",
+          "info": "Inverse automatiquement la mise en page lorsque la langue de la boutique est l'arabe, l'hébreu, le persan, l'ourdou ou une autre écriture de droite à gauche. La traduction text_direction_trigger reste active et l'emporte toujours lorsqu'elle indique rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Vignettes produit",
       "settings": {
+        "badges": {
+          "content": "Badges"
+        },
+        "badge_outline": {
+          "label": "Contour des badges",
+          "info": "Entoure chaque badge de la couleur de son texte."
+        },
+        "badge_shape": {
+          "label": "Forme des badges",
+          "options__1": {
+            "label": "Par défaut"
+          },
+          "options__2": {
+            "label": "Pilule"
+          }
+        },
+        "badge_rotate": {
+          "label": "Inclinaison des badges"
+        },
+        "highlights": {
+          "content": "Caractéristiques produit"
+        },
+        "highlights_style": {
+          "label": "Style des caractéristiques",
+          "info": "Les vignettes font défiler les caractéristiques masquées au survol de la carte.",
+          "options__1": {
+            "label": "Bandeau"
+          },
+          "options__2": {
+            "label": "Vignettes"
+          },
+          "options__3": {
+            "label": "Vignettes — grille"
+          },
+          "options__4": {
+            "label": "Pilules"
+          },
+          "options__5": {
+            "label": "Fiche technique"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Style des caractéristiques — page produit",
+          "options__1": {
+            "label": "Comme les fiches produit"
+          }
+        },
         "color_swatches": {
           "content": "Échantillons de couleurs"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "Afficher la description de produits dans une fenêtre contextuelle sans quitter la page en cours.",
           "label": "Activer la fonction de vue rapide"
+        },
+        "similar_products": {
+          "content": "Produits similaires"
+        },
+        "similar_products_mode": {
+          "label": "Bouton produits similaires",
+          "info": "Ouvre des recommandations générées par Shopify depuis les fiches produit. Personnalisez les résultats dans l'application Search & Discovery.",
+          "options__1": {
+            "label": "Désactivé"
+          },
+          "options__2": {
+            "label": "Produits épuisés uniquement"
+          },
+          "options__3": {
+            "label": "Tous les produits"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "Tout le contenu"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Activer la recherche vocale",
+          "info": "Ajoute un bouton micro aux champs de recherche sur les navigateurs compatibles (Chrome, Edge, Safari). La reconnaissance vocale est traitée par le navigateur du visiteur."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Mettre en majuscules"
         },
+        "heading_capitalize_tracking": {
+          "label": "Espacement des lettres en majuscules",
+          "info": "Ajoute un espacement large aux titres des cartes produit et article lorsque les titres sont en majuscules."
+        },
         "heading_center": {
           "label": "Titres centrals"
         },
         "heading_scale": {
           "label": "Échelle de taille de police",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Automatique ajuste progressivement la taille des titres selon la largeur de l'écran. Classique utilise des tailles fixes pour mobile et ordinateur.",
+          "label": "Comportement de la taille",
+          "options__1": {
+            "label": "Classique"
+          },
+          "options__2": {
+            "label": "Automatique (fluide)"
+          }
         },
         "price_superscript": {
           "label": "Décimal du prix en exposant"
@@ -5744,6 +6496,15 @@
           "label": "Taille de navigation",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Graisse de la navigation",
+          "options__1": {
+            "label": "Selon la police"
+          },
+          "options__2": {
+            "label": "Demi-gras"
+          }
+        },
         "type_price_font": {
           "label": "Police des prix",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Titres"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Design verre",
+      "settings": {
+        "paragraph": {
+          "content": "Appliquez un effet de verre dépoli inspiré du design moderne aux surfaces et éléments de votre thème."
+        },
+        "glass_design_enabled": {
+          "label": "Activer le design verre"
+        },
+        "header__1": {
+          "content": "Personnalisation"
+        },
+        "glass_blur_intensity": {
+          "label": "Intensité du flou"
+        },
+        "glass_bg_opacity": {
+          "label": "Opacité de l'arrière-plan"
+        },
+        "glass_border_opacity": {
+          "label": "Opacité de la bordure"
+        },
+        "glass_tint_color": {
+          "label": "Couleur de teinte"
         }
       }
     }

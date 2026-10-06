@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "age-verifier": {
@@ -226,6 +217,10 @@
         "use_custom_colors": {
           "label": "Use custom colors"
         }
+      },
+      "edge_to_edge": {
+        "label": "Run the row to the screen edges",
+        "info": "Applies when scrolling is on. The heading keeps the page margin."
       },
       "form": {
         "return_url": {
@@ -505,6 +500,10 @@
         "header": {
           "content": "Product card"
         },
+        "show_product_highlights": {
+          "info": "Display product specs from the `theme.highlights` list metafield. Each item format: `Label|Value` or `Label|Value|icon`.",
+          "label": "Show product highlights"
+        },
         "show_quick_buy": {
           "label": "Enable quick add button"
         },
@@ -776,6 +775,18 @@
         "colors_table_background": {
           "label": "Table background"
         },
+        "colors_accents": {
+          "label": "Accent marks",
+          "info": "Bullets and the featured column's outline. Leave empty to use the highlight color."
+        },
+        "colors_badge_background": {
+          "label": "Badge background",
+          "info": "Leave empty to use the highlight color."
+        },
+        "colors_badge_text": {
+          "label": "Badge text",
+          "info": "Leave empty to use the text color."
+        },
         "table_style": {
           "header": {
             "content": "Table style"
@@ -879,6 +890,14 @@
             },
             "product_description": {
               "label": "Product description"
+            },
+            "highlight": {
+              "label": "Highlight this column",
+              "info": "Tinted background and gold border to make this product stand out. Other columns get outline buttons."
+            },
+            "highlight_badge": {
+              "label": "Highlight badge text",
+              "info": "Shown on the product image when the column is highlighted"
             },
             "criteria_details": {
               "header": {
@@ -1111,6 +1130,87 @@
         "show_view_all": {
           "label": "Enable \"View all\" button if list includes more collections than shown"
         }
+      }
+    },
+    "color-fan": {
+      "name": "Color fan",
+      "settings": {
+        "product": {
+          "label": "Product",
+          "info": "Links the fan to the product and uses its image when none is uploaded."
+        },
+        "image": {
+          "label": "Image",
+          "info": "A transparent PNG sits best over the fan."
+        },
+        "image_width": {
+          "label": "Image size"
+        },
+        "fan_style": {
+          "label": "Fan style",
+          "options__1": {
+            "label": "Bloom"
+          },
+          "options__2": {
+            "label": "Hand fan"
+          },
+          "info": "Hand fan keeps every shade visible — suits image shades."
+        },
+        "hover_ring": {
+          "label": "Hover ring",
+          "options__1": {
+            "label": "Shade color"
+          },
+          "options__2": {
+            "label": "Custom color"
+          },
+          "options__3": {
+            "label": "Rainbow halo"
+          },
+          "options__4": {
+            "label": "Off"
+          }
+        },
+        "hover_ring_color": {
+          "label": "Ring color"
+        },
+        "fan_trigger": {
+          "label": "Fan out",
+          "options__1": {
+            "label": "When scrolled into view"
+          },
+          "options__2": {
+            "label": "On hover"
+          },
+          "info": "Phones always fan out on view."
+        },
+        "shade_corner_radius": {
+          "label": "Shade corner radius"
+        },
+        "image_corner_radius": {
+          "label": "Image corner radius"
+        }
+      },
+      "blocks": {
+        "shade": {
+          "name": "Shade",
+          "settings": {
+            "color": {
+              "label": "Color"
+            },
+            "image": {
+              "label": "Image",
+              "info": "Replaces the color — a texture or variant shot."
+            },
+            "label": {
+              "label": "Label",
+              "info": "Shown as a browser tooltip on hover."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Color fan"
       }
     },
     "contact-form": {
@@ -1614,6 +1714,10 @@
         "collection": {
           "label": "Collection"
         },
+        "product_list": {
+          "label": "Products",
+          "info": "Pick products to feature. When set, these override the collection above."
+        },
         "products_to_show": {
           "label": "Maximum products to show"
         },
@@ -1624,6 +1728,9 @@
           "label": "Enable drag to scroll (desktop)"
         }
       }
+    },
+    "similar-products": {
+      "name": "Similar products"
     },
     "tabbed-featured-collections": {
       "name": "Tabbed collections",
@@ -1639,6 +1746,20 @@
               "info": "Leave blank to use collection title"
             }
           }
+        }
+      },
+      "settings": {
+        "tab_style": {
+          "label": "Tab style",
+          "options__1": {
+            "label": "Underline"
+          },
+          "options__2": {
+            "label": "Filled"
+          }
+        },
+        "tab_alignment": {
+          "label": "Tab alignment"
         }
       }
     },
@@ -2089,6 +2210,10 @@
             "narrow": {
               "label": "Make mega menu narrow"
             },
+            "defer_loading": {
+              "label": "Defer loading",
+              "info": "Load mega menu content only when user hovers. Reduces initial page load time."
+            },
             "paragraph": {
               "content": "The mega menu is displayed on desktop only and requires the \"Enable dropdown menu\" option in section settings."
             },
@@ -2124,6 +2249,194 @@
             },
             "show_menu_image": {
               "label": "Show mega menu images"
+            }
+          }
+        },
+        "mega_menu_showcase": {
+          "name": "Mega menu — product showcase",
+          "settings": {
+            "paragraph": {
+              "content": "Child links of the menu item become tabs. Tabs linking to a collection show its first products; other tabs list their own links."
+            },
+            "products_per_tab": {
+              "label": "Products per tab"
+            },
+            "header__promo": {
+              "content": "Promotion"
+            },
+            "promo_image_ratio": {
+              "options__1": {
+                "label": "Fill"
+              }
+            },
+            "view_all_link": {
+              "label": "“View all” link",
+              "info": "Leave blank to use the menu item's link."
+            },
+            "show_in_drawer": {
+              "label": "Show in mobile menu",
+              "info": "Repeat this showcase inside the mobile menu for the same menu item."
+            }
+          }
+        },
+        "menu_icon_badge": {
+          "name": "Menu icon badge",
+          "settings": {
+            "paragraph": {
+              "content": "Shown at the bottom of every product showcase mega menu (up to 4)."
+            },
+            "icon": {
+              "label": "Icon",
+              "options__1": {
+                "label": "Truck"
+              },
+              "options__2": {
+                "label": "Checkmark"
+              },
+              "options__3": {
+                "label": "Checkmark (alt)"
+              },
+              "options__4": {
+                "label": "Checkmark circle"
+              },
+              "options__5": {
+                "label": "Gift"
+              },
+              "options__6": {
+                "label": "Discount"
+              },
+              "options__7": {
+                "label": "Heart"
+              },
+              "options__8": {
+                "label": "Info"
+              },
+              "options__9": {
+                "label": "Question mark"
+              },
+              "options__10": {
+                "label": "Home"
+              },
+              "options__11": {
+                "label": "Ruler"
+              },
+              "options__12": {
+                "label": "Clipboard"
+              },
+              "options__13": {
+                "label": "Person"
+              },
+              "options__14": {
+                "label": "Bag"
+              },
+              "options__15": {
+                "label": "Cart"
+              },
+              "options__16": {
+                "label": "Images"
+              },
+              "options__17": {
+                "label": "List"
+              },
+              "options__18": {
+                "label": "Globe"
+              },
+              "options__19": {
+                "label": "Pen"
+              },
+              "options__20": {
+                "label": "Magnifier"
+              },
+              "options__21": {
+                "label": "Network"
+              },
+              "options__22": {
+                "label": "Zoom"
+              },
+              "options__23": {
+                "label": "Drop"
+              },
+              "options__24": {
+                "label": "Leaf"
+              },
+              "options__25": {
+                "label": "Sun"
+              },
+              "options__26": {
+                "label": "Clock"
+              },
+              "options__27": {
+                "label": "Shield"
+              },
+              "options__28": {
+                "label": "Sparkle"
+              },
+              "options__29": {
+                "label": "Flask"
+              },
+              "options__30": {
+                "label": "Recycle"
+              },
+              "options__31": {
+                "label": "Box"
+              },
+              "options__32": {
+                "label": "Gauge"
+              },
+              "options__33": {
+                "label": "Flame"
+              },
+              "options__34": {
+                "label": "Star"
+              },
+              "options__35": {
+                "label": "Snowflake"
+              },
+              "options__36": {
+                "label": "Smile"
+              },
+              "options__37": {
+                "label": "Rabbit"
+              },
+              "options__38": {
+                "label": "Flower"
+              },
+              "options__39": {
+                "label": "Sprout"
+              },
+              "options__40": {
+                "label": "Pipette"
+              },
+              "options__41": {
+                "label": "Jar"
+              },
+              "options__42": {
+                "label": "Spray"
+              },
+              "options__43": {
+                "label": "Moon"
+              },
+              "options__44": {
+                "label": "Percent"
+              },
+              "options__45": {
+                "label": "Award"
+              },
+              "options__46": {
+                "label": "Feather"
+              },
+              "options__47": {
+                "label": "Thermometer"
+              },
+              "options__48": {
+                "label": "Heartbeat"
+              }
+            },
+            "heading": {
+              "label": "Heading"
+            },
+            "text": {
+              "label": "Text"
             }
           }
         },
@@ -2226,7 +2539,22 @@
           "content": "Language selector",
           "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
         },
-        "header_sidebar":{
+        "drawer_promo": {
+          "header": {
+            "content": "Menu drawer promotion",
+            "info": "An optional image or text card shown at the bottom of the menu drawer."
+          },
+          "image": {
+            "label": "Image"
+          },
+          "heading": {
+            "label": "Heading"
+          },
+          "link": {
+            "label": "Link"
+          }
+        },
+        "header_sidebar": {
           "header": {
             "content": "Sidebar",
             "info": "Add a sidebar to your header, where you can display promotions or seasonal deals."
@@ -2234,7 +2562,7 @@
           "enable": {
             "label": "Enable sidebar"
           },
-          "heading":  {
+          "heading": {
             "label": "Heading"
           }
         },
@@ -2323,6 +2651,16 @@
         "mobile_transparent_logo": {
           "label": "Mobile logo image"
         },
+        "search_style": {
+          "label": "Search style on desktop",
+          "info": "\"Search bar\" shows an always-visible search field in the desktop header. The \"Center, menu split\" logo position has no room for it and keeps the icon.",
+          "options__1": {
+            "label": "Icon"
+          },
+          "options__2": {
+            "label": "Search bar"
+          }
+        },
         "show_line_separator": {
           "label": "Show separator line"
         },
@@ -2342,6 +2680,11 @@
         },
         "uppercase_menu_items": {
           "label": "Uppercase first-level menu items"
+        },
+        "sidebar_icon": {
+          "options__bell": {
+            "label": "Bell"
+          }
         }
       }
     },
@@ -3389,6 +3732,14 @@
         "description": {
           "name": "Description"
         },
+        "highlights": {
+          "name": "Product highlights",
+          "settings": {
+            "info": {
+              "content": "Displays product highlights from the `theme.highlights` list metafield. Each item format: `Label|Value` or `Label|Value|icon`."
+            }
+          }
+        },
         "image": {
           "name": "Image",
           "settings": {
@@ -3628,6 +3979,10 @@
             },
             "show_quantity_selector": {
               "label": "Show quantity selector"
+            },
+            "follow_buy_buttons": {
+              "label": "Show while buy buttons are off-screen",
+              "info": "The bar appears from page load until the buy buttons scroll into view, instead of only after scrolling past them."
             }
           }
         },
@@ -3756,6 +4111,10 @@
         "hide_variants": {
           "info": "Shopify limits each variant to one media. To assign multiple media to a product option, use the [ALT method](https://roartheme.co/blogs/beyours/can-i-have-multiple-images-associated-with-one-option)",
           "label": "Hide other variants' media after selecting a variant"
+        },
+        "show_gallery_badges": {
+          "label": "Show badges on the gallery",
+          "info": "The product's labels plus the sale and sold-out badges, over the first image."
         },
         "image_ratio": {
           "info": "Requires desktop layout to be \"Slider\".",
@@ -3917,6 +4276,21 @@
         },
         "map_zoom": {
           "label": "Map zoom"
+        },
+        "map_language": {
+          "label": "Map language",
+          "info": "Language for map labels, directions, and controls. 'Auto' uses the store's current language.",
+          "options__auto": {
+            "label": "Auto (store language)"
+          },
+          "options__browser": {
+            "label": "Browser default"
+          }
+        },
+        "map_region": {
+          "label": "Map region",
+          "info": "Optional. Region for geocoding bias (e.g. VN, US, JP). Affects search results and map behavior.",
+          "placeholder": "e.g. VN"
         },
         "mobile_text_box_position": {
           "label": "Mobile layout",
@@ -4468,6 +4842,17 @@
         "heading": {
           "name": "Heading"
         },
+        "inline_banner": {
+          "name": "Inline banner",
+          "settings": {
+            "border_radius": {
+              "label": "Border radius"
+            },
+            "image_height": {
+              "label": "Image height"
+            }
+          }
+        },
         "subheading": {
           "name": "Subheading"
         },
@@ -4480,6 +4865,9 @@
         "name": "Rich text"
       },
       "settings": {
+        "content_max_width": {
+          "label": "Text width"
+        },
         "horizontal_content": {
           "label": "Make content horizontally"
         }
@@ -5190,6 +5578,249 @@
           "info": "Displays a thin bar at the top indicating the percentage of page scrolled."
         }
       }
+    },
+    "video-collection": {
+      "name": "Shoppable video",
+      "settings": {
+        "columns_desktop": {
+          "label": "Number of columns on desktop"
+        },
+        "card_ratio": {
+          "label": "Card ratio",
+          "options__1": {
+            "label": "Vertical (9:16)"
+          },
+          "options__2": {
+            "label": "Portrait (3:4)"
+          },
+          "options__3": {
+            "label": "Square (1:1)"
+          }
+        },
+        "card_gap": {
+          "label": "Spacing between images"
+        },
+        "autoplay": {
+          "label": "Autoplay when in view",
+          "info": "Muted loops. Clips download only when scrolled into view, and never when the visitor prefers reduced motion."
+        },
+        "show_title": {
+          "label": "Show title"
+        },
+        "show_price": {
+          "label": "Show price"
+        }
+      },
+      "blocks": {
+        "video_card": {
+          "name": "Video card",
+          "settings": {
+            "video": {
+              "label": "Video",
+              "info": "Vertical clips work best."
+            },
+            "cover_image": {
+              "label": "Cover image",
+              "info": "Shown before the clip plays. Defaults to the video's own preview image."
+            },
+            "product": {
+              "label": "Product",
+              "info": "Supplies the title, price and link."
+            },
+            "title": {
+              "label": "Title",
+              "info": "Overrides the product title."
+            },
+            "label": {
+              "label": "Label",
+              "info": "Short tag shown over the clip, for example Tutorial or Before & after."
+            },
+            "link": {
+              "label": "Link",
+              "info": "Overrides the product link."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Shoppable video"
+      }
+    },
+    "skin-quiz": {
+      "name": "Skin quiz",
+      "settings": {
+        "show_progress": {
+          "label": "Show progress bar"
+        },
+        "intro_text": {
+          "label": "Intro text"
+        },
+        "intro_button_label": {
+          "label": "Start button label"
+        },
+        "start_attention": {
+          "label": "Start button attention cue",
+          "info": "Points visitors at the start button. Switched off for visitors who prefer reduced motion.",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Sketched arrow"
+          },
+          "options__3": {
+            "label": "Pulsing glow"
+          }
+        },
+        "start_attention_color": {
+          "label": "Cue color",
+          "info": "Leave empty to use the section's highlight color."
+        },
+        "background_effect": {
+          "label": "Background animation",
+          "info": "Decorative only. Colours follow the section palette; it is switched off for visitors who prefer reduced motion.",
+          "options__1": {
+            "label": "None"
+          },
+          "options__2": {
+            "label": "Aurora"
+          },
+          "options__3": {
+            "label": "Mesh"
+          },
+          "options__4": {
+            "label": "Rings"
+          },
+          "options__5": {
+            "label": "Sheen"
+          },
+          "options__6": {
+            "label": "Liquid"
+          },
+          "options__7": {
+            "label": "Silk"
+          },
+          "options__8": {
+            "label": "Grid"
+          },
+          "options__9": {
+            "label": "Waves"
+          },
+          "options__10": {
+            "label": "Image"
+          }
+        },
+        "background_intensity": {
+          "label": "Background intensity",
+          "options__1": {
+            "label": "Subtle"
+          },
+          "options__2": {
+            "label": "Medium"
+          },
+          "options__3": {
+            "label": "Strong"
+          },
+          "info": "Also sets how much of the background image shows through."
+        },
+        "background_effect_color": {
+          "label": "Background animation color",
+          "info": "Leave empty to use the section's highlight color."
+        },
+        "section_width": {
+          "label": "Section width",
+          "options__1": {
+            "label": "Narrow"
+          },
+          "options__2": {
+            "label": "Default"
+          },
+          "options__3": {
+            "label": "Full width"
+          }
+        },
+        "background_image": {
+          "label": "Background image",
+          "info": "Used only when the background animation is set to Image. It drifts slowly and sits under a scrim in the section's background colour."
+        }
+      },
+      "result_ref": {
+        "options__1": {
+          "label": "Result 1"
+        },
+        "options__2": {
+          "label": "Result 2"
+        },
+        "options__3": {
+          "label": "Result 3"
+        },
+        "options__4": {
+          "label": "Result 4"
+        },
+        "options__5": {
+          "label": "Result 5"
+        },
+        "options__6": {
+          "label": "Result 6"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Question",
+          "settings": {
+            "title": {
+              "label": "Question"
+            },
+            "help": {
+              "label": "Helper text"
+            },
+            "option_1": {
+              "content": "Answer 1"
+            },
+            "option_2": {
+              "content": "Answer 2"
+            },
+            "option_3": {
+              "content": "Answer 3"
+            },
+            "option_4": {
+              "content": "Answer 4"
+            },
+            "option_label": {
+              "label": "Answer"
+            },
+            "option_hint": {
+              "label": "Answer hint"
+            },
+            "option_result": {
+              "label": "Scores toward",
+              "info": "The result with the most votes wins. A tie falls to the lowest-numbered result."
+            }
+          }
+        },
+        "result": {
+          "name": "Result",
+          "settings": {
+            "order_note": {
+              "content": "Results are numbered by their order here. Question answers point at these numbers."
+            },
+            "product_1": {
+              "label": "Step 1 product"
+            },
+            "product_2": {
+              "label": "Step 2 product"
+            },
+            "product_3": {
+              "label": "Step 3 product"
+            },
+            "product_note": {
+              "label": "Why this step"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Skin quiz"
+      }
     }
   },
   "settings_schema": {
@@ -5327,6 +5958,10 @@
         "colors_sale_badge_background": {
           "label": "Sale badge background"
         },
+        "colors_sale_badge_text": {
+          "label": "Sale badge text",
+          "info": "Leave empty to use the scheme's background color."
+        },
         "colors_sale_price": {
           "label": "Sale price"
         },
@@ -5347,6 +5982,35 @@
         },
         "header__3": {
           "content": "Miscellaneous"
+        }
+      }
+    },
+    "color_schemes": {
+      "name": "Color schemes",
+      "settings": {
+        "paragraph": {
+          "content": "Theme OS 2.0 color schemes. Sections can opt-in via a color_scheme setting to swap palette without per-section color settings. Existing global color settings still work; this is additive."
+        },
+        "background": {
+          "label": "Background"
+        },
+        "background_gradient": {
+          "label": "Background gradient"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button": {
+          "label": "Solid button background"
+        },
+        "button_label": {
+          "label": "Solid button label"
+        },
+        "secondary_button_label": {
+          "label": "Outline button label"
+        },
+        "shadow": {
+          "label": "Shadow"
         }
       }
     },
@@ -5442,6 +6106,13 @@
         "spacing_sections": {
           "label": "Space between template sections",
           "unit": "px"
+        },
+        "header_direction": {
+          "content": "Text direction"
+        },
+        "rtl_auto": {
+          "label": "Right-to-left layout for RTL languages",
+          "info": "Flips the layout automatically when the storefront language is Arabic, Hebrew, Persian, Urdu, or another right-to-left script. The text_direction_trigger translation still works and always wins when it says rtl."
         }
       }
     },
@@ -5507,6 +6178,53 @@
     "product_tiles": {
       "name": "Product tiles",
       "settings": {
+        "badges": {
+          "content": "Badges"
+        },
+        "badge_outline": {
+          "label": "Badge outline",
+          "info": "Outlines each badge with its text color."
+        },
+        "badge_shape": {
+          "label": "Badge shape",
+          "options__1": {
+            "label": "Theme default"
+          },
+          "options__2": {
+            "label": "Pill"
+          }
+        },
+        "badge_rotate": {
+          "label": "Badge tilt"
+        },
+        "highlights": {
+          "content": "Product specs"
+        },
+        "highlights_style": {
+          "label": "Specs style",
+          "info": "Chips glide through overflowing specs while the card is hovered.",
+          "options__1": {
+            "label": "Strip"
+          },
+          "options__2": {
+            "label": "Chips"
+          },
+          "options__3": {
+            "label": "Chips — grid"
+          },
+          "options__4": {
+            "label": "Pills"
+          },
+          "options__5": {
+            "label": "Spec sheet"
+          }
+        },
+        "highlights_style_product": {
+          "label": "Specs style — product page",
+          "options__1": {
+            "label": "Follow product cards"
+          }
+        },
         "color_swatches": {
           "content": "Color swatches"
         },
@@ -5557,6 +6275,22 @@
         "quick_view_enabled": {
           "info": "View product details in a popup without leaving the current page.",
           "label": "Enable quick view feature"
+        },
+        "similar_products": {
+          "content": "Similar products"
+        },
+        "similar_products_mode": {
+          "label": "Similar products button",
+          "info": "Opens Shopify-powered recommendations from product cards. Customize results in the Search & Discovery app.",
+          "options__1": {
+            "label": "Off"
+          },
+          "options__2": {
+            "label": "Sold-out products only"
+          },
+          "options__3": {
+            "label": "All products"
+          }
         }
       }
     },
@@ -5600,6 +6334,10 @@
           "options__5": {
             "label": "All content"
           }
+        },
+        "voice_search_enabled": {
+          "label": "Enable voice search",
+          "info": "Adds a microphone button to search fields on supported browsers (Chrome, Edge, Safari). Speech recognition is processed by the visitor's browser."
         }
       }
     },
@@ -5700,12 +6438,26 @@
         "heading_capitalize": {
           "label": "Capitalize"
         },
+        "heading_capitalize_tracking": {
+          "label": "Uppercase letter spacing",
+          "info": "Adds wide tracking to product and article card titles when headings are capitalized."
+        },
         "heading_center": {
           "label": "Center headings"
         },
         "heading_scale": {
           "label": "Font size scale",
           "unit": "%"
+        },
+        "heading_size_mode": {
+          "info": "Auto scales heading sizes smoothly with the screen width. Classic uses fixed sizes for mobile and desktop.",
+          "label": "Size behavior",
+          "options__1": {
+            "label": "Classic"
+          },
+          "options__2": {
+            "label": "Auto (fluid)"
+          }
         },
         "price_superscript": {
           "label": "Superscript price decimal"
@@ -5744,6 +6496,15 @@
           "label": "Navigation size",
           "unit": "px"
         },
+        "type_navigation_weight": {
+          "label": "Navigation weight",
+          "options__1": {
+            "label": "Follow font"
+          },
+          "options__2": {
+            "label": "Semi-bold"
+          }
+        },
         "type_price_font": {
           "label": "Prices font",
           "options__1": {
@@ -5752,6 +6513,32 @@
           "options__2": {
             "label": "Headings"
           }
+        }
+      }
+    },
+    "glass_design": {
+      "name": "Glass design",
+      "settings": {
+        "paragraph": {
+          "content": "Apply a frosted glass effect inspired by modern UI design to your theme's surfaces and elements."
+        },
+        "glass_design_enabled": {
+          "label": "Enable glass design"
+        },
+        "header__1": {
+          "content": "Customization"
+        },
+        "glass_blur_intensity": {
+          "label": "Blur intensity"
+        },
+        "glass_bg_opacity": {
+          "label": "Background opacity"
+        },
+        "glass_border_opacity": {
+          "label": "Border opacity"
+        },
+        "glass_tint_color": {
+          "label": "Tint color"
         }
       }
     }

@@ -174,6 +174,9 @@
         "sticky_cart",
         "judge_me_reviews_review_widget_k7Lzrh"
       ],
+      "custom_css": [
+        ".product__media.image-animate.media.media--adapt.media-mobile--adapt_first {background: #f3f0f0; margin-bottom: 10px; border-radius: 25px;}"
+      ],
       "settings": {
         "enable_sticky_info": true,
         "media_position": "left",

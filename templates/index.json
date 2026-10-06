@@ -68,27 +68,83 @@
             "highlight_style": "marker"
           }
         },
-        "image_BE3Ayh": {
+        "image_KqiQUj": {
           "type": "image",
-          "name": "13.09. bis 20.09.2026",
+          "name": "18.09. bis 27.09.2026",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-KW38.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-KW38-mobil.jpg",
+            "image": "shopify://shop_images/Almivital-Shop-KW39.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-KW39-mobil.jpg",
             "image_position": "20% 0",
             "text_box_position": "middle-left",
-            "subheading": "Wochenangebot bis zum 20.09.2026",
+            "subheading": "Wochenangebot bis zum 27.09.2026",
             "subheading_size": "h4",
-            "heading": "Konzentriert und perfekt Dosiert",
+            "heading": "Unser Set für Tiefenentspannung und Flexibilität",
             "heading_size": "h0",
             "heading_tag": "h4",
-            "text": "Unsere <strong>BienenTopf Akut Ampullen</strong> enthalten die konzentrierte Bienenkraft gepaart mit feuchtigkeitsspendendem Hyaluron. Für ein strahlendes, ausgeglichenes Aussehen und widerstandsfähiger Haut. Jetzt bei uns im Angebot für nur <strong>34,99€ statt 42,99€</strong>. Das Angebot ist zeitlich begrenzt und gilt nur solange der Vorrat reicht.",
+            "text": "Verklebungen und Verspannungen lassen sich am besten mit kleinen regelmäßigen Massagen lösen. Unser Faszien Massage Set ist da der perfekte Begleiter. Jetzt bei uns im Angebot für nur <strong>29,99€ statt 37,99€</strong>. Aber Achtung, gültig nur solange der Vorrat reicht.",
             "text_size": "typeset2",
             "button_label": "",
             "button_link": "",
             "button_size": "large",
             "button_style_secondary": false,
-            "button_alt_label": "zu den ampullen",
-            "button_alt_link": "shopify://products/almivital-bienentopf-akut-ampullen-14x-2ml",
+            "button_alt_label": "Direkt zum Set",
+            "button_alt_link": "shopify://products/almivital-faszien-set-faszien-massage-gel-250ml-und-faszien-roll-on-50ml",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_APa6YW": {
+          "type": "image",
+          "name": "Oktober",
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-Oktober.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Oktober-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Monatsangebot bis 31.10.2026",
+            "subheading_size": "h4",
+            "heading": "Spürbar pflegend und angenehm wärmend.",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Sie suchen nach gezielter Pflege und behaglicher Wärme? Dann haben wir ja das perfekte Monatsangebot für Sie. Den ganzen Oktober gibt es unser Wärme Aktiv-Gel im 250ml Tiegel für <strong>nur 9,99€ statt 24,99€</strong>. Jetzt bestellen, Angebot gilt nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "Zum Monatsangebot",
+            "button_alt_link": "shopify://products/almivital-warme-aktiv-gel-mit-slimexir-250ml",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_BE3Ayh": {
+          "type": "image",
+          "name": "bis 04.10.2026",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-KW40.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-KW40-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Wochenangebot bis zum 04.10.2026",
+            "subheading_size": "h4",
+            "heading": "Kniepflege – gezielt und tiefenwirksam",
+            "heading_size": "h0",
+            "heading_tag": "h4",
+            "text": "Unsere <strong>Kniesalbe FORTE</strong> ist die Weiterentwicklung für noch intensivere Pflege stark beanspruchter Kniepartien. Diese Woche bei uns im Angebot für sensationelle <strong>27,99€ statt 36,99€</strong>. Also schnell zugreifen, das Angebot ist zeitlich begrenzt und gilt nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "zum angebot",
+            "button_alt_link": "shopify://products/almivital-kniesalbe-forte-500ml",
             "button_alt_size": "medium",
             "button_alt_style_secondary": false,
             "enable_highlight": false,
@@ -121,42 +177,15 @@
             "enable_highlight": false,
             "highlight_style": "marker"
           }
-        },
-        "image_APa6YW": {
-          "type": "image",
-          "name": "August",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-August.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-August-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "Monatsangebot bis 31.08.2026",
-            "subheading_size": "h4",
-            "heading": "Die geballte Bienenkraft im Set!",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Entdecken Sie jetzt die bewährte Pflegekraft der Bienen. Unsere BienenTopf Körpercreme schenkt Ihrer Haut den ganzen Tag über geschmeidige Weichheit, während die Nachtcreme sie über Nacht sanft regeneriert. Den ganzen August über im Set für <strong>nur 44,99€ statt 66,99€</strong>. Jetzt zugreifen, Angebot gilt nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "Zum Monatsangebot",
-            "button_alt_link": "shopify://products/almivital-bienentopf-set-nachtcreme-100ml-und-korpercreme-250ml",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
         }
       },
       "block_order": [
         "image_9U8QJj",
         "image_KKbFkM",
+        "image_KqiQUj",
+        "image_APa6YW",
         "image_BE3Ayh",
-        "image_7N86aD",
-        "image_APa6YW"
+        "image_7N86aD"
       ],
       "settings": {
         "slideshow_type": "legacy",
@@ -198,6 +227,39 @@
         "show_divider": false,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "featured_collection_M9e9aL": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "tv-angebote",
+        "products_to_show": 4,
+        "horizontal_scroll": false,
+        "show_view_all": true,
+        "show_divider": true,
+        "enable_drag": true,
+        "heading": "TV-Angebote",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "image_ratio": "square",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
       }
     },
     "image_with_text_overlay_hHhAjJ": {
@@ -471,74 +533,6 @@
         "highlight_style": "marker"
       }
     },
-    "image_with_text_RWRAik": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_Ktc4xN": {
-          "type": "heading",
-          "settings": {
-            "heading": "Vitaform & ALMIVITAL",
-            "heading_size": "h1",
-            "heading_tag": "h2",
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "text_pLMGkt": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Vitaform und Almivital haben ihre Expertise vereint, um eine hochwertige Fußpflege-Linie zu entwickeln. </strong></p><p>Vitaform, spezialisiert auf gesunde Schuhe, kennt die Bedürfnisse der Füße genau, während Almivital als Experte für Funktionskosmetik optimale Pflegerezepturen bereitstellt. </p><p>Gemeinsam sorgen sie für intensive Pflege und Wohlbefinden – <strong>perfekt für stark beanspruchte Füße.</strong></p>",
-            "text_size": "typeset2",
-            "secondary_color": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "button_7DrPqY": {
-          "type": "button",
-          "settings": {
-            "button_size": "large",
-            "button_label": "Zu den Produkten",
-            "button_link": "shopify://collections/vitaform-x-almivital",
-            "button_style_secondary": false,
-            "button_alt_label": "",
-            "button_alt_link": "",
-            "button_alt_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_Ktc4xN",
-        "text_pLMGkt",
-        "button_7DrPqY"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/vitaform-almivital-kat-b.jpg",
-        "image_position": "center center",
-        "layout": "image_first",
-        "text_box_position": "middle",
-        "text_alignment": "left",
-        "image_ratio": "650px",
-        "enlarge_content": false,
-        "full_width": false,
-        "show_divider": false,
-        "image_behavior": "none",
-        "mobile_layout": "image_first",
-        "mobile_text_alignment": "left",
-        "mobile_image_ratio": "auto",
-        "enable_video_looping": false,
-        "video_url": "",
-        "use_custom_colors": false,
-        "colors_button_label": "#ffffff",
-        "colors_button_background": "#1a1b18",
-        "colors_text": "#212326",
-        "colors_background": "#ffffff",
-        "gradient_background": "",
-        "colors_highlight": "#ffb503",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "guarantees": {
       "type": "guarantees",
       "blocks": {
@@ -663,11 +657,11 @@
   "order": [
     "slideshow_KpwNmr",
     "1730035322db4399cc",
+    "featured_collection_M9e9aL",
     "image_with_text_overlay_hHhAjJ",
     "lookbook_RKNriE",
     "featured-collection",
     "lookbook_iTdjFD",
-    "image_with_text_RWRAik",
     "guarantees",
     "reveal-banner"
   ]

@@ -641,75 +641,68 @@
         render 'desktop-menu', menu: section.settings.menu, enable_dropdown_menu: enable_dropdown_menu, blocks: section.blocks, limit: link_count_half, enable_highlight: section.settings.enable_highlight, highlight_labels: highlight_labels, highlight_style: section.settings.highlight_style
       endif
     -%}
+      <a href="{{ routes.root_url }}" class="header__heading-link focus-inset" aria-label="{{ 'accessibility.home_link' | t }}">
+        {%- if section.settings.logo != blank -%}
+          {%- liquid
+            assign logo = section.settings.logo
+            assign logo_height = section.settings.logo_height | times: 2
+            assign logo_height_2x = section.settings.logo_height | times: 3
 
-    {%- if request.page_type == 'index' -%}
-      <h1 class="header__heading">
-    {%- endif -%}
-        <a href="{{ routes.root_url }}" class="header__heading-link focus-inset" aria-label="{{ 'accessibility.home_link' | t }}">
-          {%- if section.settings.logo != blank -%}
-            {%- liquid
-              assign logo = section.settings.logo
-              assign logo_height = section.settings.logo_height | times: 2
-              assign logo_height_2x = section.settings.logo_height | times: 3
+            assign mobile_logo = section.settings.mobile_logo | default: logo
+            assign mobile_logo_height = section.settings.mobile_logo_height | times: 2
+            assign mobile_logo_height_2x = section.settings.mobile_logo_height | times: 3
 
-              assign mobile_logo = section.settings.mobile_logo | default: logo
-              assign mobile_logo_height = section.settings.mobile_logo_height | times: 2
-              assign mobile_logo_height_2x = section.settings.mobile_logo_height | times: 3
+            assign transparent_logo = section.settings.transparent_logo
+            assign mobile_transparent_logo = section.settings.mobile_transparent_logo | default: transparent_logo
+          -%}
 
-              assign transparent_logo = section.settings.transparent_logo
-              assign mobile_transparent_logo = section.settings.mobile_transparent_logo | default: transparent_logo
-            -%}
-
-            {%- if mobile_logo -%}
-              <img srcset="{{ mobile_logo | image_url: height: mobile_logo_height }} 1x, {{ mobile_logo | image_url: height: mobile_logo_height_2x }} 2x"
-                src="{{ mobile_logo | image_url: height: mobile_logo_height }}"
-                loading="lazy"
-                width="{{ mobile_logo.width }}"
-                height="{{ mobile_logo.height }}"
-                alt="{{ mobile_logo.alt | default: shop.name | escape }}"
-                class="header__heading-logo{% if enable_transparent_header and transparent_logo != blank %} normal{% endif %} medium-hide large-up-hide"
-              />
-            {%- endif -%}
-
-            <img srcset="{{ logo | image_url: height: logo_height }} 1x, {{ logo | image_url: height: logo_height_2x }} 2x"
-              src="{{ logo | image_url: height: logo_height }}"
+          {%- if mobile_logo -%}
+            <img srcset="{{ mobile_logo | image_url: height: mobile_logo_height }} 1x, {{ mobile_logo | image_url: height: mobile_logo_height_2x }} 2x"
+              src="{{ mobile_logo | image_url: height: mobile_logo_height }}"
               loading="lazy"
-              width="{{ logo.width }}"
-              height="{{ logo.height }}"
-              alt="{{ logo.alt | default: shop.name | escape }}"
-              class="header__heading-logo{% if enable_transparent_header and transparent_logo != blank %} normal{% endif %}{% if mobile_logo %} small-hide{% endif %}"
+              width="{{ mobile_logo.width }}"
+              height="{{ mobile_logo.height }}"
+              alt="{{ mobile_logo.alt | default: shop.name | escape }}"
+              class="header__heading-logo{% if enable_transparent_header and transparent_logo != blank %} normal{% endif %} medium-hide large-up-hide"
             />
+          {%- endif -%}
 
-            {%- if enable_transparent_header and transparent_logo != blank -%}
-              {%- if mobile_transparent_logo != blank -%}
-                <img
-                  srcset="{{ mobile_transparent_logo | image_url: height: mobile_logo_height }} 1x, {{ mobile_transparent_logo | image_url: height: mobile_logo_height_2x }} 2x"
-                  src="{{ mobile_transparent_logo | image_url: height: mobile_logo_height }}"
-                  loading="lazy"
-                  width="{{ mobile_transparent_logo.width }}"
-                  height="{{ mobile_transparent_logo.height }}"
-                  alt="{{ mobile_transparent_logo.alt | default: shop.name | escape }}"
-                  class="header__heading-logo inverse medium-hide large-up-hide"
-                />
-              {%- endif -%}
+          <img srcset="{{ logo | image_url: height: logo_height }} 1x, {{ logo | image_url: height: logo_height_2x }} 2x"
+            src="{{ logo | image_url: height: logo_height }}"
+            loading="lazy"
+            width="{{ logo.width }}"
+            height="{{ logo.height }}"
+            alt="{{ logo.alt | default: shop.name | escape }}"
+            class="header__heading-logo{% if enable_transparent_header and transparent_logo != blank %} normal{% endif %}{% if mobile_logo %} small-hide{% endif %}"
+          />
 
+          {%- if enable_transparent_header and transparent_logo != blank -%}
+            {%- if mobile_transparent_logo != blank -%}
               <img
-                srcset="{{ transparent_logo | image_url: height: logo_height }} 1x, {{ transparent_logo | image_url: height: logo_height_2x }} 2x"
-                src="{{ transparent_logo | image_url: height: logo_height }}"
+                srcset="{{ mobile_transparent_logo | image_url: height: mobile_logo_height }} 1x, {{ mobile_transparent_logo | image_url: height: mobile_logo_height_2x }} 2x"
+                src="{{ mobile_transparent_logo | image_url: height: mobile_logo_height }}"
                 loading="lazy"
-                width="{{ transparent_logo.width }}"
-                height="{{ transparent_logo.height }}"
-                alt="{{ transparent_logo.alt | default: shop.name | escape }}"
-                class="header__heading-logo inverse{% if mobile_transparent_logo %} small-hide{% endif %}"
+                width="{{ mobile_transparent_logo.width }}"
+                height="{{ mobile_transparent_logo.height }}"
+                alt="{{ mobile_transparent_logo.alt | default: shop.name | escape }}"
+                class="header__heading-logo inverse medium-hide large-up-hide"
               />
             {%- endif -%}
-          {%- else -%}
-            <span class="h2">{{ shop.name }}</span>
+
+            <img
+              srcset="{{ transparent_logo | image_url: height: logo_height }} 1x, {{ transparent_logo | image_url: height: logo_height_2x }} 2x"
+              src="{{ transparent_logo | image_url: height: logo_height }}"
+              loading="lazy"
+              width="{{ transparent_logo.width }}"
+              height="{{ transparent_logo.height }}"
+              alt="{{ transparent_logo.alt | default: shop.name | escape }}"
+              class="header__heading-logo inverse{% if mobile_transparent_logo %} small-hide{% endif %}"
+            />
           {%- endif -%}
-        </a>
-    {%- if request.page_type == 'index' -%}
-      </h1>
-    {%- endif -%}
+        {%- else -%}
+          <span class="h2">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
 
     {%- liquid
       if section.settings.menu != blank

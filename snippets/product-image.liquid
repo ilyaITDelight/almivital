@@ -11,6 +11,7 @@
   - media_width: {Float} The width percentage that the media column occupies on desktop.
   - image_ratio: {String} The setting either show the article image ratio
   - mobile_image_ratio: {String} The setting either show the article image ratio on mobile
+  - priority_image: {Boolean} Load the initially visible PDP media eagerly with high fetch priority.
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
 
   Usage:
@@ -30,6 +31,12 @@
   if lazy_load
     assign image_loading = 'lazy'
     assign image_fetchpriority = 'auto'
+  endif
+
+  assign image_fetchpriority = 'auto'
+  if priority_image
+    assign image_loading = 'eager'
+    assign image_fetchpriority = 'high'
   endif
 
   assign alt = media.alt | escape | split: '#' | first

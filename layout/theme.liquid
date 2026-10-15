@@ -135,42 +135,31 @@
     {%- if settings.price_superscript %} data-price-superscript{% endif -%}
     {%- if settings.button_corner_radius > 0 %} data-button-round{% endif -%}
   >
-    <script src="https://customized-whatsapp-widget.chatarmin.com/widget-fetcher.js?w_id=68b5ca7d674e34e2371c3a87&u_id=6899ebed57834198bce08a12" async ></script>
-    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
-<script>
-    var klaviyo = klaviyo || [];
-    klaviyo.init({
-      account: "Yv8KVz",
-      platform: "shopify"
-    });
-    klaviyo.enable("backinstock",{ 
-    trigger: {
-      product_page_text: "Bei Verfügbarkeit erinnern!",
-      product_page_class: "button",
-      product_page_text_align: "center",
-      product_page_margin: "0px",
-      replace_anchor: false
-    },
-    modal: {
-     headline: "{product_name}",
-     body_content: "Jetzt Anmelden und sofort benachrichtigt werden, sobald der Artikel wieder lieferbar ist.",
-     email_field_label: "E-Mail Adresse",
-     button_label: "bei Verfügbarkeit benachrichtigen",
-     subscription_success_label: "Geschafft! Wir benachrichtigen dich, wenn der Artikel wieder verfügbar ist",
-     footer_content: '',
-     drop_background_color: "#000",
-     background_color: "#fff",
-     text_color: "#222",
-     button_text_color: "#fff",
-     button_background_color: "#439fdb",
-     close_button_color: "#ccc",
-     error_background_color: "#fcd6d7",
-     error_text_color: "#C72E2F",
-     success_background_color: "#d3efcd",
-     success_text_color: "#1B9500"
-    }
-  });
-</script>
+    <script>
+      (function () {
+        function loadWhatsApp() {
+          var script = document.createElement('script');
+          script.src = 'https://customized-whatsapp-widget.chatarmin.com/widget-fetcher.js?w_id=68b5ca7d674e34e2371c3a87&u_id=6899ebed57834198bce08a12';
+          script.async = true;
+          document.body.appendChild(script);
+        }
+
+        function scheduleWhatsApp() {
+          // Let the storefront finish loading before starting the chat widget.
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadWhatsApp, { timeout: 2000 });
+          } else {
+            window.setTimeout(loadWhatsApp, 0);
+          }
+        }
+
+        if (document.readyState === 'complete') {
+          scheduleWhatsApp();
+        } else {
+          window.addEventListener('load', scheduleWhatsApp, { once: true });
+        }
+      })();
+    </script>
     <a class="skip-to-content-link button button--small visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -218,5 +207,63 @@
     {%- endif -%}
     
     {% render 'js-utilities' %}
+    {%- if request.page_type == 'product' -%}
+      <script src="{{ 'payment-badges-lazy.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {%- comment -%}
+      The Klaviyo app embed provides site-wide tracking and signup forms.
+      This additional legacy script is only needed for product back-in-stock alerts.
+    {%- endcomment -%}
+    {%- if request.page_type == 'product' or request.design_mode -%}
+    <script>
+      (function () {
+        function initializeBackInStock() {
+        window.klaviyo.init({
+          account: "Yv8KVz",
+          platform: "shopify"
+        });
+        window.klaviyo.enable("backinstock",{
+        trigger: {
+          product_page_text: "Bei Verfügbarkeit erinnern!",
+          product_page_class: "button",
+          product_page_text_align: "center",
+          product_page_margin: "0px",
+          replace_anchor: false
+        },
+        modal: {
+        headline: "{product_name}",
+        body_content: "Jetzt Anmelden und sofort benachrichtigt werden, sobald der Artikel wieder lieferbar ist.",
+        email_field_label: "E-Mail Adresse",
+        button_label: "bei Verfügbarkeit benachrichtigen",
+        subscription_success_label: "Geschafft! Wir benachrichtigen dich, wenn der Artikel wieder verfügbar ist",
+        footer_content: '',
+        drop_background_color: "#000",
+        background_color: "#fff",
+        text_color: "#222",
+        button_text_color: "#fff",
+        button_background_color: "#439fdb",
+        close_button_color: "#ccc",
+        error_background_color: "#fcd6d7",
+        error_text_color: "#C72E2F",
+        success_background_color: "#d3efcd",
+        success_text_color: "#1B9500"
+        }
+      });
+        }
+        function loadBackInStock() {
+          var script = document.createElement('script');
+          script.src = 'https://a.klaviyo.com/media/js/onsite/onsite.js';
+          script.async = true;
+          script.addEventListener('load', initializeBackInStock, { once: true });
+          document.head.appendChild(script);
+        }
+        if (document.readyState === 'complete') {
+          loadBackInStock();
+        } else {
+          window.addEventListener('load', loadBackInStock, { once: true });
+        }
+      })();
+    </script>
+    {%- endif -%}
   </body>
 </html>

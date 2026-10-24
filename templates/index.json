@@ -70,6 +70,7 @@
         "image_BE3Ayh": {
           "type": "image",
           "name": "16.10. bis 25.10.2026",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW43.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW43-mobil.jpg",

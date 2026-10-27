@@ -12,9 +12,37 @@
     "slideshow_KpwNmr": {
       "type": "slideshow",
       "blocks": {
+        "image_7N86aD": {
+          "type": "image",
+          "name": "TAG 28.10.2026",
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Shop-TAG-Okt26.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-TAG-Okt26-mobil.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "Sonderangebot am 28.10.2026",
+            "subheading_size": "h4",
+            "heading": "Moorsalbe mit Deferegger Heilwasser",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "Dürfen wir vorstellen? Unsere neue <strong>Moorsalbe mit Deferegger Heilwasser</strong>. Durch die Zugabe von 4% Heilwasser konnten wir unsere bewährte Rezeptur noch einmal verbessern und freuen uns sie heute zum Einführungspreis von nur <strong>XX,XX€ statt XX,XX€ </strong>anbieten zu können. Das Angebot gilt nur solange der Vorrat reicht.",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "Zur Moorsalbe",
+            "button_alt_link": "shopify://products/almivital-moorsalbe-mit-deferegger-heilwasser-500ml",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
         "image_9U8QJj": {
           "type": "image",
           "name": "30.10. bis 08.11.2026",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW45.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW45-mobil.jpg",
@@ -98,6 +126,7 @@
         "image_APa6YW": {
           "type": "image",
           "name": "Oktober",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-Oktober.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-Oktober-mobil.jpg",
@@ -121,42 +150,14 @@
             "enable_highlight": false,
             "highlight_style": "marker"
           }
-        },
-        "image_7N86aD": {
-          "type": "image",
-          "name": "TAG 28.10.2026",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-TAG-Okt26.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-TAG-Okt26-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "Sonderangebot am 28.10.2026",
-            "subheading_size": "h4",
-            "heading": "Moorsalbe mit Deferegger Heilwasser",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Dürfen wir vorstellen? Unsere neue <strong>Moorsalbe mit Deferegger Heilwasser</strong>. Durch die Zugabe von 4% Heilwasser konnten wir unsere bewährte Rezeptur noch einmal verbessern und freuen uns sie heute zum Einführungspreis von nur <strong>XX,XX€ statt XX,XX€ </strong>anbieten zu können. Das Angebot gilt nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "Zur Moorsalbe",
-            "button_alt_link": "",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
         }
       },
       "block_order": [
+        "image_7N86aD",
         "image_9U8QJj",
         "image_KKbFkM",
         "image_BE3Ayh",
-        "image_APa6YW",
-        "image_7N86aD"
+        "image_APa6YW"
       ],
       "settings": {
         "slideshow_type": "legacy",

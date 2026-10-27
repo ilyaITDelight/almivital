@@ -33,8 +33,8 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "🚚 Versandkostenfrei ab 39 € Bestellwert",
-            "text_on_mobile": "Versandkostenfrei ab 39 € Bestellwert",
+            "text": "🚚 Versandkostenfrei innerhalb DE&nbsp;",
+            "text_on_mobile": "Versandkostenfrei innerhalb DE&nbsp;",
             "text_size": 13,
             "link": "",
             "enable_highlight": false,

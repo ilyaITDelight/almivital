@@ -151,7 +151,7 @@
       },
       "15516442047899035060": {
         "type": "shopify://apps/livemeup-live-shopping/blocks/live-widget/82ccf4ed-67f8-4725-9167-e54475d4748e",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "horizontal_position": "left",
           "horizontal_distance": 10,
@@ -165,6 +165,11 @@
           "border_color": "",
           "border_thickness": 1
         }
+      },
+      "7008068068935494874": {
+        "type": "shopify://apps/trusted-shops-reviews-and-more/blocks/trstd-login/2ae4ab38-7eb9-4d62-abe3-d4a5f27cbef2",
+        "disabled": false,
+        "settings": {}
       }
     }
   },

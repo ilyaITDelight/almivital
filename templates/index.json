@@ -15,6 +15,7 @@
         "image_7N86aD": {
           "type": "image",
           "name": "TAG 28.10.2026",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-TAG-Okt26.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-TAG-Okt26-mobil.jpg",
@@ -70,7 +71,6 @@
         "image_KKbFkM": {
           "type": "image",
           "name": "Livestream 29.10.",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Stream-Simone-Okt26.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Stream-Simone-Okt26-mobil.jpg",
@@ -126,7 +126,6 @@
         "image_APa6YW": {
           "type": "image",
           "name": "Oktober",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-Oktober.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-Oktober-mobil.jpg",

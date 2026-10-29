@@ -40,10 +40,36 @@
             "highlight_style": "marker"
           }
         },
+        "image_KKbFkM": {
+          "type": "image",
+          "name": "Livestream 29.10.",
+          "settings": {
+            "image": "shopify://shop_images/Almivital-Stream-Simone-Okt26.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Stream-Simone-Okt26-mobil.jpg",
+            "image_position": "20% 0",
+            "text_box_position": "middle-left",
+            "subheading": "Livestream ab 18:30 Uhr",
+            "subheading_size": "h4",
+            "heading": "Das Geheimnis ums Deferegger Heilwasser",
+            "heading_size": "h0",
+            "heading_tag": "h4",
+            "text": "Für heute hat sich Felix eine tolle Gesprächspartnerin eingeladen. Simone Klinkner ist die Geschäftsführerin der Deferegger Heilquelle, mit ihr wird er die besonderen Eigenschaften des Heilwassers, dessen Geschichte beleuchten und einen Ausblick geben, was in Zukunft geplant ist. Klingt spannend? Dann ab zum Stream...",
+            "text_size": "typeset2",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "large",
+            "button_style_secondary": false,
+            "button_alt_label": "Livestream starten",
+            "button_alt_link": "https://almivital.de/pages/lmu-live-shopping",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
         "image_9U8QJj": {
           "type": "image",
           "name": "30.10. bis 08.11.2026",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW45.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW45-mobil.jpg",
@@ -68,27 +94,27 @@
             "highlight_style": "marker"
           }
         },
-        "image_KKbFkM": {
+        "image_APa6YW": {
           "type": "image",
-          "name": "Livestream 29.10.",
+          "name": "Oktober",
           "settings": {
-            "image": "shopify://shop_images/Almivital-Stream-Simone-Okt26.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Stream-Simone-Okt26-mobil.jpg",
-            "image_position": "20% 0",
+            "image": "shopify://shop_images/Almivital-Shop-Oktober.jpg",
+            "image_mobile": "shopify://shop_images/Almivital-Shop-Oktober-mobil.jpg",
+            "image_position": "center center",
             "text_box_position": "middle-left",
-            "subheading": "Livestream ab 18:30 Uhr",
+            "subheading": "Monatsangebot bis 31.10.2026",
             "subheading_size": "h4",
-            "heading": "Das Geheimnis ums Deferegger Heilwasser",
+            "heading": "Spürbar pflegend und angenehm wärmend.",
             "heading_size": "h0",
-            "heading_tag": "h4",
-            "text": "Für heute hat sich Felix eine tolle Gesprächspartnerin eingeladen. Simone Klinkner ist die Geschäftsführerin der Deferegger Heilquelle, mit ihr wird er die besonderen Eigenschaften des Heilwassers, dessen Geschichte beleuchten und einen Ausblick geben, was in Zukunft geplant ist. Klingt spannend? Dann ab zum Stream...",
+            "heading_tag": "h2",
+            "text": "Sie suchen nach gezielter Pflege und behaglicher Wärme? Dann haben wir ja das perfekte Monatsangebot für Sie. Den ganzen Oktober gibt es unser Wärme Aktiv-Gel im 250ml Tiegel für <strong>nur 9,99€ statt 24,99€</strong>. Jetzt bestellen, Angebot gilt nur solange der Vorrat reicht.",
             "text_size": "typeset2",
             "button_label": "",
             "button_link": "",
             "button_size": "large",
             "button_style_secondary": false,
-            "button_alt_label": "Livestream starten",
-            "button_alt_link": "https://almivital.de/pages/lmu-live-shopping",
+            "button_alt_label": "Zum Monatsangebot",
+            "button_alt_link": "shopify://products/almivital-warme-aktiv-gel-mit-slimexir-250ml",
             "button_alt_size": "medium",
             "button_alt_style_secondary": false,
             "enable_highlight": false,
@@ -122,41 +148,14 @@
             "enable_highlight": false,
             "highlight_style": "marker"
           }
-        },
-        "image_APa6YW": {
-          "type": "image",
-          "name": "Oktober",
-          "settings": {
-            "image": "shopify://shop_images/Almivital-Shop-Oktober.jpg",
-            "image_mobile": "shopify://shop_images/Almivital-Shop-Oktober-mobil.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "subheading": "Monatsangebot bis 31.10.2026",
-            "subheading_size": "h4",
-            "heading": "Spürbar pflegend und angenehm wärmend.",
-            "heading_size": "h0",
-            "heading_tag": "h2",
-            "text": "Sie suchen nach gezielter Pflege und behaglicher Wärme? Dann haben wir ja das perfekte Monatsangebot für Sie. Den ganzen Oktober gibt es unser Wärme Aktiv-Gel im 250ml Tiegel für <strong>nur 9,99€ statt 24,99€</strong>. Jetzt bestellen, Angebot gilt nur solange der Vorrat reicht.",
-            "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
-            "button_size": "large",
-            "button_style_secondary": false,
-            "button_alt_label": "Zum Monatsangebot",
-            "button_alt_link": "shopify://products/almivital-warme-aktiv-gel-mit-slimexir-250ml",
-            "button_alt_size": "medium",
-            "button_alt_style_secondary": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
         }
       },
       "block_order": [
         "image_7N86aD",
-        "image_9U8QJj",
         "image_KKbFkM",
-        "image_BE3Ayh",
-        "image_APa6YW"
+        "image_9U8QJj",
+        "image_APa6YW",
+        "image_BE3Ayh"
       ],
       "settings": {
         "slideshow_type": "legacy",

@@ -43,6 +43,7 @@
         "image_KKbFkM": {
           "type": "image",
           "name": "Livestream 29.10.",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Stream-Simone-Okt26.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Stream-Simone-Okt26-mobil.jpg",

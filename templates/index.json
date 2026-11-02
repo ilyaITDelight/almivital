@@ -98,6 +98,7 @@
         "image_APa6YW": {
           "type": "image",
           "name": "Oktober",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-Oktober.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-Oktober-mobil.jpg",

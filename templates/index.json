@@ -71,6 +71,7 @@
         "image_9U8QJj": {
           "type": "image",
           "name": "30.10. bis 08.11.2026",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-KW45.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-KW45-mobil.jpg",
@@ -98,7 +99,6 @@
         "image_APa6YW": {
           "type": "image",
           "name": "November",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-November.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-November-mobil.jpg",
@@ -109,7 +109,7 @@
             "heading": "Sanfte Wärme für daheim & unterwegs",
             "heading_size": "h0",
             "heading_tag": "h2",
-            "text": "Unsere bewährte Moorsalbe mit Torfmoosextrakt ist wieder da und jetzt im Set im Monatsangebot. Der gewohnte 250ml Tiegel plus 100ml Tube für zusammen <strong>nur 27,99€ statt 42,98€</strong>. Jetzt bestellen, Angebot gilt nur solange der Vorrat reicht.",
+            "text": "Unsere bewährte Moorsalbe mit Torfmoosextrakt ist wieder da und jetzt als Set im Monatsangebot. Der gewohnte 250ml Tiegel plus 100ml Tube für zusammen <strong>nur 27,99€ statt 42,98€</strong>. Jetzt bestellen, Angebot gilt nur solange der Vorrat reicht.",
             "text_size": "typeset2",
             "button_label": "",
             "button_link": "",

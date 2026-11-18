@@ -1,0 +1,222 @@
+{% layout none %}
+{%- comment -%}
+  ALMIVITAL – Live-Countdown bis zum ENDE des Flash Sale Live Streams (Hintergrund-Bildschirm)
+  Vorlage: templates/page.live-countdown.liquid  (ohne Header, Footer, Apps, Cookie-Banner)
+
+  Zwei Varianten über die URL:
+    /pages/live-countdown              → helle Almivital-Variante
+    /pages/live-countdown?stil=alpen   → Alpen-Panorama-Variante
+  Testmodus: ?test=720 (12-Minuten-Countdown, Pink ab 10 Minuten), kombinierbar: ?stil=alpen&test=720
+  Panorama-Bild unter Inhalte → Dateien hochladen als: alpen-panorama.jpg
+{%- endcomment -%}
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ALMIVITAL Live Countdown</title>
+<style>
+  {{ settings.type_body_font | font_face: font_display: 'block' }}
+  {{ settings.type_body_font | font_modify: 'weight', '500' | font_face: font_display: 'block' }}
+  {{ settings.type_body_font | font_modify: 'weight', '600' | font_face: font_display: 'block' }}
+  {{ settings.type_body_font | font_modify: 'weight', '700' | font_face: font_display: 'block' }}
+  :root{--teal:#6dbbc3;--teal-deep:#3f9ea8;--teal-light:#d0ebed;--white:#ffffff;--pink:#dc74bf;--ink:#24414f;--ink-soft:#5b6f78}
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#fff;cursor:none}
+  body{font-family:Montserrat,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  /* ---------- Hintergrund: helle Variante ---------- */
+  .bg{position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden}
+  .bg--light{background:linear-gradient(180deg,#ffffff 0%,#f3fafb 45%,#d0ebed 100%)}
+  .sun{position:absolute;left:50%;top:44%;width:110vw;height:80vh;margin-left:-55vw;margin-top:-40vh;border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(255,255,255,1) 0%,rgba(255,255,255,.6) 35%,rgba(255,255,255,0) 70%);
+    -webkit-animation:breathe 16s ease-in-out infinite;animation:breathe 16s ease-in-out infinite}
+  @-webkit-keyframes breathe{0%,100%{opacity:.7;-webkit-transform:scale(1)}50%{opacity:1;-webkit-transform:scale(1.05)}}
+  @keyframes breathe{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+  .mtn{position:absolute;left:0;bottom:0;width:200%}
+  .mtn svg{display:block;width:100%;height:100%}
+  .mtn--1{height:44vh;-webkit-animation:drift 260s linear infinite;animation:drift 260s linear infinite}
+  .mtn--2{height:33vh;-webkit-animation:drift 190s linear infinite;animation:drift 190s linear infinite}
+  .mtn--3{height:21vh;-webkit-animation:drift 140s linear infinite;animation:drift 140s linear infinite}
+  @-webkit-keyframes drift{from{-webkit-transform:translate3d(0,0,0)}to{-webkit-transform:translate3d(-50%,0,0)}}
+  @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+  .bubble{position:absolute;border-radius:50%;border:.22vw solid var(--teal);opacity:.35;
+    -webkit-animation:float 30s ease-in-out infinite;animation:float 30s ease-in-out infinite}
+  .bubble--pink{border-color:var(--pink);opacity:.3}
+  @-webkit-keyframes float{0%,100%{-webkit-transform:translate(0,0)}50%{-webkit-transform:translate(1.2vw,-2.4vh)}}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(1.2vw,-2.4vh)}}
+
+  /* ---------- Hintergrund: Alpen-Panorama ---------- */
+  .bg--alpen{display:none;background:#cfe6f2}
+  .bg--alpen img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:40% 78%;
+    -webkit-transform-origin:35% 70%;transform-origin:35% 70%;-webkit-animation:kenburns 70s ease-in-out infinite alternate;animation:kenburns 70s ease-in-out infinite alternate}
+  @-webkit-keyframes kenburns{from{-webkit-transform:scale(1.04)}to{-webkit-transform:scale(1.12) translate(-1vw,.6vh)}}
+  @keyframes kenburns{from{transform:scale(1.04)}to{transform:scale(1.12) translate(-1vw,.6vh)}}
+  .bg--alpen .veil{position:absolute;top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.62) 38%,rgba(255,255,255,.18) 68%,rgba(255,255,255,0) 100%)}
+  .is-alpen .bg--light{display:none}
+  .is-alpen .bg--alpen{display:block}
+
+  /* ---------- Inhalt ---------- */
+  .stage{position:fixed;top:0;left:0;right:0;bottom:0;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;padding-bottom:8vh;box-sizing:border-box;text-align:center;
+    -webkit-animation:shift 97s ease-in-out infinite;animation:shift 97s ease-in-out infinite}
+  /* minimales Verschieben schützt das OLED vor Einbrennen */
+  @-webkit-keyframes shift{0%,100%{-webkit-transform:translate(0,0)}25%{-webkit-transform:translate(.5vw,-.4vh)}50%{-webkit-transform:translate(-.4vw,.5vh)}75%{-webkit-transform:translate(-.5vw,-.3vh)}}
+  @keyframes shift{0%,100%{transform:translate(0,0)}25%{transform:translate(.5vw,-.4vh)}50%{transform:translate(-.4vw,.5vh)}75%{transform:translate(-.5vw,-.3vh)}}
+  .logo{width:13vw;max-width:300px;height:auto;margin-bottom:2.4vh}
+  .pill{display:inline-block;background:var(--teal);color:#fff;font-weight:700;font-size:1.25vw;letter-spacing:.3em;text-transform:uppercase;padding:.8vh 1.6vw .8vh 1.9vw;border-radius:999px;margin-bottom:2.6vh}
+  .pill .rec{display:inline-block;width:.8vw;height:.8vw;border-radius:50%;background:#fff;margin-right:.9vw;vertical-align:.1vw;-webkit-animation:rec 2.4s ease-in-out infinite;animation:rec 2.4s ease-in-out infinite}
+  @-webkit-keyframes rec{0%,100%{opacity:1}50%{opacity:.35}}
+  @keyframes rec{0%,100%{opacity:1}50%{opacity:.35}}
+  .headline{font-weight:700;font-size:3.1vw;line-height:1.15;margin:0 0 3.4vh;color:var(--ink)}
+  .headline em{font-style:normal;color:var(--teal-deep)}
+  .cd{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:start;-webkit-align-items:flex-start;align-items:flex-start}
+  .unit{margin:0 1vw}
+  .card{background:rgba(255,255,255,.94);border-radius:2vw;padding:1.6vh 1.4vw 1.4vh;min-width:15vw;box-shadow:0 1.2vh 4vh rgba(36,65,79,.12),0 0 0 .2vw rgba(109,187,195,.35);
+    -webkit-transition:box-shadow .8s,background .8s;transition:box-shadow .8s,background .8s}
+  .num{display:block;font-weight:700;font-size:10vw;line-height:1.05;color:var(--teal-deep);font-variant-numeric:tabular-nums;-webkit-font-feature-settings:"tnum";font-feature-settings:"tnum";-webkit-transition:color .8s;transition:color .8s}
+  .num.tick{-webkit-animation:tick .55s ease-out;animation:tick .55s ease-out}
+  @-webkit-keyframes tick{0%{opacity:.6;-webkit-transform:translateY(-.3vh)}100%{opacity:1;-webkit-transform:translateY(0)}}
+  @keyframes tick{0%{opacity:.6;transform:translateY(-.3vh)}100%{opacity:1;transform:translateY(0)}}
+  .lab{display:block;margin-top:1.6vh;font-weight:600;font-size:1.15vw;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft);padding-left:.3em}
+  .is-alpen .lab{color:#fff;text-shadow:0 .2vh 1vh rgba(0,0,0,.45)}
+  .sep{font-weight:700;font-size:6vw;line-height:1.55;color:var(--teal);margin:0 .2vw;-webkit-animation:blink 2s ease-in-out infinite;animation:blink 2s ease-in-out infinite}
+  .is-alpen .sep{color:#fff;text-shadow:0 .2vh 1vh rgba(0,0,0,.35)}
+  @-webkit-keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+  .foot{margin-top:3.6vh;display:inline-block;background:rgba(255,255,255,.92);border-radius:999px;padding:1.1vh 2.2vw;font-weight:600;font-size:1.45vw;color:var(--ink);box-shadow:0 .8vh 3vh rgba(36,65,79,.1)}
+  .foot b{color:var(--teal-deep)}
+  .hurry{display:none;margin-top:3.6vh;background:var(--pink);color:#fff;border-radius:999px;padding:1.2vh 2.6vw;font-weight:700;font-size:1.9vw;letter-spacing:.04em;
+    box-shadow:0 1vh 3.5vh rgba(220,116,191,.35);-webkit-animation:hurry 2.2s ease-in-out infinite;animation:hurry 2.2s ease-in-out infinite}
+  @-webkit-keyframes hurry{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.04)}}
+  @keyframes hurry{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+  .ended{display:none;margin-top:3.6vh;font-weight:700;font-size:2.2vw;color:var(--ink);background:rgba(255,255,255,.92);border-radius:999px;padding:1.2vh 2.6vw}
+
+  /* letzte 10 Minuten: Signalfarbe */
+  .is-final .num{color:var(--pink)}
+  .is-final .card{box-shadow:0 1.2vh 4vh rgba(220,116,191,.22),0 0 0 .25vw rgba(220,116,191,.6)}
+  .is-final .sep{color:var(--pink)}
+  .is-final .foot{display:none}
+  .is-final .hurry{display:inline-block}
+  .is-final .headline em{color:var(--pink)}
+  /* beendet */
+  .is-ended .hurry,.is-ended .foot{display:none}
+  .is-ended .ended{display:inline-block}
+  .is-ended .num{color:var(--ink-soft)}
+  .is-ended .sep{-webkit-animation:none;animation:none;opacity:.5}
+
+  @media (max-aspect-ratio:1/1){.num{font-size:13vw}.card{min-width:22vw}.lab{font-size:2vw}.headline{font-size:5vw}.pill{font-size:2.4vw}.logo{width:30vw}.foot,.hurry,.ended{font-size:3vw}.sep{font-size:8vw}}
+</style>
+</head>
+<body>
+  <div class="bg bg--light" aria-hidden="true">
+    <div class="sun"></div>
+    <span class="bubble" style="width:7vw;height:7vw;left:7vw;top:14vh"></span>
+    <span class="bubble" style="width:3vw;height:3vw;left:5vw;top:68vh;animation-duration:26s;-webkit-animation-duration:26s"></span>
+    <span class="bubble bubble--pink" style="width:2.2vw;height:2.2vw;left:13vw;top:36vh;animation-duration:34s;-webkit-animation-duration:34s"></span>
+    <span class="bubble" style="width:5vw;height:5vw;right:9vw;top:20vh;animation-duration:38s;-webkit-animation-duration:38s"></span>
+    <span class="bubble bubble--pink" style="width:3.2vw;height:3.2vw;right:17vw;top:9vh;animation-duration:28s;-webkit-animation-duration:28s"></span>
+    <span class="bubble" style="width:2vw;height:2vw;right:3.5vw;top:72vh;animation-duration:24s;-webkit-animation-duration:24s"></span>
+    <div class="mtn mtn--1"><svg viewBox="0 0 3200 400" preserveAspectRatio="none"><path fill="#d0ebed" d="M0,400 L0,99 L37,121 L81,177 L135,247 L176,203 L220,174 L273,130 L313,155 L355,192 L406,219 L458,174 L513,128 L579,68 L614,123 L653,186 L698,253 L728,195 L759,131 L796,64 L843,138 L893,206 L953,277 L987,236 L1024,182 L1068,118 L1110,140 L1156,167 L1210,206 L1250,158 L1292,108 L1343,61 L1381,107 L1422,144 L1470,197 L1507,168 L1547,120 L1595,76 L1600,99 L1637,121 L1681,177 L1735,247 L1776,203 L1820,174 L1873,130 L1913,155 L1955,192 L2006,219 L2058,174 L2113,128 L2179,68 L2214,123 L2253,186 L2298,253 L2328,195 L2359,131 L2396,64 L2443,138 L2493,206 L2553,277 L2587,236 L2624,182 L2668,118 L2710,140 L2756,167 L2810,206 L2850,158 L2892,108 L2943,61 L2981,107 L3022,144 L3070,197 L3107,168 L3147,120 L3195,76 L3200,99 L3200,400 Z"/></svg></div>
+    <div class="mtn mtn--2"><svg viewBox="0 0 3200 400" preserveAspectRatio="none"><path fill="#a8d9de" fill-opacity=".8" d="M0,400 L0,234 L37,210 L55,240 L75,281 L98,317 L120,281 L143,229 L171,172 L201,209 L232,266 L270,315 L297,282 L327,237 L362,197 L409,220 L460,261 L520,300 L556,249 L594,216 L640,153 L663,195 L687,240 L716,292 L733,254 L752,220 L775,171 L801,219 L829,254 L863,310 L895,272 L929,237 L970,190 L1011,221 L1055,262 L1108,305 L1139,279 L1173,248 L1212,215 L1239,243 L1268,268 L1302,299 L1328,261 L1355,241 L1388,192 L1422,227 L1459,268 L1503,317 L1543,284 L1586,258 L1600,234 L1637,210 L1655,240 L1675,281 L1698,317 L1720,281 L1743,229 L1771,172 L1801,209 L1832,266 L1870,315 L1897,282 L1927,237 L1962,197 L2009,220 L2060,261 L2120,300 L2156,249 L2194,216 L2240,153 L2263,195 L2287,240 L2316,292 L2333,254 L2352,220 L2375,171 L2401,219 L2429,254 L2463,310 L2495,272 L2529,237 L2570,190 L2611,221 L2655,262 L2708,305 L2739,279 L2773,248 L2812,215 L2839,243 L2868,268 L2902,299 L2928,261 L2955,241 L2988,192 L3022,227 L3059,268 L3103,317 L3143,284 L3186,258 L3200,234 L3200,400 Z"/></svg></div>
+    <div class="mtn mtn--3"><svg viewBox="0 0 3200 400" preserveAspectRatio="none"><path fill="#6dbbc3" fill-opacity=".75" d="M0,400 L0,300 L4,293 L27,301 L51,323 L79,336 L101,325 L125,309 L153,292 L178,299 L204,311 L235,329 L257,306 L281,287 L309,264 L326,276 L345,295 L366,318 L383,303 L402,289 L423,277 L450,296 L479,312 L513,335 L537,320 L561,304 L591,287 L618,304 L647,323 L681,340 L702,320 L724,299 L750,280 L769,291 L790,303 L814,318 L839,314 L865,299 L897,293 L911,307 L926,308 L945,325 L961,315 L979,303 L1000,289 L1028,297 L1058,313 L1093,321 L1117,306 L1142,283 L1172,264 L1192,283 L1213,305 L1238,328 L1262,300 L1286,276 L1316,250 L1337,275 L1359,302 L1386,329 L1407,310 L1429,290 L1455,267 L1475,283 L1496,298 L1522,321 L1547,316 L1573,308 L1600,300 L1604,293 L1627,301 L1651,323 L1679,336 L1701,325 L1725,309 L1753,292 L1778,299 L1804,311 L1835,329 L1857,306 L1881,287 L1909,264 L1926,276 L1945,295 L1966,318 L1983,303 L2002,289 L2023,277 L2050,296 L2079,312 L2113,335 L2137,320 L2161,304 L2191,287 L2218,304 L2247,323 L2281,340 L2302,320 L2324,299 L2350,280 L2369,291 L2390,303 L2414,318 L2439,314 L2465,299 L2497,293 L2511,307 L2526,308 L2545,325 L2561,315 L2579,303 L2600,289 L2628,297 L2658,313 L2693,321 L2717,306 L2742,283 L2772,264 L2792,283 L2813,305 L2838,328 L2862,300 L2886,276 L2916,250 L2937,275 L2959,302 L2986,329 L3007,310 L3029,290 L3055,267 L3075,283 L3096,298 L3122,321 L3147,316 L3173,308 L3200,300 L3200,400 Z"/></svg></div>
+  </div>
+
+  <div class="bg bg--alpen" aria-hidden="true">
+    <img id="pano" src="{{ 'alpen-panorama.jpg' | file_url }}" alt=""
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1709489787912-00e3998f8407?w=2560&q=80&fm=jpg'">
+    <div class="veil"></div>
+  </div>
+
+  <div class="stage" id="stage">
+    <img class="logo" src="https://almivital.de/cdn/shop/files/almivital-logo_c63eaee7-cefa-4a7a-9d2d-0a26607d0910.png" alt="ALMIVITAL">
+    <div><span class="pill"><span class="rec"></span>Flash Sale Live</span></div>
+    <p class="headline">Die Live-Angebote enden in</p>
+    <div class="cd">
+      <div class="unit" id="u-d"><div class="card"><span class="num" data-k="d">0</span></div><span class="lab">Tage</span></div>
+      <div class="sep" id="s-d">:</div>
+      <div class="unit"><div class="card"><span class="num" data-k="h">00</span></div><span class="lab">Stunden</span></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="card"><span class="num" data-k="m">00</span></div><span class="lab">Minuten</span></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="card"><span class="num" data-k="s">00</span></div><span class="lab">Sekunden</span></div>
+    </div>
+    <div class="foot">Bis zu <b>50&nbsp;% Rabatt</b> &middot; nur solange der Vorrat reicht</div>
+    <div class="hurry">Nur noch wenige Minuten – jetzt zugreifen!</div>
+    <div class="ended">Der Live Flash Sale ist beendet – danke fürs Zuschauen!</div>
+  </div>
+
+<script>
+(function(){
+  // ENDE des Live Streams: Sonntag, 22.11.2026, 12:00 Uhr Berliner Zeit (= 11:00 UTC)
+  var TARGET = Date.UTC(2026, 10, 22, 11, 0, 0);
+  // Ab wie vielen Minuten vor Ende die Signalfarbe (Pink) erscheint
+  var FINAL_MINUTES = 10;
+
+  var q = location.search;
+  if (/[?&]stil=alpen/.test(q)) document.documentElement.className += ' is-alpen';
+  var m = /[?&]test=(\d+)/.exec(q);
+  if (m) TARGET = new Date().getTime() + parseInt(m[1], 10) * 1000;
+  var FINAL_MS = FINAL_MINUTES * 60000;
+
+  // Uhr des Geräts mit der Shopify-Serverzeit abgleichen
+  var offset = 0;
+  if (!m) {
+    try {
+      var x = new XMLHttpRequest(), t0 = new Date().getTime();
+      x.open('HEAD', '/?cd=' + t0, true);
+      x.onreadystatechange = function(){
+        if (x.readyState >= 2) {
+          var h = x.getResponseHeader('Date');
+          if (h) { var srv = new Date(h).getTime(); if (!isNaN(srv)) offset = srv - (t0 + new Date().getTime()) / 2; }
+        }
+      };
+      x.send();
+    } catch (e) {}
+  }
+
+  var stage = document.getElementById('stage');
+  var els = {}, last = {};
+  var nums = document.querySelectorAll('.num');
+  for (var i = 0; i < nums.length; i++) els[nums[i].getAttribute('data-k')] = nums[i];
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function set(k, v){
+    if (last[k] === v) return;
+    last[k] = v;
+    var el = els[k];
+    el.textContent = v;
+    el.className = 'num';
+    void el.offsetWidth;
+    el.className = 'num tick';
+  }
+  function render(){
+    var diff = TARGET - (new Date().getTime() + offset);
+    var cls = 'stage';
+    if (diff <= 0) {
+      diff = 0;
+      cls += ' is-ended';
+    } else if (diff <= FINAL_MS) {
+      cls += ' is-final';
+    }
+    if (stage.className !== cls) stage.className = cls;
+    var s = Math.ceil(diff / 1000);
+    var d = Math.floor(s / 86400);
+    var showD = d > 0 ? '' : 'none';
+    document.getElementById('u-d').style.display = showD;
+    document.getElementById('s-d').style.display = showD;
+    set('d', '' + d);
+    set('h', pad(Math.floor(s % 86400 / 3600)));
+    set('m', pad(Math.floor(s % 3600 / 60)));
+    set('s', pad(s % 60));
+  }
+  render();
+  setInterval(render, 250);
+
+  // Bei sehr langer Laufzeit alle 6 Stunden neu laden (nicht in den letzten 2 Stunden)
+  setInterval(function(){
+    if (TARGET - (new Date().getTime() + offset) > 7200000) location.reload();
+  }, 6 * 3600000);
+})();
+</script>
+</body>
+</html>

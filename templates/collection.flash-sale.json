@@ -37,6 +37,7 @@
         "grid_image": "product",
         "image_ratio": "adapt",
         "image_position": "center center",
+        "edge_to_edge": false,
         "apply_overlay": true,
         "padding_top": 36,
         "padding_bottom": 0
@@ -70,6 +71,7 @@
         "enable_quick_view": true,
         "enable_color_swatches": true,
         "enable_countdown": true,
+        "show_product_highlights": false,
         "padding_top": 0,
         "padding_bottom": 72
       }
@@ -77,6 +79,7 @@
     "recently-viewed": {
       "type": "recently-viewed-products",
       "settings": {
+        "edge_to_edge": false,
         "show_divider": true,
         "heading": "Kürzlich angesehene Produkte",
         "heading_size": "h1",
@@ -94,12 +97,25 @@
         "enable_quick_view": true,
         "enable_color_swatches": true,
         "enable_countdown": true,
+        "show_product_highlights": false,
         "padding_top": 60,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_6aYnrH": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "full_width": false,
+        "show_divider": false,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
+    "custom_liquid_6aYnrH",
     "banner",
     "subs",
     "product-grid",

@@ -33,8 +33,8 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "🚚 Versandkostenfrei",
-            "text_on_mobile": "Versandkostenfrei",
+            "text": "🚚 Versandkostenfrei ab 39 €",
+            "text_on_mobile": "Versandkostenfrei ab 39 €&nbsp;",
             "text_size": 13,
             "link": "",
             "enable_highlight": false,

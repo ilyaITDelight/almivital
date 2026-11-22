@@ -55,8 +55,8 @@
             "heading_tag": "h4",
             "text": "Am&nbsp;<strong>Sonntag</strong> startet unsere große&nbsp;<strong>ALMIVITAL Flash Sale Week</strong>&nbsp;mit bis zu 50% Rabatt auf viele unserer beliebtesten Produkte. Und damit nicht genug, während dem Livestream sind alle Bestellungen kostenlos. Pünktlich um 11:00 Uhr geht es los...",
             "text_size": "typeset2",
-            "button_label": "",
-            "button_link": "",
+            "button_label": "ZUM FLASH SALE!",
+            "button_link": "shopify://collections/flash-sale",
             "button_size": "large",
             "button_style_secondary": false,
             "button_alt_label": "Zum LIVESTREAM",
@@ -98,7 +98,6 @@
         "image_APa6YW": {
           "type": "image",
           "name": "November",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-November.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-November-mobil.jpg",

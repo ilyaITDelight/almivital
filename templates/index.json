@@ -59,8 +59,8 @@
             "button_link": "",
             "button_size": "large",
             "button_style_secondary": false,
-            "button_alt_label": "Zum Flashsale",
-            "button_alt_link": "",
+            "button_alt_label": "Zum LIVESTREAM",
+            "button_alt_link": "https://almivital.de/pages/lmu-live-shopping",
             "button_alt_size": "medium",
             "button_alt_style_secondary": false,
             "enable_highlight": false,
@@ -98,6 +98,7 @@
         "image_APa6YW": {
           "type": "image",
           "name": "November",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Almivital-Shop-November.jpg",
             "image_mobile": "shopify://shop_images/Almivital-Shop-November-mobil.jpg",
